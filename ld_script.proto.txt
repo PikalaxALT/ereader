@@ -1,0 +1,32 @@
+ENTRY(Start)
+MEMORY {
+	ewram_region    (w!x) : ORIGIN = 0x02000000, LENGTH =  0x40000
+	iwram_region    (w!x) : ORIGIN = 0x03000000, LENGTH =   0x8000
+	rom_region      (rx)  : ORIGIN = 0x08000000, LENGTH = 0x800000
+}
+SECTIONS {
+	ewram (NOLOAD) :
+	ALIGN(4)
+	{
+
+	} >ewram_region
+	iwram (NOLOAD) :
+	ALIGN(4)
+	{
+
+	} >iwram_region
+	.text :
+	ALIGN(4)
+	{
+		ereader.o(.text);
+	} >rom_region =0
+	.rodata :
+	ALIGN(4)
+	{
+		ereader.o(.rodata);
+	} >rom_region =0
+	/DISCARD/ :
+	{
+		*(*);
+	}
+}

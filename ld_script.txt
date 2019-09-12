@@ -1,0 +1,136 @@
+ENTRY(Start)
+
+gNumMusicPlayers = 5;
+gMaxLines = 0;
+
+SECTIONS {
+    . = 0x2000000;
+
+    ewram (NOLOAD) :
+    ALIGN(4)
+    {
+        INCLUDE "sym_ewram.ld"
+
+        . = 0x40000;
+}
+
+    . = 0x3000000;
+
+    iwram (NOLOAD) :
+    ALIGN(4)
+    {
+        /* .bss starts at 0x3000000 */
+        INCLUDE "sym_bss.ld"
+
+        /* .bss.code starts at 0x3001AA8 */
+        src/m4a.o(.bss.code);
+
+        /* COMMON starts at 0x30022A8 */
+        INCLUDE "sym_common.ld"
+        *libc.a:sbrkr.o(COMMON);
+        end = .;
+        . = 0x8000;
+    }
+
+    . = 0x8000000;
+
+    .text :
+    ALIGN(4)
+    {
+        asm/crt0.o(.text);
+	} =0
+
+    lib_text :
+    ALIGN(4)
+    {
+        asm/m4a_1.o(.text);
+        src/m4a.o(.text);
+        asm/lib_unk803E854.o(.text);
+        *libagbsyscall.a:ArcTan2.o(.text);
+        *libagbsyscall.a:BgAffineSet.o(.text);
+        *libagbsyscall.a:CpuFastSet.o(.text);
+        *libagbsyscall.a:CpuSet.o(.text);
+        *libagbsyscall.a:Div.o(.text);
+        *libagbsyscall.a:Mod.o(.text);
+        *libagbsyscall.a:LZ77UnCompVram.o(.text);
+        *libagbsyscall.a:LZ77UnCompWram.o(.text);
+        *libagbsyscall.a:ObjAffineSet.o(.text);
+        *libagbsyscall.a:RegisterRamReset.o(.text);
+        *libagbsyscall.a:SoftReset.o(.text);
+        *libagbsyscall.a:Sqrt.o(.text);
+        *libagbsyscall.a:VBlankIntrWait.o(.text);
+        src/agb_flash.o(.text);
+        src/agb_flash_1m.o(.text);
+        src/agb_flash_mx.o(.text);
+        src/agb_flash_le.o(.text);
+        *libgcc.a:_call_via_rX.o(.text);
+        *libgcc.a:_divsi3.o(.text);
+        *libgcc.a:_dvmd_tls.o(.text);
+        asm/lib_unk080443C4.o(.text);
+        *libc.a:libcfunc.o(.text); /* abort, isatty, alarm */
+        *libc.a:malloc.o(.text);
+        *libc.a:mallocr.o(.text);
+        *libc.a:memcpy.o(.text);
+        *libc.a:memset.o(.text);
+        *libc.a:mlock.o(.text);
+        *libc.a:strcat.o(.text);
+        *libc.a:strcmp.o(.text);
+        *libc.a:strcpy.o(.text);
+        *libc.a:strlen.o(.text);
+        *libc.a:strncmp.o(.text);
+        *libc.a:syscalls.o(.text);
+        *libc.a:errno.o(.text);
+        *libc.a:freer.o(.text);
+		asm/lib_unk0804A5B8.o(.text);
+    } =0
+
+    .rodata :
+    ALIGN(4)
+    {
+    } =0
+
+    lib_rodata :
+    SUBALIGN(4)
+    {
+        src/m4a.o(.rodata);
+        src/agb_flash.o(.rodata);
+        src/agb_flash_1m.o(.rodata);
+        src/agb_flash_mx.o(.rodata);
+        src/agb_flash_le.o(.rodata);
+        *libc.a(.rodata);
+        *libc.a(.data);
+        *libc.a:syscalls.o(.rodata);
+        src/libisagbprn.o(.rodata);
+    } =0
+
+    /* DWARF debug sections.
+       Symbols in the DWARF debugging sections are relative to the beginning
+       of the section so we begin them at 0.  */
+
+    /* DWARF 1 */
+    .debug          0 : { *(.debug) }
+    .line           0 : { *(.line) }
+
+    /* GNU DWARF 1 extensions */
+    .debug_srcinfo  0 : { *(.debug_srcinfo) }
+    .debug_sfnames  0 : { *(.debug_sfnames) }
+
+    /* DWARF 1.1 and DWARF 2 */
+    .debug_aranges  0 : { *(.debug_aranges) }
+    .debug_pubnames 0 : { *(.debug_pubnames) }
+
+    /* DWARF 2 */
+    .debug_info     0 : { *(.debug_info .gnu.linkonce.wi.*) }
+    .debug_abbrev   0 : { *(.debug_abbrev) }
+    .debug_line     0 : { *(.debug_line) }
+    .debug_frame    0 : { *(.debug_frame) }
+    .debug_str      0 : { *(.debug_str) }
+    .debug_loc      0 : { *(.debug_loc) }
+    .debug_macinfo  0 : { *(.debug_macinfo) }
+
+    /* Discard everything not specifically mentioned above. */
+    /DISCARD/ :
+    {
+        *(*);
+    }
+}
