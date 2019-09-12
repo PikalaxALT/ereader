@@ -232,13 +232,13 @@ $(SONG_BUILDDIR)/%.o: $(SONG_SUBDIR)/%.s
 	$(AS) $(ASFLAGS) -I sound -o $@ $<
 
 $(OBJ_DIR)/sym_bss.ld: sym_bss.txt
-	$(RAMSCRGEN) .bss $< ENGLISH > $@
+	cp $< $@
 
 $(OBJ_DIR)/sym_common.ld: sym_common.txt $(C_OBJS) $(wildcard common_syms/*.txt)
-	$(RAMSCRGEN) COMMON $< ENGLISH -c $(C_BUILDDIR),common_syms > $@
+	cp $< $@
 
 $(OBJ_DIR)/sym_ewram.ld: sym_ewram.txt
-	$(RAMSCRGEN) ewram_data $< ENGLISH > $@
+	cp $< $@
 
 LD_SCRIPT := ld_script.txt
 LD_SCRIPT_DEPS := $(OBJ_DIR)/sym_bss.ld $(OBJ_DIR)/sym_common.ld $(OBJ_DIR)/sym_ewram.ld
@@ -261,7 +261,7 @@ libagbsyscall:
 ereader.o: ereader.s
 	$(AS) $(ASFLAGS) -o $@ $<
 
-$(ELF): ereader.o ld_script.proto.txt
+$(ELF): ereader.o ld_script.proto.txt sym_ewram.txt sym_iwram.txt sym_common.txt
 	$(LD) -Map $(@F:%.elf=%.map) -T ld_script.proto.txt -o $@ $<
 	$(FIX) $@ -t"$(TITLE)" -c$(GAME_CODE) -m$(MAKER_CODE) -r$(REVISION) --silent
 

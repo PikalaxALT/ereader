@@ -8,12 +8,13 @@ SECTIONS {
 	ewram (NOLOAD) :
 	ALIGN(4)
 	{
-
+		INCLUDE sym_ewram.txt
 	} >ewram_region
 	iwram (NOLOAD) :
 	ALIGN(4)
 	{
-
+		INCLUDE sym_iwram.txt
+		INCLUDE sym_common.txt
 	} >iwram_region
 	.text :
 	ALIGN(4)

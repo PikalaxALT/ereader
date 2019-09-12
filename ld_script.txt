@@ -87,6 +87,7 @@ SECTIONS {
     .rodata :
     ALIGN(4)
     {
+    	data/data.o(.rodata);
     } =0
 
     lib_rodata :
