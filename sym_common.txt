@@ -18,6 +18,7 @@
 	SYMBOL(gUnknown_2033DD0, 0x10) /* 0x2033DD0 */
 	SYMBOL(gUnknown_2033DE0, 0x10) /* 0x2033DE0 */
 	. = ALIGN(16);
+	/* m4a */
 	SYMBOL(gSoundInfo, 2432)
     SYMBOL(gMPlayJumpTable, 144)
     SYMBOL(gCgbChans, 256)
@@ -27,6 +28,8 @@
     SYMBOL(gMPlayInfo_5, 64)
     SYMBOL(gMPlayMemAccArea, 16)
     SYMBOL(gMPlayInfo_4, 64)
+    . = ALIGN(16);
+    /* agb_flash */
 	SYMBOL(gFlashTimeoutFlag, 4)
     SYMBOL(PollFlashStatus, 4)
     SYMBOL(WaitForFlashWrite, 4)
