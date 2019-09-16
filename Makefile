@@ -59,7 +59,7 @@ ASFLAGS := -mcpu=arm7tdmi
 GCC_VER = $(shell $(CC) -dumpversion)
 
 CC1             := tools/agbcc/bin/agbcc$(EXE)
-override CFLAGS += -Wimplicit -Wparentheses -Werror -O2 -fhex-asm
+override CFLAGS += -Wimplicit -Wparentheses -Werror -O2 -fhex-asm -mthumb-interwork
 ROM := ereader.gba
 OBJ_DIR := build/ereader
 LIBPATH := -L ../../tools/agbcc/lib
@@ -190,7 +190,6 @@ $(C_BUILDDIR)/agb_flash_1m.o: CFLAGS := -O -mthumb-interwork
 $(C_BUILDDIR)/agb_flash_mx.o: CFLAGS := -O -mthumb-interwork
 
 $(C_BUILDDIR)/m4a.o: CC1 := tools/agbcc/bin/old_agbcc
-$(C_BUILDDIR)/m4a.o: CFLAGS := -O2 -mthumb-interwork -fhex-asm -Wimplicit -Wparentheses -Werror
 
 ifeq ($(NODEP),1)
 $(C_BUILDDIR)/%.o: c_dep :=
@@ -242,7 +241,7 @@ $(OBJ_DIR)/%.ld: %.txt
 	$(CPP) -P $(CPPFLAGS) -o $@ $<
 
 LD_SCRIPT := ld_script.txt
-LD_SCRIPT_DEPS := $(OBJ_DIR)/sym_bss.ld $(OBJ_DIR)/sym_common.ld $(OBJ_DIR)/sym_ewram.ld
+LD_SCRIPT_DEPS := $(OBJ_DIR)/sym_bss.ld $(OBJ_DIR)/sym_common.ld $(OBJ_DIR)/sym_iwram.ld $(OBJ_DIR)/sym_iwram2.ld
 
 $(OBJ_DIR)/ld_script.ld: $(LD_SCRIPT) $(LD_SCRIPT_DEPS)
 	cd $(OBJ_DIR) && sed "s#tools/#../../tools/#g" ../../$(LD_SCRIPT) > ld_script.ld
@@ -257,11 +256,3 @@ $(ROM): $(ELF)
 
 libagbsyscall:
 	@$(MAKE) -C libagbsyscall TOOLCHAIN=$(TOOLCHAIN)
-#
-#ereader.o: ereader.s
-#	$(AS) $(ASFLAGS) -o $@ $<
-#
-#$(ELF): ereader.o ld_script.proto.txt sym_ewram.txt sym_bss.txt sym_common.txt
-#	$(LD) -Map $(@F:%.elf=%.map) -T ld_script.proto.txt -o $@ $<
-#	$(FIX) $@ -t"$(TITLE)" -c$(GAME_CODE) -m$(MAKER_CODE) -r$(REVISION) --silent
-#

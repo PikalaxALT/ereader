@@ -1,42 +1,52 @@
-	gUnknown_3004658 = .; /* 0x3004658 */
-	. += 0x2;
-	gUnknown_300465A = .; /* 0x300465A */
-	. += 0x18;
-	gUnknown_3004672 = .; /* 0x3004672 */
-	. += 0x62;
-	gUnknown_30046D4 = .; /* 0x30046D4 */
-	. += 0x4;
-	gUnknown_30046D8 = .; /* 0x30046D8 */
-	. += 0x8;
-	gUnknown_30046E0 = .; /* 0x30046E0 */
-	. += 0x38;
-	gUnknown_3004718 = .; /* 0x3004718 */
-	. += 0x180;
-	gUnknown_3004898 = .; /* 0x3004898 */
-	. += 0x8;
-	gUnknown_30048A0 = .; /* 0x30048A0 */
-	. += 0x8;
-	gUnknown_30048A8 = .; /* 0x30048A8 */
-	. += 0x464;
-	gUnknown_3004D0C = .; /* 0x3004D0C */
-	. += 0x4D4;
-	gUnknown_30051E0 = .; /* 0x30051E0 */
-	. += 0x620;
-	gUnknown_3005800 = .; /* 0x3005800 */
-	. += 0xE00;
-	gUnknown_3006600 = .; /* 0x3006600 */
-	. += 0xFFC;
-	gUnknown_30075FC = .; /* 0x30075FC */
-	. += 0x864;
-	gUnknown_3007E60 = .; /* 0x3007E60 */
-	. += 0xA0;
-	gUnknown_3007F00 = .; /* 0x3007F00 */
-	. += 0xA0;
-	gUnknown_3007FA0 = .; /* 0x3007FA0 */
-	. += 0x50;
-	SOUND_INFO_PTR = .; /* 0x3007FF0 */
-	. += 0x8;
-	gUnknown_3007FF8 = .; /* 0x3007FF8 */
-	. += 0x4;
-	gUnknown_3007FFC = .; /* 0x3007FFC */
-	. += 0x4;
+
+#define SYMBOL(name, size)                   \
+    . = ALIGN (((size) > 16) ? 16 : (size)); \
+    . = ALIGN(4);                            \
+    name = .;                                \
+    . += size;
+
+	. = ALIGN(16);
+	SYMBOL(gUnknown_2033D40, 0x10) /* 0x2033D40 */
+	SYMBOL(gUnknown_2033D50, 0x10) /* 0x2033D50 */
+	SYMBOL(gUnknown_2033D60, 0x10) /* 0x2033D60 */
+	SYMBOL(gUnknown_2033D70, 0x10) /* 0x2033D70 */
+	SYMBOL(gUnknown_2033D80, 0x10) /* 0x2033D80 */
+	SYMBOL(gUnknown_2033D90, 0x10) /* 0x2033D90 */
+	SYMBOL(gUnknown_2033DA0, 0x10) /* 0x2033DA0 */
+	SYMBOL(gUnknown_2033DB0, 0x10) /* 0x2033DB0 */
+	SYMBOL(gUnknown_2033DC0, 0x10) /* 0x2033DC0 */
+	SYMBOL(gUnknown_2033DD0, 0x10) /* 0x2033DD0 */
+	SYMBOL(gUnknown_2033DE0, 0x10) /* 0x2033DE0 */
+	. = ALIGN(16);
+	SYMBOL(gSoundInfo, 2432)
+    SYMBOL(gMPlayJumpTable, 144)
+    SYMBOL(gCgbChans, 256)
+    SYMBOL(gMPlayInfo_1, 64)
+    SYMBOL(gMPlayInfo_2, 64)
+    SYMBOL(gMPlayInfo_3, 64)
+    SYMBOL(gMPlayInfo_5, 64)
+    SYMBOL(gMPlayMemAccArea, 16)
+    SYMBOL(gMPlayInfo_4, 64)
+	SYMBOL(gFlashTimeoutFlag, 4)
+    SYMBOL(PollFlashStatus, 4)
+    SYMBOL(WaitForFlashWrite, 4)
+    SYMBOL(ProgramFlashSector, 4)
+    SYMBOL(gFlash, 4)
+    SYMBOL(ProgramFlashByte, 4)
+    SYMBOL(gFlashNumRemainingBytes, 4)
+    SYMBOL(EraseFlashChip, 4)
+    SYMBOL(EraseFlashSector, 4)
+    SYMBOL(gFlashMaxTime, 4);
+    . = ALIGN(16);
+	SYMBOL(gUnknown_2034A80, 0x10) /* 0x2034A80 */
+	SYMBOL(gUnknown_2034A90, 0x10) /* 0x2034A90 */
+	SYMBOL(gUnknown_2034AA0, 0x10) /* 0x2034AA0 */
+	SYMBOL(gUnknown_2034AB0, 0x10) /* 0x2034AB0 */
+	SYMBOL(gUnknown_2034AC0, 0x10) /* 0x2034AC0 */
+	SYMBOL(gUnknown_2034AD0, 0x10) /* 0x2034AD0 */
+	SYMBOL(gUnknown_2034AE0, 0x10) /* 0x2034AE0 */
+	SYMBOL(gUnknown_2034AF0, 0x7C) /* 0x2034AF0 */
+	*libc.a:sbrkr.o(COMMON);
+	. += 0x1490;
+	SYMBOL(gUnknown_2036000, 0x8000) /* 0x2036000 */
+	SYMBOL(gUnknown_203E000, 0x2000) /* 0x203E000 */

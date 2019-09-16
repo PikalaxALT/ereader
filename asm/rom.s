@@ -4013,9 +4013,9 @@ _08002004:
 _08002044: .4byte gUnknown_2032604
 _08002048: .4byte 0x06010000
 _0800204C: .4byte 0x001FFFFF
+	thumb_func_end sub_08001EA0
 
 	@ file boundary
-	thumb_func_end sub_08001EA0
 
 	thumb_func_start sub_08002050
 sub_08002050: @ 0x08002050
