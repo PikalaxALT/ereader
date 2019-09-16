@@ -185,6 +185,13 @@ tidy:
 %.lz: % ; $(GFX) $< $@
 %.rl: % ; $(GFX) $< $@
 
+$(C_BUILDDIR)/agb_flash.o: CFLAGS := -O -mthumb-interwork
+$(C_BUILDDIR)/agb_flash_1m.o: CFLAGS := -O -mthumb-interwork
+$(C_BUILDDIR)/agb_flash_mx.o: CFLAGS := -O -mthumb-interwork
+
+$(C_BUILDDIR)/m4a.o: CC1 := tools/agbcc/bin/old_agbcc
+$(C_BUILDDIR)/m4a.o: CFLAGS := -O2 -mthumb-interwork -fhex-asm -Wimplicit -Wparentheses -Werror
+
 ifeq ($(NODEP),1)
 $(C_BUILDDIR)/%.o: c_dep :=
 else
@@ -231,14 +238,8 @@ $(DATA_ASM_BUILDDIR)/%.o: $(DATA_ASM_SUBDIR)/%.s $$(data_dep)
 $(SONG_BUILDDIR)/%.o: $(SONG_SUBDIR)/%.s
 	$(AS) $(ASFLAGS) -I sound -o $@ $<
 
-$(OBJ_DIR)/sym_bss.ld: sym_bss.txt
-	cp $< $@
-
-$(OBJ_DIR)/sym_common.ld: sym_common.txt $(C_OBJS) $(wildcard common_syms/*.txt)
-	cp $< $@
-
-$(OBJ_DIR)/sym_ewram.ld: sym_ewram.txt
-	cp $< $@
+$(OBJ_DIR)/%.ld: %.txt
+	$(CPP) -P $(CPPFLAGS) -o $@ $<
 
 LD_SCRIPT := ld_script.txt
 LD_SCRIPT_DEPS := $(OBJ_DIR)/sym_bss.ld $(OBJ_DIR)/sym_common.ld $(OBJ_DIR)/sym_ewram.ld
@@ -246,10 +247,9 @@ LD_SCRIPT_DEPS := $(OBJ_DIR)/sym_bss.ld $(OBJ_DIR)/sym_common.ld $(OBJ_DIR)/sym_
 $(OBJ_DIR)/ld_script.ld: $(LD_SCRIPT) $(LD_SCRIPT_DEPS)
 	cd $(OBJ_DIR) && sed "s#tools/#../../tools/#g" ../../$(LD_SCRIPT) > ld_script.ld
 
-# Temporary commented out for prototyping
-#$(ELF): $(OBJ_DIR)/ld_script.ld $(OBJS) berry_fix libagbsyscall
-#	cd $(OBJ_DIR) && $(LD) $(LDFLAGS) -T ld_script.ld -o ../../$@ $(OBJS_REL) $(LIB)
-#	$(FIX) $@ -t"$(TITLE)" -c$(GAME_CODE) -m$(MAKER_CODE) -r$(REVISION) --silent
+$(ELF): $(OBJ_DIR)/ld_script.ld $(OBJS) libagbsyscall
+	cd $(OBJ_DIR) && $(LD) $(LDFLAGS) -T ld_script.ld -o ../../$@ $(OBJS_REL) $(LIB)
+	$(FIX) $@ -t"$(TITLE)" -c$(GAME_CODE) -m$(MAKER_CODE) -r$(REVISION) --silent
 
 $(ROM): $(ELF)
 	$(OBJCOPY) -O binary $< $@
@@ -257,11 +257,11 @@ $(ROM): $(ELF)
 
 libagbsyscall:
 	@$(MAKE) -C libagbsyscall TOOLCHAIN=$(TOOLCHAIN)
-
-ereader.o: ereader.s
-	$(AS) $(ASFLAGS) -o $@ $<
-
-$(ELF): ereader.o ld_script.proto.txt sym_ewram.txt sym_iwram.txt sym_common.txt
-	$(LD) -Map $(@F:%.elf=%.map) -T ld_script.proto.txt -o $@ $<
-	$(FIX) $@ -t"$(TITLE)" -c$(GAME_CODE) -m$(MAKER_CODE) -r$(REVISION) --silent
-
+#
+#ereader.o: ereader.s
+#	$(AS) $(ASFLAGS) -o $@ $<
+#
+#$(ELF): ereader.o ld_script.proto.txt sym_ewram.txt sym_bss.txt sym_common.txt
+#	$(LD) -Map $(@F:%.elf=%.map) -T ld_script.proto.txt -o $@ $<
+#	$(FIX) $@ -t"$(TITLE)" -c$(GAME_CODE) -m$(MAKER_CODE) -r$(REVISION) --silent
+#

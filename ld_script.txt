@@ -2,19 +2,20 @@ ENTRY(Start)
 
 gNumMusicPlayers = 5;
 gMaxLines = 0;
+end = 0x8000;
+
+MEMORY {
+	ewram_region    (w!x) : ORIGIN = 0x02000000, LENGTH =  0x40000
+	iwram_region    (w!x) : ORIGIN = 0x03000000, LENGTH =   0x8000
+	rom_region      (rx)  : ORIGIN = 0x08000000, LENGTH = 0x800000
+}
 
 SECTIONS {
-    . = 0x2000000;
-
     ewram (NOLOAD) :
     ALIGN(4)
     {
         INCLUDE "sym_ewram.ld"
-
-        . = 0x40000;
-}
-
-    . = 0x3000000;
+	} >ewram_region
 
     iwram (NOLOAD) :
     ALIGN(4)
@@ -22,23 +23,19 @@ SECTIONS {
         /* .bss starts at 0x3000000 */
         INCLUDE "sym_bss.ld"
 
-        /* .bss.code starts at 0x3001AA8 */
+        /* .bss.code starts at 0x30042D8 */
         src/m4a.o(.bss.code);
 
-        /* COMMON starts at 0x30022A8 */
+        /* COMMON starts at 0x3004658?? */
         INCLUDE "sym_common.ld"
-        *libc.a:sbrkr.o(COMMON);
-        end = .;
-        . = 0x8000;
-    }
-
-    . = 0x8000000;
+    } >iwram_region
 
     .text :
     ALIGN(4)
     {
         asm/crt0.o(.text);
-	} =0
+        asm/rom.o(.text);
+	} >rom_region =0
 
     lib_text :
     ALIGN(4)
@@ -67,12 +64,18 @@ SECTIONS {
         *libgcc.a:_divsi3.o(.text);
         *libgcc.a:_dvmd_tls.o(.text);
         asm/lib_unk080443C4.o(.text);
-        *libc.a:libcfunc.o(.text); /* abort, isatty, alarm */
+        *libgcc.a:_modsi3.o(.text);
+        asm/lib_unk08044770.o(.text);
+        *libgcc.a:_udivsi3.o(.text);
+        *libgcc.a:_umodsi3.o(.text);
+        asm/lib_unk080448B0.o(.text);
+        *libc.a:libcfunc.o(.text);
         *libc.a:malloc.o(.text);
         *libc.a:mallocr.o(.text);
         *libc.a:memcpy.o(.text);
         *libc.a:memset.o(.text);
         *libc.a:mlock.o(.text);
+        *libc.a:sbrkr.o(.text);
         *libc.a:strcat.o(.text);
         *libc.a:strcmp.o(.text);
         *libc.a:strcpy.o(.text);
@@ -82,27 +85,38 @@ SECTIONS {
         *libc.a:errno.o(.text);
         *libc.a:freer.o(.text);
 		asm/lib_unk0804A5B8.o(.text);
-    } =0
+    } >rom_region =0
 
     .rodata :
     ALIGN(4)
     {
     	data/data.o(.rodata);
-    } =0
+        src/m4a_tables.o(.rodata);
+        data/sound_data.o(.rodata);
+    } >rom_region =0
+
+    song_data :
+    ALIGN(4)
+    {
+
+    } >rom_region =0
 
     lib_rodata :
     SUBALIGN(4)
     {
-        src/m4a.o(.rodata);
+    	data/lib_unk803E854.o(.rodata);
         src/agb_flash.o(.rodata);
         src/agb_flash_1m.o(.rodata);
         src/agb_flash_mx.o(.rodata);
         src/agb_flash_le.o(.rodata);
-        *libc.a(.rodata);
-        *libc.a(.data);
+        data/lib_unk080448B0.o(.rodata);
         *libc.a:syscalls.o(.rodata);
-        src/libisagbprn.o(.rodata);
-    } =0
+        *libc.a:impure.o(.rodata);
+        data/libdata_83B6660.o(.rodata);
+        *libc.a:mallocr.o(.data);
+        *libc.a:impure.o(.data);
+        data/lib_unk0804A5B8.o(.rodata);
+    } >rom_region =0
 
     /* DWARF debug sections.
        Symbols in the DWARF debugging sections are relative to the beginning
