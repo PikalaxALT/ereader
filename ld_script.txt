@@ -7,27 +7,30 @@ end = 0x8000;
 MEMORY {
 	ewram_region    (w!x) : ORIGIN = 0x02000000, LENGTH =  0x40000
 	iwram_region    (w!x) : ORIGIN = 0x03000000, LENGTH =   0x8000
-	rom_region      (rx)  : ORIGIN = 0x08000000, LENGTH = 0x800000
+	rom_region      (rx)  : ORIGIN = 0x08000000, LENGTH = 0x7F8000
+	unk_region      (rx)  : ORIGIN = 0x087F8000, LENGTH =   0x8000
 }
 
 SECTIONS {
     ewram (NOLOAD) :
     ALIGN(4)
     {
+    	/* .bss starts at 0x2000000 */
         INCLUDE "sym_bss.ld"
+        /* COMMON starts at 0x2033D40 */
         INCLUDE "sym_common.ld"
 	} >ewram_region
 
     iwram (NOLOAD) :
     ALIGN(4)
     {
-        /* .bss starts at 0x3000000 */
+        /* iwram_data starts at 0x3000000 */
         INCLUDE "sym_iwram.ld"
 
         /* .bss.code starts at 0x30042D8 */
         src/m4a.o(.bss.code);
 
-        /* COMMON starts at 0x3004658?? */
+		/* iwram_data continues at 0x3004658 */
         INCLUDE "sym_iwram2.ld"
     } >iwram_region
 
@@ -118,6 +121,11 @@ SECTIONS {
         *libc.a:impure.o(.data);
         data/lib_unk0804A5B8.o(.rodata);
     } >rom_region =0
+
+    unk_section :
+    {
+    	gUnknown_87F8000 = .;
+    } >unk_region =0
 
     /* DWARF debug sections.
        Symbols in the DWARF debugging sections are relative to the beginning

@@ -162,7 +162,3 @@ gUnknown_8710064:
 
 	.global gUnknown_8714224
 gUnknown_8714224:
-	.incbin "baserom.gba", 0x714224, 0xe3ddc
-
-	.global gUnknown_87F8000
-gUnknown_87F8000:
