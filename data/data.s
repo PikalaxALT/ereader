@@ -91,7 +91,7 @@ gUnknown_804AEB0:
 
 	.global gUnknown_804B710
 gUnknown_804B710:
-	.incbin "baserom.gba", 0x4b710, 0x8
+	.asciz "Kingler"
 
 	.global gUnknown_804B718
 gUnknown_804B718:
