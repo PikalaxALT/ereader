@@ -82,7 +82,9 @@ gUnknown_85EA550:
 
 	.global gUnknown_85EA5E0
 gUnknown_85EA5E0:
-	.incbin "baserom.gba", 0x5ea5e0, 0x30
+	.2byte 8, 8, 16, 16, 32, 32, 64, 64
+	.2byte 16, 8, 32, 8, 32, 16, 64, 32
+	.2byte 8, 16, 8, 32, 16, 32, 32, 64
 
 	.global gUnknown_85EA610
 gUnknown_85EA610:
