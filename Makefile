@@ -77,6 +77,7 @@ MID := tools/mid2agb/mid2agb$(EXE)
 SCANINC := tools/scaninc/scaninc$(EXE)
 FIX := tools/gbafix/gbafix$(EXE)
 JSONPROC := tools/jsonproc/jsonproc$(EXE)
+BIN2C := tools/bin2c/bin2c$(EXE)
 
 TOOLDIRS := $(filter-out tools/agbcc tools/binutils,$(wildcard tools/*))
 TOOLBASE = $(TOOLDIRS:tools/%=%)
@@ -243,6 +244,9 @@ $(OBJ_DIR)/ld_script.ld: $(LD_SCRIPT) $(LD_SCRIPT_DEPS)
 $(ELF): $(OBJ_DIR)/ld_script.ld $(OBJS) libagbsyscall
 	cd $(OBJ_DIR) && $(LD) $(LDFLAGS) -T ld_script.ld -o ../../$@ $(OBJS_REL) $(LIB)
 	$(FIX) $@ -t"$(TITLE)" -c$(GAME_CODE) -m$(MAKER_CODE) -r$(REVISION) --silent
+
+%.bin.c: %.bin
+	(echo '#include "gba/types.h"' && $(BIN2C) $< $(*F)) > $@
 
 $(ROM): $(ELF)
 	$(OBJCOPY) -O binary --pad-to=0x08800000 --gap-fill=0xFF $< $@
