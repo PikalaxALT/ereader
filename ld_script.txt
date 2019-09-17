@@ -97,7 +97,7 @@ SECTIONS {
     .rodata :
     ALIGN(4)
     {
-    	data/data.o(.rodata);
+    	data/rodata.o(.rodata);
         src/m4a_tables.o(.rodata);
         data/sound_data.o(.rodata);
     } >rom_region =0
@@ -119,10 +119,16 @@ SECTIONS {
         data/lib_unk080448B0.o(.rodata);
         *libc.a:syscalls.o(.rodata);
         *libc.a:impure.o(.rodata);
-        data/libdata_83B6660.o(.rodata);
+        . = ALIGN(4);
+    } >rom_region =0
+
+    .data :
+    SUBALIGN(4)
+    {
+        data/data.o(.data);
         *libc.a:mallocr.o(.data);
         *libc.a:impure.o(.data);
-        data/lib_unk0804A5B8.o(.rodata);
+        data/lib_unk0804A5B8.o(.data);
     } >rom_region =0
 
     unk_section :

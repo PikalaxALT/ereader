@@ -8,7 +8,7 @@
 	SYMBOL(gUnknown_30046D4, 0x4) /* 0x30046D4 */
 	SYMBOL(gUnknown_30046D8, 0x8) /* 0x30046D8 */
 	SYMBOL(gUnknown_30046E0, 0x38) /* 0x30046E0 */
-	SYMBOL(gUnknown_3004718, 0x180) /* 0x3004718 */
+	SYMBOL(IntrMain_Buffer, 0x180) /* 0x3004718 */
 	SYMBOL(gUnknown_3004898, 0x8) /* 0x3004898 */
 	SYMBOL(gUnknown_30048A0, 0x8) /* 0x30048A0 */
 	SYMBOL(gUnknown_30048A8, 0x464) /* 0x30048A8 */

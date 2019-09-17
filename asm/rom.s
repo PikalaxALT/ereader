@@ -11765,7 +11765,7 @@ AgbMain: @ 0x08006564
 	movs r2, #0x1c
 	bl CpuSet
 	ldr r0, _080065F8 @ =IntrMain
-	ldr r5, _080065FC @ =gUnknown_3004718
+	ldr r5, _080065FC @ =IntrMain_Buffer
 	adds r1, r5, #0
 	movs r2, #0xc0
 	bl CpuSet
@@ -11799,7 +11799,7 @@ _080065EC: .4byte REG_WAITCNT
 _080065F0: .4byte gUnknown_85EBBC0
 _080065F4: .4byte gUnknown_30046E0
 _080065F8: .4byte IntrMain
-_080065FC: .4byte gUnknown_3004718
+_080065FC: .4byte IntrMain_Buffer
 _08006600: .4byte gUnknown_3007FFC
 	thumb_func_end AgbMain
 
@@ -11820,7 +11820,7 @@ sub_08006604: @ 0x08006604
 	movs r2, #0x1c
 	bl CpuSet
 	ldr r0, _08006658 @ =IntrMain
-	ldr r5, _0800665C @ =gUnknown_3004718
+	ldr r5, _0800665C @ =IntrMain_Buffer
 	adds r1, r5, #0
 	movs r2, #0xc0
 	bl CpuSet
@@ -11842,7 +11842,7 @@ _0800664C: .4byte REG_IME
 _08006650: .4byte gUnknown_85EBBC0
 _08006654: .4byte gUnknown_30046E0
 _08006658: .4byte IntrMain
-_0800665C: .4byte gUnknown_3004718
+_0800665C: .4byte IntrMain_Buffer
 _08006660: .4byte gUnknown_3007FFC
 	thumb_func_end sub_08006604
 

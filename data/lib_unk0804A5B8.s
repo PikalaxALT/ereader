@@ -1,4 +1,4 @@
-	.section .rodata
+	.data
 	.align 2, 0
 	.global gUnknown_8703E58
 gUnknown_8703E58:
