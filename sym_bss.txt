@@ -439,6 +439,8 @@
 	SYMBOL(gUnknown_2030540, 0xFEC) /* 0x2030540 */
 	SYMBOL(gUnknown_203152C, 0x4) /* 0x203152C */
 	SYMBOL(gUnknown_2031530, 0x8) /* 0x2031530 */
+
+
 	asm/bg.o(.bss);
 	/* palette.s */
 	SYMBOL(gPlttBufferUnfaded, 0x200) /* 0x2031D88 */

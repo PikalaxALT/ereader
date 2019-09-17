@@ -38,11 +38,47 @@ gUnknown_85DCE78:
 
 	.global gUnknown_85EA547
 gUnknown_85EA547:
-	.incbin "baserom.gba", 0x5ea547, 0x9
+	.byte 7
 
+	.align 4
 	.global gUnknown_85EA550
 gUnknown_85EA550:
-	.incbin "baserom.gba", 0x5ea550, 0x90
+	.4byte REG_DISPCNT
+	.4byte REG_BG0HOFS
+	.4byte REG_BG0VOFS
+	.4byte REG_BG1HOFS
+	.4byte REG_BG1VOFS
+	.4byte REG_BG2HOFS
+	.4byte REG_BG2VOFS
+	.4byte REG_BG3HOFS
+	.4byte REG_BG3VOFS
+	.4byte REG_BG2PA
+	.4byte REG_BG2PB
+	.4byte REG_BG2PC
+	.4byte REG_BG2PD
+	.4byte REG_BG2X_L
+	.4byte REG_BG2X_H
+	.4byte REG_BG2Y_L
+	.4byte REG_BG2Y_H
+	.4byte REG_BG3PA
+	.4byte REG_BG3PB
+	.4byte REG_BG3PC
+	.4byte REG_BG3PD
+	.4byte REG_BG3X_L
+	.4byte REG_BG3X_H
+	.4byte REG_BG3Y_L
+	.4byte REG_BG3Y_H
+	.4byte REG_WIN0H
+	.4byte REG_WIN1H
+	.4byte REG_WIN0V
+	.4byte REG_WIN1V
+	.4byte REG_WININ
+	.4byte REG_WINOUT
+	.4byte REG_MOSAIC
+	.4byte REG_BLDCNT
+	.4byte REG_BLDALPHA
+	.4byte REG_BLDY
+	.4byte 0
 
 	.global gUnknown_85EA5E0
 gUnknown_85EA5E0:
