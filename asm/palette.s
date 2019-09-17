@@ -4,7 +4,6 @@
 	.syntax unified
 	.align 2, 0
 
-
 	thumb_func_start sub_08000660
 sub_08000660: @ 0x08000660
 	push {r4, r5, r6, r7, lr}
@@ -135,14 +134,14 @@ sub_0800073C: @ 0x0800073C
 	adds r1, r2, #0
 	lsls r0, r0, #0x18
 	lsrs r0, r0, #0x13
-	ldr r2, _08000754 @ =gUnknown_2031F88
+	ldr r2, _08000754 @ =gPlttBufferFaded
 	adds r0, r0, r2
 	movs r2, #0x10
 	bl CpuSet
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08000754: .4byte gUnknown_2031F88
+_08000754: .4byte gPlttBufferFaded
 	thumb_func_end sub_0800073C
 
 	thumb_func_start sub_08000758
@@ -150,7 +149,7 @@ sub_08000758: @ 0x08000758
 	push {lr}
 	lsls r1, r1, #0x18
 	lsrs r1, r1, #0x13
-	ldr r0, _08000778 @ =gUnknown_2031F88
+	ldr r0, _08000778 @ =gPlttBufferFaded
 	adds r1, r1, r0
 	movs r0, #1
 	ands r0, r2
@@ -162,7 +161,7 @@ sub_08000758: @ 0x08000758
 	bl memcpy
 	b _08000784
 	.align 2, 0
-_08000778: .4byte gUnknown_2031F88
+_08000778: .4byte gPlttBufferFaded
 _0800077C:
 	adds r0, r2, #0
 	movs r2, #0x10
@@ -373,7 +372,7 @@ sub_080008E4: @ 0x080008E4
 	adds r4, r0, #0
 	lsls r1, r1, #5
 	lsls r2, r2, #1
-	ldr r0, _08000904 @ =gUnknown_2031F88
+	ldr r0, _08000904 @ =gPlttBufferFaded
 	adds r2, r2, r0
 	adds r1, r1, r2
 	movs r0, #1
@@ -385,7 +384,7 @@ sub_080008E4: @ 0x080008E4
 	bl memcpy
 	b _08000918
 	.align 2, 0
-_08000904: .4byte gUnknown_2031F88
+_08000904: .4byte gPlttBufferFaded
 _08000908:
 	lsrs r2, r3, #0x1f
 	adds r2, r3, r2
@@ -407,7 +406,7 @@ sub_08000920: @ 0x08000920
 	adds r4, r0, #0
 	lsls r1, r1, #5
 	lsls r2, r2, #1
-	ldr r0, _08000944 @ =gUnknown_2031F88
+	ldr r0, _08000944 @ =gPlttBufferFaded
 	adds r2, r2, r0
 	adds r1, r1, r2
 	movs r0, #1
@@ -420,7 +419,7 @@ sub_08000920: @ 0x08000920
 	bl memcpy
 	b _08000956
 	.align 2, 0
-_08000944: .4byte gUnknown_2031F88
+_08000944: .4byte gPlttBufferFaded
 _08000948:
 	lsrs r2, r3, #0x1f
 	adds r2, r3, r2

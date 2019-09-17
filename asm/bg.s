@@ -1,5 +1,28 @@
 	.include "asm/macros.inc"
 	.include "constants/constants.inc"
+
+	.struct 0
+o_Dma3Request_sad:
+	.struct o_Dma3Request_sad + 4
+o_Dma3Request_dad:
+	.struct o_Dma3Request_dad + 4
+o_Dma3Request_size:
+	.struct o_Dma3Request_size + 4
+o_Dma3Request_cnt:
+	.struct o_Dma3Request_cnt + 4
+Dma3Request_size:
+	.struct Dma3Request_size
+
+	.struct 0
+o_Dma3Manager_queue:
+	.struct o_Dma3Manager_queue + 128 * Dma3Request_size
+o_Dma3Manager_cursor:
+	.struct o_Dma3Manager_cursor + 4
+o_Dma3Manager_count:
+	.struct o_Dma3Manager_count + 4
+Dma3Manager_size:
+	.struct Dma3Manager_size
+
 	.text
 	.syntax unified
 	.align 2, 0
@@ -69,8 +92,8 @@ _08000378:
 	bl sub_08005618
 	b _08000456
 _0800038A:
-	ldr r1, _08000468 @ =gUnknown_2031580
-	ldr r3, _0800046C @ =0x00000804
+	ldr r1, _08000468 @ =sDma3Queue
+	ldr r3, _0800046C @ =o_Dma3Manager_count
 	adds r0, r1, r3
 	ldr r0, [r0]
 	adds r3, r0, #1
@@ -98,8 +121,8 @@ _080003B8:
 	mov r8, r0
 	cmp r4, r8
 	bls _08000414
-	ldr r5, _08000468 @ =gUnknown_2031580
-	ldr r1, _0800046C @ =0x00000804
+	ldr r5, _08000468 @ =sDma3Queue
+	ldr r1, _0800046C @ =o_Dma3Manager_count
 	adds r2, r5, r1
 	movs r3, #0xd0
 	lsls r3, r3, #5
@@ -109,7 +132,7 @@ _080003CA:
 	adds r0, r1, r5
 	ldr r7, [sp, #8]
 	str r7, [r0]
-	ldr r0, _08000474 @ =gUnknown_2031584
+	ldr r0, _08000474 @ =sDma3Queue + o_Dma3Request_dad
 	adds r0, r1, r0
 	str r0, [sp]
 	mov r7, ip
@@ -125,7 +148,7 @@ _080003CA:
 	str r0, [r7]
 	ldr r0, [r2]
 	lsls r0, r0, #4
-	ldr r1, _08000478 @ =gUnknown_203158C
+	ldr r1, _08000478 @ =sDma3Queue + o_Dma3Request_cnt
 	adds r0, r0, r1
 	str r6, [r0]
 	ldr r0, [r2]
@@ -144,7 +167,7 @@ _080003CA:
 _08000414:
 	cmp r4, #0
 	beq _08000456
-	ldr r2, _0800046C @ =0x00000804
+	ldr r2, _0800046C @ =o_Dma3Manager_count
 	add r2, sb
 	ldr r1, [r2]
 	lsls r1, r1, #4
@@ -185,18 +208,18 @@ _08000456:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08000468: .4byte gUnknown_2031580
-_0800046C: .4byte 0x00000804
+_08000468: .4byte sDma3Queue
+_0800046C: .4byte o_Dma3Manager_count
 _08000470: .4byte 0x000019FF
-_08000474: .4byte gUnknown_2031584
-_08000478: .4byte gUnknown_203158C
+_08000474: .4byte sDma3Queue + o_Dma3Request_dad
+_08000478: .4byte sDma3Queue + o_Dma3Request_cnt
 	thumb_func_end sub_08000308
 
 	thumb_func_start sub_0800047C
 sub_0800047C: @ 0x0800047C
 	push {r4, r5, r6, lr}
-	ldr r3, _080004CC @ =gUnknown_2031580
-	ldr r1, _080004D0 @ =0x00000804
+	ldr r3, _080004CC @ =sDma3Queue
+	ldr r1, _080004D0 @ =o_Dma3Manager_count
 	adds r0, r3, r1
 	movs r2, #0x80
 	lsls r2, r2, #4
@@ -235,8 +258,8 @@ _0800049E:
 	bl sub_08005598
 	b _080004EC
 	.align 2, 0
-_080004CC: .4byte gUnknown_2031580
-_080004D0: .4byte 0x00000804
+_080004CC: .4byte sDma3Queue
+_080004D0: .4byte o_Dma3Manager_count
 _080004D4: .4byte REG_DMA3
 _080004D8: .4byte 0xFFFCFFFF
 _080004DC:
@@ -254,7 +277,7 @@ _080004EC:
 	negs r1, r1
 	ands r0, r1
 	str r0, [r5]
-	ldr r1, _0800050C @ =0x00000804
+	ldr r1, _0800050C @ =o_Dma3Manager_count
 	adds r0, r6, r1
 	ldr r1, [r0]
 	ldr r0, [r5]
@@ -265,7 +288,7 @@ _08000504:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800050C: .4byte 0x00000804
+_0800050C: .4byte o_Dma3Manager_count
 	thumb_func_end sub_0800047C
 
 	thumb_func_start sub_08000510
@@ -300,8 +323,8 @@ _08000518:
 	movs r1, #0x80
 	lsls r1, r1, #1
 	bl sub_0800062C
-	ldr r0, _08000580 @ =gUnknown_2031580
-	ldr r2, _08000584 @ =0x00000804
+	ldr r0, _08000580 @ =sDma3Queue
+	ldr r2, _08000584 @ =o_Dma3Manager_count
 	adds r1, r0, r2
 	movs r2, #0
 	str r2, [r1]
@@ -317,8 +340,8 @@ _08000570: .4byte REG_BG2PA
 _08000574: .4byte REG_BG3PA
 _08000578: .4byte REG_BG2PD
 _0800057C: .4byte REG_BG3PD
-_08000580: .4byte gUnknown_2031580
-_08000584: .4byte 0x00000804
+_08000580: .4byte sDma3Queue
+_08000584: .4byte o_Dma3Manager_count
 	thumb_func_end sub_08000510
 
 	thumb_func_start sub_08000588
@@ -454,4 +477,12 @@ _08000658:
 	.align 2, 0
 	thumb_func_end sub_0800062C
 
+	.bss
+gUnknown_2031538:
+	.space 72
+
+sDma3Queue:
+	.space Dma3Manager_size
+
+	.text
 	.align 2, 0 @ Don't pad with nop

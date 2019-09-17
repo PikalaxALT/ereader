@@ -439,12 +439,10 @@
 	SYMBOL(gUnknown_2030540, 0xFEC) /* 0x2030540 */
 	SYMBOL(gUnknown_203152C, 0x4) /* 0x203152C */
 	SYMBOL(gUnknown_2031530, 0x8) /* 0x2031530 */
-	SYMBOL(gUnknown_2031538, 0x48) /* 0x2031538 */
-	SYMBOL(gUnknown_2031580, 0x4) /* 0x2031580 */
-	SYMBOL(gUnknown_2031584, 0x8) /* 0x2031584 */
-	SYMBOL(gUnknown_203158C, 0x7FC) /* 0x203158C */
+	asm/bg.o(.bss);
+	@ palette.s
 	SYMBOL(gPlttBufferUnfaded, 0x200) /* 0x2031D88 */
-	SYMBOL(gUnknown_2031F88, 0x208) /* 0x2031F88 */
+	SYMBOL(gPlttBufferFaded, 0x208) /* 0x2031F88 */
 	SYMBOL(gUnknown_2032190, 0x400) /* 0x2032190 */
 	SYMBOL(gUnknown_2032590, 0x38) /* 0x2032590 */
 	SYMBOL(gUnknown_20325C8, 0x38) /* 0x20325C8 */
