@@ -42,6 +42,9 @@ SECTIONS {
         asm/palette.o(.text);
         asm/rom_8000A30.o(.text);
         asm/rom.o(.text);
+        src/comm.o(.text);
+        asm/comm.o(.text);
+        asm/libcereader.o(.text);
 	} >rom_region =0
 
     lib_text :

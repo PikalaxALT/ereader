@@ -78,11 +78,23 @@ gUnknown_8704030:
 
 	.global gUnknown_8704040
 gUnknown_8704040:
-	.incbin "baserom.gba", 0x704040, 0x38
+	.4byte 0xfff8, sub_0804A99C
+	.4byte 0xfff8, sub_0803A47C
+	.4byte 0xfff8, sub_0803A430
+	.4byte 0xfff8, sub_0803A3E4
+	.4byte 0xfff8, sub_0803A3D4
+	.4byte 0xfff8, sub_0803A3C4
+	.4byte 0xfff8, sub_0803A3CC
 
 	.global gUnknown_8704078
 gUnknown_8704078:
-	.incbin "baserom.gba", 0x704078, 0x38
+	.4byte 0xfff8, sub_0804A9CC
+	.4byte 0xfff8, sub_0803A57C
+	.4byte 0xfff8, sub_0803A530
+	.4byte 0xfff8, sub_0803A4E4
+	.4byte 0xfff8, sub_0803A4D8
+	.4byte 0xfff8, sub_0803A4C8
+	.4byte 0xfff8, sub_0803A4D0
 
 	.global gUnknown_87040B0
 gUnknown_87040B0:
