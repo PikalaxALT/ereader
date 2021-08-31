@@ -11200,6 +11200,7 @@ _080060C0:
 
 	thumb_func_start sub_080060C8
 sub_080060C8: @ 0x080060C8
+	@ Game loop
 	push {r4, r5, lr}
 	ldr r0, _08006144 @ =gUnknown_2029418
 	movs r5, #1

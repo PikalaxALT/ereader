@@ -59,7 +59,7 @@ ASFLAGS := -mcpu=arm7tdmi
 GCC_VER = $(shell $(CC) -dumpversion)
 
 CC1             := tools/agbcc/bin/agbcc$(EXE)
-override CFLAGS += -Wimplicit -Wparentheses -Werror -O2 -fhex-asm -mthumb-interwork
+override CFLAGS += -Wimplicit -Wparentheses -Werror -O2 -g -fhex-asm -mthumb-interwork
 ROM := ereader.gba
 OBJ_DIR := build/ereader
 LIBPATH := -L ../../tools/agbcc/lib
