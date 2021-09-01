@@ -32,3 +32,5 @@ dummy_song_header:
 @ songs
 	.incbin "baserom.gba", 0x3465cc, 0x10
 	.incbin "baserom.gba", 0x3465dc, 0x6eeec
+
+@ 0x083B54C8
