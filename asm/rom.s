@@ -45602,7 +45602,7 @@ _08016AB4:
 	adds r0, r0, r1
 	str r0, [r2]
 	ldr r4, [r0]
-	ldr r0, _08016AE8 @ =gUnknown_804CE78
+	ldr r0, _08016AE8 @ =voicegroup000
 	str r0, [r6, #4]
 	adds r0, r4, #0
 	adds r1, r6, #0
@@ -45614,7 +45614,7 @@ _08016AB4:
 _08016ADC: .4byte gUnknown_3006600
 _08016AE0: .4byte gUnknown_2032D2C
 _08016AE4: .4byte gMPlayTable
-_08016AE8: .4byte gUnknown_804CE78
+_08016AE8: .4byte voicegroup000
 _08016AEC:
 	ldr r0, _08016B14 @ =gUnknown_2032D2C
 	ldr r1, [r0]
