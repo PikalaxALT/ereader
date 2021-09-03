@@ -7946,7 +7946,7 @@ _080049A2:
 	bl sub_080078BC
 	bl sub_08005A64
 	bl sub_08005884
-	bl sub_08005E7C
+	bl InitKeys
 	bl sub_08004C10
 	ldr r1, _08004A24 @ =gUnknown_20326F8
 	movs r0, #0x7b
@@ -8834,11 +8834,11 @@ _0800507E:
 
 	thumb_func_start sub_08005090
 sub_08005090: @ 0x08005090
-	ldr r0, _08005098 @ =gUnknown_20294AC
+	ldr r0, _08005098 @ =gVBlankCounter
 	ldr r0, [r0]
 	bx lr
 	.align 2, 0
-_08005098: .4byte gUnknown_20294AC
+_08005098: .4byte gVBlankCounter
 	thumb_func_end sub_08005090
 
 	thumb_func_start sub_0800509C
@@ -9530,8 +9530,8 @@ sub_08005558: @ 0x08005558
 _08005560: .4byte REG_IME
 	thumb_func_end sub_08005558
 
-	thumb_func_start sub_08005564
-sub_08005564: @ 0x08005564
+	thumb_func_start SetRegsIEandDispstat
+SetRegsIEandDispstat: @ 0x08005564
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	lsls r1, r1, #0x10
@@ -9544,7 +9544,7 @@ sub_08005564: @ 0x08005564
 	.align 2, 0
 _08005578: .4byte REG_IE
 _0800557C: .4byte REG_DISPSTAT
-	thumb_func_end sub_08005564
+	thumb_func_end SetRegsIEandDispstat
 
 	thumb_func_start sub_08005580
 sub_08005580: @ 0x08005580
@@ -10724,12 +10724,12 @@ _08005D2E:
 _08005D38: .4byte gUnknown_20272CC
 	thumb_func_end sub_08005CE0
 
-	thumb_func_start sub_08005D3C
-sub_08005D3C: @ 0x08005D3C
+	thumb_func_start ReadKeys
+ReadKeys: @ 0x08005D3C
 	push {r4, r5, r6, r7, lr}
 	mov r7, r8
 	push {r7}
-	ldr r2, _08005D84 @ =gUnknown_20272C8
+	ldr r2, _08005D84 @ =gHeldKeys
 	ldr r0, _08005D88 @ =REG_KEYINPUT
 	ldrh r1, [r0]
 	ldr r0, _08005D8C @ =0x000003FF
@@ -10755,7 +10755,8 @@ _08005D54:
 	mov r2, r8
 	ldrh r1, [r2]
 	adds r2, r5, #0
-	bl sub_08005CE0
+
+	bl sub_08005CE0 @ u16 sub_08005CE0(u16 * param, u16 curKeys, u16 mask);
 	mov r1, r8
 	strh r0, [r1]
 	ldrh r0, [r7]
@@ -10763,7 +10764,7 @@ _08005D54:
 	strh r0, [r7]
 	b _08005DBC
 	.align 2, 0
-_08005D84: .4byte gUnknown_20272C8
+_08005D84: .4byte gHeldKeys
 _08005D88: .4byte REG_KEYINPUT
 _08005D8C: .4byte 0x000003FF
 _08005D90: .4byte gUnknown_20272F8
@@ -10797,10 +10798,10 @@ _08005DBC:
 	pop {r4, r5, r6, r7}
 	pop {r0}
 	bx r0
-	thumb_func_end sub_08005D3C
+	thumb_func_end ReadKeys
 
-	thumb_func_start sub_08005DD0
-sub_08005DD0: @ 0x08005DD0
+	thumb_func_start GetKeysRaw
+GetKeysRaw: @ 0x08005DD0
 	ldr r0, _08005DDC @ =REG_KEYINPUT
 	ldrh r0, [r0]
 	mvns r0, r0
@@ -10809,19 +10810,19 @@ sub_08005DD0: @ 0x08005DD0
 	bx lr
 	.align 2, 0
 _08005DDC: .4byte REG_KEYINPUT
-	thumb_func_end sub_08005DD0
+	thumb_func_end GetKeysRaw
 
-	thumb_func_start sub_08005DE0
-sub_08005DE0: @ 0x08005DE0
-	ldr r0, _08005DE8 @ =gUnknown_20272C8
+	thumb_func_start GetKeysProcessed
+GetKeysProcessed: @ 0x08005DE0
+	ldr r0, _08005DE8 @ =gHeldKeys
 	ldrh r0, [r0]
 	bx lr
 	.align 2, 0
-_08005DE8: .4byte gUnknown_20272C8
-	thumb_func_end sub_08005DE0
+_08005DE8: .4byte gHeldKeys
+	thumb_func_end GetKeysProcessed
 
-	thumb_func_start sub_08005DEC
-sub_08005DEC: @ 0x08005DEC
+	thumb_func_start ResetKeysWatch
+ResetKeysWatch: @ 0x08005DEC
 	ldr r0, _08005DF8 @ =gUnknown_20272CE
 	movs r1, #0
 	strh r1, [r0]
@@ -10831,10 +10832,10 @@ sub_08005DEC: @ 0x08005DEC
 	.align 2, 0
 _08005DF8: .4byte gUnknown_20272CE
 _08005DFC: .4byte gUnknown_20272F8
-	thumb_func_end sub_08005DEC
+	thumb_func_end ResetKeysWatch
 
-	thumb_func_start sub_08005E00
-sub_08005E00: @ 0x08005E00
+	thumb_func_start AllKeysWatch
+AllKeysWatch: @ 0x08005E00
 	ldr r1, _08005E0C @ =gUnknown_20272CE
 	ldr r2, _08005E10 @ =0x000003FF
 	adds r0, r2, #0
@@ -10843,10 +10844,10 @@ sub_08005E00: @ 0x08005E00
 	.align 2, 0
 _08005E0C: .4byte gUnknown_20272CE
 _08005E10: .4byte 0x000003FF
-	thumb_func_end sub_08005E00
+	thumb_func_end AllKeysWatch
 
-	thumb_func_start sub_08005E14
-sub_08005E14: @ 0x08005E14
+	thumb_func_start UnsetWatchedKeys
+UnsetWatchedKeys: @ 0x08005E14
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	ldr r2, _08005E30 @ =gUnknown_20272CE
@@ -10863,10 +10864,10 @@ sub_08005E14: @ 0x08005E14
 	.align 2, 0
 _08005E30: .4byte gUnknown_20272CE
 _08005E34: .4byte gUnknown_20272F8
-	thumb_func_end sub_08005E14
+	thumb_func_end UnsetWatchedKeys
 
-	thumb_func_start sub_08005E38
-sub_08005E38: @ 0x08005E38
+	thumb_func_start SetWatchedKeys
+SetWatchedKeys: @ 0x08005E38
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	ldr r1, _08005E48 @ =gUnknown_20272CE
@@ -10876,13 +10877,13 @@ sub_08005E38: @ 0x08005E38
 	bx lr
 	.align 2, 0
 _08005E48: .4byte gUnknown_20272CE
-	thumb_func_end sub_08005E38
+	thumb_func_end SetWatchedKeys
 
-	thumb_func_start sub_08005E4C
-sub_08005E4C: @ 0x08005E4C
+	thumb_func_start ResetKeyWatchParam
+ResetKeyWatchParam: @ 0x08005E4C
 	push {r4, lr}
 	movs r1, #0
-	ldr r4, _08005E74 @ =gUnknown_20272C8
+	ldr r4, _08005E74 @ =gHeldKeys
 	ldr r3, _08005E78 @ =gUnknown_20272D0
 	movs r2, #0
 _08005E56:
@@ -10901,12 +10902,12 @@ _08005E56:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08005E74: .4byte gUnknown_20272C8
+_08005E74: .4byte gHeldKeys
 _08005E78: .4byte gUnknown_20272D0
-	thumb_func_end sub_08005E4C
+	thumb_func_end ResetKeyWatchParam
 
-	thumb_func_start sub_08005E7C
-sub_08005E7C: @ 0x08005E7C
+	thumb_func_start InitKeys
+InitKeys: @ 0x08005E7C
 	push {lr}
 	movs r1, #0x1e
 	movs r2, #6
@@ -10917,15 +10918,15 @@ sub_08005E7C: @ 0x08005E7C
 	ldr r1, _08005EA4 @ =gUnknown_20272CE
 	movs r0, #0
 	strh r0, [r1]
-	bl sub_08005DEC
-	bl sub_08005E4C
+	bl ResetKeysWatch
+	bl ResetKeyWatchParam
 	pop {r0}
 	bx r0
 	.align 2, 0
 _08005E9C: .4byte gUnknown_20272CA
 _08005EA0: .4byte gUnknown_20272CC
 _08005EA4: .4byte gUnknown_20272CE
-	thumb_func_end sub_08005E7C
+	thumb_func_end InitKeys
 
 	thumb_func_start sub_08005EA8
 sub_08005EA8: @ 0x08005EA8
@@ -11198,8 +11199,8 @@ _080060C0:
 	bx r0
 	thumb_func_end sub_08006058
 
-	thumb_func_start sub_080060C8
-sub_080060C8: @ 0x080060C8
+	thumb_func_start MainLoop
+MainLoop: @ 0x080060C8
 	@ Game loop
 	push {r4, r5, lr}
 	ldr r0, _08006144 @ =gUnknown_2029418
@@ -11233,7 +11234,7 @@ sub_080060C8: @ 0x080060C8
 	strb r1, [r0, #0x18]
 	bl sub_0801CAAC
 	bl sub_0801CA44
-	ldr r0, _08006158 @ =gUnknown_202941C
+	ldr r0, _08006158 @ =gMainState
 	str r4, [r0]
 	ldr r0, _0800615C @ =gUnknown_2029420
 	str r5, [r0]
@@ -11244,7 +11245,7 @@ sub_080060C8: @ 0x080060C8
 	ldr r0, _08006168 @ =gUnknown_2026578
 	str r4, [r0]
 _08006130:
-	ldr r0, _08006158 @ =gUnknown_202941C
+	ldr r0, _08006158 @ =gMainState
 	ldr r0, [r0]
 	cmp r0, #0xc
 	bls _0800613A
@@ -11261,7 +11262,7 @@ _08006148: .4byte gUnknown_2027800
 _0800614C: .4byte gUnknown_2020080
 _08006150: .4byte gUnknown_2020060
 _08006154: .4byte gUnknown_20294B8
-_08006158: .4byte gUnknown_202941C
+_08006158: .4byte gMainState
 _0800615C: .4byte gUnknown_2029420
 _08006160: .4byte gUnknown_2029410
 _08006164: .4byte gUnknown_202949A
@@ -11286,21 +11287,21 @@ _080061A4:
 	adds r4, r0, #0
 	cmp r4, #0
 	bne _080061C4
-	ldr r0, _080061BC @ =gUnknown_202941C
+	ldr r0, _080061BC @ =gMainState
 	movs r1, #0xc
 	str r1, [r0]
 	ldr r0, _080061C0 @ =gUnknown_2026578
 	str r4, [r0]
 	b _08006490
 	.align 2, 0
-_080061BC: .4byte gUnknown_202941C
+_080061BC: .4byte gMainState
 _080061C0: .4byte gUnknown_2026578
 _080061C4:
-	ldr r1, _080061CC @ =gUnknown_202941C
+	ldr r1, _080061CC @ =gMainState
 	movs r0, #1
 	b _0800648E
 	.align 2, 0
-_080061CC: .4byte gUnknown_202941C
+_080061CC: .4byte gMainState
 _080061D0:
 	ldr r0, _080061EC @ =gUnknown_202657C
 	movs r5, #0
@@ -11311,12 +11312,12 @@ _080061D0:
 	negs r0, r0
 	cmp r4, r0
 	bne _080061F4
-	ldr r0, _080061F0 @ =gUnknown_202941C
+	ldr r0, _080061F0 @ =gMainState
 	str r5, [r0]
 	b _08006490
 	.align 2, 0
 _080061EC: .4byte gUnknown_202657C
-_080061F0: .4byte gUnknown_202941C
+_080061F0: .4byte gMainState
 _080061F4:
 	cmp r4, #1
 	bne _08006288
@@ -11344,71 +11345,71 @@ _08006214: @ jump table
 	.4byte _08006270 @ case 6
 	.4byte _0800627C @ case 7
 _08006234:
-	ldr r1, _0800623C @ =gUnknown_202941C
+	ldr r1, _0800623C @ =gMainState
 	movs r0, #2
 	b _0800648E
 	.align 2, 0
-_0800623C: .4byte gUnknown_202941C
+_0800623C: .4byte gMainState
 _08006240:
-	ldr r1, _08006248 @ =gUnknown_202941C
+	ldr r1, _08006248 @ =gMainState
 	movs r0, #3
 	b _0800648E
 	.align 2, 0
-_08006248: .4byte gUnknown_202941C
+_08006248: .4byte gMainState
 _0800624C:
-	ldr r1, _08006254 @ =gUnknown_202941C
+	ldr r1, _08006254 @ =gMainState
 	movs r0, #4
 	b _0800648E
 	.align 2, 0
-_08006254: .4byte gUnknown_202941C
+_08006254: .4byte gMainState
 _08006258:
-	ldr r1, _08006260 @ =gUnknown_202941C
+	ldr r1, _08006260 @ =gMainState
 	movs r0, #5
 	b _0800648E
 	.align 2, 0
-_08006260: .4byte gUnknown_202941C
+_08006260: .4byte gMainState
 _08006264:
-	ldr r1, _0800626C @ =gUnknown_202941C
+	ldr r1, _0800626C @ =gMainState
 	movs r0, #6
 	b _0800648E
 	.align 2, 0
-_0800626C: .4byte gUnknown_202941C
+_0800626C: .4byte gMainState
 _08006270:
-	ldr r1, _08006278 @ =gUnknown_202941C
+	ldr r1, _08006278 @ =gMainState
 	movs r0, #7
 	b _0800648E
 	.align 2, 0
-_08006278: .4byte gUnknown_202941C
+_08006278: .4byte gMainState
 _0800627C:
-	ldr r1, _08006284 @ =gUnknown_202941C
+	ldr r1, _08006284 @ =gMainState
 	movs r0, #8
 	b _0800648E
 	.align 2, 0
-_08006284: .4byte gUnknown_202941C
+_08006284: .4byte gMainState
 _08006288:
 	cmp r4, #2
 	bne _08006298
-	ldr r1, _08006294 @ =gUnknown_202941C
+	ldr r1, _08006294 @ =gMainState
 	movs r0, #0xa
 	b _0800648E
 	.align 2, 0
-_08006294: .4byte gUnknown_202941C
+_08006294: .4byte gMainState
 _08006298:
 	cmp r4, #3
 	bne _080062A8
-	ldr r1, _080062A4 @ =gUnknown_202941C
+	ldr r1, _080062A4 @ =gMainState
 	movs r0, #0xb
 	b _0800648E
 	.align 2, 0
-_080062A4: .4byte gUnknown_202941C
+_080062A4: .4byte gMainState
 _080062A8:
 	cmp r4, #4
 	bne _080062B8
-	ldr r1, _080062B4 @ =gUnknown_202941C
+	ldr r1, _080062B4 @ =gMainState
 	movs r0, #9
 	b _0800648E
 	.align 2, 0
-_080062B4: .4byte gUnknown_202941C
+_080062B4: .4byte gMainState
 _080062B8:
 	movs r0, #2
 	negs r0, r0
@@ -11416,13 +11417,13 @@ _080062B8:
 	beq _080062C2
 	b _08006490
 _080062C2:
-	ldr r0, _080062CC @ =gUnknown_202941C
+	ldr r0, _080062CC @ =gMainState
 	ldr r1, _080062D0 @ =gUnknown_2029420
 	ldr r1, [r1]
 	str r1, [r0]
 	b _08006490
 	.align 2, 0
-_080062CC: .4byte gUnknown_202941C
+_080062CC: .4byte gMainState
 _080062D0: .4byte gUnknown_2029420
 _080062D4:
 	bl sub_0803A760
@@ -11496,11 +11497,11 @@ _08006368: .4byte gUnknown_2029420
 _0800636C: .4byte gUnknown_2029410
 _08006370:
 	bl sub_080391E4
-	ldr r1, _0800637C @ =gUnknown_202941C
+	ldr r1, _0800637C @ =gMainState
 	movs r0, #0
 	b _0800648E
 	.align 2, 0
-_0800637C: .4byte gUnknown_202941C
+_0800637C: .4byte gMainState
 _08006380:
 	ldr r1, _080063A0 @ =gUnknown_2029420
 	movs r0, #2
@@ -11620,7 +11621,7 @@ _08006484:
 	adds r0, r2, #0
 	bl sub_08017F1C
 _0800648A:
-	ldr r1, _08006498 @ =gUnknown_202941C
+	ldr r1, _08006498 @ =gMainState
 	movs r0, #0xc
 _0800648E:
 	str r0, [r1]
@@ -11629,19 +11630,19 @@ _08006490:
 	bl sub_080053D8
 	b _08006130
 	.align 2, 0
-_08006498: .4byte gUnknown_202941C
-	thumb_func_end sub_080060C8
+_08006498: .4byte gMainState
+	thumb_func_end MainLoop
 
-	thumb_func_start sub_0800649C
-sub_0800649C: @ 0x0800649C
+	thumb_func_start DefaultVBlankIntr
+DefaultVBlankIntr: @ 0x0800649C
 	push {r4, lr}
-	ldr r1, _080064F8 @ =gUnknown_20294AC
+	ldr r1, _080064F8 @ =gVBlankCounter
 	ldr r0, [r1]
 	adds r0, #1
 	str r0, [r1]
 	bl sub_08017160
 	bl sub_0803B9D4
-	ldr r0, _080064FC @ =gUnknown_20294B0
+	ldr r0, _080064FC @ =gVBlankCallback
 	ldr r0, [r0]
 	bl _call_via_r0
 	bl sub_08005710
@@ -11659,52 +11660,52 @@ _080064D0:
 	bl sub_080371DC
 	cmp r4, #0
 	beq _080064E8
-	bl sub_08005D3C
+	bl ReadKeys
 _080064E8:
 	bl sub_08017144
-	ldr r1, _08006500 @ =gUnknown_3007FF8
+	ldr r1, _08006500 @ =INTR_CHECK
 	movs r0, #1
 	strh r0, [r1]
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080064F8: .4byte gUnknown_20294AC
-_080064FC: .4byte gUnknown_20294B0
-_08006500: .4byte gUnknown_3007FF8
-	thumb_func_end sub_0800649C
+_080064F8: .4byte gVBlankCounter
+_080064FC: .4byte gVBlankCallback
+_08006500: .4byte INTR_CHECK
+	thumb_func_end DefaultVBlankIntr
 
-	thumb_func_start sub_08006504
-sub_08006504: @ 0x08006504
+	thumb_func_start SetVBlankCallback
+SetVBlankCallback: @ 0x08006504
 	adds r1, r0, #0
 	cmp r1, #0
 	beq _08006514
-	ldr r0, _08006510 @ =gUnknown_20294B0
+	ldr r0, _08006510 @ =gVBlankCallback
 	str r1, [r0]
 	b _0800651A
 	.align 2, 0
-_08006510: .4byte gUnknown_20294B0
+_08006510: .4byte gVBlankCallback
 _08006514:
-	ldr r1, _0800651C @ =gUnknown_20294B0
-	ldr r0, _08006520 @ =sub_08006560
+	ldr r1, _0800651C @ =gVBlankCallback
+	ldr r0, _08006520 @ =IntrDummy
 	str r0, [r1]
 _0800651A:
 	bx lr
 	.align 2, 0
-_0800651C: .4byte gUnknown_20294B0
-_08006520: .4byte sub_08006560
-	thumb_func_end sub_08006504
+_0800651C: .4byte gVBlankCallback
+_08006520: .4byte IntrDummy
+	thumb_func_end SetVBlankCallback
 
 	thumb_func_start sub_08006524
 sub_08006524: @ 0x08006524
-	ldr r1, _08006530 @ =gUnknown_30046E0
+	ldr r1, _08006530 @ =gIntrTable
 	subs r0, #1
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	ldr r0, [r0]
 	bx lr
 	.align 2, 0
-_08006530: .4byte gUnknown_30046E0
+_08006530: .4byte gIntrTable
 	thumb_func_end sub_08006524
 
 	thumb_func_start sub_08006534
@@ -11715,9 +11716,9 @@ sub_08006534: @ 0x08006534
 	bl sub_080053FC
 	cmp r4, #0
 	bne _08006544
-	ldr r4, _08006558 @ =sub_08006560
+	ldr r4, _08006558 @ =IntrDummy
 _08006544:
-	ldr r1, _0800655C @ =gUnknown_30046E0
+	ldr r1, _0800655C @ =gIntrTable
 	subs r0, r5, #1
 	lsls r0, r0, #2
 	adds r0, r0, r1
@@ -11727,15 +11728,15 @@ _08006544:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08006558: .4byte sub_08006560
-_0800655C: .4byte gUnknown_30046E0
+_08006558: .4byte IntrDummy
+_0800655C: .4byte gIntrTable
 	thumb_func_end sub_08006534
 
-	thumb_func_start sub_08006560
-sub_08006560: @ 0x08006560
+	thumb_func_start IntrDummy
+IntrDummy: @ 0x08006560
 	bx lr
 	.align 2, 0
-	thumb_func_end sub_08006560
+	thumb_func_end IntrDummy
 
 	thumb_func_start AgbMain
 AgbMain: @ 0x08006564
@@ -11747,7 +11748,7 @@ AgbMain: @ 0x08006564
 	movs r0, #0
 	mov r1, r8
 	strh r0, [r1]
-	ldr r0, _080065E8 @ =gUnknown_20294AC
+	ldr r0, _080065E8 @ =gVBlankCounter
 	movs r4, #0
 	str r4, [r0]
 	movs r0, #0xff
@@ -11760,8 +11761,8 @@ AgbMain: @ 0x08006564
 	mov r0, r8
 	ldrh r6, [r0]
 	strh r4, [r0]
-	ldr r0, _080065F0 @ =gUnknown_85EBBC0
-	ldr r4, _080065F4 @ =gUnknown_30046E0
+	ldr r0, _080065F0 @ =gIntrTable_Template
+	ldr r4, _080065F4 @ =gIntrTable
 	adds r1, r4, #0
 	movs r2, #0x1c
 	bl CpuSet
@@ -11770,7 +11771,7 @@ AgbMain: @ 0x08006564
 	adds r1, r5, #0
 	movs r2, #0xc0
 	bl CpuSet
-	ldr r0, _08006600 @ =gUnknown_3007FFC
+	ldr r0, _08006600 @ =INTR_VECTOR
 	str r5, [r0]
 	adds r4, #0x18
 	movs r0, #3
@@ -11779,13 +11780,13 @@ AgbMain: @ 0x08006564
 	mov r1, r8
 	strh r6, [r1]
 	movs r0, #0
-	bl sub_08006504
+	bl SetVBlankCallback
 	bl sub_08005580
 	movs r0, #1
 	movs r1, #8
-	bl sub_08005564
+	bl SetRegsIEandDispstat
 	bl sub_08004958
-	bl sub_080060C8
+	bl MainLoop
 	movs r0, #0xff
 	bl SoftReset
 	pop {r3}
@@ -11795,13 +11796,13 @@ AgbMain: @ 0x08006564
 	bx r0
 	.align 2, 0
 _080065E4: .4byte REG_IME
-_080065E8: .4byte gUnknown_20294AC
+_080065E8: .4byte gVBlankCounter
 _080065EC: .4byte REG_WAITCNT
-_080065F0: .4byte gUnknown_85EBBC0
-_080065F4: .4byte gUnknown_30046E0
+_080065F0: .4byte gIntrTable_Template
+_080065F4: .4byte gIntrTable
 _080065F8: .4byte IntrMain
 _080065FC: .4byte IntrMain_Buffer
-_08006600: .4byte gUnknown_3007FFC
+_08006600: .4byte INTR_VECTOR
 	thumb_func_end AgbMain
 
 	thumb_func_start sub_08006604
@@ -11815,8 +11816,8 @@ sub_08006604: @ 0x08006604
 	movs r0, #0
 	mov r1, r8
 	strh r0, [r1]
-	ldr r0, _08006650 @ =gUnknown_85EBBC0
-	ldr r4, _08006654 @ =gUnknown_30046E0
+	ldr r0, _08006650 @ =gIntrTable_Template
+	ldr r4, _08006654 @ =gIntrTable
 	adds r1, r4, #0
 	movs r2, #0x1c
 	bl CpuSet
@@ -11825,7 +11826,7 @@ sub_08006604: @ 0x08006604
 	adds r1, r5, #0
 	movs r2, #0xc0
 	bl CpuSet
-	ldr r0, _08006660 @ =gUnknown_3007FFC
+	ldr r0, _08006660 @ =INTR_VECTOR
 	str r5, [r0]
 	adds r4, #0x18
 	movs r0, #3
@@ -11840,11 +11841,11 @@ sub_08006604: @ 0x08006604
 	bx r0
 	.align 2, 0
 _0800664C: .4byte REG_IME
-_08006650: .4byte gUnknown_85EBBC0
-_08006654: .4byte gUnknown_30046E0
+_08006650: .4byte gIntrTable_Template
+_08006654: .4byte gIntrTable
 _08006658: .4byte IntrMain
 _0800665C: .4byte IntrMain_Buffer
-_08006660: .4byte gUnknown_3007FFC
+_08006660: .4byte INTR_VECTOR
 	thumb_func_end sub_08006604
 
 	thumb_func_start sub_08006664
@@ -11871,50 +11872,50 @@ _08006680: @ jump table
 	.4byte _080066DC @ case 6
 	.4byte _080066E8 @ case 7
 _080066A0:
-	ldr r1, _080066A8 @ =gUnknown_202941C
+	ldr r1, _080066A8 @ =gMainState
 	movs r0, #2
 	b _080066EC
 	.align 2, 0
-_080066A8: .4byte gUnknown_202941C
+_080066A8: .4byte gMainState
 _080066AC:
-	ldr r1, _080066B4 @ =gUnknown_202941C
+	ldr r1, _080066B4 @ =gMainState
 	movs r0, #3
 	b _080066EC
 	.align 2, 0
-_080066B4: .4byte gUnknown_202941C
+_080066B4: .4byte gMainState
 _080066B8:
-	ldr r1, _080066C0 @ =gUnknown_202941C
+	ldr r1, _080066C0 @ =gMainState
 	movs r0, #4
 	b _080066EC
 	.align 2, 0
-_080066C0: .4byte gUnknown_202941C
+_080066C0: .4byte gMainState
 _080066C4:
-	ldr r1, _080066CC @ =gUnknown_202941C
+	ldr r1, _080066CC @ =gMainState
 	movs r0, #5
 	b _080066EC
 	.align 2, 0
-_080066CC: .4byte gUnknown_202941C
+_080066CC: .4byte gMainState
 _080066D0:
-	ldr r1, _080066D8 @ =gUnknown_202941C
+	ldr r1, _080066D8 @ =gMainState
 	movs r0, #6
 	b _080066EC
 	.align 2, 0
-_080066D8: .4byte gUnknown_202941C
+_080066D8: .4byte gMainState
 _080066DC:
-	ldr r1, _080066E4 @ =gUnknown_202941C
+	ldr r1, _080066E4 @ =gMainState
 	movs r0, #7
 	b _080066EC
 	.align 2, 0
-_080066E4: .4byte gUnknown_202941C
+_080066E4: .4byte gMainState
 _080066E8:
-	ldr r1, _080066F0 @ =gUnknown_202941C
+	ldr r1, _080066F0 @ =gMainState
 	movs r0, #8
 _080066EC:
 	str r0, [r1]
 _080066EE:
 	bx lr
 	.align 2, 0
-_080066F0: .4byte gUnknown_202941C
+_080066F0: .4byte gMainState
 	thumb_func_end sub_08006664
 
 	thumb_func_start sub_080066F4
@@ -15739,7 +15740,7 @@ sub_08008278: @ 0x08008278
 sub_0800827C: @ 0x0800827C
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_08005DD0
+	bl GetKeysRaw
 	ldr r1, _0800829C @ =0x000003FF
 	ands r1, r0
 	ldr r0, [r4, #0x10]
@@ -15759,7 +15760,7 @@ _0800829C: .4byte 0x000003FF
 sub_080082A0: @ 0x080082A0
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	ldr r1, [r4, #0x10]
@@ -19245,7 +19246,7 @@ sub_08009AB0: @ 0x08009AB0
 	str r0, [r1]
 	movs r6, #0
 _08009ABC:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
 	ldr r0, _08009ADC @ =gUnknown_202940C
@@ -19835,7 +19836,7 @@ _0800A004:
 	subs r4, #1
 	cmp r4, #0
 	bge _08009FF8
-	ldr r1, _0800A030 @ =gUnknown_202941C
+	ldr r1, _0800A030 @ =gMainState
 	movs r0, #0xc
 	str r0, [r1]
 	movs r6, #1
@@ -19853,7 +19854,7 @@ _0800A020:
 	.align 2, 0
 _0800A028: .4byte gUnknown_2024FF8
 _0800A02C: .4byte gUnknown_20293BC
-_0800A030: .4byte gUnknown_202941C
+_0800A030: .4byte gMainState
 	thumb_func_end sub_08009AB0
 
 	thumb_func_start sub_0800A034
@@ -30642,7 +30643,7 @@ _0800F330:
 	bl sub_08002428
 _0800F366:
 	movs r0, #0xc0
-	bl sub_08005E38
+	bl SetWatchedKeys
 	movs r0, #0xa
 	movs r1, #4
 	bl sub_08005EC0
@@ -30718,7 +30719,7 @@ _0800F414:
 	movs r6, #0
 	mov sl, r6
 _0800F41C:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r2, r0, #0x10
 	lsrs r5, r2, #0x10
 	movs r1, #0x30
@@ -31658,7 +31659,7 @@ _0800FB9C:
 _0800FBA8: .4byte gUnknown_20293BC
 _0800FBAC:
 	movs r0, #0xc0
-	bl sub_08005E14
+	bl UnsetWatchedKeys
 	ldr r4, _0800FBEC @ =gUnknown_20227F8
 	ldr r0, [r4]
 	cmp r0, #0
@@ -32450,7 +32451,7 @@ _0801023C:
 _08010240:
 	bl sub_080023C4
 _08010244:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r0, #2
@@ -32847,7 +32848,7 @@ _08010570:
 	movs r0, #1
 	bl sub_080053D8
 _0801057E:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r0, #1
@@ -33101,7 +33102,7 @@ _0801077A:
 	cmp r4, #0xe
 	ble _0801077A
 	movs r0, #0xc0
-	bl sub_08005E38
+	bl SetWatchedKeys
 	movs r0, #8
 	movs r1, #7
 	bl sub_08005EC0
@@ -33330,7 +33331,7 @@ _0801094C:
 	beq _08010990
 	b _08010D06
 _08010990:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r1, r0, #0
@@ -33811,10 +33812,10 @@ _08010D78:
 	cmp r0, #0
 	beq _08010D72
 	movs r0, #0xc0
-	bl sub_08005E14
+	bl UnsetWatchedKeys
 	ldr r0, [sp, #0x10]
 	bl sub_08005598
-	bl sub_08005E4C
+	bl ResetKeyWatchParam
 	ldr r0, [sp, #0xc]
 	add sp, #0x1c
 	pop {r3, r4, r5}
@@ -34132,7 +34133,7 @@ _08011038:
 	movs r2, #0x14
 	bl sub_080045CC
 _08011042:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r0, #1
@@ -34532,7 +34533,7 @@ _080113A6:
 	movs r2, #0x24
 	bl sub_080045CC
 _080113B0:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08011358
@@ -34603,7 +34604,7 @@ _08011442:
 	beq _0801143C
 	movs r0, #1
 	bl sub_080053D8
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	mov r0, sb
 	cmp r0, #2
 	bne _08011496
@@ -34660,7 +34661,7 @@ sub_080114B4: @ 0x080114B4
 	movs r0, #0
 	bl sub_08011128
 	adds r4, r0, #0
-	bl sub_08005E4C
+	bl ResetKeyWatchParam
 	cmp r4, #2
 	bne _080114D4
 	adds r0, r5, #0
@@ -34682,7 +34683,7 @@ sub_080114DC: @ 0x080114DC
 	adds r0, r5, #0
 	bl sub_08011128
 	adds r4, r0, #0
-	bl sub_08005E4C
+	bl ResetKeyWatchParam
 	cmp r4, #2
 	bne _08011502
 	cmp r5, #0
@@ -34734,7 +34735,7 @@ _08011542:
 	movs r0, #1
 	bl sub_080053D8
 _08011548:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r4, r0, #0
@@ -46730,7 +46731,7 @@ _08017310:
 	movs r0, #1
 	bl sub_080053D8
 _08017320:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
 	movs r1, #2
@@ -47294,7 +47295,7 @@ _0801777C:
 	movs r0, #1
 	bl sub_080279EC
 	bl sub_080373E8
-	bl sub_08005E7C
+	bl InitKeys
 	cmp r4, #3
 	bne _080177F8
 	ldr r0, _080177F4 @ =gUnknown_2032D38
@@ -47485,7 +47486,7 @@ _08017966:
 	movs r0, #1
 	bl sub_080279EC
 	bl sub_080373E8
-	bl sub_08005E7C
+	bl InitKeys
 	cmp r4, #3
 	bne _080179C4
 	ldr r0, _080179C0 @ =gUnknown_2032D38
@@ -47571,7 +47572,7 @@ _08017A06:
 	movs r0, #1
 	bl sub_080279EC
 	bl sub_080373E8
-	bl sub_08005E7C
+	bl InitKeys
 	cmp r5, #3
 	bne _08017AB4
 	movs r5, #2
@@ -48423,7 +48424,7 @@ _08018156:
 	thumb_func_start sub_08018168
 sub_08018168: @ 0x08018168
 	push {r4, r5, r6, lr}
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	ldr r1, _080181D8 @ =gUnknown_2024CB0
 	ldrh r2, [r1]
 	ands r0, r2
@@ -48472,7 +48473,7 @@ _0801817A:
 _080181D8: .4byte gUnknown_2024CB0
 _080181DC: .4byte 0x00000193
 _080181E0:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	movs r1, #6
 	ands r1, r0
 	cmp r1, #0
@@ -48500,7 +48501,7 @@ _0801820C:
 _0801821A:
 	bl sub_080053B0
 _0801821E:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	movs r1, #9
 	ands r1, r0
 	cmp r1, #0
@@ -50215,7 +50216,7 @@ sub_08018F84: @ 0x08018F84
 	bne _08018FAA
 	b _08019158
 _08018FAA:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	movs r1, #1
 	ands r1, r0
 	cmp r1, #0
@@ -50571,7 +50572,7 @@ sub_08019254: @ 0x08019254
 	mov r7, r8
 	push {r7}
 	adds r5, r0, #0
-	bl sub_08005DD0
+	bl GetKeysRaw
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r3, r0, #0
@@ -50685,7 +50686,7 @@ sub_08019338: @ 0x08019338
 	mov r6, r8
 	push {r6, r7}
 	adds r5, r0, #0
-	bl sub_08005DD0
+	bl GetKeysRaw
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	adds r4, r0, #0
@@ -50823,7 +50824,7 @@ sub_0801944C: @ 0x0801944C
 	mov r6, r8
 	push {r6, r7}
 	adds r4, r0, #0
-	bl sub_08005DD0
+	bl GetKeysRaw
 	lsls r0, r0, #0x10
 	lsrs r2, r0, #0x10
 	adds r3, r2, #0
@@ -53060,7 +53061,7 @@ sub_0801A5AC: @ 0x0801A5AC
 	asrs r2, r5, #0x10
 	ldr r3, [r3, #0xc]
 	bl _call_via_r3
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	movs r1, #1
 	ands r1, r0
 	cmp r1, #0
@@ -53622,7 +53623,7 @@ _0801AA5C:
 	ldr r0, [r0]
 	cmp r0, #0
 	bne _0801AA76
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	movs r1, #2
 	ands r1, r0
 	cmp r1, #0
@@ -53840,7 +53841,7 @@ _0801AC34:
 	movs r0, #1
 	bl sub_080053D8
 _0801AC3A:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	adds r1, r4, #0
 	eors r1, r0
 	ands r1, r4
@@ -54064,7 +54065,7 @@ _0801AE14:
 	movs r0, #1
 	bl sub_080053D8
 _0801AE1A:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	adds r1, r4, #0
 	ands r1, r0
 	cmp r1, #0
@@ -55671,7 +55672,7 @@ _0801BA52:
 	bl sub_080053D8
 	adds r4, #1
 _0801BA5A:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0801BA2C
@@ -57071,25 +57072,25 @@ _0801C508:
 _0801C510: .4byte gUnknown_203052C
 	thumb_func_end sub_0801C4D0
 
-	thumb_func_start sub_0801C514
-sub_0801C514: @ 0x0801C514
-	ldr r1, _0801C51C @ =gUnknown_30046E0
-	ldr r0, _0801C520 @ =sub_08039798
+	thumb_func_start SetSerialIntrDefault
+SetSerialIntrDefault: @ 0x0801C514
+	ldr r1, _0801C51C @ =gIntrTable
+	ldr r0, _0801C520 @ =DefaultSerialIntr
 	str r0, [r1, #0x1c]
 	bx lr
 	.align 2, 0
-_0801C51C: .4byte gUnknown_30046E0
-_0801C520: .4byte sub_08039798
-	thumb_func_end sub_0801C514
+_0801C51C: .4byte gIntrTable
+_0801C520: .4byte DefaultSerialIntr
+	thumb_func_end SetSerialIntrDefault
 
-	thumb_func_start sub_0801C524
-sub_0801C524: @ 0x0801C524
-	ldr r1, _0801C52C @ =gUnknown_30046E0
+	thumb_func_start SetSerialIntrCustom
+SetSerialIntrCustom: @ 0x0801C524
+	ldr r1, _0801C52C @ =gIntrTable
 	str r0, [r1, #0x1c]
 	bx lr
 	.align 2, 0
-_0801C52C: .4byte gUnknown_30046E0
-	thumb_func_end sub_0801C524
+_0801C52C: .4byte gIntrTable
+	thumb_func_end SetSerialIntrCustom
 
 	thumb_func_start sub_0801C530
 sub_0801C530: @ 0x0801C530
@@ -62365,12 +62366,12 @@ _0801EC0C:
 	adds r0, #1
 	cmp r2, r0
 	blo _0801EB50
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	ldr r4, _0801EC44 @ =gUnknown_2024C54
 	ldr r1, [r4]
 	adds r1, #0xc2
 	strh r0, [r1]
-	bl sub_08005DD0
+	bl GetKeysRaw
 	ldr r2, [r4]
 	adds r2, #0xc4
 	ldr r1, _0801EC48 @ =0x000003FF
@@ -70172,8 +70173,8 @@ sub_08022648: @ 0x08022648
 sub_08022654: @ 0x08022654
 	push {lr}
 	ldr r0, _0802266C @ =sub_0803BA2C
-	bl sub_0801C524
-	ldr r1, _08022670 @ =gUnknown_30046E0
+	bl SetSerialIntrCustom
+	ldr r1, _08022670 @ =gIntrTable
 	ldr r0, _08022674 @ =sub_0803BF30
 	str r0, [r1, #0x18]
 	bl sub_08039ACC
@@ -70181,7 +70182,7 @@ sub_08022654: @ 0x08022654
 	bx r0
 	.align 2, 0
 _0802266C: .4byte sub_0803BA2C
-_08022670: .4byte gUnknown_30046E0
+_08022670: .4byte gIntrTable
 _08022674: .4byte sub_0803BF30
 	thumb_func_end sub_08022654
 
@@ -72185,7 +72186,7 @@ _0802341C: .4byte gUnknown_202FD2C
 sub_08023420: @ 0x08023420
 	push {r4, lr}
 	adds r4, r0, #0
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	cmp r0, #0
@@ -72651,9 +72652,9 @@ sub_08023760: @ 0x08023760
 	mvns r0, r1
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
-	bl sub_08005E14
+	bl UnsetWatchedKeys
 	ldrh r0, [r4, #6]
-	bl sub_08005E38
+	bl SetWatchedKeys
 	pop {r4}
 	pop {r0}
 	bx r0
@@ -78656,21 +78657,21 @@ _080262CE:
 	bl sub_08016FD8
 	movs r0, #6
 	bl sub_08017108
-	ldr r1, _080262E8 @ =gUnknown_202941C
+	ldr r1, _080262E8 @ =gMainState
 	movs r0, #0xc
 	str r0, [r1]
 	movs r1, #1
 	str r1, [r7, #0x50]
 	b _080265A8
 	.align 2, 0
-_080262E8: .4byte gUnknown_202941C
+_080262E8: .4byte gMainState
 _080262EC:
-	ldr r1, _080262F4 @ =gUnknown_202941C
+	ldr r1, _080262F4 @ =gMainState
 	movs r0, #0xc
 	str r0, [r1]
 	b _080265A8
 	.align 2, 0
-_080262F4: .4byte gUnknown_202941C
+_080262F4: .4byte gMainState
 _080262F8:
 	bl sub_08006664
 	b _08026452
@@ -78774,7 +78775,7 @@ _080263C0:
 	movs r1, #0x80
 	adds r1, r1, r7
 	str r0, [r1]
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r0, #1
@@ -78833,14 +78834,14 @@ _08026440:
 	cmp r3, #2
 	bne _080264FA
 	movs r0, #0xc
-	ldr r1, _08026458 @ =gUnknown_202941C
+	ldr r1, _08026458 @ =gMainState
 	str r0, [r1]
 _08026452:
 	movs r2, #1
 	str r2, [r7, #0x50]
 	b _080265A8
 	.align 2, 0
-_08026458: .4byte gUnknown_202941C
+_08026458: .4byte gMainState
 _0802645C:
 	ldr r0, _08026494 @ =0x00000303
 	bl sub_08017108
@@ -78849,7 +78850,7 @@ _08026462:
 	movs r0, #0x88
 	adds r0, r0, r7
 	str r3, [r0]
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r0, #1
@@ -78911,7 +78912,7 @@ _080264E0:
 	cmp r2, #2
 	bne _080264FA
 	movs r0, #0xc
-	ldr r3, _08026514 @ =gUnknown_202941C
+	ldr r3, _08026514 @ =gMainState
 	str r0, [r3]
 	movs r0, #1
 	str r0, [r7, #0x50]
@@ -78925,11 +78926,11 @@ _080264FA:
 	cmp r0, #1
 	bne _080265A8
 	movs r0, #0xc
-	ldr r2, _08026514 @ =gUnknown_202941C
+	ldr r2, _08026514 @ =gMainState
 	str r0, [r2]
 	b _080265A8
 	.align 2, 0
-_08026514: .4byte gUnknown_202941C
+_08026514: .4byte gMainState
 _08026518:
 	ldr r3, [r7, #0x58]
 	cmp r3, #1
@@ -78964,7 +78965,7 @@ _08026552:
 	ldr r0, [r7, #0x54]
 	bl sub_08017108
 _08026558:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r0, #2
@@ -79039,7 +79040,7 @@ _080265E8:
 	movs r1, #0x94
 	adds r1, r1, r7
 	str r0, [r1]
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r0, #1
@@ -79113,7 +79114,7 @@ _08026684:
 	movs r2, #0xa0
 	adds r2, r2, r7
 	str r1, [r2]
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r0, #1
@@ -79189,7 +79190,7 @@ _08026726:
 	ldr r2, [r7, #0x5c]
 	cmp r2, #2
 	bne _08026736
-	ldr r1, _080267E0 @ =gUnknown_202941C
+	ldr r1, _080267E0 @ =gMainState
 	movs r0, #0xc
 	str r0, [r1]
 	movs r3, #1
@@ -79281,7 +79282,7 @@ _080267D4:
 	b _08026844
 	.align 2, 0
 _080267DC: .4byte 0x0000FFFF
-_080267E0: .4byte gUnknown_202941C
+_080267E0: .4byte gMainState
 _080267E4: .4byte gUnknown_202FAD0
 _080267E8: .4byte gUnknown_202FAD4
 _080267EC: .4byte gUnknown_202FB20
@@ -79788,7 +79789,7 @@ _08026BC4:
 	mov r8, r0
 	movs r0, #2
 	bl sub_080042A0
-	bl sub_08005E4C
+	bl ResetKeyWatchParam
 	ldr r1, _08026C38 @ =gUnknown_202FC02
 	movs r0, #1
 	strh r0, [r1]
@@ -79809,7 +79810,7 @@ _08026BC4:
 	subs r0, #0x17
 _08026C16:
 	bl sub_08017108
-	bl sub_08005E4C
+	bl ResetKeyWatchParam
 	movs r6, #1
 	b _08026C9A
 	.align 2, 0
@@ -79867,7 +79868,7 @@ _08026C94:
 	movs r0, #1
 	bl sub_080053D8
 _08026C9A:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	adds r0, r1, #0
@@ -80064,7 +80065,7 @@ _08026E78:
 	movs r0, #1
 	bl sub_080053D8
 _08026E7E:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r0, #1
@@ -83140,7 +83141,7 @@ _0802851A:
 	lsls r0, r0, #2
 	str r0, [r7, #0x4c]
 _0802855A:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	adds r0, r1, #0
@@ -83564,7 +83565,7 @@ _080288B0:
 	ldr r0, [r7, #0x34]
 	bl sub_080023D8
 _080288B6:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r0, #1
@@ -83816,7 +83817,7 @@ _08028A80:
 	ldr r1, [r4]
 	bl sub_0803147C
 	movs r0, #0xc0
-	bl sub_08005E38
+	bl SetWatchedKeys
 	movs r0, #4
 	movs r1, #1
 	bl sub_08005EC0
@@ -83826,7 +83827,7 @@ _08028A80:
 	str r0, [sp]
 	mov sl, r5
 _08028AC4:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	adds r2, r1, #0
@@ -83938,7 +83939,7 @@ _08028B98:
 	adds r0, r4, #0
 	bl sub_08011588
 	movs r0, #0xc0
-	bl sub_08005E14
+	bl UnsetWatchedKeys
 	cmp r7, #1
 	beq _08028C00
 	cmp r7, #1
@@ -83960,12 +83961,12 @@ _08028BD2:
 	mov sb, r0
 	cmp r0, #1
 	bne _08028BEC
-	ldr r1, _08028BE8 @ =gUnknown_202941C
+	ldr r1, _08028BE8 @ =gMainState
 	movs r0, #0xc
 	str r0, [r1]
 	b _08028BF6
 	.align 2, 0
-_08028BE8: .4byte gUnknown_202941C
+_08028BE8: .4byte gMainState
 _08028BEC:
 	mov r2, sb
 	cmp r2, #0
@@ -84044,7 +84045,7 @@ _08028C72:
 	bl sub_0803173C
 _08028C88:
 	movs r0, #0xc0
-	bl sub_08005E38
+	bl SetWatchedKeys
 	movs r0, #4
 	movs r1, #1
 	bl sub_08005EC0
@@ -84061,7 +84062,7 @@ _08028CA8:
 	beq _08028CC4
 	movs r0, #6
 	bl sub_08017108
-	ldr r1, _08028CE8 @ =gUnknown_202941C
+	ldr r1, _08028CE8 @ =gMainState
 	movs r0, #0xc
 	str r0, [r1]
 	movs r0, #2
@@ -84086,7 +84087,7 @@ _08028CD2:
 	bl sub_08016344
 	b _08028CF2
 	.align 2, 0
-_08028CE8: .4byte gUnknown_202941C
+_08028CE8: .4byte gMainState
 _08028CEC:
 	movs r0, #1
 	bl sub_080053D8
@@ -84095,7 +84096,7 @@ _08028CF2:
 	cmp r0, #0
 	beq _08028CEC
 	movs r0, #0xc0
-	bl sub_08005E14
+	bl UnsetWatchedKeys
 	bl sub_080282B8
 	mov r0, sb
 	add sp, #4
@@ -85915,7 +85916,7 @@ _08029B44:
 	movs r0, #1
 	bl sub_080053D8
 _08029B4A:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r0, #1
@@ -86475,7 +86476,7 @@ _08029FF8: .4byte gUnknown_8685AAA
 _08029FFC: .4byte gUnknown_203152C
 _0802A000: .4byte gUnknown_85F15D4
 _0802A004:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r0, #1
@@ -86517,13 +86518,13 @@ _0802A018:
 	movs r0, #0
 	str r0, [r1]
 	ldr r0, _0802A0B8 @ =sub_0802A260
-	bl sub_08006504
+	bl SetVBlankCallback
 	bl sub_08029C60
 	adds r4, r0, #0
 	lsls r4, r4, #0x10
 	lsrs r4, r4, #0x10
 	movs r0, #0
-	bl sub_08006504
+	bl SetVBlankCallback
 	movs r0, #1
 	bl sub_080042A0
 	cmp r4, #0
@@ -86582,7 +86583,7 @@ _0802A0E2:
 	.align 2, 0
 _0802A0F8: .4byte 0x00002D20
 _0802A0FC:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r0, #1
@@ -86611,7 +86612,7 @@ _0802A130:
 	mov r8, r0
 	b _0802A152
 _0802A136:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r0, #1
@@ -93196,7 +93197,7 @@ _0802D2B2:
 	ldr r0, [r7, #0x70]
 	bl sub_080315DC
 _0802D2E4:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r0, #1
@@ -93811,7 +93812,7 @@ _0802D780:
 	ldr r1, [r4]
 	bl sub_0803147C
 	movs r0, #0xc0
-	bl sub_08005E38
+	bl SetWatchedKeys
 	movs r0, #4
 	movs r1, #1
 	bl sub_08005EC0
@@ -93821,7 +93822,7 @@ _0802D780:
 	mov sl, r0
 	mov r6, r8
 _0802D7C4:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	adds r2, r1, #0
@@ -93962,7 +93963,7 @@ _0802D8DC:
 	adds r1, r7, #0
 	bl sub_080316FC
 	movs r0, #0xc0
-	bl sub_08005E14
+	bl UnsetWatchedKeys
 	cmp r7, #4
 	bls _0802D8F6
 	b _0802DA0A
@@ -93986,12 +93987,12 @@ _0802D91C: @ 0x0802D91C
 	mov sb, r0
 	cmp r0, #1
 	bne _0802D934
-	ldr r1, _0802D930 @ =gUnknown_202941C
+	ldr r1, _0802D930 @ =gMainState
 	movs r0, #0xc
 	str r0, [r1]
 	b _0802D93E
 	.align 2, 0
-_0802D930: .4byte gUnknown_202941C
+_0802D930: .4byte gMainState
 _0802D934:
 	mov r2, sb
 	cmp r2, #0
@@ -94093,7 +94094,7 @@ _0802D9F4:
 	bl sub_0803173C
 _0802DA0A:
 	movs r0, #0xc0
-	bl sub_08005E38
+	bl SetWatchedKeys
 	movs r0, #4
 	movs r1, #1
 	bl sub_08005EC0
@@ -94112,7 +94113,7 @@ _0802DA34:
 	beq _0802DA50
 	movs r0, #6
 	bl sub_08017108
-	ldr r1, _0802DA74 @ =gUnknown_202941C
+	ldr r1, _0802DA74 @ =gMainState
 	movs r0, #0xc
 	str r0, [r1]
 	movs r1, #2
@@ -94137,7 +94138,7 @@ _0802DA5E:
 	bl sub_08016344
 	b _0802DA7E
 	.align 2, 0
-_0802DA74: .4byte gUnknown_202941C
+_0802DA74: .4byte gMainState
 _0802DA78:
 	movs r0, #1
 	bl sub_080053D8
@@ -94146,7 +94147,7 @@ _0802DA7E:
 	cmp r0, #0
 	beq _0802DA78
 	movs r0, #0xc0
-	bl sub_08005E14
+	bl UnsetWatchedKeys
 	bl sub_0802C844
 	mov r0, sb
 	pop {r3, r4, r5}
@@ -103526,7 +103527,7 @@ _08032162:
 	lsls r0, r0, #5
 	str r0, [r7, #0x4c]
 _0803219E:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r0, #1
@@ -103824,7 +103825,7 @@ _080323D4:
 	ldr r1, [r4]
 	bl sub_0803147C
 	movs r0, #0xc0
-	bl sub_08005E38
+	bl SetWatchedKeys
 	movs r0, #4
 	movs r1, #1
 	bl sub_08005EC0
@@ -103833,7 +103834,7 @@ _080323D4:
 	movs r2, #0
 	str r2, [sp]
 _0803241A:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	adds r2, r1, #0
@@ -103944,7 +103945,7 @@ _080324F4:
 	adds r1, r7, #0
 	bl sub_080316FC
 	movs r0, #0xc0
-	bl sub_08005E14
+	bl UnsetWatchedKeys
 	cmp r7, #1
 	beq _08032554
 	cmp r7, #1
@@ -103966,12 +103967,12 @@ _08032526:
 	mov sl, r0
 	cmp r0, #1
 	bne _08032540
-	ldr r1, _0803253C @ =gUnknown_202941C
+	ldr r1, _0803253C @ =gMainState
 	movs r0, #0xc
 	str r0, [r1]
 	b _0803254A
 	.align 2, 0
-_0803253C: .4byte gUnknown_202941C
+_0803253C: .4byte gMainState
 _08032540:
 	mov r2, sl
 	cmp r2, #0
@@ -104052,7 +104053,7 @@ _080325CA:
 	bl sub_0803173C
 _080325E0:
 	movs r0, #0xc0
-	bl sub_08005E38
+	bl SetWatchedKeys
 	movs r0, #4
 	movs r1, #1
 	bl sub_08005EC0
@@ -104069,7 +104070,7 @@ _08032600:
 	beq _0803261C
 	movs r0, #6
 	bl sub_08017108
-	ldr r1, _08032640 @ =gUnknown_202941C
+	ldr r1, _08032640 @ =gMainState
 	movs r0, #0xc
 	str r0, [r1]
 	movs r2, #2
@@ -104094,7 +104095,7 @@ _0803262A:
 	bl sub_08016344
 	b _0803264A
 	.align 2, 0
-_08032640: .4byte gUnknown_202941C
+_08032640: .4byte gMainState
 _08032644:
 	movs r0, #1
 	bl sub_080053D8
@@ -104103,7 +104104,7 @@ _0803264A:
 	cmp r0, #0
 	beq _08032644
 	movs r0, #0xc0
-	bl sub_08005E14
+	bl UnsetWatchedKeys
 	bl sub_08031D30
 	mov r0, sl
 	add sp, #4
@@ -104689,7 +104690,7 @@ sub_08032AF8: @ 0x08032AF8
 	bl sub_080166D0
 	bl sub_080055DC
 	movs r0, #0xf0
-	bl sub_08005E38
+	bl SetWatchedKeys
 	movs r0, #5
 	movs r1, #4
 	bl sub_08005EC0
@@ -104889,7 +104890,7 @@ _08032CB0:
 	movs r0, #0
 	str r0, [r5]
 _08032CC8:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r0, #2
@@ -105013,7 +105014,7 @@ _08032DF4:
 	ldr r0, [r0]
 	bl sub_08005980
 	movs r0, #0xf0
-	bl sub_08005E14
+	bl UnsetWatchedKeys
 	bl sub_080055DC
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -108278,7 +108279,7 @@ _08034824:
 	movs r0, #1
 	bl sub_080053D8
 _08034852:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r0, #1
@@ -111916,7 +111917,7 @@ _080364DA:
 	movs r0, #1
 	bl sub_080053D8
 _080364E0:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r0, #8
@@ -117187,7 +117188,7 @@ sub_08038AB4: @ 0x08038AB4
 	thumb_func_start sub_08038AC8
 sub_08038AC8: @ 0x08038AC8
 	push {lr}
-	bl sub_08005DD0
+	bl GetKeysRaw
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	pop {r1}
@@ -117198,7 +117199,7 @@ sub_08038AC8: @ 0x08038AC8
 	thumb_func_start sub_08038AD8
 sub_08038AD8: @ 0x08038AD8
 	push {lr}
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	pop {r1}
@@ -118327,7 +118328,7 @@ _080392F8:
 _08039306:
 	str r7, [r5]
 _08039308:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	movs r1, #0xc0
 	lsls r1, r1, #0xb
@@ -118378,7 +118379,7 @@ _08039370:
 	movs r0, #1
 	bl sub_080053D8
 _08039376:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _08039370
@@ -118517,7 +118518,7 @@ _0803948E:
 _0803949C: .4byte REG_IME
 _080394A0: .4byte gUnknown_2027330
 _080394A4:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
 	movs r1, #2
@@ -118576,7 +118577,7 @@ sub_08039504: @ 0x08039504
 	movs r0, #0x80
 	lsls r0, r0, #0x12
 	str r0, [r1]
-	bl sub_0801C514
+	bl SetSerialIntrDefault
 	movs r0, #0x3f
 	movs r1, #0
 	bl sub_080166D0
@@ -118885,8 +118886,8 @@ _08039790: .4byte gUnknown_2027328
 _08039794: .4byte gUnknown_2027324
 	thumb_func_end sub_08039710
 
-	thumb_func_start sub_08039798
-sub_08039798: @ 0x08039798
+	thumb_func_start DefaultSerialIntr
+DefaultSerialIntr: @ 0x08039798
 	push {r4, r5, lr}
 	ldr r0, _080397D0 @ =REG_JOYCNT
 	ldrh r0, [r0]
@@ -118966,7 +118967,7 @@ _0803982C: .4byte gUnknown_2027330
 _08039830: .4byte REG_JOY_RECV
 _08039834: .4byte REG_JOY_TRANS
 _08039838: .4byte REG_JOYCNT
-	thumb_func_end sub_08039798
+	thumb_func_end DefaultSerialIntr
 
 	thumb_func_start sub_0803983C
 sub_0803983C: @ 0x0803983C
@@ -120091,7 +120092,7 @@ _0803A10A:
 	ldr r0, [r4, #8]
 	bl sub_080023D8
 _0803A110:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0803A0E8
@@ -120723,7 +120724,7 @@ _0803A5E4:
 	movs r0, #1
 	bl sub_080053D8
 _0803A5EA:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r0, #1
@@ -120940,7 +120941,7 @@ sub_0803A760: @ 0x0803A760
 	movs r0, #0x80
 	lsls r0, r0, #0x12
 	str r0, [r1]
-	bl sub_0801C514
+	bl SetSerialIntrDefault
 	movs r0, #0x3f
 	movs r1, #0
 	bl sub_080166D0
@@ -121189,7 +121190,7 @@ _0803A980:
 	movs r0, #1
 	bl sub_080053D8
 _0803A98E:
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	lsrs r1, r0, #0x10
 	movs r0, #1
@@ -122318,7 +122319,7 @@ _0803B24E:
 	bl sub_080045CC
 _0803B25E:
 	bl sub_080053B0
-	bl sub_08005DE0
+	bl GetKeysProcessed
 	lsls r0, r0, #0x10
 	cmp r0, #0
 	beq _0803B226

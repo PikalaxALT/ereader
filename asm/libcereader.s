@@ -19,7 +19,7 @@ sub_0803C004: @ 0x0803C004
 	sub sp, #4
 	adds r5, r0, #0
 	ldr r2, _0803C05C @ =gUnknown_2033BA4
-	ldr r1, _0803C060 @ =gUnknown_30046E0
+	ldr r1, _0803C060 @ =gIntrTable
 	ldr r0, [r1, #0x18]
 	str r0, [r2]
 	ldr r2, _0803C064 @ =gUnknown_2033BA8
@@ -59,7 +59,7 @@ _0803C03C:
 	b _0803C09A
 	.align 2, 0
 _0803C05C: .4byte gUnknown_2033BA4
-_0803C060: .4byte gUnknown_30046E0
+_0803C060: .4byte gIntrTable
 _0803C064: .4byte gUnknown_2033BA8
 _0803C068: .4byte sub_0803C504
 _0803C06C: .4byte sub_0803C374
@@ -91,7 +91,7 @@ _0803C09A:
 	mov r0, sp
 	bl CpuSet
 	bl sub_0803C688
-	ldr r1, _0803C0CC @ =gUnknown_30046E0
+	ldr r1, _0803C0CC @ =gIntrTable
 	ldr r0, _0803C0D0 @ =gUnknown_2033BA4
 	ldr r0, [r0]
 	str r0, [r1, #0x18]
@@ -106,7 +106,7 @@ _0803C09A:
 	.align 2, 0
 _0803C0C4: .4byte gUnknown_2033B70
 _0803C0C8: .4byte 0x05000006
-_0803C0CC: .4byte gUnknown_30046E0
+_0803C0CC: .4byte gIntrTable
 _0803C0D0: .4byte gUnknown_2033BA4
 _0803C0D4: .4byte gUnknown_2033BA8
 	thumb_func_end sub_0803C004

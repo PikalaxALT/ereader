@@ -146,9 +146,22 @@ gUnknown_85EB93C:
 gUnknown_85EB940:
 	.incbin "baserom.gba", 0x5eb940, 0x280
 
-	.global gUnknown_85EBBC0
-gUnknown_85EBBC0:
-	.incbin "baserom.gba", 0x5ebbc0, 0x38
+	.global gIntrTable_Template
+gIntrTable_Template:
+	.4byte DefaultVBlankIntr
+	.4byte IntrDummy
+	.4byte IntrDummy
+	.4byte IntrDummy
+	.4byte IntrDummy
+	.4byte IntrDummy
+	.4byte IntrDummy
+	.4byte DefaultSerialIntr
+	.4byte IntrDummy
+	.4byte IntrDummy
+	.4byte IntrDummy
+	.4byte IntrDummy
+	.4byte IntrDummy
+	.4byte IntrDummy
 
 	.global gUnknown_85EBBF8
 gUnknown_85EBBF8:

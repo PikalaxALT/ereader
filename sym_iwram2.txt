@@ -7,7 +7,7 @@
 	SYMBOL(gUnknown_3004672, 0x62) /* 0x3004672 */
 	SYMBOL(gUnknown_30046D4, 0x4) /* 0x30046D4 */
 	SYMBOL(gUnknown_30046D8, 0x8) /* 0x30046D8 */
-	SYMBOL(gUnknown_30046E0, 0x38) /* 0x30046E0 */
+	SYMBOL(gIntrTable, 0x38) /* 0x30046E0 */
 	SYMBOL(IntrMain_Buffer, 0x180) /* 0x3004718 */
 	SYMBOL(gUnknown_3004898, 0x8) /* 0x3004898 */
 	SYMBOL(gUnknown_30048A0, 0x8) /* 0x30048A0 */
@@ -16,10 +16,4 @@
 	SYMBOL(gUnknown_30051E0, 0x620) /* 0x30051E0 */
 	SYMBOL(gUnknown_3005800, 0xE00) /* 0x3005800 */
 	SYMBOL(gUnknown_3006600, 0xFFC) /* 0x3006600 */
-	SYMBOL(gUnknown_30075FC, 0x864) /* 0x30075FC */
-	SYMBOL(gUnknown_3007E60, 0xA0) /* 0x3007E60 */
-	SYMBOL(gUnknown_3007F00, 0xA0) /* 0x3007F00 */
-	SYMBOL(gUnknown_3007FA0, 0x50) /* 0x3007FA0 */
-	SYMBOL(SOUND_INFO_PTR, 0x8) /* 0x3007FF0 */
-	SYMBOL(gUnknown_3007FF8, 0x4) /* 0x3007FF8 */
-	SYMBOL(gUnknown_3007FFC, 0x4) /* 0x3007FFC */
+	SYMBOL(gUnknown_30075FC, 0x4) /* 0x30075FC */

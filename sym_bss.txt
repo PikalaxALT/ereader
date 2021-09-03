@@ -294,7 +294,7 @@
 	SYMBOL(gUnknown_2026A80, 0x40) /* 0x2026A80 */
 	SYMBOL(gUnknown_2026AC0, 0x804) /* 0x2026AC0 */
 	SYMBOL(gUnknown_20272C4, 0x4) /* 0x20272C4 */
-	SYMBOL(gUnknown_20272C8, 0x2) /* 0x20272C8 */
+	SYMBOL(gHeldKeys, 0x2) /* 0x20272C8 */
 	SYMBOL(gUnknown_20272CA, 0x2) /* 0x20272CA */
 	SYMBOL(gUnknown_20272CC, 0x2) /* 0x20272CC */
 	SYMBOL(gUnknown_20272CE, 0x2) /* 0x20272CE */
@@ -367,7 +367,7 @@
 	SYMBOL(gUnknown_2029414, 0x2) /* 0x2029414 */
 	SYMBOL(gUnknown_2029416, 0x2) /* 0x2029416 */
 	SYMBOL(gUnknown_2029418, 0x4) /* 0x2029418 */
-	SYMBOL(gUnknown_202941C, 0x4) /* 0x202941C */
+	SYMBOL(gMainState, 0x4) /* 0x202941C */
 	SYMBOL(gUnknown_2029420, 0x4) /* 0x2029420 */
 	SYMBOL(gUnknown_2029424, 0x4) /* 0x2029424 */
 	SYMBOL(gUnknown_2029428, 0x4) /* 0x2029428 */
@@ -382,8 +382,8 @@
 	SYMBOL(gUnknown_20294A0, 0x2) /* 0x20294A0 */
 	SYMBOL(gUnknown_20294A2, 0x2) /* 0x20294A2 */
 	SYMBOL(gUnknown_20294A4, 0x8) /* 0x20294A4 */
-	SYMBOL(gUnknown_20294AC, 0x4) /* 0x20294AC */
-	SYMBOL(gUnknown_20294B0, 0x8) /* 0x20294B0 */
+	SYMBOL(gVBlankCounter, 0x4) /* 0x20294AC */
+	SYMBOL(gVBlankCallback, 0x8) /* 0x20294B0 */
 	SYMBOL(gUnknown_20294B8, 0x18) /* 0x20294B8 */
 	SYMBOL(gUnknown_20294D0, 0x24) /* 0x20294D0 */
 	SYMBOL(gUnknown_20294F4, 0x3) /* 0x20294F4 */

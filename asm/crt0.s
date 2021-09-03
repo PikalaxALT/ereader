@@ -10,24 +10,23 @@ Start: @ 0x08000000
 	b Init
 	.space 0xBC
 Init:
-	mov r0, #0x12
-	msr cpsr_fc, r0
-	ldr sp, _080000F8 @ =gUnknown_3007FA0
-	mov r0, #0x1f
-	msr cpsr_fc, r0
-	ldr sp, _080000F4 @ =gUnknown_3007E60
-	ldr r1, _080000FC @ =gUnknown_3007FFC
+	mov r0, #PSR_IRQ_MODE
+	msr cpsr_cf, r0
+	ldr sp, sp_irq
+	mov r0, #PSR_SYS_MODE
+	msr cpsr_cf, r0
+	ldr sp, sp_sys
+	ldr r1, =INTR_VECTOR
 	add r0, pc, #0x20
 	str r0, [r1]
-	ldr r1, _08000100 @ =AgbMain
+	ldr r1, =AgbMain
 	mov lr, pc
 	bx r1
 	b Init
 	.align 2, 0
-_080000F4: .4byte gUnknown_3007E60
-_080000F8: .4byte gUnknown_3007FA0
-_080000FC: .4byte gUnknown_3007FFC
-_08000100: .4byte AgbMain
+sp_sys: .4byte IWRAM_END - 0x1a0
+sp_irq: .4byte IWRAM_END - 0x60
+	.pool
 
 	.arm
 	.align 2, 0
@@ -96,7 +95,7 @@ _080001D4:
 	bic r3, r3, #0xdf
 	orr r3, r3, #0x1f
 	msr cpsr_fc, r3
-	ldr r1, _08000238 @ =gUnknown_30046E0
+	ldr r1, _08000238 @ =gIntrTable
 	add r1, r1, ip
 	ldr r0, [r1]
 	stmdb sp!, {lr}
@@ -114,7 +113,7 @@ _ret:
 	msr spsr_fc, r0
 	bx lr
 	.align 2, 0
-_08000238: .4byte gUnknown_30046E0
+_08000238: .4byte gIntrTable
 
 	.arm
 	.align 2, 0

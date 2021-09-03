@@ -7764,7 +7764,7 @@ _080425CA:
 	strh r2, [r4]
 	strh r2, [r3]
 	ldr r2, _080426CC @ =gUnknown_20151B8
-	ldr r1, _080426D0 @ =gUnknown_30046E0
+	ldr r1, _080426D0 @ =gIntrTable
 	ldr r0, [r1]
 	str r0, [r2]
 	ldr r0, _080426D4 @ =sub_080427D0
@@ -7802,7 +7802,7 @@ _08042652:
 	movs r4, #0
 	ldr r2, _080426DC @ =0x0000BFFF
 	ldr r5, _080426CC @ =gUnknown_20151B8
-	ldr r6, _080426D0 @ =gUnknown_30046E0
+	ldr r6, _080426D0 @ =gIntrTable
 	movs r1, #0
 	movs r0, #0xc0
 	lsls r0, r0, #0x13
@@ -7847,7 +7847,7 @@ _080426C0: .4byte REG_IE
 _080426C4: .4byte REG_DISPSTAT
 _080426C8: .4byte REG_IME
 _080426CC: .4byte gUnknown_20151B8
-_080426D0: .4byte gUnknown_30046E0
+_080426D0: .4byte gIntrTable
 _080426D4: .4byte sub_080427D0
 _080426D8: .4byte gUnknown_2009590
 _080426DC: .4byte 0x0000BFFF
@@ -7983,7 +7983,7 @@ sub_080427D0: @ 0x080427D0
 	cmp r0, #0
 	bne _08042800
 _080427E6:
-	ldr r1, _080427FC @ =gUnknown_3007FF8
+	ldr r1, _080427FC @ =INTR_CHECK
 	movs r0, #1
 	str r0, [r1]
 	bl m4aSoundMain
@@ -7991,7 +7991,7 @@ _080427E6:
 	.align 2, 0
 _080427F4: .4byte gUnknown_2017818
 _080427F8: .4byte gUnknown_2015290
-_080427FC: .4byte gUnknown_3007FF8
+_080427FC: .4byte INTR_CHECK
 _08042800:
 	bl sub_080432C0
 	ldr r1, _0804286C @ =REG_DMA3
@@ -8039,7 +8039,7 @@ _08042800:
 	ldr r0, _080428A0 @ =0x80000800
 	str r0, [r1, #8]
 	ldr r0, [r1, #8]
-	ldr r1, _080428A4 @ =gUnknown_3007FF8
+	ldr r1, _080428A4 @ =INTR_CHECK
 	movs r0, #1
 	str r0, [r1]
 	bl m4aSoundMain
@@ -8061,7 +8061,7 @@ _08042894: .4byte gUnknown_2015288
 _08042898: .4byte gUnknown_200C900
 _0804289C: .4byte 0x06003800
 _080428A0: .4byte 0x80000800
-_080428A4: .4byte gUnknown_3007FF8
+_080428A4: .4byte INTR_CHECK
 	thumb_func_end sub_080427D0
 
 	thumb_func_start sub_080428A8
@@ -10314,11 +10314,11 @@ sub_0804399C: @ 0x0804399C
 
 	thumb_func_start sub_080439A0
 sub_080439A0: @ 0x080439A0
-	ldr r1, _080439A8 @ =gUnknown_3007FF8
+	ldr r1, _080439A8 @ =INTR_CHECK
 	movs r0, #1
 	strh r0, [r1]
 	bx lr
 	.align 2, 0
-_080439A8: .4byte gUnknown_3007FF8
+_080439A8: .4byte INTR_CHECK
 	thumb_func_end sub_080439A0
 	.align 2, 0 @ Don't pad with nop
