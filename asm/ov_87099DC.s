@@ -7,13 +7,13 @@
 ovxDC_3000000: @ 0x03000000
 	mov ip, sp
 	push {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr, pc}
-	ldr r0, _0300026C @ =0x03000658
-	ldr r3, _03000270 @ =0x02028B28
-	ldr r1, _03000274 @ =0x02032D14
-	ldr r7, _03000278 @ =0x03000672
-	ldr r6, _0300027C @ =0x03000670
-	ldr r5, _03000280 @ =0x0300066C
-	ldr r4, _03000284 @ =0x02028B64
+	ldr r0, _0300026C @ =ovxDC_3000658
+	ldr r3, _03000270 @ =gUnknown_2028B28
+	ldr r1, _03000274 @ =gUnknown_2032D14
+	ldr r7, _03000278 @ =ovxDC_3000672
+	ldr r6, _0300027C @ =ovxDC_3000670
+	ldr r5, _03000280 @ =ovxDC_300066C
+	ldr r4, _03000284 @ =gUnknown_2028B64
 	mov lr, #0
 	strh lr, [r7]
 	str lr, [r5]
@@ -25,41 +25,41 @@ ovxDC_3000000: @ 0x03000000
 	sub fp, ip, #4
 	ldr ip, [r1]
 	mov r3, #0x1840
-	ldr r2, _03000288 @ =0x02028B20
+	ldr r2, _03000288 @ =gUnknown_2028B20
 	add r3, r3, #0x20
 	str r3, [r2]
 	add r1, ip, #0x2640
 	str ip, [r0]
 	add r1, r1, #0x30
 	str r1, [r0, #4]
-	ldr r3, _0300028C @ =0x02032D10
+	ldr r3, _0300028C @ =gUnknown_2032D10
 	ldr r1, [r3]
 	str r1, [r2, #4]
 	mov sl, lr
-	ldr r3, _03000290 @ =0x02028798
+	ldr r3, _03000290 @ =gUnknown_2028798
 	mov r1, r4
 	bl ovxDC_30007C4
 	subs r8, r0, #0
 	mov sb, r5
 	movne r0, r8
 	bne _030002BC
-	ldr r5, _03000294 @ =0x03000668
-	ldr r3, _03000298 @ =0x03000650
-	ldr r4, _0300029C @ =0x03000652
-	ldr r1, _030002A0 @ =0x03000654
-	ldr r2, _03000274 @ =0x02032D14
+	ldr r5, _03000294 @ =ovxDC_3000668
+	ldr r3, _03000298 @ =ovxDC_3000650
+	ldr r4, _0300029C @ =ovxDC_3000652
+	ldr r1, _030002A0 @ =ovxDC_3000654
+	ldr r2, _03000274 @ =gUnknown_2032D14
 	strh sl, [r5]
 	strh sl, [r3]
 	strh sl, [r4]
 	ldr r3, [r2]
-	ldr r2, _030002A4 @ =0x03000664
+	ldr r2, _030002A4 @ =ovxDC_3000664
 	str r3, [r1]
 	str sl, [r2]
 	bl ovxDC_3002460
 	subs r8, r0, #0
 	beq _030000E8
 	bl ovxDC_3002628
-	ldr r0, _03000284 @ =0x02028B64
+	ldr r0, _03000284 @ =gUnknown_2028B64
 	bl ovxDC_30006C0
 	mov r0, r8
 	b _030002BC
@@ -70,7 +70,7 @@ _030000E8:
 	orr r3, r3, #0x2000
 	strh r3, [r2]
 	mov r1, #0x208
-	ldr r2, _030002A8 @ =0x0300067A
+	ldr r2, _030002A8 @ =ovxDC_300067A
 	mvn r3, #0xfc00
 	strh r3, [r2]
 	add r1, r1, #0x4000000
@@ -81,9 +81,9 @@ _030000E8:
 	beq _0300021C
 	mov r8, #2
 	mov r7, sl
-	ldr r6, _030002AC @ =0x03000674
+	ldr r6, _030002AC @ =ovxDC_3000674
 _03000130:
-	ldr r3, _030002B0 @ =0x03000678
+	ldr r3, _030002B0 @ =ovxDC_3000678
 	ldrh r3, [r3]
 	tst r3, #2
 	movne sl, #0x300
@@ -98,13 +98,13 @@ _0300015C:
 	ldrh r4, [r5]
 	cmp r4, #1
 	bne _03000210
-	ldr r3, _0300029C @ =0x03000652
+	ldr r3, _0300029C @ =ovxDC_3000652
 	ldrh r0, [r3]
 	eor r0, r0, #1
 	bl ovxDC_3000A04
 	cmp r0, #0
 	bne _030001CC
-	ldr r1, _03000278 @ =0x03000672
+	ldr r1, _03000278 @ =ovxDC_3000672
 	ldrh r3, [r1]
 	cmp r3, #0
 	beq _030001A8
@@ -115,18 +115,18 @@ _0300015C:
 	blo _030001B4
 	b _03000200
 _030001A8:
-	ldr r2, _03000278 @ =0x03000672
+	ldr r2, _03000278 @ =ovxDC_3000672
 	str r3, [r6]
 	strh r4, [r2]
 _030001B4:
 	str r7, [sb]
 	strh r7, [r5]
-	ldr r3, _0300027C @ =0x03000670
+	ldr r3, _0300027C @ =ovxDC_3000670
 	mov r1, #1
 	strh r1, [r3]
 	b _03000210
 _030001CC:
-	ldr r1, _0300027C @ =0x03000670
+	ldr r1, _0300027C @ =ovxDC_3000670
 	ldr r3, [sb]
 	ldrh r2, [r1]
 	add r3, r3, #1
@@ -163,7 +163,7 @@ _0300021C:
 	lsr r3, r3, #0x10
 	strh r3, [r1]
 	bl ovxDC_3002628
-	ldr r0, _03000284 @ =0x02028B64
+	ldr r0, _03000284 @ =gUnknown_2028B64
 	bl ovxDC_30006C0
 	cmp sl, #0
 	bne _03000264
@@ -173,24 +173,24 @@ _03000264:
 	mov r0, sl
 	b _030002BC
 	.align 2, 0
-_0300026C: .4byte 0x03000658
-_03000270: .4byte 0x02028B28
-_03000274: .4byte 0x02032D14
-_03000278: .4byte 0x03000672
-_0300027C: .4byte 0x03000670
-_03000280: .4byte 0x0300066C
-_03000284: .4byte 0x02028B64
-_03000288: .4byte 0x02028B20
-_0300028C: .4byte 0x02032D10
-_03000290: .4byte 0x02028798
-_03000294: .4byte 0x03000668
-_03000298: .4byte 0x03000650
-_0300029C: .4byte 0x03000652
-_030002A0: .4byte 0x03000654
-_030002A4: .4byte 0x03000664
-_030002A8: .4byte 0x0300067A
-_030002AC: .4byte 0x03000674
-_030002B0: .4byte 0x03000678
+_0300026C: .4byte ovxDC_3000658
+_03000270: .4byte gUnknown_2028B28
+_03000274: .4byte gUnknown_2032D14
+_03000278: .4byte ovxDC_3000672
+_0300027C: .4byte ovxDC_3000670
+_03000280: .4byte ovxDC_300066C
+_03000284: .4byte gUnknown_2028B64
+_03000288: .4byte gUnknown_2028B20
+_0300028C: .4byte gUnknown_2032D10
+_03000290: .4byte gUnknown_2028798
+_03000294: .4byte ovxDC_3000668
+_03000298: .4byte ovxDC_3000650
+_0300029C: .4byte ovxDC_3000652
+_030002A0: .4byte ovxDC_3000654
+_030002A4: .4byte ovxDC_3000664
+_030002A8: .4byte ovxDC_300067A
+_030002AC: .4byte ovxDC_3000674
+_030002B0: .4byte ovxDC_3000678
 _030002B4:
 	mvn r0, #0x258
 	sub r0, r0, #3
@@ -209,17 +209,17 @@ ovxDC_30002C4: @ 0x030002C4
 	mov r2, #0xc10000
 	ldrh r3, [r1]
 	add r2, r2, #0xf500
-	ldr r8, _03000490 @ =0x03000680
+	ldr r8, _03000490 @ =ovxDC_3000680
 	orr r3, r3, #2
 	strh r3, [r1]
 	add r2, r2, #0xc3
-	ldr sl, _03000494 @ =0x03000682
+	ldr sl, _03000494 @ =ovxDC_3000682
 	mov r1, #0x200
 	str r2, [r0]
 	add r1, r1, #0x4000002
 	ldrh r3, [r1]
 	sub fp, ip, #4
-	ldr r7, _03000498 @ =0x0300067C
+	ldr r7, _03000498 @ =ovxDC_300067C
 	tst r3, #0x10
 	bne _0300032C
 	mov r2, r1
@@ -320,9 +320,9 @@ _030003C0:
 	strh r2, [r5]
 	b _030004A0
 	.align 2, 0
-_03000490: .4byte 0x03000680
-_03000494: .4byte 0x03000682
-_03000498: .4byte 0x0300067C
+_03000490: .4byte ovxDC_3000680
+_03000494: .4byte ovxDC_3000682
+_03000498: .4byte ovxDC_300067C
 _0300049C: .4byte sub_0800023C
 _030004A0:
 	ldmdb fp, {r4, r5, r6, r7, r8, sl, fp, sp, lr}
@@ -337,8 +337,8 @@ ovxDC_30004A8: @ 0x030004A8
 	mov r3, #0xdf00000
 	add r3, r3, #0xc0000
 	str r3, [r1]
-	ldr r6, _030005D4 @ =0x03000654
-	ldr r5, _030005D8 @ =0x03000650
+	ldr r6, _030005D4 @ =ovxDC_3000654
+	ldr r5, _030005D8 @ =ovxDC_3000650
 	ldr r3, [r6]
 	str r3, [r1, #4]
 	sub fp, ip, #4
@@ -356,9 +356,9 @@ ovxDC_30004A8: @ 0x030004A8
 	mov r3, #0x130
 	add r3, r3, #0x4000000
 	ldrh r2, [r3]
-	ldr ip, _030005DC @ =0x0300067A
-	ldr r1, _030005E0 @ =0x03000678
-	ldr r4, _030005E4 @ =0x03000664
+	ldr ip, _030005DC @ =ovxDC_300067A
+	ldr r1, _030005E0 @ =ovxDC_3000678
+	ldr r4, _030005E4 @ =ovxDC_3000664
 	mvn r2, r2
 	lsl r2, r2, #0x16
 	lsr r2, r2, #0x16
@@ -373,14 +373,14 @@ ovxDC_30004A8: @ 0x030004A8
 	add r0, r0, #1
 	str r0, [r4]
 	bl ovxDC_3001E80
-	ldr r0, _030005E8 @ =0x03000652
+	ldr r0, _030005E8 @ =ovxDC_3000652
 	ldrh r3, [r0]
 	eor ip, r3, #1
 	strh ip, [r0]
 	ldrh r3, [r0]
 	mov r2, #0
 	strh r2, [r5]
-	ldr r1, _030005EC @ =0x02032D14
+	ldr r1, _030005EC @ =gUnknown_2032D14
 	add r2, r3, r3, lsl #2
 	add r3, r3, r2, lsl #3
 	ldr lr, [r1]
@@ -390,7 +390,7 @@ ovxDC_30004A8: @ 0x030004A8
 	str r3, [r6]
 	cmp r1, #4
 	ble _030005FC
-	ldr r2, _030005F0 @ =0x03000668
+	ldr r2, _030005F0 @ =ovxDC_3000668
 	ldrh r3, [r2]
 	cmp r3, #1
 	bne _030005F4
@@ -406,14 +406,14 @@ ovxDC_30004A8: @ 0x030004A8
 	str r3, [r6]
 	b _030005FC
 	.align 2, 0
-_030005D4: .4byte 0x03000654
-_030005D8: .4byte 0x03000650
-_030005DC: .4byte 0x0300067A
-_030005E0: .4byte 0x03000678
-_030005E4: .4byte 0x03000664
-_030005E8: .4byte 0x03000652
-_030005EC: .4byte 0x02032D14
-_030005F0: .4byte 0x03000668
+_030005D4: .4byte ovxDC_3000654
+_030005D8: .4byte ovxDC_3000650
+_030005DC: .4byte ovxDC_300067A
+_030005E0: .4byte ovxDC_3000678
+_030005E4: .4byte ovxDC_3000664
+_030005E8: .4byte ovxDC_3000652
+_030005EC: .4byte gUnknown_2032D14
+_030005F0: .4byte ovxDC_3000668
 _030005F4:
 	mov r3, #1
 	strh r3, [r2]
@@ -442,11 +442,51 @@ ovxDC_300063C: @ 0x0300063C
 	sub fp, ip, #4
 	ldmdb fp, {fp, sp, lr}
 	bx lr
-_03000650:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00
+
+ovxDC_3000650:
+	.space 0x2
+
+ovxDC_3000652:
+	.space 0x2
+
+ovxDC_3000654:
+	.space 0x4
+
+ovxDC_3000658:
+	.space 0xC
+
+ovxDC_3000664:
+	.space 0x4
+
+ovxDC_3000668:
+	.space 0x4
+
+ovxDC_300066C:
+	.space 0x4
+
+ovxDC_3000670:
+	.space 0x2
+
+ovxDC_3000672:
+	.space 0x2
+
+ovxDC_3000674:
+	.space 0x4
+
+ovxDC_3000678:
+	.space 0x2
+
+ovxDC_300067A:
+	.space 0x2
+
+ovxDC_300067C:
+	.space 0x4
+
+ovxDC_3000680:
+	.space 0x2
+
+ovxDC_3000682:
+	.space 0x2
 
 	.global ovxDC_3000684
 ovxDC_3000684:
@@ -476,7 +516,7 @@ ovxDC_30006C0: @ 0x030006C0
 	mov r5, r1
 	ldr lr, [r0, #0xc]
 	mov r2, r5
-	ldr r6, _030007AC @ =0x03006684
+	ldr r6, _030007AC @ =ovxDC_3006684
 	cmp r5, lr
 	bge _03000720
 	ldr r3, [r6]
@@ -533,7 +573,7 @@ _030007A0:
 	str r2, [r0]
 	b _030007B8
 	.align 2, 0
-_030007AC: .4byte 0x03006684
+_030007AC: .4byte ovxDC_3006684
 _030007B0:
 	mov r3, #0
 _030007B4:
@@ -562,7 +602,7 @@ _030007F8:
 	mvn r0, #0x258
 	b _030009F4
 _03000800:
-	ldr r0, _030009B4 @ =0x03006684
+	ldr r0, _030009B4 @ =ovxDC_3006684
 	ldr lr, [r0]
 	ldr r3, [lr, #0x128]
 	ldr ip, [r4, #8]
@@ -677,12 +717,12 @@ _03000940:
 	lsr r3, r3, #7
 	b _030009BC
 	.align 2, 0
-_030009B4: .4byte 0x03006684
+_030009B4: .4byte ovxDC_3006684
 _030009B8:
 	mov r3, r0
 _030009BC:
 	strb r3, [ip, r2]
-	ldr r0, _030009F8 @ =0x03006684
+	ldr r0, _030009F8 @ =ovxDC_3006684
 	mov ip, #0
 _030009C8:
 	ldr r3, [r0]
@@ -699,7 +739,7 @@ _030009C8:
 _030009F4:
 	b _030009FC
 	.align 2, 0
-_030009F8: .4byte 0x03006684
+_030009F8: .4byte ovxDC_3006684
 _030009FC:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
@@ -709,7 +749,7 @@ ovxDC_3000A04: @ 0x03000A04
 	mov ip, sp
 	push {r4, fp, ip, lr, pc}
 	cmp r0, #0
-	ldr r2, _03000A8C @ =0x03006684
+	ldr r2, _03000A8C @ =ovxDC_3006684
 	and r0, r0, #1
 	ldr r3, [r2]
 	sub fp, ip, #4
@@ -742,7 +782,7 @@ _03000A54:
 	bic r3, r3, #0x11
 	b _03000A9C
 	.align 2, 0
-_03000A8C: .4byte 0x03006684
+_03000A8C: .4byte ovxDC_3006684
 _03000A90:
 	ldr r2, [r4]
 	ldr r3, [r2, #0x14c]
@@ -770,7 +810,7 @@ _03000A9C:
 ovxDC_3000AE0: @ 0x03000AE0
 	mov ip, sp
 	push {r4, r5, r6, fp, ip, lr, pc}
-	ldr r2, _03000BB0 @ =0x03006684
+	ldr r2, _03000BB0 @ =ovxDC_3006684
 	sub fp, ip, #4
 	ldr ip, [r2]
 	mov r4, r0
@@ -822,7 +862,7 @@ _03000B80:
 	mov r0, #0x70
 	b _03000BBC
 	.align 2, 0
-_03000BB0: .4byte 0x03006684
+_03000BB0: .4byte ovxDC_3006684
 _03000BB4:
 	cmp r0, #0x150
 	movge r0, #0x150
@@ -888,7 +928,7 @@ _03000C74:
 ovxDC_3000C94: @ 0x03000C94
 	mov ip, sp
 	push {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr, pc}
-	ldr r3, _03000E94 @ =0x03006684
+	ldr r3, _03000E94 @ =ovxDC_3006684
 	sub sp, sp, #0x50
 	ldr r0, [r3]
 	mov r2, #0
@@ -1021,7 +1061,7 @@ _03000E54:
 	bl ovxDC_3000FC4
 	b _03000FB8
 	.align 2, 0
-_03000E94: .4byte 0x03006684
+_03000E94: .4byte ovxDC_3006684
 _03000E98:
 	ldr r1, [r8]
 	ldr r3, [r1, #0x14c]
@@ -1109,7 +1149,7 @@ ovxDC_3000FC4: @ 0x03000FC4
 	push {r4, fp, ip, lr, pc}
 	lsl r1, r1, #0x18
 	sub fp, ip, #4
-	ldr ip, _03001070 @ =0x03006684
+	ldr ip, _03001070 @ =ovxDC_3006684
 	asr r1, r1, #0x18
 	ldr r4, [ip]
 	eor lr, r0, #1
@@ -1149,7 +1189,7 @@ ovxDC_3000FC4: @ 0x03000FC4
 	str r3, [r4, #0x40]
 	b _03001074
 	.align 2, 0
-_03001070: .4byte 0x03006684
+_03001070: .4byte ovxDC_3006684
 _03001074:
 	ldmdb fp, {r4, fp, sp, lr}
 	bx lr
@@ -1168,7 +1208,7 @@ ovxDC_300107C: @ 0x0300107C
 	lsl r3, r0, #0x18
 	asrs r4, r3, #0x18
 	beq _03001140
-	ldr r3, _03001408 @ =0x03006684
+	ldr r3, _03001408 @ =ovxDC_3006684
 	ldr lr, [r1]
 	ldr ip, [r1, #4]
 	ldr r2, [r3]
@@ -1180,7 +1220,7 @@ ovxDC_300107C: @ 0x0300107C
 	cmp r0, #0
 	mov r0, #0
 	bne _03001658
-	ldr r0, _03001408 @ =0x03006684
+	ldr r0, _03001408 @ =ovxDC_3006684
 	ldr r1, [fp, #-0x4c]
 	ldr r3, [r0]
 	ldm r1, {ip, lr}
@@ -1206,7 +1246,7 @@ ovxDC_300107C: @ 0x0300107C
 	sub sl, lr, r1, asr #1
 	b _0300122C
 _03001140:
-	ldr r3, _03001408 @ =0x03006684
+	ldr r3, _03001408 @ =ovxDC_3006684
 	ldr ip, [fp, #-0x4c]
 	ldr r2, [r3]
 	ldr lr, [ip]
@@ -1248,7 +1288,7 @@ _030011C8:
 	asr r0, r0, #0x18
 	b _03001658
 _030011D4:
-	ldr ip, _03001408 @ =0x03006684
+	ldr ip, _03001408 @ =ovxDC_3006684
 	ldr r0, [fp, #-0x4c]
 	ldr r3, [ip]
 	ldm r0, {ip, lr}
@@ -1284,7 +1324,7 @@ _03001248:
 	mla r1, r6, r2, r4
 	asr r3, r3, #7
 	str r3, [fp, #-0x34]
-	ldr r3, _0300140C @ =0x03006138
+	ldr r3, _0300140C @ =ovxDC_3006138
 	sub r0, fp, #0x34
 	ldrb r2, [r3, r8]
 	asr r1, r1, #7
@@ -1337,7 +1377,7 @@ _030012F8:
 	add r1, r1, r2
 	asr r1, r1, #7
 	str r1, [fp, #-0x34]
-	ldr r1, _0300140C @ =0x03006138
+	ldr r1, _0300140C @ =ovxDC_3006138
 	ldr r0, [fp, #-0x80]
 	ldr r3, [r0, r7]
 	ldrb r2, [r1, r8]
@@ -1348,7 +1388,7 @@ _030012F8:
 	cmp r2, #0
 	bne _03001388
 	add r1, ip, ip, lsl #2
-	ldr ip, _03001408 @ =0x03006684
+	ldr ip, _03001408 @ =ovxDC_3006684
 	ldr r2, [fp, #-0x34]
 	ldr r3, [ip]
 	add r1, r2, r1, lsl #6
@@ -1364,7 +1404,7 @@ _030012F8:
 	b _030014F8
 _03001388:
 	add r1, ip, ip, lsl #2
-	ldr ip, _03001408 @ =0x03006684
+	ldr ip, _03001408 @ =ovxDC_3006684
 	ldr r2, [fp, #-0x34]
 	ldr r3, [ip]
 	add r1, r2, r1, lsl #6
@@ -1396,15 +1436,15 @@ _03001388:
 	mov r4, r2
 	b _030014A4
 	.align 2, 0
-_03001408: .4byte 0x03006684
-_0300140C: .4byte 0x03006138
+_03001408: .4byte ovxDC_3006684
+_0300140C: .4byte ovxDC_3006138
 _03001410:
 	sub r4, fp, #0x3c
 	mov r1, r4
 	ldr r0, [fp, #-0x88]
 	sub r2, fp, #0x29
 	bl ovxDC_30038F4
-	ldr r3, _0300165C @ =0x03006684
+	ldr r3, _0300165C @ =ovxDC_3006684
 	ldr r2, [r3]
 	ldrsb r0, [fp, #-0x29]
 	mov r3, #0x19c
@@ -1485,7 +1525,7 @@ _030014F8:
 	asr r2, r2, #0x10
 	str r2, [fp, #-0x5c]
 	ldr r2, [fp, #-0x6c]
-	ldr ip, _0300165C @ =0x03006684
+	ldr ip, _0300165C @ =ovxDC_3006684
 	rsb r3, r2, r2, lsl #3
 	rsb r3, r2, r3, lsl #4
 	rsb r3, r2, r3, lsl #2
@@ -1508,7 +1548,7 @@ _030014F8:
 	strne r3, [r1, #0x150]
 	rsbne r2, r2, #0
 	strne r2, [r1, #0x154]
-	ldr ip, _0300165C @ =0x03006684
+	ldr ip, _0300165C @ =ovxDC_3006684
 	ldr r0, [fp, #-0x60]
 	ldr r2, [fp, #-0x50]
 	ldr r1, [ip]
@@ -1550,7 +1590,7 @@ _030014F8:
 _03001658:
 	b _03001660
 	.align 2, 0
-_0300165C: .4byte 0x03006684
+_0300165C: .4byte ovxDC_3006684
 _03001660:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
@@ -1568,7 +1608,7 @@ ovxDC_3001668: @ 0x03001668
 	cmp ip, #0
 	blt _030016C8
 	ldr r1, [lr, #4]
-	ldr r3, _030017C4 @ =0x03006684
+	ldr r3, _030017C4 @ =ovxDC_3006684
 	add r1, r1, r1, lsl #2
 	ldr r2, [r3]
 	add r1, ip, r1, lsl #6
@@ -1587,7 +1627,7 @@ _030016C8:
 	str ip, [lr]
 	cmp ip, #0x140
 	bge _0300171C
-	ldr r3, _030017C4 @ =0x03006684
+	ldr r3, _030017C4 @ =ovxDC_3006684
 	add r1, r4, r4, lsl #2
 	ldr r2, [r3]
 	add r1, ip, r1, lsl #6
@@ -1612,7 +1652,7 @@ _0300171C:
 	str ip, [lr]
 	cmp r2, #0
 	blt _0300176C
-	ldr r3, _030017C4 @ =0x03006684
+	ldr r3, _030017C4 @ =ovxDC_3006684
 	add r1, r2, r2, lsl #2
 	ldr r2, [r3]
 	add r1, ip, r1, lsl #6
@@ -1632,7 +1672,7 @@ _0300176C:
 	cmp r2, #0xf5
 	bgt _030017C8
 	ldr r1, [lr]
-	ldr r3, _030017C4 @ =0x03006684
+	ldr r3, _030017C4 @ =ovxDC_3006684
 	add r2, r2, r2, lsl #2
 	ldr r0, [r3]
 	add r2, r1, r2, lsl #6
@@ -1650,7 +1690,7 @@ _030017B8:
 	mov r0, #0
 	b _030017D8
 	.align 2, 0
-_030017C4: .4byte 0x03006684
+_030017C4: .4byte ovxDC_3006684
 _030017C8:
 	ldr r3, [lr, #4]
 	mvn r0, #0
@@ -1664,7 +1704,7 @@ _030017D8:
 ovxDC_30017E0: @ 0x030017E0
 	mov ip, sp
 	push {fp, ip, lr, pc}
-	ldr r3, _0300183C @ =0x03006684
+	ldr r3, _0300183C @ =ovxDC_3006684
 	sub fp, ip, #4
 	ldr ip, [r3]
 	ldr r2, [ip, #0x188]
@@ -1688,7 +1728,7 @@ _03001818:
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_0300183C: .4byte 0x03006684
+_0300183C: .4byte ovxDC_3006684
 
 	arm_func_start ovxDC_3001840
 ovxDC_3001840: @ 0x03001840
@@ -1776,7 +1816,7 @@ ovxDC_3001958: @ 0x03001958
 	sub fp, ip, #4
 	sub sp, sp, #8
 	mov r5, r0
-	ldr r4, _03001C2C @ =0x03006684
+	ldr r4, _03001C2C @ =ovxDC_3006684
 	mov r8, r1
 	ldr ip, [r5]
 	mov r6, r2
@@ -1967,7 +2007,7 @@ _03001BF8:
 	ldr r2, [r8]
 	b _03001C54
 	.align 2, 0
-_03001C2C: .4byte 0x03006684
+_03001C2C: .4byte ovxDC_3006684
 _03001C30:
 	ldr r2, [r6, #4]
 	ldr r3, [r7, #4]
@@ -1995,7 +2035,7 @@ _03001C74:
 ovxDC_3001C7C: @ 0x03001C7C
 	mov ip, sp
 	push {r4, r5, r6, r7, fp, ip, lr, pc}
-	ldr r3, _03001D6C @ =0x03006684
+	ldr r3, _03001D6C @ =ovxDC_3006684
 	sub fp, ip, #4
 	ldr r2, [r3]
 	mov r6, r0
@@ -2057,7 +2097,7 @@ _03001CCC:
 	mov r2, #0
 	b _03001D7C
 	.align 2, 0
-_03001D6C: .4byte 0x03006684
+_03001D6C: .4byte ovxDC_3006684
 _03001D70:
 	mov r3, #0x19c
 	add r3, r3, #1
@@ -2092,7 +2132,7 @@ ovxDC_3001DAC: @ 0x03001DAC
 _03001DD8:
 	mov r0, r5
 	bl ovxDC_3005058
-	ldr r0, _03001E00 @ =0x03006684
+	ldr r0, _03001E00 @ =ovxDC_3006684
 	ldr r3, [r0]
 	ldr r2, [r3, #0x168]
 	asr r2, r2, #2
@@ -2101,7 +2141,7 @@ _03001DD8:
 	str r1, [r6, #4]
 	b _03001E34
 	.align 2, 0
-_03001E00: .4byte 0x03006684
+_03001E00: .4byte ovxDC_3006684
 _03001E04:
 	sub r0, fp, #0x38
 	bl ovxDC_3004A3C
@@ -2116,7 +2156,7 @@ _03001E04:
 	cmp r0, #0
 	beq _03001E70
 _03001E34:
-	ldr r0, _03001E74 @ =0x03006684
+	ldr r0, _03001E74 @ =ovxDC_3006684
 	ldr r1, [r0]
 	mov r2, r6
 	mov r0, #0
@@ -2134,7 +2174,7 @@ _03001E34:
 _03001E70:
 	b _03001E78
 	.align 2, 0
-_03001E74: .4byte 0x03006684
+_03001E74: .4byte ovxDC_3006684
 _03001E78:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
@@ -2145,7 +2185,7 @@ ovxDC_3001E80: @ 0x03001E80
 	push {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr, pc}
 	sub fp, ip, #4
 	sub sp, sp, #0x40
-	ldr ip, _030021EC @ =0x03006684
+	ldr ip, _030021EC @ =ovxDC_3006684
 	ldr r0, [ip]
 	ldr r3, [r0, #0x264]
 	ldr r1, [r0, #0x12c]
@@ -2173,7 +2213,7 @@ ovxDC_3001E80: @ 0x03001E80
 	sub r3, fp, #0x58
 	str r3, [fp, #-0x68]
 	add r0, r0, #0xdf00000
-	ldr ip, _030021EC @ =0x03006684
+	ldr ip, _030021EC @ =ovxDC_3006684
 	mov r4, r3
 	ldrh r3, [r2]
 	add r0, r0, #0xc0000
@@ -2191,7 +2231,7 @@ _03001F24:
 	add lr, lr, #1
 	cmp lr, #0x2f
 	ble _03001F24
-	ldr r6, _030021EC @ =0x03006684
+	ldr r6, _030021EC @ =ovxDC_3006684
 	ldr r1, [r6]
 	ldr r3, [r1, #0x128]
 	tst r3, #0x100
@@ -2204,7 +2244,7 @@ _03001F24:
 	orr r3, r3, #2
 	str r3, [r1, #0x14c]
 _03001F74:
-	ldr r1, _030021EC @ =0x03006684
+	ldr r1, _030021EC @ =ovxDC_3006684
 	ldr r2, [r1]
 	ldr r3, [r2, #0x14c]
 	mov r6, #0x2000
@@ -2216,7 +2256,7 @@ _03001F74:
 	ldr r0, [fp, #-0x68]
 	sub r1, fp, #0x59
 	bl ovxDC_3002330
-	ldr r1, _030021EC @ =0x03006684
+	ldr r1, _030021EC @ =ovxDC_3006684
 	mov r3, #0x118
 	ldr r2, [r1]
 	and r6, r0, #0xff
@@ -2235,7 +2275,7 @@ _03001F74:
 	rsb r4, r5, r6
 	mov r1, r4
 	bl ovxDC_3003624
-	ldr r2, _030021EC @ =0x03006684
+	ldr r2, _030021EC @ =ovxDC_3006684
 	ldr r3, [r2]
 	ldr ip, [r3, #0x264]
 	ldrb r2, [fp, #-0x59]
@@ -2244,7 +2284,7 @@ _03001F74:
 	mov r0, #0x5a000
 	rsb r1, r5, r1
 	bl ovxDC_3003624
-	ldr r1, _030021EC @ =0x03006684
+	ldr r1, _030021EC @ =ovxDC_3006684
 	mov r3, #0x1180
 	ldr r2, [r1]
 	add r3, r3, #0x33
@@ -2273,20 +2313,20 @@ _03002070:
 	ldr r0, [fp, #-0x64]
 	lsl r3, r5, #0xd
 	mla r0, r4, r0, r3
-	ldr r3, _030021EC @ =0x03006684
+	ldr r3, _030021EC @ =ovxDC_3006684
 	ldr r2, [r3]
 	ldr ip, [r2, #0x264]
 	ldrb r3, [fp, #-0x59]
 	ldrb r1, [ip, r3]
 	bl ovxDC_3003624
-	ldr r6, _030021EC @ =0x03006684
+	ldr r6, _030021EC @ =ovxDC_3006684
 	ldr r2, [r6]
 	mov r3, #0x1180
 	str r0, [r2, #0x11c]
 	add r3, r3, #0x33
 	str r3, [r2, #0x124]
 _030020B0:
-	ldr r1, _030021EC @ =0x03006684
+	ldr r1, _030021EC @ =ovxDC_3006684
 	ldr r2, [r1]
 	ldr r3, [r2, #0x14c]
 	orr r3, r3, #6
@@ -2302,7 +2342,7 @@ _030020C8:
 	movhi r3, r2
 	str r3, [r0, #0x124]
 _030020E8:
-	ldr r3, _030021EC @ =0x03006684
+	ldr r3, _030021EC @ =ovxDC_3006684
 	ldr r2, [r3]
 	ldr r3, [r2, #0x128]
 	tst r3, #0x80
@@ -2327,7 +2367,7 @@ _03002130:
 	mov lr, #0
 	mov r4, #0x118
 	add r4, r4, #2
-	ldr r6, _030021EC @ =0x03006684
+	ldr r6, _030021EC @ =ovxDC_3006684
 _0300214C:
 	ldr r0, [r6]
 	ldr r3, [r0, #0x14c]
@@ -2371,7 +2411,7 @@ _030021B8:
 	strb r1, [r0, lr]
 	b _03002228
 	.align 2, 0
-_030021EC: .4byte 0x03006684
+_030021EC: .4byte ovxDC_3006684
 _030021F0:
 	ldr r0, [r6]
 	ldr r3, [r0, #0x14c]
@@ -2439,7 +2479,7 @@ _030022C4:
 	cmp lr, #0x2f
 	ble _0300214C
 _030022E0:
-	ldr r3, _03002324 @ =0x03006684
+	ldr r3, _03002324 @ =ovxDC_3006684
 	ldr ip, [r3]
 	mov r0, #0xff00
 	ldr r3, [ip, #0x14c]
@@ -2457,7 +2497,7 @@ _030022E0:
 	strb r3, [r0]
 	b _03002328
 	.align 2, 0
-_03002324: .4byte 0x03006684
+_03002324: .4byte ovxDC_3006684
 _03002328:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
@@ -2466,7 +2506,7 @@ _03002328:
 ovxDC_3002330: @ 0x03002330
 	mov ip, sp
 	push {r4, r5, r6, r7, r8, sl, fp, ip, lr, pc}
-	ldr r8, _030023B0 @ =0x03006684
+	ldr r8, _030023B0 @ =ovxDC_3006684
 	sub fp, ip, #4
 	ldr r2, [r8]
 	mov sl, r0
@@ -2498,7 +2538,7 @@ _03002374:
 	ldrlt r6, [r3, #0x38]
 	b _030023EC
 	.align 2, 0
-_030023B0: .4byte 0x03006684
+_030023B0: .4byte ovxDC_3006684
 _030023B4:
 	ldr r0, [r2, #0x1c]
 	asr r0, r0, #7
@@ -2567,7 +2607,7 @@ ovxDC_3002460: @ 0x03002460
 	orr r2, r2, #2
 	strb r2, [ip]
 	ldrb r3, [ip]
-	ldr r0, _03002594 @ =0x03006684
+	ldr r0, _03002594 @ =ovxDC_3006684
 	orr r3, r3, #0x20
 	strb r3, [ip]
 	ldr lr, [r0]
@@ -2635,7 +2675,7 @@ _03002588:
 	sub r0, r0, #2
 	b _03002620
 	.align 2, 0
-_03002594: .4byte 0x03006684
+_03002594: .4byte ovxDC_3006684
 _03002598:
 	ldr r3, [r4]
 	ldr r2, [r3, #0x128]
@@ -2718,13 +2758,13 @@ ovxDC_3002678: @ 0x03002678
 	mov r1, #0xb
 	str r1, [fp, #-0x38]
 	mov sl, #0x2d000
-	ldr r2, _030029A8 @ =0x03006168
+	ldr r2, _030029A8 @ =ovxDC_3006168
 	add sl, sl, #0x104
 	str r2, [fp, #-0x44]
 	mov r6, #7
 	b _03002704
 _030026CC:
-	ldr r3, _030029AC @ =0x03006684
+	ldr r3, _030029AC @ =ovxDC_3006684
 	mov ip, #1
 	str ip, [fp, #-0x30]
 	ldr r2, [r3]
@@ -2734,7 +2774,7 @@ _030026CC:
 	mov sl, #0x2d000
 	ldrb r6, [r3, #0x31]
 	add sl, sl, #0x104
-	ldr r1, _030029B0 @ =0x03006154
+	ldr r1, _030029B0 @ =ovxDC_3006154
 	subs r6, r6, #0xb
 	movmi r6, #0
 	str r1, [fp, #-0x44]
@@ -2780,7 +2820,7 @@ _03002774:
 	cmp r6, #0
 	movlt r6, #0
 _03002794:
-	ldr r4, _030029AC @ =0x03006684
+	ldr r4, _030029AC @ =ovxDC_3006684
 	ldr r3, [r4]
 	strb r6, [r3, #0x46]
 	ldr r2, [r4]
@@ -2923,9 +2963,9 @@ _03002980:
 	movgt r3, #2
 	b _030029C4
 	.align 2, 0
-_030029A8: .4byte 0x03006168
-_030029AC: .4byte 0x03006684
-_030029B0: .4byte 0x03006154
+_030029A8: .4byte ovxDC_3006168
+_030029AC: .4byte ovxDC_3006684
+_030029B0: .4byte ovxDC_3006154
 _030029B4:
 	mov r6, r8
 	cmp r5, #0
@@ -2958,7 +2998,7 @@ _030029FC:
 _03002A14:
 	cmp r7, #0x10
 	bgt _03002724
-	ldr r4, _03002A88 @ =0x03006684
+	ldr r4, _03002A88 @ =ovxDC_3006684
 	ldr r3, [r4]
 	strb r8, [r3, #0x46]
 	ldr r2, [r4]
@@ -2989,7 +3029,7 @@ _03002A80:
 _03002A84:
 	b _03002A8C
 	.align 2, 0
-_03002A88: .4byte 0x03006684
+_03002A88: .4byte ovxDC_3006684
 _03002A8C:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
@@ -2998,7 +3038,7 @@ _03002A8C:
 ovxDC_3002A94: @ 0x03002A94
 	mov ip, sp
 	push {r4, fp, ip, lr, pc}
-	ldr r3, _03002BE8 @ =0x03006684
+	ldr r3, _03002BE8 @ =ovxDC_3006684
 	sub sp, sp, #8
 	ldr r2, [r3]
 	ldr r1, [r2, #0x264]
@@ -3017,7 +3057,7 @@ _03002ACC: @ jump table
 	.4byte _03002B70 @ case 3
 	.4byte _03002BB4 @ case 4
 _03002AE0:
-	ldr r0, _03002BEC @ =0x0300617C
+	ldr r0, _03002BEC @ =ovxDC_300617C
 	mov r1, #0x14
 	bl ovxDC_300300C
 	cmp r0, #0
@@ -3036,7 +3076,7 @@ _03002AE0:
 	mov r1, #2
 	b _03002BD4
 _03002B28:
-	ldr r0, _03002BF0 @ =0x030061A4
+	ldr r0, _03002BF0 @ =ovxDC_30061A4
 	mov r1, #5
 	bl ovxDC_300300C
 	cmp r0, #0
@@ -3055,7 +3095,7 @@ _03002B28:
 	mov r1, #2
 	b _03002BD4
 _03002B70:
-	ldr r0, _03002BF4 @ =0x030061DA
+	ldr r0, _03002BF4 @ =ovxDC_30061DA
 	mov r1, #0x1c
 	bl ovxDC_300300C
 	cmp r0, #0
@@ -3080,7 +3120,7 @@ _03002BB4:
 	add r0, r0, #0x21c
 	b _03002BD4
 _03002BCC:
-	ldr r0, _03002BF8 @ =0x030061AE
+	ldr r0, _03002BF8 @ =ovxDC_30061AE
 	mov r1, #0x16
 _03002BD4:
 	bl ovxDC_300300C
@@ -3090,11 +3130,11 @@ _03002BE0:
 	mvn r0, #0
 	b _03002C00
 	.align 2, 0
-_03002BE8: .4byte 0x03006684
-_03002BEC: .4byte 0x0300617C
-_03002BF0: .4byte 0x030061A4
-_03002BF4: .4byte 0x030061DA
-_03002BF8: .4byte 0x030061AE
+_03002BE8: .4byte ovxDC_3006684
+_03002BEC: .4byte ovxDC_300617C
+_03002BF0: .4byte ovxDC_30061A4
+_03002BF4: .4byte ovxDC_30061DA
+_03002BF8: .4byte ovxDC_30061AE
 _03002BFC:
 	mov r0, #0
 _03002C00:
@@ -3502,7 +3542,7 @@ ovxDC_3003140: @ 0x03003140
 	cmp r3, #0x284
 	blo _0300317C
 	ldr r3, [r0, #4]
-	ldr r2, _03003188 @ =0x03006684
+	ldr r2, _03003188 @ =ovxDC_3006684
 	add r3, r3, #3
 	bic r3, r3, #3
 	str r3, [r2]
@@ -3515,7 +3555,7 @@ _0300317C:
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03003188: .4byte 0x03006684
+_03003188: .4byte ovxDC_3006684
 
 	arm_func_start ovxDC_300318C
 ovxDC_300318C: @ 0x0300318C
@@ -3523,7 +3563,7 @@ ovxDC_300318C: @ 0x0300318C
 	push {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr, pc}
 	sub fp, ip, #4
 	sub sp, sp, #0x10
-	ldr r5, _03003410 @ =0x03006684
+	ldr r5, _03003410 @ =ovxDC_3006684
 	ldr r4, [r5]
 	mov lr, #0x1ec
 	ldrb r3, [r4, lr]
@@ -3686,16 +3726,16 @@ _030033E4:
 	bne _03003438
 	tst r0, #0x20
 	bne _03003418
-	ldr r2, _03003414 @ =0x03006134
+	ldr r2, _03003414 @ =ovxDC_3006134
 	orr r3, r0, #0x20
 	str r3, [r1, #0x14c]
 	strh r4, [r2]
 	b _03003438
 	.align 2, 0
-_03003410: .4byte 0x03006684
-_03003414: .4byte 0x03006134
+_03003410: .4byte ovxDC_3006684
+_03003414: .4byte ovxDC_3006134
 _03003418:
-	ldr r3, _03003434 @ =0x03006134
+	ldr r3, _03003434 @ =ovxDC_3006134
 	ldrsh r2, [r3]
 	cmp r2, r4
 	beq _03003438
@@ -3703,7 +3743,7 @@ _03003418:
 	str r3, [r1, #0x14c]
 	b _03003438
 	.align 2, 0
-_03003434: .4byte 0x03006134
+_03003434: .4byte ovxDC_3006134
 _03003438:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
@@ -3731,7 +3771,7 @@ ovxDC_3003464: @ 0x03003464
 	bl ovxDC_3003534
 	cmn r0, #1
 	beq _030034EC
-	ldr r2, _03003524 @ =0x03006684
+	ldr r2, _03003524 @ =ovxDC_3006684
 	ldr r2, [r2]
 	ldrb r3, [r2, #0x47]
 	and r3, r3, #0xf
@@ -3773,7 +3813,7 @@ _030034F8:
 	str r3, [r4]
 	b _0300352C
 	.align 2, 0
-_03003524: .4byte 0x03006684
+_03003524: .4byte ovxDC_3006684
 _03003528:
 	str r5, [r4]
 _0300352C:
@@ -3810,7 +3850,7 @@ ovxDC_3003534: @ 0x03003534
 	add r3, r3, #0x4000
 	asr r5, r3, #0xf
 	add r2, r5, r5, lsl #2
-	ldr r3, _03003618 @ =0x03006684
+	ldr r3, _03003618 @ =ovxDC_3006684
 	add lr, r2, r1
 	ldr r8, [r3]
 _030035B0:
@@ -3841,7 +3881,7 @@ _030035B0:
 	moveq r0, #0
 	b _0300361C
 	.align 2, 0
-_03003618: .4byte 0x03006684
+_03003618: .4byte ovxDC_3006684
 _0300361C:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
@@ -3859,7 +3899,7 @@ ovxDC_3003624: @ 0x03003624
 ovxDC_300363C: @ 0x0300363C
 	mov ip, sp
 	push {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr, pc}
-	ldr r3, _030038E4 @ =0x03006684
+	ldr r3, _030038E4 @ =ovxDC_3006684
 	sub sp, sp, #0x94
 	ldr lr, [r3]
 	sub fp, ip, #4
@@ -3891,7 +3931,7 @@ _03003694:
 _030036B4:
 	mov sl, #0
 	mov r8, sl
-	ldr r2, _030038E4 @ =0x03006684
+	ldr r2, _030038E4 @ =ovxDC_3006684
 	mov sb, sl
 	ldr ip, [r2]
 	mov r5, r0
@@ -3929,7 +3969,7 @@ _03003710:
 	rsb r4, r3, #0
 	cmp r4, r3
 	bge _030037A0
-	ldr lr, _030038E4 @ =0x03006684
+	ldr lr, _030038E4 @ =ovxDC_3006684
 	sub r1, fp, #0xa8
 	mov r7, lr
 _0300375C:
@@ -3958,7 +3998,7 @@ _030037A0:
 	cmp r5, r3
 	blt _03003710
 _030037B4:
-	ldr r2, _030038E4 @ =0x03006684
+	ldr r2, _030038E4 @ =ovxDC_3006684
 	ldr r3, [r2]
 	mvn r4, #0
 	ldr r1, [r3, #0x1a0]
@@ -3986,7 +4026,7 @@ _030037F8:
 	cmp r3, #1
 	bgt _030037F8
 _0300381C:
-	ldr r2, _030038E4 @ =0x03006684
+	ldr r2, _030038E4 @ =ovxDC_3006684
 	ldr r3, [r2]
 	add r5, r4, #1
 	ldr r2, [r3, #0x1a0]
@@ -4024,7 +4064,7 @@ _0300387C:
 	mov r0, r6
 	bl ovxDC_3003624
 	ldr r2, [fp, #-0xac]
-	ldr r3, _030038E4 @ =0x03006684
+	ldr r3, _030038E4 @ =ovxDC_3006684
 	str r0, [r2, #4]
 	ldr r1, [r3]
 	rsb r4, r5, r4
@@ -4039,7 +4079,7 @@ _0300387C:
 	movle r0, #0
 	b _030038EC
 	.align 2, 0
-_030038E4: .4byte 0x03006684
+_030038E4: .4byte ovxDC_3006684
 _030038E8:
 	mvn r0, #0
 _030038EC:
@@ -4062,7 +4102,7 @@ ovxDC_30038F4: @ 0x030038F4
 	mov r2, r1
 	str r1, [fp, #-0x80]
 	mov r0, #0
-	ldr r1, _03003C1C @ =0x03006684
+	ldr r1, _03003C1C @ =ovxDC_3006684
 _03003930:
 	strb r0, [r3], #-1
 	cmp r3, r2
@@ -4272,7 +4312,7 @@ _03003BEC:
 	moveq lr, r2
 	b _03003BE8
 	.align 2, 0
-_03003C1C: .4byte 0x03006684
+_03003C1C: .4byte ovxDC_3006684
 _03003C20:
 	add r3, ip, #2
 	ldrb r2, [r0, r3]
@@ -4392,7 +4432,7 @@ _03003DB0:
 	mvn ip, #2
 	ldr lr, [sl]
 	add r3, r3, r3, lsl #2
-	ldr r2, _03003EA0 @ =0x03006684
+	ldr r2, _03003EA0 @ =ovxDC_3006684
 	add r3, lr, r3, lsl #6
 	ldr r1, [r2]
 	add r0, r3, ip
@@ -4449,7 +4489,7 @@ _03003E2C:
 	mov r0, #0
 	b _03003EA8
 	.align 2, 0
-_03003EA0: .4byte 0x03006684
+_03003EA0: .4byte ovxDC_3006684
 _03003EA4:
 	mvn r0, #0
 _03003EA8:
@@ -4493,7 +4533,7 @@ _03003F00:
 	cmp r0, #5
 	ble _03004134
 _03003F34:
-	ldr r3, _0300413C @ =0x03006684
+	ldr r3, _0300413C @ =ovxDC_3006684
 	ldr r0, [r3]
 	ldr r2, [r0, #0x12c]
 	add r2, r0, r2
@@ -4631,7 +4671,7 @@ _03004134:
 	mvn r0, #0
 	b _03004170
 	.align 2, 0
-_0300413C: .4byte 0x03006684
+_0300413C: .4byte ovxDC_3006684
 _03004140:
 	ldr ip, [r7]
 	ldr r3, [r8, #4]
@@ -4677,7 +4717,7 @@ ovxDC_3004178: @ 0x03004178
 	cmp r5, #0
 	beq _03004204
 	mov r1, r7
-	ldr r3, _0300423C @ =0x03006684
+	ldr r3, _0300423C @ =ovxDC_3006684
 	mov r2, #0x50
 	ldr ip, [r3]
 	sub r0, r8, #1
@@ -4687,7 +4727,7 @@ ovxDC_3004178: @ 0x03004178
 	bl ovxDC_3004264
 	b _0300425C
 _03004204:
-	ldr r3, _0300423C @ =0x03006684
+	ldr r3, _0300423C @ =ovxDC_3006684
 	ldr ip, [r3]
 	ldr r2, [ip, #0x128]
 	tst r2, #0x40
@@ -4702,7 +4742,7 @@ _03004204:
 	bl ovxDC_3004264
 	b _0300425C
 	.align 2, 0
-_0300423C: .4byte 0x03006684
+_0300423C: .4byte ovxDC_3006684
 _03004240:
 	mov r1, r7
 	sub r0, r8, #1
@@ -4842,7 +4882,7 @@ _03004434:
 	asr r2, lr, #7
 	asr r3, ip, #7
 	subs r7, r7, #1
-	ldr r0, _0300476C @ =0x03006684
+	ldr r0, _0300476C @ =ovxDC_3006684
 	add r1, r3, r3, lsl #2
 	ldr r3, [r0]
 	add r1, r2, r1, lsl #6
@@ -4931,7 +4971,7 @@ _03004588:
 	asr r2, lr, #7
 	asr r3, ip, #7
 	subs r7, r7, #1
-	ldr r0, _0300476C @ =0x03006684
+	ldr r0, _0300476C @ =ovxDC_3006684
 	add r1, r3, r3, lsl #2
 	ldr r3, [r0]
 	add r1, r2, r1, lsl #6
@@ -5035,7 +5075,7 @@ _03004718:
 	asr r2, lr, #7
 	asr r3, ip, #7
 	subs r7, r7, #1
-	ldr r0, _0300476C @ =0x03006684
+	ldr r0, _0300476C @ =ovxDC_3006684
 	add r1, r3, r3, lsl #2
 	ldr r3, [r0]
 	add r1, r2, r1, lsl #6
@@ -5054,7 +5094,7 @@ _03004718:
 	mov sl, #0
 	b _03004774
 	.align 2, 0
-_0300476C: .4byte 0x03006684
+_0300476C: .4byte ovxDC_3006684
 _03004770:
 	lsl sl, sl, #1
 _03004774:
@@ -5079,7 +5119,7 @@ ovxDC_30047AC: @ 0x030047AC
 	push {r4, r5, r6, r7, r8, sl, fp, ip, lr, pc}
 	sub fp, ip, #4
 	mov r5, r0
-	ldr ip, _03004888 @ =0x03006684
+	ldr ip, _03004888 @ =ovxDC_3006684
 	mov r8, #0
 	ldr r2, [ip]
 	mov r6, r1
@@ -5133,7 +5173,7 @@ _03004878:
 	mov r0, r8
 	b _030048D8
 	.align 2, 0
-_03004888: .4byte 0x03006684
+_03004888: .4byte ovxDC_3006684
 _0300488C:
 	mov r8, #1
 _03004890:
@@ -5165,7 +5205,7 @@ _030048D8:
 ovxDC_30048E0: @ 0x030048E0
 	mov ip, sp
 	push {fp, ip, lr, pc}
-	ldr r1, _0300496C @ =0x03006684
+	ldr r1, _0300496C @ =ovxDC_3006684
 	ldr r2, [r0]
 	sub fp, ip, #4
 	ldr r3, [r0, #4]
@@ -5200,7 +5240,7 @@ _0300493C:
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_0300496C: .4byte 0x03006684
+_0300496C: .4byte ovxDC_3006684
 
 	arm_func_start ovxDC_3004970
 ovxDC_3004970: @ 0x03004970
@@ -5268,7 +5308,7 @@ ovxDC_3004A3C: @ 0x03004A3C
 	sub fp, ip, #4
 	sub sp, sp, #0x6c
 	str r0, [fp, #-0x84]
-	ldr ip, _03004D5C @ =0x03006684
+	ldr ip, _03004D5C @ =ovxDC_3006684
 	ldr r1, [r0]
 	ldr r2, [ip]
 	ldr r0, [r0, #4]
@@ -5287,7 +5327,7 @@ _03004A88:
 	str r2, [fp, #-0x90]
 	str r3, [fp, #-0x6c]
 _03004A94:
-	ldr ip, _03004D5C @ =0x03006684
+	ldr ip, _03004D5C @ =ovxDC_3006684
 	ldr r3, [ip]
 	ldr r2, [r3, #0x198]
 	add r2, r2, r7
@@ -5297,7 +5337,7 @@ _03004A94:
 	subgt sl, fp, #0x78
 	suble sl, fp, #0x78
 	strle r2, [fp, #-0x74]
-	ldr r1, _03004D5C @ =0x03006684
+	ldr r1, _03004D5C @ =ovxDC_3006684
 	ldr r2, [r1]
 	mov r3, #0
 	str r3, [fp, #-0x8c]
@@ -5339,7 +5379,7 @@ _03004B20:
 	cmp r1, #3
 	ble _03004B20
 _03004B5C:
-	ldr r2, _03004D5C @ =0x03006684
+	ldr r2, _03004D5C @ =ovxDC_3006684
 	ldr r1, [r2]
 	mov r2, #0x13c
 	ldr r3, [r1, #0x190]
@@ -5416,7 +5456,7 @@ _03004C44:
 	asr r5, r1, #1
 	rsb r0, r4, r0
 	bl ovxDC_3003440
-	ldr r1, _03004D5C @ =0x03006684
+	ldr r1, _03004D5C @ =ovxDC_3006684
 	ldr r3, [r1]
 	ldr r2, [r3, #0x178]
 	cmp r0, r2
@@ -5425,7 +5465,7 @@ _03004C44:
 	ldr r0, [r2, #4]
 	rsb r0, r5, r0
 	bl ovxDC_3003440
-	ldr r3, _03004D5C @ =0x03006684
+	ldr r3, _03004D5C @ =ovxDC_3006684
 	ldr ip, [r3]
 	ldr r3, [ip, #0x17c]
 	cmp r0, r3
@@ -5446,7 +5486,7 @@ _03004CDC:
 	cmp r2, #1
 	bne _03004D1C
 	ldr r3, [fp, #-0x84]
-	ldr ip, _03004D5C @ =0x03006684
+	ldr ip, _03004D5C @ =ovxDC_3006684
 	ldr r2, [r3]
 	ldr r3, [fp, #-0x48]
 	ldr r1, [ip]
@@ -5478,12 +5518,12 @@ _03004D30:
 	mov r0, #0
 	b _03004D90
 	.align 2, 0
-_03004D5C: .4byte 0x03006684
+_03004D5C: .4byte ovxDC_3006684
 _03004D60:
 	ldr ip, [fp, #-0x84]
 	ldr r3, [fp, #-0x68]
 	ldr r2, [ip]
-	ldr ip, _03004D94 @ =0x03006684
+	ldr ip, _03004D94 @ =ovxDC_3006684
 	ldr r1, [ip]
 	rsb r3, r2, r3
 	str r3, [r1, #0x150]
@@ -5495,7 +5535,7 @@ _03004D60:
 _03004D90:
 	b _03004D98
 	.align 2, 0
-_03004D94: .4byte 0x03006684
+_03004D94: .4byte ovxDC_3006684
 _03004D98:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
@@ -5504,7 +5544,7 @@ _03004D98:
 ovxDC_3004DA0: @ 0x03004DA0
 	mov ip, sp
 	push {r4, r5, fp, ip, lr, pc}
-	ldr r2, _03004F04 @ =0x03006684
+	ldr r2, _03004F04 @ =ovxDC_3006684
 	sub fp, ip, #4
 	mov ip, r0
 	ldr lr, [r2]
@@ -5594,7 +5634,7 @@ _03004EE8:
 	mov r0, #0
 	b _03004F1C
 	.align 2, 0
-_03004F04: .4byte 0x03006684
+_03004F04: .4byte ovxDC_3006684
 _03004F08:
 	ldrb r3, [r2, #0x44]
 	and r3, r3, #0xf
@@ -5647,7 +5687,7 @@ _03004FA8:
 	cmp r4, #0
 	beq _03004FF4
 	ble _03005000
-	ldr r4, _03004FFC @ =0x03006684
+	ldr r4, _03004FFC @ =ovxDC_3006684
 	ldr r3, [r4]
 	ldr r1, [r3, #0x1ac]
 	ldr r2, [r3, #0x158]
@@ -5667,9 +5707,9 @@ _03004FF4:
 	mvn r0, #0
 	b _03005048
 	.align 2, 0
-_03004FFC: .4byte 0x03006684
+_03004FFC: .4byte ovxDC_3006684
 _03005000:
-	ldr r4, _0300504C @ =0x03006684
+	ldr r4, _0300504C @ =ovxDC_3006684
 	ldr r3, [r4]
 	ldr r1, [r3, #0x1ac]
 	ldr r2, [r3, #0x158]
@@ -5691,7 +5731,7 @@ _03005044:
 _03005048:
 	b _03005050
 	.align 2, 0
-_0300504C: .4byte 0x03006684
+_0300504C: .4byte ovxDC_3006684
 _03005050:
 	ldmdb fp, {r4, r5, r6, r7, fp, sp, lr}
 	bx lr
@@ -5700,7 +5740,7 @@ _03005050:
 ovxDC_3005058: @ 0x03005058
 	mov ip, sp
 	push {fp, ip, lr, pc}
-	ldr lr, _0300511C @ =0x03006684
+	ldr lr, _0300511C @ =ovxDC_3006684
 	ldr r2, [lr]
 	mvn r3, #3
 	str r0, [r2, #0x1a8]
@@ -5748,7 +5788,7 @@ ovxDC_3005058: @ 0x03005058
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_0300511C: .4byte 0x03006684
+_0300511C: .4byte ovxDC_3006684
 
 	arm_func_start ovxDC_3005120
 ovxDC_3005120: @ 0x03005120
@@ -5764,7 +5804,7 @@ ovxDC_3005120: @ 0x03005120
 	str r1, [r6]
 	mov sb, r1
 	ble _03005174
-	ldr r2, _0300523C @ =0x03006684
+	ldr r2, _0300523C @ =ovxDC_3006684
 	ldr r3, [r2]
 	ldr r1, [r3, #0x1b8]
 	ldr r3, [fp, #-0x2c]
@@ -5774,7 +5814,7 @@ ovxDC_3005120: @ 0x03005120
 	movge r5, #0xf5
 	b _03005190
 _03005174:
-	ldr r1, _0300523C @ =0x03006684
+	ldr r1, _0300523C @ =ovxDC_3006684
 	ldr r3, [r1]
 	ldr r2, [r3, #0x1b8]
 	ldr r3, [fp, #-0x2c]
@@ -5791,7 +5831,7 @@ _03005198:
 	ldr r0, [r6]
 	cmn r0, #1
 	beq _03005240
-	ldr r2, _0300523C @ =0x03006684
+	ldr r2, _0300523C @ =ovxDC_3006684
 	ldr r3, [r2]
 	ldr r2, [r3, #0x148]
 	bic r2, r2, #2
@@ -5829,7 +5869,7 @@ _03005214:
 	mov sb, r2
 	b _03005198
 	.align 2, 0
-_0300523C: .4byte 0x03006684
+_0300523C: .4byte ovxDC_3006684
 _03005240:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
@@ -5840,7 +5880,7 @@ ovxDC_3005248: @ 0x03005248
 	push {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr, pc}
 	sub fp, ip, #4
 	sub sp, sp, #0x14
-	ldr ip, _030054B4 @ =0x03006684
+	ldr ip, _030054B4 @ =ovxDC_3006684
 	ldr r2, [ip]
 	mov r3, #2
 	str r3, [r2, #0x1a8]
@@ -6010,7 +6050,7 @@ _03005474:
 	mov r0, #0
 	b _030054BC
 	.align 2, 0
-_030054B4: .4byte 0x03006684
+_030054B4: .4byte ovxDC_3006684
 _030054B8:
 	mvn r0, #0
 _030054BC:
@@ -6023,7 +6063,7 @@ ovxDC_30054C4: @ 0x030054C4
 	push {fp, ip, lr, pc}
 	sub fp, ip, #4
 	mov ip, #0x67
-	ldr lr, _030054F4 @ =0x03006214
+	ldr lr, _030054F4 @ =ovxDC_3006214
 _030054D8:
 	ldrh r3, [r1], #2
 	ldrb r2, [lr, r3]
@@ -6033,7 +6073,7 @@ _030054D8:
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_030054F4: .4byte 0x03006214
+_030054F4: .4byte ovxDC_3006214
 
 	arm_func_start ovxDC_30054F8
 ovxDC_30054F8: @ 0x030054F8
@@ -6044,9 +6084,9 @@ ovxDC_30054F8: @ 0x030054F8
 	sub sp, sp, #0x10
 	str r1, [fp, #-0x30]
 	mov r6, r0
-	ldr sb, _030055F8 @ =0x03006654
+	ldr sb, _030055F8 @ =ovxDC_3006654
 	sub r7, fp, #0x2c
-	ldr r8, _030055FC @ =0x03006634
+	ldr r8, _030055FC @ =ovxDC_3006634
 _03005520:
 	ldrb r3, [r6, r2]
 	cmp r3, #0
@@ -6066,7 +6106,7 @@ _03005520:
 	mov r3, #0x18
 	bl ovxDC_3005900
 	mov r0, r7
-	ldr r3, _03005600 @ =0x03006614
+	ldr r3, _03005600 @ =ovxDC_3006614
 	mov r1, r5
 	str r3, [sp]
 	mov r2, #0x18
@@ -6104,9 +6144,9 @@ _030055C4:
 	mov r0, #1
 	b _03005608
 	.align 2, 0
-_030055F8: .4byte 0x03006654
-_030055FC: .4byte 0x03006634
-_03005600: .4byte 0x03006614
+_030055F8: .4byte ovxDC_3006654
+_030055FC: .4byte ovxDC_3006634
+_03005600: .4byte ovxDC_3006614
 _03005604:
 	mvn r0, #0
 _03005608:
@@ -6488,7 +6528,7 @@ _03005B04:
 	mov r4, #0
 	str r4, [r5]
 	ldr ip, [fp, #-0x2c]
-	ldr r6, _03005BA4 @ =0x03006684
+	ldr r6, _03005BA4 @ =ovxDC_3006684
 	ldr r1, [fp, #-0x24]
 	ldr r3, [r6]
 	ldr r2, [r3, #0x1bc]
@@ -6528,7 +6568,7 @@ _03005B84:
 	asr r0, r4, r0
 	b _03005BAC
 	.align 2, 0
-_03005BA4: .4byte 0x03006684
+_03005BA4: .4byte ovxDC_3006684
 _03005BA8:
 	mvn r0, #0
 _03005BAC:
@@ -6551,7 +6591,7 @@ ovxDC_3005BB4: @ 0x03005BB4
 	str r3, [fp, #-0x30]
 	cmp ip, r2
 	blt _03005D80
-	ldr r8, _03005CFC @ =0x03006684
+	ldr r8, _03005CFC @ =ovxDC_3006684
 _03005BF0:
 	mov lr, #0
 	ldr r1, [r5]
@@ -6624,7 +6664,7 @@ _03005CC4:
 	ldr r0, [r5]
 	b _03005D08
 	.align 2, 0
-_03005CFC: .4byte 0x03006684
+_03005CFC: .4byte ovxDC_3006684
 _03005D00:
 	mov lr, #0
 	mov r7, lr
@@ -6716,7 +6756,7 @@ _03005E1C:
 	bl ovxDC_3005FDC
 	cmp r0, #0
 	bne _03005E6C
-	ldr r3, _03005E68 @ =0x03006684
+	ldr r3, _03005E68 @ =ovxDC_3006684
 	ldr ip, [fp, #-0x24]
 	ldr r2, [r3]
 	ldr r1, [r2, #0x1bc]
@@ -6729,7 +6769,7 @@ _03005E1C:
 	str r3, [r5]
 	b _03005E70
 	.align 2, 0
-_03005E68: .4byte 0x03006684
+_03005E68: .4byte ovxDC_3006684
 _03005E6C:
 	mvn r0, #0
 _03005E70:
@@ -6746,7 +6786,7 @@ ovxDC_3005E78: @ 0x03005E78
 	str r3, [sl]
 	ldr r4, [r0]
 	sub fp, ip, #4
-	ldr r3, _03005F60 @ =0x03006684
+	ldr r3, _03005F60 @ =ovxDC_3006684
 	mov r7, #0xf
 	ldr ip, [r3]
 	asr lr, r4, #3
@@ -6800,7 +6840,7 @@ _03005F48:
 	mov r0, #0
 	b _03005FD4
 	.align 2, 0
-_03005F60: .4byte 0x03006684
+_03005F60: .4byte ovxDC_3006684
 _03005F64:
 	ldr r2, [sl]
 	subs r3, r0, #0xf
@@ -6848,7 +6888,7 @@ ovxDC_3005FDC: @ 0x03005FDC
 	sub fp, ip, #4
 	ldr r4, [r0]
 	mov r7, #0xf
-	ldr r3, _030060C0 @ =0x03006684
+	ldr r3, _030060C0 @ =ovxDC_3006684
 	mov sb, r2
 	ldr ip, [r3]
 	asr lr, r4, #3
@@ -6901,7 +6941,7 @@ _030060AC:
 	mov r0, #0
 	b _0300612C
 	.align 2, 0
-_030060C0: .4byte 0x03006684
+_030060C0: .4byte ovxDC_3006684
 _030060C4:
 	ldr r2, [sl]
 	subs r3, r0, #0xf
@@ -6937,6 +6977,43 @@ _0300612C:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
 
-	.incbin "baserom.gba", 0x70FB10, 0x554
+ovxDC_3006134:
+	.incbin "baserom.gba", 0x70FB10, 0x4
+
+ovxDC_3006138:
+	.incbin "baserom.gba", 0x70FB14, 0x1C
+
+ovxDC_3006154:
+	.incbin "baserom.gba", 0x70FB30, 0x14
+
+ovxDC_3006168:
+	.incbin "baserom.gba", 0x70FB44, 0x14
+
+ovxDC_300617C:
+	.incbin "baserom.gba", 0x70FB58, 0x28
+
+ovxDC_30061A4:
+	.incbin "baserom.gba", 0x70FB80, 0xA
+
+ovxDC_30061AE:
+	.incbin "baserom.gba", 0x70FB8A, 0x2C
+
+ovxDC_30061DA:
+	.incbin "baserom.gba", 0x70FBB6, 0x3A
+
+ovxDC_3006214:
+	.incbin "baserom.gba", 0x70FBF0, 0x400
+
+ovxDC_3006614:
+	.incbin "baserom.gba", 0x70FFF0, 0x20
+
+ovxDC_3006634:
+	.incbin "baserom.gba", 0x710010, 0x20
+
+ovxDC_3006654:
+	.incbin "baserom.gba", 0x710030, 0x30
+
+ovxDC_3006684:
+	.incbin "baserom.gba", 0x710060, 0x4
 
 	.align 2, 0
