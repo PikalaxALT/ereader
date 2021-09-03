@@ -3,8 +3,8 @@
 	.syntax unified
 	.align 2, 0
 
-	arm_func_start sub_03000000
-sub_03000000: @ 0x03000000
+	arm_func_start ovx64_3000000
+ovx64_3000000: @ 0x03000000
 	mov ip, sp
 	push {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr, pc}
 	sub fp, ip, #4
@@ -31,11 +31,11 @@ sub_03000000: @ 0x03000000
 	mov ip, #0
 	str ip, [r4]
 	mov r3, r6
-	ldr lr, _03000114 @ =sub_0300015C
+	ldr lr, _03000114 @ =ovx64_300015C
 	mov r4, r2
 	str lr, [sp]
 	mov r2, r5
-	bl sub_03001A6C
+	bl ovx64_3001A6C
 	cmp r0, #0
 	blt _03000154
 	ldr r3, _03000118 @ =0x0202656C
@@ -76,7 +76,7 @@ _03000104: .4byte 0x03000244
 _03000108: .4byte 0x02028B64
 _0300010C: .4byte 0x02028B20
 _03000110: .4byte 0x03000A6C
-_03000114: .4byte sub_0300015C
+_03000114: .4byte ovx64_300015C
 _03000118: .4byte 0x0202656C
 _0300011C: .4byte 0x0202656E
 _03000120: .4byte 0x02026570
@@ -98,8 +98,8 @@ _03000154:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_0300015C
-sub_0300015C: @ 0x0300015C
+	arm_func_start ovx64_300015C
+ovx64_300015C: @ 0x0300015C
 	mov ip, sp
 	push {fp, ip, lr, pc}
 	sub fp, ip, #4
@@ -552,8 +552,8 @@ _0300023C:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 
-	arm_func_start sub_03001A6C
-sub_03001A6C: @ 0x03001A6C
+	arm_func_start ovx64_3001A6C
+ovx64_3001A6C: @ 0x03001A6C
 	mov ip, sp
 	push {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr, pc}
 	sub fp, ip, #4
@@ -569,7 +569,7 @@ sub_03001A6C: @ 0x03001A6C
 	ldr r1, [fp, #-0x94]
 	ldr r0, [r1, #8]
 	mov r1, #4
-	bl sub_03001EB4
+	bl ovx64_3001EB4
 	ldr r2, [fp, #-0x94]
 	lsl sl, r0, #2
 	ldr r3, [r2, #4]
@@ -666,11 +666,11 @@ _03001B94:
 	blt _03001EAC
 	mov r0, ip
 	mov r2, #8
-	bl sub_03002E40
+	bl ovx64_3002E40
 	mov r1, #0x18
 	ldr r0, [fp, #-0x60]
 	mov r2, #0x10
-	bl sub_03002EFC
+	bl ovx64_3002EFC
 	ldr r1, [fp, #-0x74]
 	ldr r3, [r1]
 	tst r3, #4
@@ -704,7 +704,7 @@ _03001C8C:
 	ldr r0, [fp, #-0x90]
 	ldr r2, [fp, #-0xa8]
 	mov r1, r5
-	bl sub_03001F50
+	bl ovx64_3001F50
 _03001CAC:
 	add r5, r5, #1
 	cmp r5, r4
@@ -718,7 +718,7 @@ _03001CB8:
 	add r0, r0, r7
 	str r3, [fp, #-0x8c]
 	add r0, r0, #3
-	bl sub_03001EB4
+	bl ovx64_3001EB4
 	lsl r0, r0, #2
 	ldr r3, [fp, #-0x94]
 	mov r1, #0x9f0
@@ -753,7 +753,7 @@ _03001D30:
 	mov r1, r2
 	add r0, r0, r2
 	sub r0, r0, #1
-	bl sub_03001EB4
+	bl ovx64_3001EB4
 	sub r1, fp, #0xa8
 	ldm r1, {r1, r3}
 	mul r3, r1, r3
@@ -832,7 +832,7 @@ _03001E30:
 	mov r1, #0
 	str ip, [fp, #-0xb0]
 	sub r2, fp, #0x8c
-	bl sub_03001FC0
+	bl ovx64_3001FC0
 	mov r8, r0
 	ldr ip, [fp, #-0xb0]
 	cmn r8, #0x10
@@ -848,8 +848,8 @@ _03001EAC:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_03001EB4
-sub_03001EB4: @ 0x03001EB4
+	arm_func_start ovx64_3001EB4
+ovx64_3001EB4: @ 0x03001EB4
 	mov ip, sp
 	mov r2, r0
 	push {fp, ip, lr, pc}
@@ -893,8 +893,8 @@ _03001F28:
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_03001F50
-sub_03001F50: @ 0x03001F50
+	arm_func_start ovx64_3001F50
+ovx64_3001F50: @ 0x03001F50
 	mov ip, sp
 	push {fp, ip, lr, pc}
 	sub fp, ip, #4
@@ -921,8 +921,8 @@ _03001FA4:
 	.byte 0x0D, 0xC0, 0xA0, 0xE1, 0x00, 0xD8, 0x2D, 0xE9, 0x08, 0x00, 0x9F, 0xE5
 	.byte 0x04, 0xB0, 0x4C, 0xE2, 0x00, 0x68, 0x1B, 0xE9, 0x1E, 0xFF, 0x2F, 0xE1, 0x7C, 0x41, 0x00, 0x03
 
-	arm_func_start sub_03001FC0
-sub_03001FC0: @ 0x03001FC0
+	arm_func_start ovx64_3001FC0
+ovx64_3001FC0: @ 0x03001FC0
 	mov ip, sp
 	push {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr, pc}
 	sub fp, ip, #4
@@ -945,7 +945,7 @@ _03002004:
 _03002010:
 	ldr r1, [fp, #4]
 	mov r0, #0x18
-	bl sub_03001EB4
+	bl ovx64_3001EB4
 	ldr r1, [fp, #8]
 	ldr r3, [r1, #0xc]
 	lsl ip, r0, #0x10
@@ -953,7 +953,7 @@ _03002010:
 	asr sl, ip, #0x10
 	ldr r1, [fp, #4]
 	sub r0, r2, #1
-	bl sub_03001EB4
+	bl ovx64_3001EB4
 	ldr r4, [fp, #4]
 	ldr r2, [fp, #-0x4c]
 	mul r4, r2, r4
@@ -967,7 +967,7 @@ _03002010:
 	add r0, r0, r1
 	sub r0, r0, #1
 	movmi r6, #0
-	bl sub_03001EB4
+	bl ovx64_3001EB4
 	mul r0, r4, r0
 	ldr lr, [fp, #0x10]
 	add r2, lr, #0x17
@@ -1044,7 +1044,7 @@ _03002174:
 	sub r1, fp, #0x40
 	ldr r3, [fp, #8]
 	sub r2, fp, #0x44
-	bl sub_03002CCC
+	bl ovx64_3002CCC
 	cmn r0, #0xc9
 	beq _03002310
 	cmp r0, #1
@@ -1149,15 +1149,15 @@ _030022EC:
 	mov r0, r8
 	ldr r3, [fp, #0xc]
 	mov r1, r7
-	bl sub_03002318
+	bl ovx64_3002318
 	cmp r0, r6
 	mvngt r0, #0x64
 _03002310:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_03002318
-sub_03002318: @ 0x03002318
+	arm_func_start ovx64_3002318
+ovx64_3002318: @ 0x03002318
 	mov ip, sp
 	push {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr, pc}
 	sub fp, ip, #4
@@ -1177,12 +1177,12 @@ sub_03002318: @ 0x03002318
 	str r3, [fp, #-0x74]
 	asr ip, ip, #1
 	str ip, [fp, #-0x78]
-	bl sub_03002EFC
+	bl ovx64_3002EFC
 	mov r2, r4
 	ldr r0, [fp, #-0x80]
 	mov r3, #1
 	mov r1, r0
-	bl sub_03002AA8
+	bl ovx64_3002AA8
 	ldr r3, [r4, #0x2c]
 	ldr sl, [fp, #-0x80]
 	cmp sl, r3
@@ -1238,7 +1238,7 @@ _03002434:
 	mov r1, r5
 	mov r2, r4
 	mov r3, #0
-	bl sub_03002AA8
+	bl ovx64_3002AA8
 	ldr r2, [r4, #0x2c]
 	add r5, r5, #1
 	ldr r3, [r4, #0x30]
@@ -1254,7 +1254,7 @@ _03002460:
 	ldm r0, {r0, r1, r2, ip}
 	ldr r3, [r4, #0x30]
 	str ip, [sp, #8]
-	bl sub_03002F7C
+	bl ovx64_3002F7C
 	mov r8, r0
 	cmn r8, #0xc9
 	beq _030026A8
@@ -1295,7 +1295,7 @@ _030024E4:
 	str r3, [sp]
 	sub r2, fp, #0x6c
 	mov r3, ip
-	bl sub_03002704
+	bl ovx64_3002704
 	ldr ip, [fp, #-0x74]
 	ldr r2, [r4, #0x3c]
 	ldr r3, [ip, #0x3c]
@@ -1429,8 +1429,8 @@ _030026FC:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_03002704
-sub_03002704: @ 0x03002704
+	arm_func_start ovx64_3002704
+ovx64_3002704: @ 0x03002704
 	mov ip, sp
 	push {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr, pc}
 	sub fp, ip, #4
@@ -1567,12 +1567,12 @@ _030027B0:
 	str r2, [fp, #-0x3c]
 _03002908:
 	add r0, sb, r8
-	bl sub_03002BD4
+	bl ovx64_3002BD4
 	add r8, r8, #2
 	lsl r3, r0, #0x10
 	add r0, sb, r8
 	asr r4, r3, #0x10
-	bl sub_03002BD4
+	bl ovx64_3002BD4
 	add r8, r8, #2
 	lsl r0, r0, #0x10
 	asr r0, r0, #0x10
@@ -1600,7 +1600,7 @@ _03002970:
 _03002980:
 	ldr r1, _03002A8C @ =0x030041AC
 	add r0, sb, r8
-	bl sub_03002C24
+	bl ovx64_3002C24
 	cmp r0, #0
 	beq _0300274C
 	mov r2, #1
@@ -1641,7 +1641,7 @@ _030029EC:
 	add r6, sb, r8
 _03002A14:
 	add r0, r6, r5
-	bl sub_03002BF4
+	bl ovx64_3002BF4
 	ldr r1, [fp, #-0x2c]
 	str r0, [r1, r4, lsl #2]
 	add r5, r5, #4
@@ -1655,7 +1655,7 @@ _03002A34:
 	add r3, sb, r8
 	ldrb r2, [r3, r5]
 	mov r1, r7
-	bl sub_03002C70
+	bl ovx64_3002C70
 	cmp r0, #0
 	beq _03002A84
 _03002A58:
@@ -1685,8 +1685,8 @@ _03002AA0:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_03002AA8
-sub_03002AA8: @ 0x03002AA8
+	arm_func_start ovx64_3002AA8
+ovx64_3002AA8: @ 0x03002AA8
 	mov ip, sp
 	push {r4, r5, r6, r7, fp, ip, lr, pc}
 	sub fp, ip, #4
@@ -1739,7 +1739,7 @@ _03002B5C:
 	mla r0, r3, r7, r6
 	ldr r2, _03002B8C @ =0x03004144
 	ldr r1, [r2]
-	bl sub_03001EB4
+	bl ovx64_3001EB4
 	ldr r2, _03002B90 @ =0x03004148
 	ldr r3, [r2]
 	adds r0, r0, r3
@@ -1770,8 +1770,8 @@ _03002BCC:
 	ldmdb fp, {r4, r5, r6, r7, fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_03002BD4
-sub_03002BD4: @ 0x03002BD4
+	arm_func_start ovx64_3002BD4
+ovx64_3002BD4: @ 0x03002BD4
 	mov ip, sp
 	push {fp, ip, lr, pc}
 	ldrb r3, [r0]
@@ -1781,8 +1781,8 @@ sub_03002BD4: @ 0x03002BD4
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_03002BF4
-sub_03002BF4: @ 0x03002BF4
+	arm_func_start ovx64_3002BF4
+ovx64_3002BF4: @ 0x03002BF4
 	mov ip, sp
 	push {fp, ip, lr, pc}
 	ldrb r3, [r0]
@@ -1796,8 +1796,8 @@ sub_03002BF4: @ 0x03002BF4
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_03002C24
-sub_03002C24: @ 0x03002C24
+	arm_func_start ovx64_3002C24
+ovx64_3002C24: @ 0x03002C24
 	mov ip, sp
 	push {fp, ip, lr, pc}
 	sub fp, ip, #4
@@ -1820,8 +1820,8 @@ _03002C64:
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_03002C70
-sub_03002C70: @ 0x03002C70
+	arm_func_start ovx64_3002C70
+ovx64_3002C70: @ 0x03002C70
 	mov ip, sp
 	push {fp, ip, lr, pc}
 	and r2, r2, #0xff
@@ -1848,8 +1848,8 @@ _03002CB8:
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_03002CCC
-sub_03002CCC: @ 0x03002CCC
+	arm_func_start ovx64_3002CCC
+ovx64_3002CCC: @ 0x03002CCC
 	mov ip, sp
 	push {r4, r5, r6, r7, r8, fp, ip, lr, pc}
 	sub fp, ip, #4
@@ -1897,7 +1897,7 @@ _03002D4C:
 	add r0, r6, #0x10
 	ldm r0, {r0, r1, r2}
 	mov r3, #0x18
-	bl sub_03002F7C
+	bl ovx64_3002F7C
 	cmn r0, #1
 	moveq r0, #0
 	beq _03002E38
@@ -1949,8 +1949,8 @@ _03002E38:
 	ldmdb fp, {r4, r5, r6, r7, r8, fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_03002E40
-sub_03002E40: @ 0x03002E40
+	arm_func_start ovx64_3002E40
+ovx64_3002E40: @ 0x03002E40
 	mov ip, sp
 	push {r4, r5, r6, fp, ip, lr, pc}
 	mov r3, #1
@@ -2007,8 +2007,8 @@ _03002EF4:
 	ldmdb fp, {r4, r5, r6, fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_03002EFC
-sub_03002EFC: @ 0x03002EFC
+	arm_func_start ovx64_3002EFC
+ovx64_3002EFC: @ 0x03002EFC
 	mov ip, sp
 	push {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr, pc}
 	mov r3, #0
@@ -2032,7 +2032,7 @@ _03002F28:
 _03002F48:
 	and r0, r7, #0xff
 	mov r1, r4
-	bl sub_0300375C
+	bl ovx64_300375C
 	strb r0, [r5, r4]
 	add r4, r4, #1
 	cmp r4, r6
@@ -2046,8 +2046,8 @@ _03002F74:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_03002F7C
-sub_03002F7C: @ 0x03002F7C
+	arm_func_start ovx64_3002F7C
+ovx64_3002F7C: @ 0x03002F7C
 	mov ip, sp
 	push {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr, pc}
 	sub fp, ip, #4
@@ -2107,7 +2107,7 @@ _03003014:
 	ldr r2, [fp, #8]
 	str r3, [sp, #8]
 	ldr r3, [fp, #-0x3c]
-	bl sub_030037B4
+	bl ovx64_30037B4
 	mov r2, #0
 	mov r4, r2
 	cmp r2, r8
@@ -2156,7 +2156,7 @@ _030030D0:
 	sub ip, fp, #0x2c
 	str ip, [sp, #0xc]
 	mov r3, r6
-	bl sub_03003390
+	bl ovx64_3003390
 	cmp r0, #1
 	bne _03003370
 	ldr r2, [fp, #-0x58]
@@ -2171,7 +2171,7 @@ _03003140:
 	cmp r7, r8
 	bge _03003208
 	mov r0, r5
-	bl sub_0300386C
+	bl ovx64_300386C
 	ldr ip, [fp, #-0x44]
 	ldr r1, [fp, #-0x38]
 	str ip, [sp]
@@ -2181,7 +2181,7 @@ _03003140:
 	mov r2, r5
 	ldr r0, [fp, #-0x34]
 	mov r3, sb
-	bl sub_03003390
+	bl ovx64_3003390
 	cmp r0, #1
 	bne _03003370
 	ldr r1, [fp, #-0x48]
@@ -2198,15 +2198,15 @@ _03003140:
 	ldr r2, [fp, #-0x44]
 	str r3, [sp, #4]
 	ldr r3, [fp, #-0x4c]
-	bl sub_03003AE0
+	bl ovx64_3003AE0
 	cmp r0, #1
 	bne _03003370
 	ldr r0, [fp, #-0x4c]
-	bl sub_0300386C
+	bl ovx64_300386C
 	cmp r6, r0
 	blt _03003208
 	ldr r0, [fp, #-0x4c]
-	bl sub_0300386C
+	bl ovx64_300386C
 	mov r6, r0
 	ldr r0, [fp, #-0x34]
 	ldr r1, [fp, #-0x38]
@@ -2215,7 +2215,7 @@ _03003140:
 	ldr r2, [fp, #-0x4c]
 	str r3, [sp, #4]
 	ldr r3, [fp, #-0x50]
-	bl sub_03003510
+	bl ovx64_3003510
 	cmn r0, #6
 	bne _03003224
 _03003208:
@@ -2246,7 +2246,7 @@ _03003224:
 	ldr r3, [fp, #-0x48]
 	str ip, [sp, #0x1c]
 	mov r4, #0
-	bl sub_030038B8
+	bl ovx64_30038B8
 	cmp r4, r6
 	bge _030032B8
 _03003278:
@@ -2258,7 +2258,7 @@ _03003278:
 	ldrb r1, [r2, r4]
 	ldrb r2, [ip, r1]
 	ldr r1, [fp, #-0x38]
-	bl sub_03003668
+	bl ovx64_3003668
 	ldr r1, [fp, #-0x50]
 	ldrb r3, [r1, r4]
 	ldr r2, [fp, #-0x3c]
@@ -2279,7 +2279,7 @@ _030032C4:
 	ldr ip, [fp, #-0x3c]
 	ldrb r2, [ip, r1]
 	ldr r1, [fp, #-0x38]
-	bl sub_03003668
+	bl ovx64_3003668
 	ldr r1, [fp, #-0x58]
 	ldrb r3, [r1, r4]
 	ldr r2, [fp, #-0x3c]
@@ -2296,7 +2296,7 @@ _03003304:
 	ldr r2, [fp, #8]
 	str r3, [sp, #8]
 	ldr r3, [fp, #-0x3c]
-	bl sub_030037B4
+	bl ovx64_30037B4
 	mov r2, #0
 	mov r4, r2
 	cmp r2, r8
@@ -2329,8 +2329,8 @@ _03003388:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_03003390
-sub_03003390: @ 0x03003390
+	arm_func_start ovx64_3003390
+ovx64_3003390: @ 0x03003390
 	mov ip, sp
 	push {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr, pc}
 	sub fp, ip, #4
@@ -2405,7 +2405,7 @@ _03003470:
 	ldr r1, [fp, #-0x30]
 	ldr r3, [fp, #-0x34]
 	mov r2, r7
-	bl sub_030037B4
+	bl ovx64_30037B4
 	mov r2, #0
 	ldr r1, [sl]
 	mov lr, r2
@@ -2440,8 +2440,8 @@ _03003508:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_03003510
-sub_03003510: @ 0x03003510
+	arm_func_start ovx64_3003510
+ovx64_3003510: @ 0x03003510
 	mov ip, sp
 	push {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr, pc}
 	sub fp, ip, #4
@@ -2467,7 +2467,7 @@ _03003550:
 	bge _03003614
 _03003568:
 	and r0, r8, #0xff
-	bl sub_03003694
+	bl ovx64_3003694
 	mov r5, #1
 	and sl, r0, #0xff
 	ldr r1, [fp, #4]
@@ -2479,17 +2479,17 @@ _0300358C:
 	and r0, sl, #0xff
 	ldrb r4, [sb, r5]
 	mov r1, r5
-	bl sub_0300375C
+	bl ovx64_300375C
 	mov r1, r0
 	mov r0, r4
 	and r1, r1, #0xff
-	bl sub_030036CC
+	bl ovx64_30036CC
 	mov r3, r0
 	ldr r0, [fp, #-0x2c]
 	and r3, r3, #0xff
 	ldr r1, [fp, #-0x30]
 	mov r2, r6
-	bl sub_03003668
+	bl ovx64_3003668
 	and r6, r0, #0xff
 	ldr r2, [fp, #4]
 	add r5, r5, #1
@@ -2537,8 +2537,8 @@ _0300364C:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_03003668
-sub_03003668: @ 0x03003668
+	arm_func_start ovx64_3003668
+ovx64_3003668: @ 0x03003668
 	mov ip, sp
 	push {fp, ip, lr, pc}
 	and r2, r2, #0xff
@@ -2551,8 +2551,8 @@ sub_03003668: @ 0x03003668
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_03003694
-sub_03003694: @ 0x03003694
+	arm_func_start ovx64_3003694
+ovx64_3003694: @ 0x03003694
 	mov ip, sp
 	push {fp, ip, lr, pc}
 	ands r0, r0, #0xff
@@ -2568,8 +2568,8 @@ sub_03003694: @ 0x03003694
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_030036CC
-sub_030036CC: @ 0x030036CC
+	arm_func_start ovx64_30036CC
+ovx64_30036CC: @ 0x030036CC
 	mov ip, sp
 	push {fp, ip, lr, pc}
 	and r3, r0, #0xff
@@ -2590,8 +2590,8 @@ _03003708:
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_03003714
-sub_03003714: @ 0x03003714
+	arm_func_start ovx64_3003714
+ovx64_3003714: @ 0x03003714
 	mov ip, sp
 	push {fp, ip, lr, pc}
 	and r3, r0, #0xff
@@ -2612,8 +2612,8 @@ _03003750:
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_0300375C
-sub_0300375C: @ 0x0300375C
+	arm_func_start ovx64_300375C
+ovx64_300375C: @ 0x0300375C
 	mov ip, sp
 	push {fp, ip, lr, pc}
 	mov r3, #0
@@ -2640,8 +2640,8 @@ _030037A8:
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_030037B4
-sub_030037B4: @ 0x030037B4
+	arm_func_start ovx64_30037B4
+ovx64_30037B4: @ 0x030037B4
 	mov ip, sp
 	push {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr, pc}
 	sub fp, ip, #4
@@ -2694,8 +2694,8 @@ _03003864:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_0300386C
-sub_0300386C: @ 0x0300386C
+	arm_func_start ovx64_300386C
+ovx64_300386C: @ 0x0300386C
 	mov ip, sp
 	push {fp, ip, lr, pc}
 	mov r1, #0x20
@@ -2718,8 +2718,8 @@ _030038AC:
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_030038B8
-sub_030038B8: @ 0x030038B8
+	arm_func_start ovx64_30038B8
+ovx64_30038B8: @ 0x030038B8
 	mov ip, sp
 	push {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr, pc}
 	sub fp, ip, #4
@@ -2738,29 +2738,29 @@ _030038E8:
 	ldrb r0, [r1, r5]
 	ldrb r8, [r2, r0]
 	mov r6, #0
-	bl sub_03003694
+	bl ovx64_3003694
 	and r7, r0, #0xff
 	mov r0, sb
 	mov r1, sl
 	ldr r2, [fp, #-0x30]
 	mov r3, r7
-	bl sub_03003DF0
+	bl ovx64_3003DF0
 	mov r4, r0
 	mov r0, sb
 	mov r1, sl
 	mov r3, r7
 	ldr r2, [fp, #8]
 	and r4, r4, #0xff
-	bl sub_03003DF0
+	bl ovx64_3003DF0
 	mov r1, r0
 	mov r0, r4
 	and r1, r1, #0xff
-	bl sub_03003714
+	bl ovx64_3003714
 	ldr r3, [fp, #0x1c]
 	strb r0, [r3, r5]
 	ldrb r0, [r3, r5]
 	mov r1, r8
-	bl sub_03003714
+	bl ovx64_3003714
 	ldr ip, [fp, #0x1c]
 	strb r0, [ip, r5]
 	ldr r0, [fp, #0x14]
@@ -2771,19 +2771,19 @@ _03003970:
 	ldr r1, [fp, #0xc]
 	ldrb r0, [r1, r6]
 	mov r1, r7
-	bl sub_030036CC
+	bl ovx64_30036CC
 	mov r3, r0
 	mov r0, sb
 	mov r1, sl
 	mov r2, #0
 	and r3, r3, #0xff
-	bl sub_03003668
+	bl ovx64_3003668
 	and r1, r0, #0xff
 	cmp r1, #0xff
 	beq _030039B8
 	ldr r2, [fp, #0x1c]
 	ldrb r0, [r2, r5]
-	bl sub_03003714
+	bl ovx64_3003714
 	ldr r3, [fp, #0x1c]
 	strb r0, [r3, r5]
 _030039B8:
@@ -2807,29 +2807,29 @@ _030039E8:
 	ldrb r0, [r2, r5]
 	ldrb r8, [r3, r0]
 	mov r6, #0
-	bl sub_03003694
+	bl ovx64_3003694
 	and r7, r0, #0xff
 	mov r0, sb
 	mov r1, sl
 	ldr r2, [fp, #-0x30]
 	mov r3, r7
-	bl sub_03003DF0
+	bl ovx64_3003DF0
 	mov r4, r0
 	mov r0, sb
 	mov r1, sl
 	mov r3, r7
 	ldr r2, [fp, #4]
 	and r4, r4, #0xff
-	bl sub_03003DF0
+	bl ovx64_3003DF0
 	mov r1, r0
 	mov r0, r4
 	and r1, r1, #0xff
-	bl sub_03003714
+	bl ovx64_3003714
 	ldr ip, [fp, #0x20]
 	strb r0, [ip, r5]
 	ldrb r0, [ip, r5]
 	mov r1, r8
-	bl sub_03003714
+	bl ovx64_3003714
 	ldr r1, [fp, #0x20]
 	strb r0, [r1, r5]
 	ldr r2, [fp, #0x18]
@@ -2840,19 +2840,19 @@ _03003A70:
 	ldr r3, [fp, #0x10]
 	ldrb r0, [r3, r6]
 	mov r1, r7
-	bl sub_030036CC
+	bl ovx64_30036CC
 	mov r3, r0
 	mov r0, sb
 	mov r1, sl
 	mov r2, #0
 	and r3, r3, #0xff
-	bl sub_03003668
+	bl ovx64_3003668
 	and r1, r0, #0xff
 	cmp r1, #0xff
 	beq _03003AB8
 	ldr ip, [fp, #0x20]
 	ldrb r0, [ip, r5]
-	bl sub_03003714
+	bl ovx64_3003714
 	ldr r1, [fp, #0x20]
 	strb r0, [r1, r5]
 _03003AB8:
@@ -2869,8 +2869,8 @@ _03003AD8:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_03003AE0
-sub_03003AE0: @ 0x03003AE0
+	arm_func_start ovx64_3003AE0
+ovx64_3003AE0: @ 0x03003AE0
 	mov ip, sp
 	push {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr, pc}
 	sub fp, ip, #4
@@ -2949,13 +2949,13 @@ _03003BFC:
 	eor r6, r6, #1
 	lsl r4, r6, #2
 	ldr r0, [r4, r5]
-	bl sub_0300386C
+	bl ovx64_300386C
 	cmp r6, #0
 	str r0, [fp, #-0x40]
 	moveq r3, #4
 	movne r3, #0
 	ldr r0, [r3, r5]
-	bl sub_0300386C
+	bl ovx64_300386C
 	str r7, [sp]
 	str r0, [sp, #0xc]
 	ldr r0, [fp, #-0x54]
@@ -2972,11 +2972,11 @@ _03003BFC:
 	ldr r0, [fp, #-0x48]
 	str ip, [sp, #8]
 	mov r1, sb
-	bl sub_03003EEC
+	bl ovx64_3003EEC
 	cmp r0, #1
 	bne _03003CAC
 	ldr r0, [r4, r8]
-	bl sub_0300386C
+	bl ovx64_300386C
 	str r7, [sp]
 	str r0, [sp, #8]
 	ldr r2, [fp, #-0x54]
@@ -2987,7 +2987,7 @@ _03003BFC:
 	mov r1, sb
 	str ip, [sp, #4]
 	mov r2, r7
-	bl sub_03003390
+	bl ovx64_3003390
 	cmp r0, #1
 	beq _03003CC8
 _03003CAC:
@@ -3004,7 +3004,7 @@ _03003CC8:
 	moveq r3, #4
 	movne r3, #0
 	ldr r0, [r3, r8]
-	bl sub_0300386C
+	bl ovx64_300386C
 	sub r3, fp, #0x44
 	str r0, [sp, #4]
 	cmp r6, #0
@@ -3018,7 +3018,7 @@ _03003CC8:
 	mov r3, r7
 	str ip, [sp, #8]
 	mov r1, sb
-	bl sub_03003E74
+	bl ovx64_3003E74
 	add r0, fp, #0xc
 	ldm r0, {r0, r1}
 	ldr r2, [fp, #-0x40]
@@ -3037,7 +3037,7 @@ _03003D40:
 	ldr r2, [r3, r5]
 	ldrb r0, [r2, r4]
 	ldrb r1, [r2]
-	bl sub_03003714
+	bl ovx64_3003714
 	ldr r2, [fp, #-0x4c]
 	strb r0, [r2, r4]
 	ldr r3, [fp, #-0x44]
@@ -3058,7 +3058,7 @@ _03003D84:
 	movne r3, #0
 	ldr r2, [r3, r8]
 	ldrb r1, [r2]
-	bl sub_03003714
+	bl ovx64_3003714
 	ldr r1, [fp, #4]
 	strb r0, [r1, r4]
 	ldr r3, [fp, #-0x40]
@@ -3082,8 +3082,8 @@ _03003DE8:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_03003DF0
-sub_03003DF0: @ 0x03003DF0
+	arm_func_start ovx64_3003DF0
+ovx64_3003DF0: @ 0x03003DF0
 	mov ip, sp
 	push {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr, pc}
 	sub fp, ip, #4
@@ -3098,30 +3098,30 @@ _03003E18:
 	mov r0, r8
 	ldrb r4, [r7, r5]
 	mov r1, r5
-	bl sub_0300375C
+	bl ovx64_300375C
 	mov r1, r0
 	mov r0, r4
 	and r1, r1, #0xff
-	bl sub_030036CC
+	bl ovx64_30036CC
 	mov r3, r0
 	mov r0, sb
 	mov r1, sl
 	and r3, r3, #0xff
 	mov r2, r6
-	bl sub_03003668
+	bl ovx64_3003668
 	and r6, r0, #0xff
 	add r5, r5, #1
 _03003E58:
 	mov r0, r7
-	bl sub_0300386C
+	bl ovx64_300386C
 	cmp r5, r0
 	ble _03003E18
 	mov r0, r6
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_03003E74
-sub_03003E74: @ 0x03003E74
+	arm_func_start ovx64_3003E74
+ovx64_3003E74: @ 0x03003E74
 	mov ip, sp
 	push {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr, pc}
 	sub fp, ip, #4
@@ -3145,7 +3145,7 @@ _03003EBC:
 	mov r0, sl
 	ldrb r3, [r6, r4]
 	mov r1, r8
-	bl sub_03003668
+	bl ovx64_3003668
 	strb r0, [sb, r4]
 	ldr r3, [r5]
 	add r4, r4, #1
@@ -3155,8 +3155,8 @@ _03003EE4:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
 
-	arm_func_start sub_03003EEC
-sub_03003EEC: @ 0x03003EEC
+	arm_func_start ovx64_3003EEC
+ovx64_3003EEC: @ 0x03003EEC
 	mov ip, sp
 	push {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr, pc}
 	sub fp, ip, #4
@@ -3242,7 +3242,7 @@ _03004010:
 	ldr r3, [fp, #0x10]
 	ldrb r0, [r8, r4]
 	ldrb r1, [r2, r3]
-	bl sub_03003714
+	bl ovx64_3003714
 	and r7, r0, #0xff
 	cmp r7, #0xff
 	ldr lr, [fp, #0x10]
@@ -3262,7 +3262,7 @@ _03004058:
 	ldr r2, [fp, #-0x38]
 	ldrb r0, [r2, r6]
 	mov r1, r7
-	bl sub_030036CC
+	bl ovx64_30036CC
 	strb r0, [sb, r5]
 	add r6, r6, #1
 	b _03004088
@@ -3285,7 +3285,7 @@ _03004094:
 	str r3, [sp, #0xc]
 	mov r2, r8
 	mov r3, sb
-	bl sub_03003E74
+	bl ovx64_3003E74
 _030040BC:
 	ldr lr, [fp, #4]
 	ldr r4, [fp, #-0x40]
@@ -3299,7 +3299,7 @@ _030040D4:
 	mov r0, r8
 	str r2, [r1]
 	mov r4, #0
-	bl sub_0300386C
+	bl ovx64_300386C
 	ldr r3, [fp, #0x18]
 	str r0, [r3]
 	ldr lr, [fp, #0xc]

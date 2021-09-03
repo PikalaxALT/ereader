@@ -464,7 +464,7 @@
 	SYMBOL(gUnknown_2032704, 0x104) /* 0x2032704 */
 	SYMBOL(gUnknown_2032808, 0x20) /* 0x2032808 */
 	SYMBOL(gUnknown_2032828, 0x4) /* 0x2032828 */
-	SYMBOL(gUnknown_203282C, 0x4) /* 0x203282C */
+	SYMBOL(gHBlankIntrToggleScheduled, 0x4) /* 0x203282C */
 	SYMBOL(gUnknown_2032830, 0x30) /* 0x2032830 */
 	SYMBOL(gUnknown_2032860, 0x30) /* 0x2032860 */
 	SYMBOL(gUnknown_2032890, 0x18) /* 0x2032890 */

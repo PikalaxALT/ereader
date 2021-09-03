@@ -5459,7 +5459,7 @@ _08003832:
 	cmp r0, #0
 	beq _08003844
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08003844:
 	add sp, #4
 	pop {r3, r4, r5}
@@ -8127,8 +8127,8 @@ _08004B4C:
 	bx r0
 	thumb_func_end sub_08004A8C
 
-	thumb_func_start sub_08004B5C
-sub_08004B5C: @ 0x08004B5C
+	thumb_func_start DelayFrame
+DelayFrame: @ 0x08004B5C
 	push {lr}
 	bl sub_0800769C
 	movs r0, #1
@@ -8144,7 +8144,7 @@ sub_08004B5C: @ 0x08004B5C
 	ldr r0, _08004BC0 @ =gUnknown_2032828
 	str r1, [r0]
 	bl VBlankIntrWait
-	ldr r2, _08004BC4 @ =gUnknown_203282C
+	ldr r2, _08004BC4 @ =gHBlankIntrToggleScheduled
 	ldrh r1, [r2]
 	movs r0, #0x80
 	lsls r0, r0, #8
@@ -8171,7 +8171,7 @@ sub_08004B5C: @ 0x08004B5C
 	b _08004BE6
 	.align 2, 0
 _08004BC0: .4byte gUnknown_2032828
-_08004BC4: .4byte gUnknown_203282C
+_08004BC4: .4byte gHBlankIntrToggleScheduled
 _08004BC8: .4byte 0x00007FFF
 _08004BCC: .4byte REG_IME
 _08004BD0: .4byte REG_DISPSTAT
@@ -8203,7 +8203,7 @@ _08004C00: .4byte REG_DISPSTAT
 _08004C04: .4byte 0x0000FFEF
 _08004C08: .4byte REG_IME
 _08004C0C: .4byte gUnknown_2032828
-	thumb_func_end sub_08004B5C
+	thumb_func_end DelayFrame
 
 	thumb_func_start sub_08004C10
 sub_08004C10: @ 0x08004C10
@@ -9308,14 +9308,14 @@ sub_080053B0: @ 0x080053B0
 _080053D4: .4byte gUnknown_2032828
 	thumb_func_end sub_080053B0
 
-	thumb_func_start sub_080053D8
-sub_080053D8: @ 0x080053D8
+	thumb_func_start DelayFrames
+DelayFrames: @ 0x080053D8
 	push {r4, lr}
 	adds r4, r0, #0
 	cmp r4, #0
 	beq _080053EA
 _080053E0:
-	bl sub_08004B5C
+	bl DelayFrame
 	subs r4, #1
 	cmp r4, #0
 	bne _080053E0
@@ -9323,30 +9323,30 @@ _080053EA:
 	pop {r4}
 	pop {r0}
 	bx r0
-	thumb_func_end sub_080053D8
+	thumb_func_end DelayFrames
 
-	thumb_func_start sub_080053F0
-sub_080053F0: @ 0x080053F0
+	thumb_func_start ImeGet
+ImeGet: @ 0x080053F0
 	ldr r0, _080053F8 @ =REG_IME
 	ldrh r0, [r0]
 	bx lr
 	.align 2, 0
 _080053F8: .4byte REG_IME
-	thumb_func_end sub_080053F0
+	thumb_func_end ImeGet
 
-	thumb_func_start sub_080053FC
-sub_080053FC: @ 0x080053FC
+	thumb_func_start ImeOff
+ImeOff: @ 0x080053FC
 	ldr r1, _08005404 @ =REG_IME
 	movs r0, #0
 	strh r0, [r1]
 	bx lr
 	.align 2, 0
 _08005404: .4byte REG_IME
-	thumb_func_end sub_080053FC
+	thumb_func_end ImeOff
 
-	thumb_func_start sub_08005408
-sub_08005408: @ 0x08005408
-	ldr r2, _0800543C @ =gUnknown_203282C
+	thumb_func_start DoScheduledHBlankIntrToggle
+DoScheduledHBlankIntrToggle: @ 0x08005408
+	ldr r2, _0800543C @ =gHBlankIntrToggleScheduled
 	ldrh r1, [r2]
 	movs r0, #0x80
 	lsls r0, r0, #8
@@ -9372,7 +9372,7 @@ sub_08005408: @ 0x08005408
 	orrs r0, r1
 	b _0800545E
 	.align 2, 0
-_0800543C: .4byte gUnknown_203282C
+_0800543C: .4byte gHBlankIntrToggleScheduled
 _08005440: .4byte 0x00007FFF
 _08005444: .4byte REG_IME
 _08005448: .4byte REG_DISPSTAT
@@ -9399,10 +9399,10 @@ _0800546C: .4byte 0x0000FFFD
 _08005470: .4byte REG_DISPSTAT
 _08005474: .4byte 0x0000FFEF
 _08005478: .4byte REG_IME
-	thumb_func_end sub_08005408
+	thumb_func_end DoScheduledHBlankIntrToggle
 
-	thumb_func_start sub_0800547C
-sub_0800547C: @ 0x0800547C
+	thumb_func_start DisableInterrupt
+DisableInterrupt: @ 0x0800547C
 	push {r4, lr}
 	lsls r0, r0, #0x10
 	lsrs r3, r0, #0x10
@@ -9447,7 +9447,7 @@ _080054C8: .4byte REG_IME
 _080054CC: .4byte REG_IE
 _080054D0: .4byte REG_DISPSTAT
 _080054D4:
-	ldr r1, _080054E4 @ =gUnknown_203282C
+	ldr r1, _080054E4 @ =gHBlankIntrToggleScheduled
 	movs r2, #0x80
 	lsls r2, r2, #8
 	adds r0, r2, #0
@@ -9457,11 +9457,11 @@ _080054DE:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080054E4: .4byte gUnknown_203282C
-	thumb_func_end sub_0800547C
+_080054E4: .4byte gHBlankIntrToggleScheduled
+	thumb_func_end DisableInterrupt
 
-	thumb_func_start sub_080054E8
-sub_080054E8: @ 0x080054E8
+	thumb_func_start EnableInterrupt
+EnableInterrupt: @ 0x080054E8
 	push {r4, r5, lr}
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
@@ -9507,7 +9507,7 @@ _08005534: .4byte REG_IME
 _08005538: .4byte REG_IE
 _0800553C: .4byte REG_DISPSTAT
 _08005540:
-	ldr r1, _08005550 @ =gUnknown_203282C
+	ldr r1, _08005550 @ =gHBlankIntrToggleScheduled
 	ldr r2, _08005554 @ =0x00008010
 	adds r0, r2, #0
 	strh r0, [r1]
@@ -9516,19 +9516,19 @@ _08005548:
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08005550: .4byte gUnknown_203282C
+_08005550: .4byte gHBlankIntrToggleScheduled
 _08005554: .4byte 0x00008010
-	thumb_func_end sub_080054E8
+	thumb_func_end EnableInterrupt
 
-	thumb_func_start sub_08005558
-sub_08005558: @ 0x08005558
+	thumb_func_start ImeOn
+ImeOn: @ 0x08005558
 	ldr r1, _08005560 @ =REG_IME
 	movs r0, #1
 	strh r0, [r1]
 	bx lr
 	.align 2, 0
 _08005560: .4byte REG_IME
-	thumb_func_end sub_08005558
+	thumb_func_end ImeOn
 
 	thumb_func_start SetRegsIEandDispstat
 SetRegsIEandDispstat: @ 0x08005564
@@ -11223,8 +11223,8 @@ MainLoop: @ 0x080060C8
 	strb r4, [r1]
 	ldr r0, _08006150 @ =gUnknown_2020060
 	str r1, [r0]
-	bl sub_08005558
-	bl sub_080099F0
+	bl ImeOn
+	bl LoadOverlay_x28
 	bl sub_0802954C
 	bl sub_080055DC
 	bl sub_080393E4
@@ -11627,7 +11627,7 @@ _0800648E:
 	str r0, [r1]
 _08006490:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	b _08006130
 	.align 2, 0
 _08006498: .4byte gMainState
@@ -11713,7 +11713,7 @@ sub_08006534: @ 0x08006534
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r4, r1, #0
-	bl sub_080053FC
+	bl ImeOff
 	cmp r4, #0
 	bne _08006544
 	ldr r4, _08006558 @ =IntrDummy
@@ -11723,7 +11723,7 @@ _08006544:
 	lsls r0, r0, #2
 	adds r0, r0, r1
 	str r4, [r0]
-	bl sub_08005558
+	bl ImeOn
 	pop {r4, r5}
 	pop {r0}
 	bx r0
@@ -11805,8 +11805,8 @@ _080065FC: .4byte IntrMain_Buffer
 _08006600: .4byte INTR_VECTOR
 	thumb_func_end AgbMain
 
-	thumb_func_start sub_08006604
-sub_08006604: @ 0x08006604
+	thumb_func_start ResetIntrHandlers
+ResetIntrHandlers: @ 0x08006604
 	push {r4, r5, r6, lr}
 	mov r6, r8
 	push {r6}
@@ -11846,7 +11846,7 @@ _08006654: .4byte gIntrTable
 _08006658: .4byte IntrMain
 _0800665C: .4byte IntrMain_Buffer
 _08006660: .4byte INTR_VECTOR
-	thumb_func_end sub_08006604
+	thumb_func_end ResetIntrHandlers
 
 	thumb_func_start sub_08006664
 sub_08006664: @ 0x08006664
@@ -18025,8 +18025,8 @@ sub_08009104: @ 0x08009104
 	push {r6}
 	sub sp, #0xc
 	movs r0, #1
-	bl sub_0800547C
-	bl sub_080099C8
+	bl DisableInterrupt
+	bl LoadOverlay_xDC
 	ldr r0, _08009144 @ =gUnknown_2032D20
 	ldr r1, _08009148 @ =gUnknown_2032D18
 	ldr r1, [r1]
@@ -18046,7 +18046,7 @@ _08009132:
 	adds r6, r0, #0
 	cmp r6, #0
 	beq _08009154
-	bl sub_080099F0
+	bl LoadOverlay_x28
 	b _080091C8
 	.align 2, 0
 _08009144: .4byte gUnknown_2032D20
@@ -18078,7 +18078,7 @@ _0800916A:
 _0800917C:
 	cmp r2, #0
 	beq _08009198
-	bl sub_080099F0
+	bl LoadOverlay_x28
 	ldr r1, _08009190 @ =gUnknown_2029394
 	ldr r0, _08009194 @ =0x00000307
 	b _08009252
@@ -18093,8 +18093,8 @@ _08009198:
 	lsls r2, r2, #4
 	movs r1, #0
 	bl memset
-	bl sub_080099A0
-	ldr r6, _080091D8 @ =gUnknown_3000000
+	bl LoadOverlay_x64
+	ldr r6, _080091D8 @ =ovx64_3000000
 	add r4, sp, #8
 	mov r5, sp
 	adds r5, #0xa
@@ -18104,7 +18104,7 @@ _08009198:
 	mov r3, r8
 	bl _call_via_r6
 	adds r6, r0, #0
-	bl sub_080099F0
+	bl LoadOverlay_x28
 	cmp r6, #0
 	bge _080091E0
 _080091C8:
@@ -18115,7 +18115,7 @@ _080091C8:
 	b _08009286
 	.align 2, 0
 _080091D4: .4byte gUnknown_2028B78
-_080091D8: .4byte gUnknown_3000000
+_080091D8: .4byte ovx64_3000000
 _080091DC: .4byte gUnknown_2029394
 _080091E0:
 	ldrh r1, [r4]
@@ -19102,8 +19102,8 @@ _0800998E:
 	.align 2, 0
 	thumb_func_end sub_0800998C
 
-	thumb_func_start sub_080099A0
-sub_080099A0: @ 0x080099A0
+	thumb_func_start LoadOverlay_x64
+LoadOverlay_x64: @ 0x080099A0
 	push {lr}
 	ldr r0, _080099BC @ =__load_start_unk_8710064
 	ldr r1, _080099C0 @ =gUnknown_3000000
@@ -19120,10 +19120,10 @@ sub_080099A0: @ 0x080099A0
 _080099BC: .4byte __load_start_unk_8710064
 _080099C0: .4byte gUnknown_3000000
 _080099C4: .4byte __load_stop_unk_8710064
-	thumb_func_end sub_080099A0
+	thumb_func_end LoadOverlay_x64
 
-	thumb_func_start sub_080099C8
-sub_080099C8: @ 0x080099C8
+	thumb_func_start LoadOverlay_xDC
+LoadOverlay_xDC: @ 0x080099C8
 	push {lr}
 	ldr r0, _080099E4 @ =__load_start_unk_87099DC
 	ldr r1, _080099E8 @ =gUnknown_3000000
@@ -19140,10 +19140,10 @@ sub_080099C8: @ 0x080099C8
 _080099E4: .4byte __load_start_unk_87099DC
 _080099E8: .4byte gUnknown_3000000
 _080099EC: .4byte __load_stop_unk_87099DC
-	thumb_func_end sub_080099C8
+	thumb_func_end LoadOverlay_xDC
 
-	thumb_func_start sub_080099F0
-sub_080099F0: @ 0x080099F0
+	thumb_func_start LoadOverlay_x28
+LoadOverlay_x28: @ 0x080099F0
 	push {lr}
 	ldr r0, _08009A14 @ =__load_start_unk_8704228
 	ldr r1, _08009A18 @ =gUnknown_3000000
@@ -19154,16 +19154,16 @@ sub_080099F0: @ 0x080099F0
 	lsls r2, r2, #0xa
 	lsrs r2, r2, #0xb
 	bl CpuSet
-	bl sub_08006604
+	bl ResetIntrHandlers
 	movs r0, #1
-	bl sub_080054E8
+	bl EnableInterrupt
 	pop {r0}
 	bx r0
 	.align 2, 0
 _08009A14: .4byte __load_start_unk_8704228
 _08009A18: .4byte gUnknown_3000000
 _08009A1C: .4byte __load_stop_unk_8704228
-	thumb_func_end sub_080099F0
+	thumb_func_end LoadOverlay_x28
 
 	thumb_func_start sub_08009A20
 sub_08009A20: @ 0x08009A20
@@ -19802,7 +19802,7 @@ _08009FAC:
 	b _08009FC8
 _08009FC2:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08009FC8:
 	bl sub_08016310
 	cmp r0, #0
@@ -19842,7 +19842,7 @@ _0800A004:
 	movs r6, #1
 _0800A014:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	cmp r6, #0
 	bne _0800A020
 	b _08009ABC
@@ -20093,7 +20093,7 @@ _0800A228: .4byte gUnknown_202940C
 _0800A22C: .4byte gUnknown_2029410
 _0800A230:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0800A236:
 	bl sub_08016310
 	cmp r0, #0
@@ -20120,7 +20120,7 @@ _0800A240:
 	bl sub_08008FF4
 	bl sub_080162F4
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	movs r0, #0xa
 	bl sub_08017108
 	movs r1, #0
@@ -20147,7 +20147,7 @@ _0800A28A:
 	movs r1, #0
 	bl sub_08008FF4
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	adds r4, #2
 	movs r1, #0
 	ldrsh r0, [r4, r1]
@@ -20156,7 +20156,7 @@ _0800A28A:
 _0800A2BE:
 	bl sub_080022B8
 	movs r0, #0x14
-	bl sub_080053D8
+	bl DelayFrames
 _0800A2C8:
 	pop {r4, r5}
 	pop {r0}
@@ -28967,7 +28967,7 @@ _0800E606:
 	ldr r1, [r1]
 	bl sub_08005350
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r0, _0800E6F4 @ =gUnknown_85F3924
 	movs r1, #4
 	movs r2, #0
@@ -29145,7 +29145,7 @@ _0800E7A6:
 	movs r3, #0x20
 	bl LoadPalette
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	movs r3, #0xf8
 	adds r3, r3, r7
 	ldr r2, [r3]
@@ -29481,7 +29481,7 @@ _0800E9CE:
 	b _0800E828
 _0800EA76:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	b _0800EB80
 	.align 2, 0
 _0800EA80: .4byte gUnknown_2024268
@@ -29845,7 +29845,7 @@ _0800ED3A:
 	bl sub_0800E408
 _0800ED50:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	movs r0, #0x38
 	bl sub_080046D4
 	str r0, [r7, #0x44]
@@ -30216,7 +30216,7 @@ _0800F012:
 	movs r1, #0x90
 	bl sub_080045CC
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	add sp, #0xc
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -30384,7 +30384,7 @@ _0800F14E:
 	movs r1, #0x90
 	bl sub_080045CC
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	add sp, #8
 	pop {r3, r4, r5}
 	mov r8, r3
@@ -30493,7 +30493,7 @@ sub_0800F210: @ 0x0800F210
 	cmp r0, #0
 	bne _0800F29A
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r4, _0800F258 @ =gUnknown_2028398
 	ldr r0, _0800F25C @ =0xFFFFFEFE
 	adds r7, r4, r0
@@ -30824,7 +30824,7 @@ _0800F4E2:
 	adds r0, r4, #0
 	bl sub_08002428
 	movs r0, #2
-	bl sub_080053D8
+	bl DelayFrames
 	ldrh r3, [r6, #4]
 	lsls r1, r3, #5
 	adds r1, r1, r5
@@ -30833,7 +30833,7 @@ _0800F4E2:
 	adds r0, r4, #0
 	bl sub_08002428
 	movs r0, #5
-	bl sub_080053D8
+	bl DelayFrames
 	ldrh r6, [r6]
 	lsls r1, r6, #5
 	adds r1, r1, r5
@@ -31106,7 +31106,7 @@ _0800F71C:
 	adds r0, r4, #0
 	bl sub_08002428
 	movs r0, #2
-	bl sub_080053D8
+	bl DelayFrames
 	ldrh r0, [r6, #0xa]
 	lsls r1, r0, #5
 	adds r1, r1, r5
@@ -31115,7 +31115,7 @@ _0800F71C:
 	adds r0, r4, #0
 	bl sub_08002428
 	movs r0, #5
-	bl sub_080053D8
+	bl DelayFrames
 	ldrh r6, [r6, #6]
 	lsls r1, r6, #5
 	adds r1, r1, r5
@@ -31612,7 +31612,7 @@ _0800FB02:
 	bl sub_08002428
 _0800FB3C:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r7, _0800FB68 @ =gUnknown_2028295
 	ldrb r0, [r7]
 	cmp r0, #0
@@ -32291,7 +32291,7 @@ _080100AA:
 	ldr r0, [r4]
 	bl sub_08002428
 	movs r0, #2
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r0, _08010140 @ =gUnknown_85EC21C
 	ldrh r0, [r0, #4]
 	lsls r1, r0, #5
@@ -32302,7 +32302,7 @@ _080100AA:
 	ldr r0, [r4]
 	bl sub_08002428
 	movs r0, #5
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r3, _08010140 @ =gUnknown_85EC21C
 	ldrh r3, [r3]
 	lsls r1, r3, #5
@@ -32370,7 +32370,7 @@ _08010148:
 	ldr r0, [r4]
 	bl sub_08002428
 	movs r0, #2
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r0, _0801020C @ =gUnknown_85EC21C
 	ldrh r0, [r0, #0xa]
 	lsls r1, r0, #5
@@ -32381,7 +32381,7 @@ _08010148:
 	ldr r0, [r4]
 	bl sub_08002428
 	movs r0, #5
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r3, _0801020C @ =gUnknown_85EC21C
 	ldrh r3, [r3, #6]
 	lsls r1, r3, #5
@@ -32413,7 +32413,7 @@ _08010148:
 	bl sub_0800EEF8
 _080101EC:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r0, _08010204 @ =gUnknown_2025258
 	ldrb r0, [r0, #5]
 	cmp r0, #0
@@ -32712,7 +32712,7 @@ sub_0801041C: @ 0x0801041C
 	movs r2, #1
 	bl sub_0800456C
 	movs r0, #1
-	bl sub_080054E8
+	bl EnableInterrupt
 	movs r2, #0xb8
 	lsls r2, r2, #2
 	ldr r3, _080104E0 @ =gUnknown_861C88A
@@ -32846,7 +32846,7 @@ _08010570:
 	cmp r1, #0
 	bne _080104F6
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0801057E:
 	bl GetKeysProcessed
 	lsls r0, r0, #0x10
@@ -32876,7 +32876,7 @@ _0801059C:
 	b _080105BE
 _080105B8:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _080105BE:
 	bl sub_08016310
 	cmp r0, #0
@@ -32884,7 +32884,7 @@ _080105BE:
 	b _080105CE
 _080105C8:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _080105CE:
 	bl sub_08016F20
 	cmp r0, #0
@@ -33082,7 +33082,7 @@ sub_0801072C: @ 0x0801072C
 	movs r2, #1
 	bl sub_0800456C
 	movs r0, #1
-	bl sub_080054E8
+	bl EnableInterrupt
 	movs r2, #0xb8
 	lsls r2, r2, #2
 	ldr r3, _080107CC @ =gUnknown_8625B8A
@@ -33266,7 +33266,7 @@ _080108FC: .4byte gUnknown_85EC3AE
 _08010900: .4byte 0xFFFFFE20
 _08010904:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0801090A:
 	bl sub_08016310
 	cmp r0, #0
@@ -33414,7 +33414,7 @@ _08010A1C:
 	b _08010A3A
 _08010A34:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08010A3A:
 	bl sub_08016310
 	cmp r0, #0
@@ -33456,7 +33456,7 @@ _08010A5A:
 	b _08010A92
 _08010A8C:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08010A92:
 	bl sub_08016310
 	cmp r0, #0
@@ -33479,7 +33479,7 @@ _08010AAC:
 	b _08010AC0
 _08010ABA:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08010AC0:
 	movs r0, #5
 	bl sub_08016E50
@@ -33547,7 +33547,7 @@ _08010B34:
 _08010B44: .4byte gUnknown_2026578
 _08010B48:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08010B4E:
 	movs r0, #6
 	bl sub_08016E50
@@ -33752,7 +33752,7 @@ _08010CBC:
 	bl sub_080045CC
 _08010CF8:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r1, [sp, #0xc]
 	cmp r1, #0
 	bne _08010D06
@@ -33788,7 +33788,7 @@ _08010D40:
 	b _08010D54
 _08010D4E:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08010D54:
 	bl sub_08016310
 	cmp r0, #0
@@ -33805,7 +33805,7 @@ _08010D54:
 	b _08010D78
 _08010D72:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08010D78:
 	movs r0, #0xc
 	bl sub_08016E50
@@ -33995,9 +33995,9 @@ sub_08010ED4: @ 0x08010ED4
 	movs r2, #0x1e
 	bl sub_080382EC
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r4, _08010F9C @ =gUnknown_862CB4A
 	movs r0, #3
 	movs r1, #0
@@ -34112,7 +34112,7 @@ _08011014:
 	mov sb, r6
 _08011016:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	subs r0, r7, #1
 	lsls r0, r0, #0x10
 	lsrs r7, r0, #0x10
@@ -34159,7 +34159,7 @@ _0801106C: .4byte gUnknown_862EA8A
 _08011070: .4byte gUnknown_85EC43C
 _08011074:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0801107A:
 	adds r0, r4, #0
 	bl sub_08016E50
@@ -34204,7 +34204,7 @@ sub_08011094: @ 0x08011094
 	movs r2, #0x1e
 	bl sub_080382EC
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r3, _08011120 @ =gUnknown_862CB4A
 	movs r0, #3
 	movs r1, #0
@@ -34248,7 +34248,7 @@ sub_08011128: @ 0x08011128
 	sub sp, #0xc
 	str r0, [sp, #8]
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	bl sub_08016714
 	lsls r0, r0, #0x10
 	lsrs r0, r0, #0x10
@@ -34271,7 +34271,7 @@ _0801115A:
 	b _0801116E
 _08011168:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0801116E:
 	bl sub_08016310
 	cmp r0, #0
@@ -34283,7 +34283,7 @@ _08011176:
 	bl sub_080055B0
 	str r0, [r4]
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r3, _080111BC @ =gUnknown_862918A
 	movs r0, #3
 	movs r1, #0
@@ -34311,7 +34311,7 @@ _080111C0: .4byte gUnknown_863064A
 _080111C4: .4byte gUnknown_863102A
 _080111C8:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _080111CE:
 	bl sub_08016F20
 	cmp r0, #0
@@ -34321,11 +34321,11 @@ _080111CE:
 _080111DA:
 	bl sub_08010DA4
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	b _080111EC
 _080111E6:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _080111EC:
 	bl sub_08016F20
 	cmp r0, #0
@@ -34344,7 +34344,7 @@ _080111EC:
 	b _0801121C
 _08011216:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0801121C:
 	movs r0, #3
 	bl sub_08016E50
@@ -34365,7 +34365,7 @@ _0801123C: .4byte gUnknown_2029394
 _08011240: .4byte 0x00000309
 _08011244:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0801124A:
 	movs r0, #3
 	bl sub_08016E50
@@ -34377,7 +34377,7 @@ _0801124A:
 	cmp r0, #1
 	bne _08011290
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	movs r0, #3
 	movs r1, #0
 	movs r2, #0xd8
@@ -34426,7 +34426,7 @@ _080112BC:
 	b _080112CA
 _080112C4:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _080112CA:
 	bl sub_08016F20
 	cmp r0, #0
@@ -34491,7 +34491,7 @@ _08011350: .4byte 0x00000311
 _08011354: .4byte gUnknown_85EC8BC
 _08011358:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	subs r0, r4, #1
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
@@ -34544,7 +34544,7 @@ _080113B0:
 _080113C4: .4byte gUnknown_85EC43C
 _080113C8:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _080113CE:
 	movs r0, #5
 	bl sub_08016E50
@@ -34560,7 +34560,7 @@ _080113CE:
 	cmp r1, r0
 	bne _08011410
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	movs r0, #3
 	movs r1, #0
 	movs r2, #0xd8
@@ -34597,13 +34597,13 @@ _08011434: .4byte gUnknown_862918A
 _08011438: .4byte gUnknown_863064A
 _0801143C:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08011442:
 	bl sub_08016F20
 	cmp r0, #0
 	beq _0801143C
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	bl GetKeysProcessed
 	mov r0, sb
 	cmp r0, #2
@@ -34630,7 +34630,7 @@ _08011442:
 _08011484: .4byte gUnknown_2029420
 _08011488:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0801148E:
 	bl sub_08016310
 	cmp r0, #0
@@ -34733,7 +34733,7 @@ sub_08011538: @ 0x08011538
 	b _08011548
 _08011542:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08011548:
 	bl GetKeysProcessed
 	lsls r0, r0, #0x10
@@ -34760,7 +34760,7 @@ sub_08011568: @ 0x08011568
 	b _08011578
 _08011572:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08011578:
 	adds r0, r4, #0
 	bl sub_08016E50
@@ -34778,7 +34778,7 @@ sub_08011588: @ 0x08011588
 	b _08011594
 _0801158E:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08011594:
 	adds r0, r4, #0
 	bl sub_08016E50
@@ -34804,7 +34804,7 @@ sub_080115A4: @ 0x080115A4
 	b _080115C4
 _080115BE:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _080115C4:
 	bl sub_08016310
 	cmp r0, #0
@@ -34830,7 +34830,7 @@ sub_080115D4: @ 0x080115D4
 	b _080115F4
 _080115EE:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _080115F4:
 	bl sub_08016310
 	cmp r0, #0
@@ -34855,7 +34855,7 @@ sub_08011604: @ 0x08011604
 	b _08011622
 _0801161C:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08011622:
 	bl sub_08016310
 	cmp r0, #0
@@ -34890,7 +34890,7 @@ _08011650:
 	b _08011664
 _0801165E:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08011664:
 	bl sub_08016310
 	cmp r0, #0
@@ -37044,7 +37044,7 @@ _08012670:
 	adds r5, #1
 	str r5, [r7, #0x40]
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	cmp r5, #0x21
 	bgt _08012682
 	b _080123BE
@@ -37413,7 +37413,7 @@ _08012958:
 _08012980:
 	movs r0, #1
 	add sb, r0
-	bl sub_080053D8
+	bl DelayFrames
 	mov r1, sb
 	cmp r1, #0x1c
 	bgt _08012990
@@ -39561,7 +39561,7 @@ _08013AD6:
 	ldr r3, [r3]
 	str r3, [r7, #0x40]
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r4, [r7, #0x40]
 	cmp r4, #0x1d
 	bgt _08013AEC
@@ -40092,7 +40092,7 @@ _08013F38:
 	ldr r3, [sp, #0x14]
 	str r3, [sp, #0x10]
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r0, [sp, #0x10]
 	cmp r0, #0x1d
 	bgt _08013F4A
@@ -40529,7 +40529,7 @@ _080142F0:
 	ldr r4, [sp, #0x10]
 	str r4, [sp, #0xc]
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	cmp r4, #0x1d
 	bgt _08014300
 	b _08013FD2
@@ -40968,7 +40968,7 @@ _0801469C:
 	ldr r4, [sp, #0x14]
 	str r4, [sp, #0xc]
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	cmp r4, #0x1d
 	bgt _080146AC
 	b _0801434E
@@ -42042,7 +42042,7 @@ _08014F80:
 	ldr r0, [r0]
 	str r0, [r7, #0x40]
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r1, [r7, #0x40]
 	cmp r1, #0x22
 	bgt _08014F96
@@ -42583,7 +42583,7 @@ _080153F6:
 	ldr r0, [sp, #0x14]
 	str r0, [sp, #0x10]
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r1, [sp, #0x10]
 	cmp r1, #0x1c
 	bgt _08015408
@@ -42825,7 +42825,7 @@ _080155E8:
 	adds r2, #1
 	str r2, [r7, #0x34]
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r3, [r7, #0x34]
 	cmp r3, #0x21
 	ble _0801553C
@@ -43120,7 +43120,7 @@ _08015858:
 	adds r2, #1
 	str r2, [r7, #0x34]
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r3, [r7, #0x34]
 	cmp r3, #0x21
 	ble _080157AC
@@ -46696,7 +46696,7 @@ sub_0801729C: @ 0x0801729C
 	bl sub_080171F4
 	adds r5, r0, #0
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	movs r0, #0
 	movs r1, #2
 	bl sub_08038468
@@ -46729,7 +46729,7 @@ _08017310:
 	cmp r0, #0
 	bne _0801733C
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08017320:
 	bl GetKeysProcessed
 	lsls r0, r0, #0x10
@@ -47156,7 +47156,7 @@ sub_08017644: @ 0x08017644
 	str r1, [r0]
 	bl sub_08027CEC
 	bl sub_08004634
-	bl sub_08005558
+	bl ImeOn
 	bl sub_080171C4
 	bl sub_08017188
 _08017676:
@@ -47257,7 +47257,7 @@ _08017758: .4byte gUnknown_85EE8D8
 _0801775C: .4byte REG_RCNT
 _08017760:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08017766:
 	ldr r0, _080177DC @ =gUnknown_2029498
 	ldrh r0, [r0]
@@ -47275,9 +47275,9 @@ _0801777C:
 	lsrs r4, r0, #0x10
 	cmp r4, #0
 	beq _08017760
-	bl sub_08006604
+	bl ResetIntrHandlers
 	movs r0, #1
-	bl sub_080054E8
+	bl EnableInterrupt
 	bl sub_0803BDB4
 	ldr r0, _080177F0 @ =REG_RCNT
 	strh r5, [r0]
@@ -47346,7 +47346,7 @@ sub_08017818: @ 0x08017818
 	str r1, [r0]
 	bl sub_08027CEC
 	bl sub_08004634
-	bl sub_08005558
+	bl ImeOn
 	bl sub_080171C4
 	bl sub_08017188
 _0801784A:
@@ -47458,7 +47458,7 @@ _0801794C: .4byte gUnknown_85EE8D8
 _08017950: .4byte REG_RCNT
 _08017954:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0801795A:
 	bl sub_08018294
 	lsls r0, r0, #0x10
@@ -47466,9 +47466,9 @@ _0801795A:
 	cmp r4, #0
 	beq _08017954
 _08017966:
-	bl sub_08006604
+	bl ResetIntrHandlers
 	movs r0, #1
-	bl sub_080054E8
+	bl EnableInterrupt
 	bl sub_0803BDB4
 	ldr r0, _080179BC @ =REG_RCNT
 	strh r5, [r0]
@@ -47524,7 +47524,7 @@ sub_080179E4: @ 0x080179E4
 	str r1, [r0]
 	bl sub_08027CEC
 	bl sub_08004634
-	bl sub_08005558
+	bl ImeOn
 	bl sub_080171C4
 	bl sub_08017188
 	ldr r6, _08017AA4 @ =REG_RCNT
@@ -47553,9 +47553,9 @@ _08017A06:
 	bl sub_080388D8
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10
-	bl sub_08006604
+	bl ResetIntrHandlers
 	movs r0, #1
-	bl sub_080054E8
+	bl EnableInterrupt
 	bl sub_0803BDB4
 	strh r4, [r6]
 	bl sub_08022820
@@ -50129,7 +50129,7 @@ sub_08018E7C: @ 0x08018E7C
 	movs r2, #0
 	bl sub_08008FF4
 	movs r0, #1
-	bl sub_080054E8
+	bl EnableInterrupt
 	adds r0, r4, #0
 	bl sub_08018C90
 	movs r2, #0x80
@@ -53748,7 +53748,7 @@ sub_0801AB54: @ 0x0801AB54
 	sub sp, #0x48
 	adds r4, r0, #0
 	adds r5, r1, #0
-	bl sub_08005558
+	bl ImeOn
 	bl sub_080055DC
 	adds r0, r4, #0
 	bl sub_08018E7C
@@ -53769,7 +53769,7 @@ sub_0801AB54: @ 0x0801AB54
 	movs r3, #0xf
 	bl sub_08016344
 	movs r0, #0x10
-	bl sub_080053D8
+	bl DelayFrames
 	movs r0, #0x11
 	movs r1, #0
 	movs r2, #8
@@ -53789,7 +53789,7 @@ sub_0801AB54: @ 0x0801AB54
 	adds r0, r4, #0
 	bl sub_0800062C
 	movs r0, #0x10
-	bl sub_080053D8
+	bl DelayFrames
 	movs r4, #1
 	movs r0, #0x14
 	str r0, [sp]
@@ -53839,7 +53839,7 @@ _0801AC2C: .4byte 0x00000FB8
 _0801AC30: .4byte 0xFFFFF000
 _0801AC34:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0801AC3A:
 	bl GetKeysProcessed
 	adds r1, r4, #0
@@ -53863,7 +53863,7 @@ _0801AC3A:
 	b _0801AC6E
 _0801AC68:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0801AC6E:
 	bl sub_0801A860
 	adds r4, r0, #0
@@ -53883,7 +53883,7 @@ _0801AC6E:
 	movs r3, #0xf
 	bl sub_08016344
 	movs r0, #0x10
-	bl sub_080053D8
+	bl DelayFrames
 	cmp r4, #2
 	beq _0801AD42
 	cmp r4, #2
@@ -53954,7 +53954,7 @@ _0801AD28: .4byte 0xFFFFF000
 _0801AD2C: .4byte gUnknown_2024A48
 _0801AD30:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0801AD36:
 	movs r0, #0xd9
 	bl sub_08016E50
@@ -54052,7 +54052,7 @@ _0801ADC4:
 _0801ADFC: .4byte 0xFFFFF000
 _0801AE00:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0801AE06:
 	movs r0, #0xda
 	bl sub_08016E50
@@ -54063,7 +54063,7 @@ _0801AE10:
 	b _0801AE1A
 _0801AE14:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0801AE1A:
 	bl GetKeysProcessed
 	adds r1, r4, #0
@@ -54075,7 +54075,7 @@ _0801AE1A:
 	b _0801AE34
 _0801AE2E:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0801AE34:
 	movs r0, #6
 	bl sub_08016E50
@@ -54087,7 +54087,7 @@ _0801AE34:
 	movs r3, #0xf
 	bl sub_08016344
 	movs r0, #0xf
-	bl sub_080053D8
+	bl DelayFrames
 	movs r0, #0x80
 	lsls r0, r0, #0x13
 	movs r1, #0xc8
@@ -54099,7 +54099,7 @@ _0801AE34:
 	movs r3, #0xf
 	bl sub_08016344
 	movs r0, #0x10
-	bl sub_080053D8
+	bl DelayFrames
 	bl sub_0801AAEC
 	ldr r0, _0801AEBC @ =gUnknown_2024A48
 	ldr r0, [r0]
@@ -55178,7 +55178,7 @@ sub_0801B63C: @ 0x0801B63C
 	ldr r0, _0801B700 @ =gUnknown_85EE9B0
 	bl sub_080029C8
 	movs r0, #1
-	bl sub_080054E8
+	bl EnableInterrupt
 	ldr r3, _0801B704 @ =gUnknown_86FE2F0
 	movs r0, #0
 	movs r1, #0
@@ -55646,7 +55646,7 @@ _0801BA16:
 	movs r3, #0xf
 	bl sub_08016344
 	movs r0, #0x10
-	bl sub_080053D8
+	bl DelayFrames
 	movs r4, #0
 	b _0801BA5A
 _0801BA2C:
@@ -55669,7 +55669,7 @@ _0801BA4C:
 	bl sub_080023D8
 _0801BA52:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	adds r4, #1
 _0801BA5A:
 	bl GetKeysProcessed
@@ -55681,7 +55681,7 @@ _0801BA5A:
 	b _0801BA72
 _0801BA6C:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0801BA72:
 	movs r0, #6
 	bl sub_08016E50
@@ -55693,7 +55693,7 @@ _0801BA72:
 	movs r3, #0xf
 	bl sub_08016344
 	movs r0, #0x10
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r4, [sp, #8]
 	movs r5, #4
 _0801BA92:
@@ -60613,7 +60613,7 @@ _0801DEAA:
 	cmp r0, #0
 	beq _0801DEBC
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0801DEBC:
 	add sp, #0xc
 	pop {r3, r4, r5}
@@ -60776,7 +60776,7 @@ _0801DFDE:
 	cmp r0, #0
 	beq _0801E016
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0801E016:
 	ldr r0, [sp, #0x14]
 	bl sub_08005598
@@ -70524,7 +70524,7 @@ sub_08022894: @ 0x08022894
 	adds r3, r4, #0
 	bl sub_0800456C
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	adds r0, r4, #0
 	bl sub_08005598
 	b _080228E8
@@ -70596,7 +70596,7 @@ sub_08022910: @ 0x08022910
 	adds r3, r4, #0
 	bl sub_080045CC
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	adds r0, r4, #0
 	bl sub_08005598
 	b _08022974
@@ -70649,7 +70649,7 @@ sub_08022980: @ 0x08022980
 	adds r3, r5, #0
 	bl sub_080045CC
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	adds r0, r5, #0
 	bl sub_08005598
 	b _080229DE
@@ -71068,7 +71068,7 @@ _08022C94:
 	adds r1, r7, #0
 	bl sub_08000308
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	adds r0, r6, #0
 	bl sub_08005598
 	pop {r4, r5, r6, r7}
@@ -77376,7 +77376,7 @@ _080257E0:
 	bl _call_via_r3
 _0802581C:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	adds r5, #1
 	cmp r5, #0xf
 	ble _080257E0
@@ -77388,14 +77388,14 @@ _08025830: .4byte gUnknown_202FB20
 _08025834: .4byte gUnknown_202FBC0
 _08025838:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0802583E:
 	movs r0, #0x7c
 	bl sub_08016E50
 	cmp r0, #0
 	beq _08025838
 	movs r0, #5
-	bl sub_080053D8
+	bl DelayFrames
 	add sp, #8
 	pop {r4, r5}
 	pop {r0}
@@ -78458,7 +78458,7 @@ _08026114:
 	movs r0, #0xf
 	bl sub_080115A4
 	movs r0, #0x14
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r1, _08026160 @ =gUnknown_20294B8
 	ldrh r0, [r1, #0xc]
 	cmp r0, #0
@@ -78567,7 +78567,7 @@ _080261F8:
 	ldr r0, [r0]
 	bl sub_080023C4
 	movs r0, #0x12
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r3, _08026258 @ =gUnknown_20294B8
 	ldrb r0, [r3, #0xa]
 	subs r0, #1
@@ -78577,7 +78577,7 @@ _080261F8:
 	ldr r0, [r0]
 	bl sub_080023D8
 	movs r0, #0x12
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r2, [r7, #0x4c]
 	subs r2, #1
 	str r2, [r7, #0x4c]
@@ -78824,7 +78824,7 @@ _08026422:
 	cmp r0, #0
 	bne _08026440
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	b _080263C0
 _08026440:
 	ldr r3, [r7, #0x7c]
@@ -78898,7 +78898,7 @@ _080264BA:
 	cmp r0, #0
 	bne _080264E0
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	b _08026462
 	.align 2, 0
 _080264DC: .4byte 0x00000303
@@ -78998,7 +78998,7 @@ _08026594:
 	bl sub_08017108
 _0802659A:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	b _0802638A
 	.align 2, 0
 _080265A4: .4byte 0x00000306
@@ -79084,7 +79084,7 @@ _0802663E:
 	cmp r2, #0
 	bne _08026668
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	movs r3, #0x8c
 	adds r3, r3, r7
 	ldr r0, [r3]
@@ -79159,7 +79159,7 @@ _080266DE:
 	cmp r3, #0
 	bne _08026708
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	movs r1, #0x98
 	adds r1, r1, r7
 	ldr r0, [r1]
@@ -79866,7 +79866,7 @@ _08026C78:
 	ldrh r7, [r4]
 _08026C94:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08026C9A:
 	bl GetKeysProcessed
 	lsls r0, r0, #0x10
@@ -79897,13 +79897,13 @@ _08026CBA:
 	movs r3, #0x20
 	bl LoadPalette
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r1, _08026DAC @ =gUnknown_202FC00
 	movs r0, #0
 	strh r0, [r1]
 	bl sub_08026A74
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r5, _08026DB0 @ =gUnknown_202FAD8
 	ldr r0, [r5]
 	movs r1, #0xa5
@@ -79965,7 +79965,7 @@ _08026D18:
 	movs r2, #0x77
 	bl sub_080045CC
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	movs r0, #0xc9
 	lsls r0, r0, #2
 	bl sub_08011568
@@ -79974,7 +79974,7 @@ _08026D18:
 	ldr r0, _08026DBC @ =0x0000017B
 	bl sub_08011568
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r0, _08026DC0 @ =gUnknown_20294B8
 	bl sub_08017AD4
 	adds r4, #0xf0
@@ -79990,7 +79990,7 @@ _08026DBC: .4byte 0x0000017B
 _08026DC0: .4byte gUnknown_20294B8
 _08026DC4:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08026DCA:
 	bl sub_08005090
 	cmp r4, r0
@@ -80036,7 +80036,7 @@ _08026E30: .4byte gUnknown_804B7F8
 _08026E34: .4byte gUnknown_20294D0
 _08026E38:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08026E3E:
 	bl sub_08016F20
 	cmp r0, #1
@@ -80063,7 +80063,7 @@ _08026E70: .4byte gUnknown_202FAD8
 _08026E74: .4byte 0x00000321
 _08026E78:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08026E7E:
 	bl GetKeysProcessed
 	lsls r0, r0, #0x10
@@ -80093,13 +80093,13 @@ _08026EAA:
 	b _08026EB8
 _08026EB2:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08026EB8:
 	bl sub_08016F20
 	cmp r0, #1
 	bne _08026EB2
 	movs r0, #0x1e
-	bl sub_080053D8
+	bl DelayFrames
 	movs r0, #2
 	bl sub_08004274
 	ldr r0, [sp, #0x24]
@@ -80130,7 +80130,7 @@ sub_08026EE0: @ 0x08026EE0
 	bl sub_0800509C
 	bl sub_080171A4
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r1, _08026F30 @ =REG_IME
 	movs r0, #0
 	strh r0, [r1]
@@ -80273,7 +80273,7 @@ _08026FE8:
 	cmp r1, #1
 	bls _08026FCC
 	movs r0, #2
-	bl sub_0800547C
+	bl DisableInterrupt
 	movs r0, #2
 	movs r1, #0
 	bl sub_08006534
@@ -80457,7 +80457,7 @@ _08027164:
 	ldr r1, _0802718C @ =gUnknown_30048A8
 	bl sub_08006534
 	movs r0, #2
-	bl sub_080054E8
+	bl EnableInterrupt
 	adds r0, r6, #0
 _08027174:
 	add sp, #8
@@ -81192,7 +81192,7 @@ _080276B4:
 	ldr r1, _080276CC @ =gUnknown_30048A8
 	bl sub_08006534
 	movs r0, #2
-	bl sub_080054E8
+	bl EnableInterrupt
 	b _0802771C
 	.align 2, 0
 _080276CC: .4byte gUnknown_30048A8
@@ -82991,7 +82991,7 @@ sub_08028414: @ 0x08028414
 	b _08028428
 _08028422:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08028428:
 	bl sub_0802FD34
 	cmp r0, #2
@@ -83042,7 +83042,7 @@ _08028470:
 _08028488: .4byte gUnknown_201F800
 _0802848C:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08028492:
 	bl sub_0802FD40
 	cmp r0, #0
@@ -83072,7 +83072,7 @@ sub_080284A8: @ 0x080284A8
 	ldr r1, _08028508 @ =gUnknown_85F1368
 	bl sub_080314C0
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	movs r0, #0
 	str r0, [r7, #0x34]
 	movs r1, #0
@@ -83202,7 +83202,7 @@ _080285D8:
 	b _080285E6
 _080285E0:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _080285E6:
 	bl sub_0802FD1C
 	cmp r0, #0
@@ -83325,7 +83325,7 @@ _080286A4:
 	str r0, [r7, #0x34]
 _080286CC:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	b _0802855A
 	.align 2, 0
 _080286D4: .4byte 0x0000081C
@@ -83481,7 +83481,7 @@ _080287AE:
 	movs r1, #0x19
 	str r1, [r7, #0x48]
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	movs r2, #0
 	str r2, [r7, #0x40]
 	b _080288B6
@@ -83542,7 +83542,7 @@ _08028856:
 	str r0, [r7, #0x44]
 _08028884:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r1, [r7, #0x48]
 	subs r1, #1
 	str r1, [r7, #0x48]
@@ -83767,7 +83767,7 @@ _08028A34: .4byte 0x00006210
 _08028A38: .4byte gUnknown_201F800
 _08028A3C:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08028A42:
 	bl sub_08016310
 	cmp r0, #0
@@ -83912,7 +83912,7 @@ _08028B52:
 	ldr r1, _08028B8C @ =gUnknown_85F13A8
 	bl sub_080314C0
 	movs r0, #0x1e
-	bl sub_080053D8
+	bl DelayFrames
 	mov r2, sl
 	ldr r0, [r2]
 	mov r2, r8
@@ -84071,7 +84071,7 @@ _08028CA8:
 	str r1, [sp]
 _08028CC4:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r2, [sp]
 	cmp r2, #0
 	bne _08028CD2
@@ -84090,7 +84090,7 @@ _08028CD2:
 _08028CE8: .4byte gMainState
 _08028CEC:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08028CF2:
 	bl sub_08016310
 	cmp r0, #0
@@ -85746,7 +85746,7 @@ _080299D4:
 	lsls r0, r0, #0x10
 	lsrs r4, r0, #0x10
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _080299DE:
 	adds r0, r4, #0
 _080299E0:
@@ -85776,7 +85776,7 @@ sub_080299F4: @ 0x080299F4
 	ldr r0, _08029AC0 @ =gUnknown_85F1440
 	bl sub_080029C8
 	movs r0, #1
-	bl sub_080054E8
+	bl EnableInterrupt
 	movs r0, #0x3f
 	movs r1, #0
 	bl sub_080166D0
@@ -85914,7 +85914,7 @@ _08029B38:
 	adds r4, r5, #0
 _08029B44:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08029B4A:
 	bl GetKeysProcessed
 	lsls r0, r0, #0x10
@@ -85943,13 +85943,13 @@ _08029B7A:
 	b _08029B8C
 _08029B86:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08029B8C:
 	bl sub_08016F20
 	cmp r0, #1
 	bne _08029B86
 	movs r0, #2
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r1, _08029C00 @ =gUnknown_202949A
 	movs r0, #0
 	strh r0, [r1]
@@ -85985,7 +85985,7 @@ _08029B8C:
 	lsls r0, r0, #1
 	bl sub_08011568
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r0, _08029C0C @ =gUnknown_203052C
 	movs r1, #0xff
 	movs r2, #0x80
@@ -86046,7 +86046,7 @@ sub_08029C60: @ 0x08029C60
 	b _08029C70
 _08029C6A:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08029C70:
 	bl sub_08016F20
 	cmp r0, #0
@@ -86301,7 +86301,7 @@ sub_08029E40: @ 0x08029E40
 	b _08029E5C
 _08029E56:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08029E5C:
 	bl sub_08016F20
 	cmp r0, #0
@@ -86312,7 +86312,7 @@ _08029E5C:
 	movs r3, #1
 	bl sub_08016344
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	bl sub_0800594C
 	ldr r0, _08029F74 @ =gUnknown_85F14E8
 	movs r1, #0xf
@@ -86625,7 +86625,7 @@ _0802A136:
 	bl SoftReset
 _0802A152:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	mov r0, r8
 	cmp r0, #0
 	bne _0802A160
@@ -86655,7 +86655,7 @@ sub_0802A180: @ 0x0802A180
 	b _0802A190
 _0802A18A:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0802A190:
 	bl sub_08016F20
 	cmp r0, #0
@@ -86666,7 +86666,7 @@ _0802A190:
 	movs r3, #1
 	bl sub_08016344
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r0, _0802A24C @ =gUnknown_85F15E4
 	movs r1, #0xf
 	bl sub_08002B24
@@ -86733,7 +86733,7 @@ _0802A1D6:
 	bl sub_08016344
 _0802A242:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	b _0802A242
 	.align 2, 0
 _0802A24C: .4byte gUnknown_85F15E4
@@ -93049,7 +93049,7 @@ sub_0802D1A0: @ 0x0802D1A0
 	b _0802D1B4
 _0802D1AE:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0802D1B4:
 	bl sub_0802FD34
 	cmp r0, #2
@@ -93105,7 +93105,7 @@ _0802D208:
 _0802D220: .4byte gUnknown_2022810
 _0802D224:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0802D22A:
 	bl sub_0802FD40
 	cmp r0, #0
@@ -93135,7 +93135,7 @@ sub_0802D240: @ 0x0802D240
 	ldr r1, _0802D2A0 @ =gUnknown_85F1368
 	bl sub_080314C0
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	movs r0, #0
 	str r0, [r7, #0x64]
 	movs r1, #0
@@ -93451,7 +93451,7 @@ _0802D4E0:
 	b _0802D4EE
 _0802D4E8:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0802D4EE:
 	bl sub_0802FD1C
 	cmp r0, #0
@@ -93545,7 +93545,7 @@ _0802D574:
 	str r4, [r7, #0x64]
 _0802D598:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	b _0802D2E4
 	.align 2, 0
 _0802D5A0: .4byte gUnknown_85F16BC
@@ -93762,7 +93762,7 @@ _0802D734: .4byte 0x00006210
 _0802D738: .4byte gUnknown_2022810
 _0802D73C:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0802D742:
 	bl sub_08016310
 	cmp r0, #0
@@ -93936,7 +93936,7 @@ _0802D88C:
 _0802D89E:
 	bl sub_080314C0
 	movs r0, #0x1e
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r0, [r4]
 	ldr r1, _0802D8D0 @ =gUnknown_85F16E8
 	adds r1, r6, r1
@@ -94122,7 +94122,7 @@ _0802DA34:
 	mov sl, r2
 _0802DA50:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	mov r0, sl
 	cmp r0, #0
 	bne _0802DA5E
@@ -94141,7 +94141,7 @@ _0802DA5E:
 _0802DA74: .4byte gMainState
 _0802DA78:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0802DA7E:
 	bl sub_08016310
 	cmp r0, #0
@@ -94291,7 +94291,7 @@ _0802DB3A:
 _0802DBA4: .4byte gUnknown_2022810
 _0802DBA8:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0802DBAE:
 	movs r4, #1
 	str r4, [r7, #0x54]
@@ -94575,7 +94575,7 @@ _0802DDC8:
 _0802DDD0: .4byte gUnknown_2022810
 _0802DDD4:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0802DDDA:
 	movs r2, #1
 	str r2, [r7, #0x54]
@@ -94808,7 +94808,7 @@ _0802DF2E:
 _0802DF94: .4byte gUnknown_2022810
 _0802DF98:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0802DF9E:
 	movs r4, #1
 	str r4, [r7, #0x54]
@@ -95153,7 +95153,7 @@ _0802E238: .4byte 0x000009C2
 _0802E23C: .4byte 0x0000081C
 _0802E240:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0802E246:
 	ldr r0, _0802E2A0 @ =gUnknown_2023058
 	movs r1, #0
@@ -95206,7 +95206,7 @@ _0802E2B0: .4byte gUnknown_2023050
 _0802E2B4: .4byte sub_0802E384
 _0802E2B8:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0802E2BE:
 	movs r1, #0
 	ldr r0, [r6]
@@ -95219,7 +95219,7 @@ _0802E2C8:
 	bl sub_0802E058
 	bl sub_0802E110
 	movs r0, #0x1e
-	bl sub_080053D8
+	bl DelayFrames
 	bl sub_0802DC68
 	pop {r4, r5, r6, r7}
 	pop {r0}
@@ -96578,7 +96578,7 @@ _0802ED7E:
 _0802EDB8: .4byte gUnknown_2024A68
 _0802EDBC:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0802EDC2:
 	movs r1, #0
 	ldr r2, [r7, #0x4c]
@@ -99378,7 +99378,7 @@ sub_08030274: @ 0x08030274
 _08030294: .4byte sub_08030308
 _08030298:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0803029E:
 	movs r1, #0
 	ldr r0, [r4, #0x18]
@@ -99482,7 +99482,7 @@ sub_0803031C: @ 0x0803031C
 _0803033C: .4byte sub_08030394
 _08030340:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08030346:
 	movs r1, #0
 	ldr r0, [r4, #0x54]
@@ -99644,7 +99644,7 @@ _08030454:
 	bne _08030468
 _08030458:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	b _08030430
 	.align 2, 0
 _08030460: .4byte sub_0803049C
@@ -99776,7 +99776,7 @@ sub_08030514: @ 0x08030514
 _08030534: .4byte sub_08030680
 _08030538:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0803053E:
 	movs r1, #0
 	ldr r0, [r4, #0x4c]
@@ -99993,7 +99993,7 @@ sub_08030698: @ 0x08030698
 	b _080306B4
 _080306AE:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _080306B4:
 	movs r1, #0
 	ldr r0, [r4, #0x20]
@@ -101824,7 +101824,7 @@ sub_0803147C: @ 0x0803147C
 _080314A0: .4byte sub_080314F4
 _080314A4:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _080314AA:
 	movs r1, #0
 	ldr r0, [r4, #0x10]
@@ -102193,11 +102193,11 @@ _0803170A:
 	ldr r0, [r4]
 	bl sub_080023D8
 	movs r0, #2
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r0, [r4]
 	bl sub_080023C4
 	movs r0, #2
-	bl sub_080053D8
+	bl DelayFrames
 	adds r0, r5, #1
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10
@@ -102255,7 +102255,7 @@ _08031776:
 	ldr r0, [r4]
 	bl sub_080023D8
 	movs r0, #2
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r0, [r4]
 	bl sub_080023C4
 	adds r0, r5, #1
@@ -102268,7 +102268,7 @@ _08031776:
 	ldr r0, [r4]
 	bl sub_080023D8
 	movs r0, #2
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r0, [r4]
 	bl sub_080023C4
 	ldr r0, [r6, #4]
@@ -103381,7 +103381,7 @@ sub_08032060: @ 0x08032060
 	b _08032074
 _0803206E:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08032074:
 	bl sub_0802FD34
 	cmp r0, #2
@@ -103430,7 +103430,7 @@ _080320B8:
 _080320D0: .4byte gUnknown_2023060
 _080320D4:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _080320DA:
 	bl sub_0802FD40
 	cmp r0, #0
@@ -103460,7 +103460,7 @@ sub_080320F0: @ 0x080320F0
 	ldr r1, _08032150 @ =gUnknown_85F1368
 	bl sub_080314C0
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	movs r0, #0
 	str r0, [r7, #0x34]
 	movs r1, #0
@@ -103587,7 +103587,7 @@ _08032218:
 	b _08032226
 _08032220:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08032226:
 	bl sub_0802FD1C
 	cmp r0, #0
@@ -103664,7 +103664,7 @@ _08032290:
 	str r0, [r7, #0x34]
 _080322B8:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	b _0803219E
 	.align 2, 0
 _080322C0: .4byte gUnknown_85F1984
@@ -103773,7 +103773,7 @@ _08032388: .4byte 0x00006210
 _0803238C: .4byte gUnknown_2023060
 _08032390:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08032396:
 	bl sub_08016310
 	cmp r0, #0
@@ -103921,7 +103921,7 @@ _080324AC:
 	ldr r1, _080324E8 @ =gUnknown_85F13A8
 	bl sub_080314C0
 	movs r0, #0x1e
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r2, _080324E4 @ =gUnknown_2023890
 	ldr r0, [r2]
 	mov r1, r8
@@ -104079,7 +104079,7 @@ _08032600:
 	str r0, [sp]
 _0803261C:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r1, [sp]
 	cmp r1, #0
 	bne _0803262A
@@ -104098,7 +104098,7 @@ _0803262A:
 _08032640: .4byte gMainState
 _08032644:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0803264A:
 	bl sub_08016310
 	cmp r0, #0
@@ -104984,7 +104984,7 @@ _08032D98:
 	mov r8, r4
 _08032DB4:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	mov r2, sb
 	cmp r2, #0
 	bne _08032DC2
@@ -107173,18 +107173,18 @@ _08033EAE:
 	ldr r0, [r7, #0x38]
 	bl sub_08017108
 	movs r0, #0x3c
-	bl sub_080053D8
+	bl DelayFrames
 	b _08033F0C
 _08033F06:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08033F0C:
 	ldr r0, [r7, #0x38]
 	bl sub_08016E50
 	cmp r0, #0
 	beq _08033F06
 	movs r0, #0x28
-	bl sub_080053D8
+	bl DelayFrames
 	movs r0, #0xf
 	bl sub_080115D4
 	ldr r0, [r7, #0x40]
@@ -107314,7 +107314,7 @@ _08033FA6:
 	movs r3, #0x20
 	bl LoadPalette
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	adds r4, #0xc
 	adds r6, #1
 	ldr r0, _0803403C @ =gUnknown_2024BC8
@@ -107527,7 +107527,7 @@ _080341FC: .4byte gUnknown_2024BC0
 _08034200: .4byte 0x00000113
 _08034204:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0803420A:
 	ldr r0, _08034234 @ =0x00000113
 	bl sub_08016E50
@@ -107674,7 +107674,7 @@ _0803432C:
 	adds r0, r4, #0
 	bl sub_08017108
 	movs r0, #0x3c
-	bl sub_080053D8
+	bl DelayFrames
 	b _08034352
 	.align 2, 0
 _08034340: .4byte gUnknown_86B906A
@@ -107682,7 +107682,7 @@ _08034344: .4byte gUnknown_86BB26A
 _08034348: .4byte gUnknown_86BBA6A
 _0803434C:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08034352:
 	adds r0, r4, #0
 	bl sub_08016E50
@@ -108277,7 +108277,7 @@ _08034824:
 	ldr r3, [r3, #0xc]
 	bl _call_via_r3
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08034852:
 	bl GetKeysProcessed
 	lsls r0, r0, #0x10
@@ -108546,14 +108546,14 @@ _08034A2E:
 	b _08034A66
 _08034A60:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08034A66:
 	ldr r0, [r7]
 	bl sub_08036FB0
 	cmp r0, #0
 	beq _08034A60
 	movs r0, #2
-	bl sub_080053D8
+	bl DelayFrames
 	str r7, [r7, #0x6c]
 	movs r1, #4
 	str r1, [r7, #0x4c]
@@ -108583,7 +108583,7 @@ _08034A8A:
 _08034AA8: .4byte gUnknown_85F2090
 _08034AAC:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08034AB2:
 	ldr r1, [r7, #0x60]
 	ldrb r0, [r1]
@@ -108700,7 +108700,7 @@ _08034B76:
 	b _08034B9A
 _08034B94:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08034B9A:
 	ldr r0, [r7, #0x38]
 	bl sub_08036FB0
@@ -108722,7 +108722,7 @@ _08034BB0:
 _08034BC0: .4byte gUnknown_85F2090
 _08034BC4:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08034BCA:
 	ldr r1, [r7, #0x44]
 	ldrb r0, [r1]
@@ -108987,7 +108987,7 @@ _08034D22:
 	b _08034CCE
 _08034DCE:
 	movs r0, #0x5a
-	bl sub_080053D8
+	bl DelayFrames
 	movs r6, #0xb8
 	lsls r6, r6, #1
 	adds r6, r6, r7
@@ -109445,7 +109445,7 @@ _080350FA:
 _08035160: .4byte gUnknown_20240D0
 _08035164:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0803516A:
 	ldr r0, [r7, #0x14]
 	bl sub_08036E80
@@ -109655,7 +109655,7 @@ _0803529A:
 _08035308: .4byte gUnknown_20240D0
 _0803530C:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08035312:
 	ldr r0, [r7]
 	bl sub_08036F20
@@ -109700,7 +109700,7 @@ _0803535E:
 	b _0803536A
 _08035364:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0803536A:
 	movs r6, #0x8c
 	lsls r6, r6, #1
@@ -109973,7 +109973,7 @@ _08035536:
 	ldr r0, [r7, #0x40]
 	bl sub_08002428
 	movs r0, #0x5a
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r0, [r7, #0x40]
 	cmp r0, #0
 	beq _080355D8
@@ -110345,7 +110345,7 @@ _08035826:
 _08035860: .4byte gUnknown_20240D0
 _08035864:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0803586A:
 	movs r2, #0xbc
 	adds r2, r2, r7
@@ -110449,7 +110449,7 @@ _080358FA:
 _08035938: .4byte gUnknown_20240D0
 _0803593C:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08035942:
 	movs r3, #0xb8
 	adds r3, r3, r7
@@ -110472,7 +110472,7 @@ _08035966:
 	b _08035972
 _0803596C:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08035972:
 	movs r1, #0xb4
 	adds r1, r1, r7
@@ -110681,7 +110681,7 @@ _08035AF0:
 	bl sub_080349B8
 _08035AFA:
 	movs r0, #0xa
-	bl sub_080053D8
+	bl DelayFrames
 	ldrb r0, [r5]
 	cmp r0, #0
 	beq _08035B4A
@@ -110961,7 +110961,7 @@ _08035CDE:
 	b _08035D2E
 _08035D28:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08035D2E:
 	movs r3, #0xe4
 	adds r3, r3, r7
@@ -111116,7 +111116,7 @@ _08035DE2:
 _08035E60: .4byte gUnknown_86BECEA
 _08035E64:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08035E6A:
 	movs r3, #0xe0
 	adds r3, r3, r7
@@ -111125,7 +111125,7 @@ _08035E6A:
 	cmp r0, #0
 	beq _08035E64
 	movs r0, #4
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r0, _08035EF0 @ =gUnknown_85F219C
 	movs r4, #0x88
 	lsls r4, r4, #1
@@ -111240,7 +111240,7 @@ _08035EFE:
 	b _08035F6A
 _08035F64:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08035F6A:
 	movs r1, #0xe4
 	adds r1, r1, r7
@@ -111374,7 +111374,7 @@ _08035FF6:
 _08036078: .4byte gUnknown_86BECEA
 _0803607C:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08036082:
 	movs r3, #0xe0
 	adds r3, r3, r7
@@ -111383,7 +111383,7 @@ _08036082:
 	cmp r0, #0
 	beq _0803607C
 	movs r0, #4
-	bl sub_080053D8
+	bl DelayFrames
 	b _080361EA
 _08036098:
 	movs r4, #0xf4
@@ -111628,7 +111628,7 @@ _08036262:
 	cmp r4, r0
 	beq _0803627E
 	movs r0, #0x28
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r0, _080362D4 @ =gUnknown_20240C0
 	adds r1, r0, #4
 	lsls r2, r4, #0x18
@@ -111637,7 +111637,7 @@ _08036262:
 	bl sub_08035B58
 _0803627E:
 	movs r0, #0x28
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r4, _080362D8 @ =gUnknown_202403B
 	adds r1, r4, #3
 	adds r0, r4, #0
@@ -111692,7 +111692,7 @@ _080362EA:
 	cmp r4, r0
 	beq _08036306
 	movs r0, #0x28
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r0, _08036320 @ =gUnknown_20240C8
 	adds r1, r0, #4
 	lsls r2, r4, #0x18
@@ -111701,7 +111701,7 @@ _080362EA:
 	bl sub_08035B58
 _08036306:
 	movs r0, #0x28
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r0, _08036324 @ =gUnknown_2024080
 	adds r1, r0, #3
 	movs r2, #1
@@ -111783,7 +111783,7 @@ _0803638A:
 	bl sub_080115A4
 	bl sub_080361FC
 	movs r0, #0xa
-	bl sub_080053D8
+	bl DelayFrames
 	movs r0, #0xae
 	bl sub_08017108
 	movs r6, #0
@@ -111915,7 +111915,7 @@ _080364D6:
 	eors r6, r0
 _080364DA:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _080364E0:
 	bl GetKeysProcessed
 	lsls r0, r0, #0x10
@@ -116820,7 +116820,7 @@ _08038832:
 _0803885A:
 	bl sub_0801ED94
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	ldr r0, _080388A0 @ =gUnknown_2029498
 	ldrh r0, [r0]
 	cmp r0, #0
@@ -117923,7 +117923,7 @@ sub_08038FB0: @ 0x08038FB0
 	push {lr}
 _08038FB2:
 	movs r0, #0xfa
-	bl sub_080053D8
+	bl DelayFrames
 	b _08038FB2
 	.align 2, 0
 	thumb_func_end sub_08038FB0
@@ -118371,13 +118371,13 @@ _0803935E:
 	cmp r2, #0
 	bne _08039376
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	b _0803927A
 	.align 2, 0
 _0803936C: .4byte gUnknown_2024C4C
 _08039370:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08039376:
 	bl GetKeysProcessed
 	lsls r0, r0, #0x10
@@ -118396,7 +118396,7 @@ _08039376:
 _08039398: .4byte 0x00000111
 _0803939C:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _080393A2:
 	bl sub_08016310
 	cmp r0, #0
@@ -118404,14 +118404,14 @@ _080393A2:
 	b _080393B2
 _080393AC:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _080393B2:
 	mov r0, r8
 	bl sub_08016E50
 	cmp r0, #0
 	beq _080393AC
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	movs r0, #0
 	movs r1, #0
 	movs r2, #0
@@ -118472,7 +118472,7 @@ _0803941E:
 	movs r3, #0x1e
 	bl sub_08016344
 	movs r0, #0x78
-	bl sub_080053D8
+	bl DelayFrames
 	movs r0, #0x3f
 	movs r1, #0x10
 	movs r2, #0
@@ -118486,7 +118486,7 @@ _0803945C: .4byte gUnknown_86E14EA
 _08039460: .4byte gUnknown_86E1CEA
 _08039464:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0803946A:
 	bl sub_08016310
 	cmp r0, #0
@@ -118505,7 +118505,7 @@ sub_0803947C: @ 0x0803947C
 	movs r0, #1
 	strh r0, [r1]
 	movs r0, #0x80
-	bl sub_080054E8
+	bl EnableInterrupt
 	bl sub_0803983C
 _0803948E:
 	ldr r0, _080394A0 @ =gUnknown_2027330
@@ -118529,7 +118529,7 @@ _080394A4:
 	b _080394C8
 _080394B8:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	bl sub_080398E8
 	cmp r0, #0
 	beq _0803948E
@@ -118647,7 +118647,7 @@ _080395B4: .4byte gUnknown_86E96EA
 _080395B8: .4byte gUnknown_2027358
 _080395BC:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _080395C2:
 	bl sub_08016310
 	cmp r0, #0
@@ -118667,7 +118667,7 @@ _080395D0:
 	b _080395E8
 _080395E2:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _080395E8:
 	bl sub_08016F20
 	cmp r0, #0
@@ -118687,7 +118687,7 @@ _08039608: .4byte gUnknown_2027358
 _0803960C: .4byte 0x0000017D
 _08039610:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _08039616:
 	ldr r0, _08039624 @ =0x0000017D
 	bl sub_08016E50
@@ -118743,7 +118743,7 @@ _0803966A:
 _08039684: .4byte gUnknown_2027358
 _08039688:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0803968E:
 	bl sub_08016310
 	cmp r0, #0
@@ -119932,7 +119932,7 @@ sub_08039F80: @ 0x08039F80
 	ldr r1, _08039FD4 @ =gUnknown_202657C
 	movs r0, #1
 	str r0, [r1]
-	bl sub_080053D8
+	bl DelayFrames
 	bl sub_080171A4
 	ldr r1, [r5, #0x14]
 	movs r2, #0x20
@@ -119943,7 +119943,7 @@ sub_08039F80: @ 0x08039F80
 	adds r6, r0, #0
 	bl sub_080171C4
 	movs r0, #2
-	bl sub_080053D8
+	bl DelayFrames
 	cmp r6, #1
 	bne _08039FD8
 	movs r0, #6
@@ -120004,7 +120004,7 @@ _08039FD8:
 	movs r2, #0x96
 	bl sub_080045CC
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	movs r0, #0xc9
 	lsls r0, r0, #2
 	bl sub_08011568
@@ -120024,7 +120024,7 @@ _0803A07C: .4byte gUnknown_85F34C0
 _0803A080: .4byte 0x0000017B
 _0803A084:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0803A08A:
 	bl sub_08005090
 	cmp r4, r0
@@ -120074,7 +120074,7 @@ sub_0803A0A4: @ 0x0803A0A4
 	b _0803A110
 _0803A0E8:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 	subs r0, r5, #1
 	lsls r0, r0, #0x10
 	lsrs r5, r0, #0x10
@@ -120110,7 +120110,7 @@ _0803A128:
 	b _0803A13A
 _0803A134:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0803A13A:
 	bl sub_08016F20
 	cmp r0, #1
@@ -120118,7 +120118,7 @@ _0803A13A:
 	ldr r0, [r4, #8]
 	bl sub_080023C4
 	movs r0, #2
-	bl sub_080053D8
+	bl DelayFrames
 	pop {r4, r5, r6}
 	pop {r0}
 	bx r0
@@ -120722,7 +120722,7 @@ sub_0803A5C8: @ 0x0803A5C8
 	b _0803A5EA
 _0803A5E4:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0803A5EA:
 	bl GetKeysProcessed
 	lsls r0, r0, #0x10
@@ -121011,7 +121011,7 @@ _0803A814: .4byte gUnknown_2033B10
 _0803A818: .4byte 0x000002AD
 _0803A81C:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0803A822:
 	bl sub_08016310
 	cmp r0, #0
@@ -121032,7 +121032,7 @@ _0803A830:
 _0803A840: .4byte 0x000002AD
 _0803A844:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0803A84A:
 	ldr r0, _0803A86C @ =0x000002AD
 	bl sub_08016E50
@@ -121054,7 +121054,7 @@ _0803A870: .4byte gUnknown_2033B10
 _0803A874: .4byte 0x0000017D
 _0803A878:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0803A87E:
 	ldr r0, _0803A88C @ =0x0000017D
 	bl sub_08016E50
@@ -121109,7 +121109,7 @@ _0803A8E8: .4byte 0x000002FF
 _0803A8EC: .4byte gUnknown_2033B10
 _0803A8F0:
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0803A8F6:
 	bl sub_08016310
 	cmp r0, #0
@@ -121188,7 +121188,7 @@ _0803A980:
 	cmp r1, #0
 	bne _0803A9A6
 	movs r0, #1
-	bl sub_080053D8
+	bl DelayFrames
 _0803A98E:
 	bl GetKeysProcessed
 	lsls r0, r0, #0x10
