@@ -26,7 +26,7 @@ song_unk_767_1: @ 0x08354CDC
 	.global song_unk_767
 song_unk_767: @ 0x08354CEC (song header)
 	.byte 2, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804E5B8 @ voice group
+	.4byte voicegroup008 @ voice group
 	.4byte song_unk_767_0
 	.4byte song_unk_767_1
-
+	.size song_unk_767,.-song_unk_767

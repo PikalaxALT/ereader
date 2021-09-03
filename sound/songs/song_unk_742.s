@@ -9,7 +9,7 @@ song_unk_742_0_001: @ 0x083A9FE4
 	.byte VOICE, 0x7B
 	.byte PAN, 0x44
 	.byte W32
-	.byte N01, Gn2, v127
+	.byte N02, Gn2, v127
 	.byte W08
 	.byte Gn2, v080
 	.byte W08
@@ -24,7 +24,7 @@ song_unk_742_0_001: @ 0x083A9FE4
 	.byte W48
 song_unk_742_0_000: @ 0x083A9FFF
 	.byte W32
-	.byte N01, An2, v127
+	.byte N02, An2, v127
 	.byte W08
 	.byte An2, v080
 	.byte W08
@@ -43,7 +43,7 @@ song_unk_742_1_003: @ 0x083AA01A
 	.byte VOICE, 0x7B
 	.byte PAN, 0x3C
 	.byte W32
-	.byte N01, Ds2, v127
+	.byte N02, Ds2, v127
 	.byte W08
 	.byte Ds2, v080
 	.byte W08
@@ -58,7 +58,7 @@ song_unk_742_1_003: @ 0x083AA01A
 	.byte W48
 song_unk_742_1_002: @ 0x083AA033
 	.byte W32
-	.byte N01, Fn2, v127
+	.byte N02, Fn2, v127
 	.byte W08
 	.byte Fn2, v080
 	.byte W08
@@ -77,25 +77,25 @@ song_unk_742_2_005: @ 0x083AA04E
 	.byte VOICE, 0x5D
 	.byte PAN, 0x40
 	.byte W24
-	.byte N42, Ds4, v127
+	.byte N44, Ds4, v127
 	.byte W48
-	.byte N10, Gs6
+	.byte N11, Gs6
 	.byte W12
-	.byte N10
+	.byte N11
 	.byte W12
 song_unk_742_2_004: @ 0x083AA05C
 	.byte W24
-	.byte N42, Ds4, v127
+	.byte N44, Ds4, v127
 	.byte W48
-	.byte N22, As4
+	.byte N23, As4
 	.byte W24
 	.byte PEND
 	.byte W24
-	.byte N42, Ds4
+	.byte N44, Ds4
 	.byte W48
-	.byte N10, Gs6
+	.byte N11, Gs6
 	.byte W12
-	.byte N10
+	.byte N11
 	.byte W12
 	.byte PATT
 	 .4byte song_unk_742_2_004
@@ -109,13 +109,13 @@ song_unk_742_3_006: @ 0x083AA07D
 	.byte VOICE, 0x03
 	.byte PAN, 0x50
 	.byte TUNE, 0x44
-	.byte N90, Fn1, v127
+	.byte N92, Fn1, v127
 	.byte W96
-	.byte N90
+	.byte N92
 	.byte W96
 	.byte Ds1
 	.byte W96
-	.byte N90
+	.byte N92
 	.byte W96
 	.byte GOTO
 	 .4byte song_unk_742_3_006
@@ -127,13 +127,13 @@ song_unk_742_4_007: @ 0x083AA097
 	.byte VOICE, 0x21
 	.byte PAN, 0x30
 	.byte TUNE, 0x40
-	.byte N90, Fn1, v127
+	.byte N92, Fn1, v127
 	.byte W96
-	.byte N90
+	.byte N92
 	.byte W96
 	.byte Ds1
 	.byte W96
-	.byte N90
+	.byte N92
 	.byte W96
 	.byte GOTO
 	 .4byte song_unk_742_4_007
@@ -142,10 +142,10 @@ song_unk_742_4_007: @ 0x083AA097
 	.global song_unk_742
 song_unk_742: @ 0x083AA0B0 (song header)
 	.byte 5, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_742_0
 	.4byte song_unk_742_1
 	.4byte song_unk_742_2
 	.4byte song_unk_742_3
 	.4byte song_unk_742_4
-
+	.size song_unk_742,.-song_unk_742

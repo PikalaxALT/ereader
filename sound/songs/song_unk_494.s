@@ -7,19 +7,19 @@ song_unk_494_0_000: @ 0x0835074A
 	.byte TEMPO, 0x4B
 	.byte VOICE, 0x5F
 	.byte VOL, 0x7F
-	.byte N56, Cn3, v072
+	.byte N60, Cn3, v072
 	.byte W60
-	.byte N44, As2
+	.byte N48, As2
 	.byte W36
 	.byte W12
-	.byte N32, Dn3
+	.byte N36, Dn3
 	.byte W36
-	.byte N68, Cn3
+	.byte N72, Cn3
 	.byte W48
 	.byte W24
-	.byte N11, Ds3
+	.byte N12, Ds3
 	.byte W12
-	.byte N56, Bn2
+	.byte N60, Bn2
 	.byte W60
 	.byte GOTO
 	 .4byte song_unk_494_0_000
@@ -28,6 +28,6 @@ song_unk_494_0_000: @ 0x0835074A
 	.global song_unk_494
 song_unk_494: @ 0x0835076C (song header)
 	.byte 1, 0, 100, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_494_0
-
+	.size song_unk_494,.-song_unk_494

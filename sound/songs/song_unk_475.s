@@ -6,7 +6,7 @@ song_unk_475_0: @ 0x08350374
 	.byte TEMPO, 0x4B
 	.byte VOICE, 0x73
 	.byte VOL, 0x7F
-	.byte N17, Gn2, v116
+	.byte N18, Gn2, v116
 	.byte W03
 	.byte VOL, 0x50
 	.byte W01
@@ -19,6 +19,6 @@ song_unk_475_0: @ 0x08350374
 	.global song_unk_475
 song_unk_475: @ 0x08350388 (song header)
 	.byte 1, 0, 100, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_475_0
-
+	.size song_unk_475,.-song_unk_475

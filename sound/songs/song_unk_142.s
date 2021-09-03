@@ -95,6 +95,6 @@ song_unk_142_0: @ 0x0834B030
 	.global song_unk_142
 song_unk_142: @ 0x0834B094 (song header)
 	.byte 1, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804D478 @ voice group
+	.4byte voicegroup002 @ voice group
 	.4byte song_unk_142_0
-
+	.size song_unk_142,.-song_unk_142

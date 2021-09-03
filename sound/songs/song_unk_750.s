@@ -8,17 +8,17 @@ song_unk_750_0: @ 0x083AA9EC
 	.byte VOICE, 0x5D
 	.byte W24
 song_unk_750_0_000: @ 0x083AA9F5
-	.byte N03, Cn1, v096
+	.byte N04, Cn1, v096
 	.byte W96
-	.byte N03
+	.byte N04
 	.byte W96
-	.byte N03
+	.byte N04
 	.byte W96
-	.byte N03
+	.byte N04
 	.byte W96
-	.byte N03
+	.byte N04
 	.byte W96
-	.byte N03
+	.byte N04
 	.byte W96
 	.byte GOTO
 	 .4byte song_unk_750_0_000
@@ -31,29 +31,29 @@ song_unk_750_1: @ 0x083AAA09
 	.byte W24
 song_unk_750_1_001: @ 0x083AAA12
 	.byte W12
-	.byte N03, Cn4, v032
+	.byte N04, Cn4, v032
 	.byte W04
-	.byte N03
+	.byte N04
 	.byte W04
-	.byte N03
+	.byte N04
 	.byte W04
-	.byte N03
+	.byte N04
 	.byte W36
-	.byte N03
+	.byte N04
 	.byte W04
-	.byte N03
+	.byte N04
 	.byte W04
-	.byte N03
+	.byte N04
 	.byte W04
-	.byte N03
+	.byte N04
 	.byte W08
-	.byte N03
+	.byte N04
 	.byte W04
-	.byte N03
+	.byte N04
 	.byte W04
-	.byte N03
+	.byte N04
 	.byte W04
-	.byte N03
+	.byte N04
 	.byte W04
 	.byte PEND
 	.byte PATT
@@ -75,13 +75,13 @@ song_unk_750_2: @ 0x083AAA4D
 	.byte VOICE, 0x4E
 	.byte W24
 song_unk_750_2_002: @ 0x083AAA54
-	.byte N05, Fn1, v127
+	.byte N06, Fn1, v127
 	.byte W36
-	.byte N05
+	.byte N06
 	.byte W12
 	.byte Ds1
 	.byte W24
-	.byte N05
+	.byte N06
 	.byte W24
 	.byte PEND
 	.byte PATT
@@ -105,7 +105,7 @@ song_unk_750_3: @ 0x083AAA7E
 song_unk_750_3_003: @ 0x083AAA85
 	.byte VOICE, 0x00
 	.byte W12
-	.byte N03, Cn5, v040
+	.byte N04, Cn5, v040
 	.byte W08
 	.byte Dn5
 	.byte W04
@@ -113,12 +113,12 @@ song_unk_750_3_003: @ 0x083AAA85
 	.byte W12
 	.byte Cn5
 	.byte W12
-	.byte N17, An5
+	.byte N18, An5
 	.byte W24
-	.byte N23, Gn5
+	.byte N24, Gn5
 	.byte W24
 	.byte W12
-	.byte N03, Fn5
+	.byte N04, Fn5
 	.byte W08
 	.byte Gn5
 	.byte W04
@@ -126,13 +126,13 @@ song_unk_750_3_003: @ 0x083AAA85
 	.byte W12
 	.byte Fn5
 	.byte W12
-	.byte N17, Dn5
+	.byte N18, Dn5
 	.byte W24
-	.byte N23, Cn5
+	.byte N24, Cn5
 	.byte W24
 	.byte W96
 	.byte W12
-	.byte N03
+	.byte N04
 	.byte W08
 	.byte Dn5
 	.byte W04
@@ -140,19 +140,19 @@ song_unk_750_3_003: @ 0x083AAA85
 	.byte W12
 	.byte Cn5
 	.byte W12
-	.byte N17, An5
+	.byte N18, An5
 	.byte W24
-	.byte N03, Gn5
+	.byte N04, Gn5
 	.byte W12
 	.byte Fn5
 	.byte W12
-	.byte N17, En5
+	.byte N18, En5
 	.byte W24
-	.byte N03, Dn5
+	.byte N04, Dn5
 	.byte W12
 	.byte Cn5
 	.byte W12
-	.byte N44, As4
+	.byte N48, As4
 	.byte W48
 	.byte W96
 	.byte GOTO
@@ -166,7 +166,7 @@ song_unk_750_4: @ 0x083AAACC
 song_unk_750_4_004: @ 0x083AAAD3
 	.byte VOICE, 0x20
 	.byte W12
-	.byte N03, Cn2, v048
+	.byte N04, Cn2, v048
 	.byte W08
 	.byte Dn2
 	.byte W04
@@ -174,12 +174,12 @@ song_unk_750_4_004: @ 0x083AAAD3
 	.byte W12
 	.byte Cn2
 	.byte W12
-	.byte N17, An2
+	.byte N18, An2
 	.byte W24
-	.byte N23, Gn2
+	.byte N24, Gn2
 	.byte W24
 	.byte W12
-	.byte N03, Fn2
+	.byte N04, Fn2
 	.byte W08
 	.byte Gn2
 	.byte W04
@@ -187,13 +187,13 @@ song_unk_750_4_004: @ 0x083AAAD3
 	.byte W12
 	.byte Fn2
 	.byte W12
-	.byte N17, Dn2
+	.byte N18, Dn2
 	.byte W24
-	.byte N23, Cn2
+	.byte N24, Cn2
 	.byte W24
 	.byte W96
 	.byte W12
-	.byte N03
+	.byte N04
 	.byte W08
 	.byte Dn2
 	.byte W04
@@ -201,19 +201,19 @@ song_unk_750_4_004: @ 0x083AAAD3
 	.byte W12
 	.byte Cn2
 	.byte W12
-	.byte N17, An2
+	.byte N18, An2
 	.byte W24
-	.byte N03, Gn2
+	.byte N04, Gn2
 	.byte W12
 	.byte Fn2
 	.byte W12
-	.byte N17, En2
+	.byte N18, En2
 	.byte W24
-	.byte N03, Dn2
+	.byte N04, Dn2
 	.byte W12
 	.byte Cn2
 	.byte W12
-	.byte N44, As1
+	.byte N48, As1
 	.byte W48
 	.byte W96
 	.byte GOTO
@@ -227,23 +227,23 @@ song_unk_750_5: @ 0x083AAB1A
 	.byte W24
 song_unk_750_5_005: @ 0x083AAB23
 	.byte W12
-	.byte N02, Cn3, v040
+	.byte N03, Cn3, v040
 	.byte W04
-	.byte N02
+	.byte N03
 	.byte W04
-	.byte N02
+	.byte N03
 	.byte W04
-	.byte N02
+	.byte N03
 	.byte W36
 	.byte As2
 	.byte W04
-	.byte N02
+	.byte N03
 	.byte W04
-	.byte N02
+	.byte N03
 	.byte W04
-	.byte N02
+	.byte N03
 	.byte W12
-	.byte N02
+	.byte N03
 	.byte W12
 	.byte PEND
 	.byte PATT
@@ -267,23 +267,23 @@ song_unk_750_6: @ 0x083AAB58
 	.byte W24
 song_unk_750_6_006: @ 0x083AAB61
 	.byte W12
-	.byte N02, An2, v040
+	.byte N03, An2, v040
 	.byte W04
-	.byte N02
+	.byte N03
 	.byte W04
-	.byte N02
+	.byte N03
 	.byte W04
-	.byte N02
+	.byte N03
 	.byte W36
 	.byte Gn2
 	.byte W04
-	.byte N02
+	.byte N03
 	.byte W04
-	.byte N02
+	.byte N03
 	.byte W04
-	.byte N02
+	.byte N03
 	.byte W12
-	.byte N02
+	.byte N03
 	.byte W12
 	.byte PEND
 	.byte PATT
@@ -303,7 +303,7 @@ song_unk_750_6_006: @ 0x083AAB61
 	.global song_unk_750
 song_unk_750: @ 0x083AAB98 (song header)
 	.byte 7, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_750_0
 	.4byte song_unk_750_1
 	.4byte song_unk_750_2
@@ -311,4 +311,4 @@ song_unk_750: @ 0x083AAB98 (song header)
 	.4byte song_unk_750_4
 	.4byte song_unk_750_5
 	.4byte song_unk_750_6
-
+	.size song_unk_750,.-song_unk_750

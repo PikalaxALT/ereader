@@ -6,12 +6,12 @@ song_unk_195_0: @ 0x0834C800
 	.byte TEMPO, 0x4B
 	.byte VOICE, 0x60
 	.byte VOL, 0x7F
-	.byte N02, En3, v100
+	.byte N03, En3, v100
 	.byte W02
 	.byte VOL, 0x3C
 	.byte W01
 	.byte 0x7F
-	.byte N02
+	.byte N03
 	.byte W02
 	.byte VOL, 0x3C
 	.byte W01
@@ -20,6 +20,6 @@ song_unk_195_0: @ 0x0834C800
 	.global song_unk_195
 song_unk_195: @ 0x0834C818 (song header)
 	.byte 1, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_195_0
-
+	.size song_unk_195,.-song_unk_195

@@ -30,7 +30,7 @@ song_unk_795_1: @ 0x083AAE1E
 	.global song_unk_795
 song_unk_795: @ 0x083AAE30 (song header)
 	.byte 2, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804E5B8 @ voice group
+	.4byte voicegroup008 @ voice group
 	.4byte song_unk_795_0
 	.4byte song_unk_795_1
-
+	.size song_unk_795,.-song_unk_795

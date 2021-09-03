@@ -7,7 +7,7 @@ song_unk_376_0_000: @ 0x0834F9B6
 	.byte TEMPO, 0x41
 	.byte VOICE, 0x00
 	.byte VOL, 0x7F
-	.byte N05, Gn4, v040
+	.byte N06, Gn4, v040
 	.byte W12
 	.byte Dn4
 	.byte W12
@@ -74,6 +74,6 @@ song_unk_376_0_000: @ 0x0834F9B6
 	.global song_unk_376
 song_unk_376: @ 0x0834FA00 (song header)
 	.byte 1, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_376_0
-
+	.size song_unk_376,.-song_unk_376

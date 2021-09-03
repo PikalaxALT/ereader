@@ -7,15 +7,15 @@ song_unk_759_0: @ 0x083AB394
 song_unk_759_0_000: @ 0x083AB398
 	.byte TEMPO, 0x5A
 	.byte VOICE, 0x03
-	.byte N05, Gn4, v096
+	.byte N06, Gn4, v096
 	.byte W12
 	.byte En4
 	.byte W06
 	.byte Cn4
 	.byte W06
-	.byte N44, Gn3
+	.byte N48, Gn3
 	.byte W48
-	.byte N05
+	.byte N06
 	.byte W12
 	.byte An3
 	.byte W12
@@ -77,13 +77,13 @@ song_unk_759_1: @ 0x083AB3E3
 	.byte KEYSH, 0x00
 song_unk_759_1_001: @ 0x083AB3E7
 	.byte VOICE, 0x5D
-	.byte N23, Cn1, v127
+	.byte N24, Cn1, v127
 	.byte W24
-	.byte N23
+	.byte N24
 	.byte W24
-	.byte N23
+	.byte N24
 	.byte W24
-	.byte N23
+	.byte N24
 	.byte W24
 	.byte PEND
 	.byte PATT
@@ -103,34 +103,34 @@ song_unk_759_2_002: @ 0x083AB40D
 	.byte MOD, 0x0A
 	.byte PAN, 0x60
 	.byte W12
-	.byte N11, Gn3, v127
+	.byte N12, Gn3, v127
 	.byte W24
-	.byte N11
+	.byte N12
 	.byte W24
-	.byte N11
+	.byte N12
 	.byte W24
-	.byte N11
+	.byte N12
 	.byte W12
 	.byte PEND
 	.byte PATT
 	 .4byte song_unk_759_2_002
 	.byte PATT
 	 .4byte song_unk_759_2_002
-	.byte N05, Fs5, v127
+	.byte N06, Fs5, v127
 	.byte W12
-	.byte N11, Gn3
+	.byte N12, Gn3
 	.byte W12
-	.byte N05, Fs5
+	.byte N06, Fs5
 	.byte W12
-	.byte N11, Gn3
+	.byte N12, Gn3
 	.byte W12
-	.byte N05, Fs5
+	.byte N06, Fs5
 	.byte W12
-	.byte N11, Gn3
+	.byte N12, Gn3
 	.byte W12
-	.byte N05, Fs5
+	.byte N06, Fs5
 	.byte W12
-	.byte N11, Gn3
+	.byte N12, Gn3
 	.byte W12
 	.byte GOTO
 	 .4byte song_unk_759_2_002
@@ -139,8 +139,8 @@ song_unk_759_2_002: @ 0x083AB40D
 	.global song_unk_759
 song_unk_759: @ 0x083AB448 (song header)
 	.byte 3, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_759_0
 	.4byte song_unk_759_1
 	.4byte song_unk_759_2
-
+	.size song_unk_759,.-song_unk_759

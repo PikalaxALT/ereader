@@ -15,6 +15,6 @@ song_unk_518_0: @ 0x083508B4
 	.global song_unk_518
 song_unk_518: @ 0x083508C4 (song header)
 	.byte 1, 0, 100, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804D478 @ voice group
+	.4byte voicegroup002 @ voice group
 	.4byte song_unk_518_0
-
+	.size song_unk_518,.-song_unk_518

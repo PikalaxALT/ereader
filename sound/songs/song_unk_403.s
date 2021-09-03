@@ -7,7 +7,7 @@ song_unk_403_0: @ 0x083B5478
 	.byte VOICE, 0x1E
 	.byte VOL, 0x7F
 	.byte PAN, 0x7F
-	.byte N01, Gn4, v112
+	.byte N02, Gn4, v112
 	.byte W03
 	.byte Bn4
 	.byte W03
@@ -19,7 +19,7 @@ song_unk_403_0: @ 0x083B5478
 	.byte W04
 	.byte Gn5, v064
 	.byte W04
-	.byte N01
+	.byte N02
 	.byte W05
 	.byte Gn5, v048
 	.byte W02
@@ -29,7 +29,7 @@ song_unk_403_1: @ 0x083B5498
 	.byte VOICE, 0x42
 	.byte VOL, 0x7F
 	.byte PAN, 0x00
-	.byte N01, Bn4, v112
+	.byte N02, Bn4, v112
 	.byte W04
 	.byte Gn5
 	.byte W03
@@ -41,7 +41,7 @@ song_unk_403_1: @ 0x083B5498
 	.byte W04
 	.byte Bn5, v064
 	.byte W04
-	.byte N01
+	.byte N02
 	.byte W04
 	.byte Bn5, v048
 	.byte W03
@@ -50,7 +50,7 @@ song_unk_403_1: @ 0x083B5498
 	.global song_unk_403
 song_unk_403: @ 0x083B54B8 (song header)
 	.byte 2, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_403_0
 	.4byte song_unk_403_1
-
+	.size song_unk_403,.-song_unk_403

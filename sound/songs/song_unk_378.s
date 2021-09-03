@@ -7,7 +7,7 @@ song_unk_378_0_000: @ 0x0834FA96
 	.byte TEMPO, 0x3C
 	.byte VOICE, 0x01
 	.byte VOL, 0x7F
-	.byte N00, Ds5, v052
+	.byte N01, Ds5, v052
 	.byte W12
 	.byte Dn5
 	.byte W06
@@ -91,7 +91,7 @@ song_unk_378_0_000: @ 0x0834FA96
 	.byte Fs3
 	.byte W06
 	.byte Dn3
-	.byte N00, Dn5
+	.byte N01, Dn5
 	.byte W09
 	.byte Cn4
 	.byte W03
@@ -170,6 +170,6 @@ song_unk_378_0_000: @ 0x0834FA96
 	.global song_unk_378
 song_unk_378: @ 0x0834FB44 (song header)
 	.byte 1, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_378_0
-
+	.size song_unk_378,.-song_unk_378

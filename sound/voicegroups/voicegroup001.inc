@@ -1,8 +1,8 @@
 	.align 2, 0
 	.global voicegroup001
 voicegroup001: @ 0x0804D2C8 (voicegroup)
-	voice_square_1 60, 0, 2, 0, 0, 15, 0
-	voice_keysplit_all gUnknown_0804D2C8
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_keysplit_all voicegroup001
 	voice_directsound 60, 0, gUnknown_080633F0, 255, 0, 255, 0
 	voice_directsound 60, 0, gUnknown_080639FC, 255, 0, 255, 165
 	voice_directsound 60, 0, gUnknown_0806518C, 255, 0, 255, 0
@@ -33,7 +33,8 @@ voicegroup001: @ 0x0804D2C8 (voicegroup)
 	voice_directsound 60, 0, gUnknown_0809901C, 255, 0, 255, 0
 	voice_directsound 60, 0, gUnknown_0809AFFC, 255, 0, 255, 0
 	voice_directsound 60, 0, gUnknown_0809B96C, 255, 0, 255, 127
-	voice_keysplit gUnknown_0804D9C4, KeySplitTable0
+	voice_keysplit voicegroup003, KeySplitTable0
 	voice_directsound 60, 0, gUnknown_0809F274, 255, 0, 255, 0
 	voice_directsound 60, 0, gUnknown_080A0648, 255, 0, 255, 0
 	voice_directsound 60, 0, gUnknown_080A1DB8, 255, 0, 255, 0
+	.size voicegroup001,.-voicegroup001

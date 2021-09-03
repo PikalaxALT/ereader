@@ -7,7 +7,7 @@ song_unk_191_0: @ 0x0834C668
 	.byte VOICE, 0x02
 	.byte VOL, 0x7F
 	.byte W16
-	.byte N03, Dn3, v056
+	.byte N04, Dn3, v056
 	.byte W08
 	.byte En3
 	.byte W16
@@ -25,14 +25,14 @@ song_unk_191_0: @ 0x0834C668
 	.byte W24
 	.byte Fn3, v068
 	.byte W16
-	.byte N30, En3, v056
+	.byte N32, En3, v056
 	.byte W32
 	.byte FINE
 song_unk_191_1: @ 0x0834C68C
 	.byte KEYSH, 0x00
 	.byte VOICE, 0x1E
 	.byte VOL, 0x7F
-	.byte N03, Dn2, v080
+	.byte N04, Dn2, v080
 	.byte W24
 	.byte Fs2
 	.byte W24
@@ -44,14 +44,14 @@ song_unk_191_1: @ 0x0834C68C
 	.byte W24
 	.byte An1
 	.byte W16
-	.byte N30, Dn2
+	.byte N32, Dn2
 	.byte W32
 	.byte FINE
 song_unk_191_2: @ 0x0834C6A4
 	.byte KEYSH, 0x00
 	.byte VOICE, 0x3E
 	.byte VOL, 0x7F
-	.byte N03, Fs4, v052
+	.byte N04, Fs4, v052
 	.byte W24
 	.byte An4
 	.byte W24
@@ -63,39 +63,39 @@ song_unk_191_2: @ 0x0834C6A4
 	.byte W24
 	.byte An4
 	.byte W16
-	.byte N30, Gs4
+	.byte N32, Gs4
 	.byte W32
 	.byte FINE
 song_unk_191_3: @ 0x0834C6BC
 	.byte KEYSH, 0x00
 	.byte VOICE, 0x5D
 	.byte VOL, 0x7F
-	.byte N23, Fs1, v016
+	.byte N24, Fs1, v016
 	.byte W24
-	.byte N01
+	.byte N02
 	.byte W16
-	.byte N01
+	.byte N02
 	.byte W08
-	.byte N23
+	.byte N24
 	.byte W24
-	.byte N01
+	.byte N02
 	.byte W16
-	.byte N01
+	.byte N02
 	.byte W08
-	.byte N23
+	.byte N24
 	.byte W24
-	.byte N01
+	.byte N02
 	.byte W16
-	.byte N30, Cs2, v040
+	.byte N32, Cs2, v040
 	.byte W32
 	.byte FINE
 	.align 2, 0
 	.global song_unk_191
 song_unk_191: @ 0x0834C6DC (song header)
 	.byte 4, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_191_0
 	.4byte song_unk_191_1
 	.4byte song_unk_191_2
 	.4byte song_unk_191_3
-
+	.size song_unk_191,.-song_unk_191

@@ -6,7 +6,7 @@ song_unk_149_0: @ 0x0834B1B8
 	.byte TEMPO, 0x41
 	.byte VOICE, 0x00
 	.byte VOL, 0x7F
-	.byte N05, Fn3, v064
+	.byte N06, Fn3, v064
 	.byte W24
 	.byte Fs3
 	.byte W12
@@ -25,7 +25,7 @@ song_unk_149_1: @ 0x0834B1D1
 	.byte KEYSH, 0x00
 	.byte VOICE, 0x44
 	.byte VOL, 0x7F
-	.byte N05, En3, v120
+	.byte N06, En3, v120
 	.byte W24
 	.byte Ds3
 	.byte W12
@@ -44,19 +44,19 @@ song_unk_149_2: @ 0x0834B1E8
 	.byte KEYSH, 0x00
 	.byte VOICE, 0x65
 	.byte VOL, 0x7F
-	.byte N02, Gn2, v080
+	.byte N03, Gn2, v080
 	.byte W24
-	.byte N03, Cn4, v036
+	.byte N04, Cn4, v036
 	.byte W12
-	.byte N03
+	.byte N04
 	.byte W12
-	.byte N02, Gn2, v080
+	.byte N03, Gn2, v080
 	.byte W24
-	.byte N03, Cn4, v036
+	.byte N04, Cn4, v036
 	.byte W24
-	.byte N03
+	.byte N04
 	.byte W48
-	.byte N02, Gn2, v080
+	.byte N03, Gn2, v080
 	.byte W03
 	.byte FINE
 song_unk_149_3: @ 0x0834B207
@@ -65,16 +65,16 @@ song_unk_149_3: @ 0x0834B207
 	.byte VOL, 0x7F
 	.byte W96
 	.byte W48
-	.byte N11, Cs2, v064
+	.byte N12, Cs2, v064
 	.byte W12
 	.byte FINE
 	.align 2, 0
 	.global song_unk_149
 song_unk_149: @ 0x0834B214 (song header)
 	.byte 4, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_149_0
 	.4byte song_unk_149_1
 	.4byte song_unk_149_2
 	.4byte song_unk_149_3
-
+	.size song_unk_149,.-song_unk_149

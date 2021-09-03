@@ -7,14 +7,14 @@ song_unk_674_0: @ 0x08351100
 	.byte VOICE, 0x5D
 	.byte VOL, 0x7F
 	.byte W05
-	.byte N23, Ds4, v072
+	.byte N24, Ds4, v072
 	.byte W24
 	.byte FINE
 song_unk_674_1: @ 0x0835110E
 	.byte KEYSH, 0x00
 	.byte VOICE, 0x66
 	.byte VOL, 0x7F
-	.byte N00, Gn2, v052
+	.byte N01, Gn2, v052
 	.byte W01
 	.byte Gs2
 	.byte W01
@@ -39,7 +39,7 @@ song_unk_674_1: @ 0x0835110E
 	.global song_unk_674
 song_unk_674: @ 0x0835112C (song header)
 	.byte 2, 0, 100, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_674_0
 	.4byte song_unk_674_1
-
+	.size song_unk_674,.-song_unk_674

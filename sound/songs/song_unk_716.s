@@ -7,7 +7,7 @@ song_unk_716_0: @ 0x08352664
 	.byte TEMPO, 0x3C
 	.byte VOICE, 0x08
 	.byte BEND, 0x7E
-	.byte N42, Cn3, v127
+	.byte N44, Cn3, v127
 	.byte W01
 	.byte BEND, 0x7B
 	.byte W01
@@ -95,7 +95,7 @@ song_unk_716_1: @ 0x083526C4
 	.byte KEYSH, 0x00
 	.byte VOICE, 0x08
 	.byte BEND, 0x7E
-	.byte N42, Gs2, v064
+	.byte N44, Gs2, v064
 	.byte W01
 	.byte BEND, 0x7B
 	.byte W01
@@ -183,7 +183,7 @@ song_unk_716_2: @ 0x08352722
 	.byte KEYSH, 0x00
 	.byte VOICE, 0x08
 	.byte BEND, 0x7E
-	.byte N42, As1, v064
+	.byte N44, As1, v064
 	.byte W01
 	.byte BEND, 0x7B
 	.byte W01
@@ -270,8 +270,8 @@ song_unk_716_2: @ 0x08352722
 	.global song_unk_716
 song_unk_716: @ 0x08352780 (song header)
 	.byte 3, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804DE80 @ voice group
+	.4byte voicegroup005 @ voice group
 	.4byte song_unk_716_0
 	.4byte song_unk_716_1
 	.4byte song_unk_716_2
-
+	.size song_unk_716,.-song_unk_716

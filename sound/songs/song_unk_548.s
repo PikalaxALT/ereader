@@ -20,6 +20,6 @@ song_unk_548_0_000: @ 0x08350BA0
 	.global song_unk_548
 song_unk_548: @ 0x08350BAC (song header)
 	.byte 1, 0, 100, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804D478 @ voice group
+	.4byte voicegroup002 @ voice group
 	.4byte song_unk_548_0
-
+	.size song_unk_548,.-song_unk_548

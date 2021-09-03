@@ -6,7 +6,7 @@ song_unk_597_0: @ 0x08350E50
 	.byte TEMPO, 0x4B
 	.byte VOICE, 0x1E
 	.byte VOL, 0x7F
-	.byte N01, Cs4, v060
+	.byte N02, Cs4, v060
 	.byte W02
 	.byte Bn4
 	.byte W02
@@ -17,6 +17,6 @@ song_unk_597_0: @ 0x08350E50
 	.global song_unk_597
 song_unk_597: @ 0x08350E64 (song header)
 	.byte 1, 0, 100, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_597_0
-
+	.size song_unk_597,.-song_unk_597

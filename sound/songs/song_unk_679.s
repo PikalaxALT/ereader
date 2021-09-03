@@ -20,6 +20,6 @@ song_unk_679_0_000: @ 0x08351928
 	.global song_unk_679
 song_unk_679: @ 0x08351934 (song header)
 	.byte 1, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804D478 @ voice group
+	.4byte voicegroup002 @ voice group
 	.4byte song_unk_679_0
-
+	.size song_unk_679,.-song_unk_679

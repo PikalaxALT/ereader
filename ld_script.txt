@@ -731,6 +731,16 @@ SECTIONS {
 		sound/songs/song_unk_882.o(.rodata);
 		sound/songs/song_unk_883.o(.rodata);
 		sound/songs/song_unk_884.o(.rodata);
+		data/direct_sound_083558F0.o(.rodata);
+		data/direct_sound_0835D69C.o(.rodata);
+		data/direct_sound_08364D60.o(.rodata);
+		data/direct_sound_08377BBC.o(.rodata);
+		data/direct_sound_083896C4.o(.rodata);
+		data/direct_sound_0838CE18.o(.rodata);
+		data/direct_sound_083907FC.o(.rodata);
+		data/direct_sound_08393824.o(.rodata);
+		data/direct_sound_08396F2C.o(.rodata);
+		data/direct_sound_083A440C.o(.rodata);
 		sound/songs/song_unk_740.o(.rodata);
 		sound/songs/song_unk_741.o(.rodata);
 		sound/songs/song_unk_742.o(.rodata);
@@ -768,6 +778,9 @@ SECTIONS {
 		sound/songs/song_unk_1.o(.rodata);
 		sound/songs/song_unk_5.o(.rodata);
 		sound/songs/song_unk_6.o(.rodata);
+		data/direct_sound_083AB854.o(.rodata);
+		data/direct_sound_083AD22C.o(.rodata);
+		data/direct_sound_083B1824.o(.rodata);
 		sound/songs/song_unk_804.o(.rodata);
 		sound/songs/song_unk_807.o(.rodata);
 		sound/songs/song_unk_808.o(.rodata);

@@ -6,7 +6,7 @@ song_unk_28_0: @ 0x08347B64
 	.byte TEMPO, 0x4B
 	.byte VOICE, 0x1E
 	.byte VOL, 0x7F
-	.byte N00, Cn5, v072
+	.byte N01, Cn5, v072
 	.byte W01
 	.byte En5
 	.byte W02
@@ -23,6 +23,6 @@ song_unk_28_0: @ 0x08347B64
 	.global song_unk_28
 song_unk_28: @ 0x08347B80 (song header)
 	.byte 1, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_28_0
-
+	.size song_unk_28,.-song_unk_28

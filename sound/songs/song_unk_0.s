@@ -6,7 +6,7 @@ song_unk_0_0: @ 0x083AB774
 	.byte TEMPO, 0x4B
 	.byte VOICE, 0x7F
 	.byte VOL, 0x6E
-	.byte N28, Bn3, v060
+	.byte N30, Bn3, v060
 	.byte W13
 	.byte VOL, 0x69
 	.byte W01
@@ -43,4 +43,4 @@ song_unk_0: @ 0x083AB7A0 (song header)
 	.byte 1, 0, 10, 0 @ trackCount, blockCount, priority, reverb
 	.4byte voicegroup000 @ voice group
 	.4byte song_unk_0_0
-
+	.size song_unk_0,.-song_unk_0

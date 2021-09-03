@@ -7,13 +7,13 @@ song_unk_146_0_000: @ 0x0834B0FA
 	.byte TEMPO, 0x4B
 	.byte VOICE, 0x17
 	.byte VOL, 0x7F
-	.byte N02, Gn2, v052
+	.byte N03, Gn2, v052
 	.byte W10
-	.byte N02
+	.byte N03
 	.byte W11
-	.byte N02
+	.byte N03
 	.byte W10
-	.byte N02
+	.byte N03
 	.byte W11
 	.byte GOTO
 	 .4byte song_unk_146_0_000
@@ -22,6 +22,6 @@ song_unk_146_0_000: @ 0x0834B0FA
 	.global song_unk_146
 song_unk_146: @ 0x0834B110 (song header)
 	.byte 1, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804D478 @ voice group
+	.4byte voicegroup002 @ voice group
 	.4byte song_unk_146_0
-
+	.size song_unk_146,.-song_unk_146

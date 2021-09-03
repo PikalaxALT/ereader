@@ -13,7 +13,7 @@ song_unk_736_0_000: @ 0x08354574
 	.byte W96
 	.byte W96
 	.byte MOD, 0x00
-	.byte N92, Cn4, v048
+	.byte N96, Cn4, v048
 	.byte W36
 	.byte MOD, 0x01
 	.byte W36
@@ -22,7 +22,7 @@ song_unk_736_0_000: @ 0x08354574
 	.byte W96
 	.byte 0x00
 	.byte BEND, 0x36
-	.byte N92, Dn4
+	.byte N96, Dn4
 	.byte W36
 	.byte BEND, 0x3B
 	.byte W12
@@ -41,15 +41,15 @@ song_unk_736_1: @ 0x083545A1
 	.byte KEYSH, 0x00
 song_unk_736_1_001: @ 0x083545A5
 	.byte VOICE, 0x04
-	.byte N11, Ds1, v096
+	.byte N12, Ds1, v096
 	.byte W96
 	.byte PEND
 song_unk_736_1_002: @ 0x083545AC
 	.byte PAN, 0x7F
 	.byte W12
-	.byte N11, Cn3, v064
+	.byte N12, Cn3, v064
 	.byte W48
-	.byte N03
+	.byte N04
 	.byte W12
 	.byte Dn3
 	.byte W12
@@ -78,9 +78,9 @@ song_unk_736_2: @ 0x083545E1
 	.byte KEYSH, 0x00
 song_unk_736_2_003: @ 0x083545E5
 	.byte VOICE, 0x5D
-	.byte N09, Cn1, v127
+	.byte N10, Cn1, v127
 	.byte W60
-	.byte N09
+	.byte N10
 	.byte W36
 	.byte PEND
 	.byte PATT
@@ -106,9 +106,9 @@ song_unk_736_3: @ 0x08354617
 song_unk_736_3_004: @ 0x0835461B
 	.byte VOICE, 0x5E
 	.byte W24
-	.byte N02, Cn4, v056
+	.byte N03, Cn4, v056
 	.byte W48
-	.byte N02
+	.byte N03
 	.byte W24
 	.byte PEND
 	.byte PATT
@@ -134,13 +134,13 @@ song_unk_736_4: @ 0x0835464E
 song_unk_736_4_005: @ 0x08354652
 	.byte VOICE, 0x64
 	.byte PAN, 0x00
-	.byte N00, Fs6, v080
+	.byte N01, Fs6, v080
 	.byte W24
-	.byte N00
+	.byte N01
 	.byte W24
-	.byte N00
+	.byte N01
 	.byte W24
-	.byte N00
+	.byte N01
 	.byte W24
 	.byte PEND
 	.byte PATT
@@ -169,9 +169,9 @@ song_unk_736_5_006: @ 0x0835468F
 	.byte VOICE, 0x22
 	.byte PAN, 0x00
 	.byte W12
-	.byte N11, Gs2, v064
+	.byte N12, Gs2, v064
 	.byte W48
-	.byte N03
+	.byte N04
 	.byte W12
 	.byte As2
 	.byte W12
@@ -196,31 +196,31 @@ song_unk_736_6: @ 0x083546B7
 song_unk_736_6_008: @ 0x083546BB
 	.byte VOICE, 0x7C
 	.byte PAN, 0x40
-	.byte N03, Fn3, v096
-	.byte N03, As3, v064
+	.byte N04, Fn3, v096
+	.byte N04, As3, v064
 	.byte W12
 	.byte Dn4, v096
-	.byte N03, As4, v064
+	.byte N04, As4, v064
 	.byte W12
 	.byte As3, v096
-	.byte N03, Gn4, v064
+	.byte N04, Gn4, v064
 	.byte W12
 	.byte Cn4, v096
-	.byte N03, Gs4, v064
+	.byte N04, Gs4, v064
 	.byte W60
 	.byte W96
 	.byte W12
 	.byte Fn3, v096
-	.byte N03, As3, v064
+	.byte N04, As3, v064
 	.byte W12
 	.byte Dn4, v096
-	.byte N03, As4, v064
+	.byte N04, As4, v064
 	.byte W12
 	.byte As3, v096
-	.byte N03, Gn4, v064
+	.byte N04, Gn4, v064
 	.byte W12
 	.byte Cn4, v096
-	.byte N03, Gs4, v064
+	.byte N04, Gs4, v064
 	.byte W48
 	.byte W96
 	.byte W96
@@ -234,7 +234,7 @@ song_unk_736_6_008: @ 0x083546BB
 	.global song_unk_736
 song_unk_736: @ 0x08354700 (song header)
 	.byte 7, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_736_0
 	.4byte song_unk_736_1
 	.4byte song_unk_736_2
@@ -242,4 +242,4 @@ song_unk_736: @ 0x08354700 (song header)
 	.4byte song_unk_736_4
 	.4byte song_unk_736_5
 	.4byte song_unk_736_6
-
+	.size song_unk_736,.-song_unk_736

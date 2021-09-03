@@ -6,22 +6,22 @@ song_unk_90_0: @ 0x08349294
 	.byte TEMPO, 0x4B
 	.byte VOICE, 0x4C
 	.byte VOL, 0x7F
-	.byte N00, Cn2, v112
-	.byte N00, Cs2
+	.byte N01, Cn2, v112
+	.byte N01, Cs2
 	.byte W01
 	.byte Dn2
 	.byte W01
 	.byte Ds2
 	.byte W01
 	.byte En2
-	.byte N00, Fn2
+	.byte N01, Fn2
 	.byte W01
 	.byte Fs2
 	.byte W01
 	.byte Gn2
 	.byte W01
 	.byte Gs2
-	.byte N00, An2
+	.byte N01, An2
 	.byte W01
 	.byte As2
 	.byte W01
@@ -41,6 +41,6 @@ song_unk_90_0_000: @ 0x083492BA
 	.global song_unk_90
 song_unk_90: @ 0x083492C8 (song header)
 	.byte 1, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_90_0
-
+	.size song_unk_90,.-song_unk_90

@@ -6,7 +6,7 @@ song_unk_225_0: @ 0x0834D01C
 	.byte TEMPO, 0x4B
 	.byte VOICE, 0x1E
 	.byte VOL, 0x7F
-	.byte N00, Cn2, v100
+	.byte N01, Cn2, v100
 	.byte W01
 	.byte Bn1
 	.byte W01
@@ -51,6 +51,6 @@ song_unk_225_0: @ 0x0834D01C
 	.global song_unk_225
 song_unk_225: @ 0x0834D058 (song header)
 	.byte 1, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_225_0
-
+	.size song_unk_225,.-song_unk_225

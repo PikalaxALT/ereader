@@ -886,6 +886,8 @@ gSongTable: @ 0x0804EDBC
 	song song_unk_882, 0, 0
 	song song_unk_883, 0, 0
 	song song_unk_884, 0, 0
+	.size gSongTable,.-gSongTable
 	.align 2, 0
 dummy_song_header: @ 0x08050964 (song header)
 	.byte 0, 0, 0, 0 @ trackCount, blockCount, priority, reverb
+	.size dummy_song_header,.-dummy_song_header

@@ -8,9 +8,9 @@ song_unk_732_0: @ 0x08353E6C
 	.byte VOICE, 0x44
 	.byte W24
 song_unk_732_0_000: @ 0x08353E75
-	.byte N05, Dn1, v127
+	.byte N06, Dn1, v127
 	.byte W12
-	.byte N11
+	.byte N12
 	.byte W84
 	.byte PEND
 	.byte PATT
@@ -37,9 +37,9 @@ song_unk_732_1: @ 0x08353EA5
 	.byte PAN, 0x40
 	.byte W24
 song_unk_732_1_001: @ 0x08353EAE
-	.byte N10, Cn1, v127
+	.byte N11, Cn1, v127
 	.byte W12
-	.byte N10
+	.byte N11
 	.byte W24
 	.byte Gs6
 	.byte W24
@@ -49,9 +49,9 @@ song_unk_732_1_001: @ 0x08353EAE
 	.byte W24
 	.byte PEND
 song_unk_732_1_002: @ 0x08353EBB
-	.byte N10, Cn1, v127
+	.byte N11, Cn1, v127
 	.byte W12
-	.byte N10
+	.byte N11
 	.byte W24
 	.byte Gs6
 	.byte W24
@@ -82,21 +82,21 @@ song_unk_732_2: @ 0x08353EEC
 	.byte PAN, 0x00
 	.byte W24
 song_unk_732_2_003: @ 0x08353EF5
-	.byte N00, Fs6, v080
+	.byte N01, Fs6, v080
 	.byte W12
-	.byte N00
+	.byte N01
 	.byte W12
-	.byte N00
+	.byte N01
 	.byte W12
-	.byte N00
+	.byte N01
 	.byte W12
-	.byte N00
+	.byte N01
 	.byte W12
-	.byte N00
+	.byte N01
 	.byte W12
-	.byte N00
+	.byte N01
 	.byte W12
-	.byte N00
+	.byte N01
 	.byte W12
 	.byte PEND
 	.byte PATT
@@ -124,7 +124,7 @@ song_unk_732_3: @ 0x08353F31
 	.byte W24
 song_unk_732_3_004: @ 0x08353F3A
 	.byte W24
-	.byte N02, An4, v096
+	.byte N03, An4, v096
 	.byte W24
 	.byte Bn4
 	.byte W24
@@ -134,7 +134,7 @@ song_unk_732_3_004: @ 0x08353F3A
 	.byte W12
 	.byte W96
 	.byte W24
-	.byte N02
+	.byte N03
 	.byte W24
 	.byte Bn4
 	.byte W24
@@ -144,7 +144,7 @@ song_unk_732_3_004: @ 0x08353F3A
 	.byte W12
 	.byte W96
 	.byte W24
-	.byte N02
+	.byte N03
 	.byte W24
 	.byte An4
 	.byte W24
@@ -177,7 +177,7 @@ song_unk_732_4: @ 0x08353F6E
 song_unk_732_4_005: @ 0x08353F73
 	.byte W32
 	.byte W02
-	.byte N01, An4, v012
+	.byte N02, An4, v012
 	.byte W24
 	.byte Bn4
 	.byte W24
@@ -188,7 +188,7 @@ song_unk_732_4_005: @ 0x08353F73
 	.byte W96
 	.byte W32
 	.byte W02
-	.byte N01
+	.byte N02
 	.byte W24
 	.byte Bn4
 	.byte W24
@@ -199,7 +199,7 @@ song_unk_732_4_005: @ 0x08353F73
 	.byte W96
 	.byte W32
 	.byte W02
-	.byte N01
+	.byte N02
 	.byte W24
 	.byte An4
 	.byte W24
@@ -209,18 +209,18 @@ song_unk_732_4_005: @ 0x08353F73
 	.byte W02
 	.byte W92
 	.byte W03
-	.byte N00, Fs4
+	.byte N01, Fs4
 	.byte W01
 	.byte W06
-	.byte N01, En4
+	.byte N02, En4
 	.byte W04
 	.byte Dn4
 	.byte W84
 	.byte W01
-	.byte N00, Cs4
+	.byte N01, Cs4
 	.byte W01
 	.byte W06
-	.byte N01, Dn4
+	.byte N02, Dn4
 	.byte W04
 	.byte Cs4
 	.byte W36
@@ -238,7 +238,7 @@ song_unk_732_5: @ 0x08353FB3
 	.byte W24
 song_unk_732_5_006: @ 0x08353FBC
 	.byte W24
-	.byte N02, An3, v096
+	.byte N03, An3, v096
 	.byte W24
 	.byte Bn3
 	.byte W24
@@ -248,7 +248,7 @@ song_unk_732_5_006: @ 0x08353FBC
 	.byte W12
 	.byte W96
 	.byte W24
-	.byte N02
+	.byte N03
 	.byte W24
 	.byte Bn3
 	.byte W24
@@ -258,7 +258,7 @@ song_unk_732_5_006: @ 0x08353FBC
 	.byte W12
 	.byte W96
 	.byte W24
-	.byte N02
+	.byte N03
 	.byte W24
 	.byte An3
 	.byte W24
@@ -291,7 +291,7 @@ song_unk_732_6: @ 0x08353FF0
 song_unk_732_6_007: @ 0x08353FF5
 	.byte W32
 	.byte W02
-	.byte N01, An3, v012
+	.byte N02, An3, v012
 	.byte W24
 	.byte Bn3
 	.byte W24
@@ -302,7 +302,7 @@ song_unk_732_6_007: @ 0x08353FF5
 	.byte W96
 	.byte W32
 	.byte W02
-	.byte N01
+	.byte N02
 	.byte W24
 	.byte Bn3
 	.byte W24
@@ -313,7 +313,7 @@ song_unk_732_6_007: @ 0x08353FF5
 	.byte W96
 	.byte W32
 	.byte W02
-	.byte N01
+	.byte N02
 	.byte W24
 	.byte An3
 	.byte W24
@@ -323,18 +323,18 @@ song_unk_732_6_007: @ 0x08353FF5
 	.byte W02
 	.byte W92
 	.byte W03
-	.byte N00, Fs3
+	.byte N01, Fs3
 	.byte W01
 	.byte W06
-	.byte N01, En3
+	.byte N02, En3
 	.byte W04
 	.byte Dn3
 	.byte W84
 	.byte W01
-	.byte N00, Cs3
+	.byte N01, Cs3
 	.byte W01
 	.byte W06
-	.byte N01, Dn3
+	.byte N02, Dn3
 	.byte W04
 	.byte Cs3
 	.byte W36
@@ -348,7 +348,7 @@ song_unk_732_6_007: @ 0x08353FF5
 	.global song_unk_732
 song_unk_732: @ 0x08354038 (song header)
 	.byte 7, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_732_0
 	.4byte song_unk_732_1
 	.4byte song_unk_732_2
@@ -356,4 +356,4 @@ song_unk_732: @ 0x08354038 (song header)
 	.4byte song_unk_732_4
 	.4byte song_unk_732_5
 	.4byte song_unk_732_6
-
+	.size song_unk_732,.-song_unk_732

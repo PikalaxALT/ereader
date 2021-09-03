@@ -8,7 +8,7 @@ song_unk_729_0_000: @ 0x08353A74
 	.byte TEMPO, 0x38
 	.byte VOICE, 0x45
 	.byte PAN, 0x40
-	.byte N04, An2, v127
+	.byte N05, An2, v127
 	.byte W18
 	.byte En3
 	.byte W18
@@ -42,7 +42,7 @@ song_unk_729_1_001: @ 0x08353A9E
 	.byte VOICE, 0x03
 	.byte PAN, 0x7F
 	.byte W24
-	.byte N02, Fs4, v096
+	.byte N03, Fs4, v096
 	.byte W12
 	.byte En4
 	.byte W12
@@ -60,7 +60,7 @@ song_unk_729_1_001: @ 0x08353A9E
 	.byte W12
 	.byte Bn3
 	.byte W24
-	.byte N02
+	.byte N03
 	.byte W08
 	.byte Cs4
 	.byte W08
@@ -78,7 +78,7 @@ song_unk_729_2: @ 0x08353AC6
 song_unk_729_2_002: @ 0x08353ACA
 	.byte W32
 	.byte W02
-	.byte N01, Fs4, v016
+	.byte N02, Fs4, v016
 	.byte W12
 	.byte En4
 	.byte W12
@@ -100,7 +100,7 @@ song_unk_729_2_002: @ 0x08353ACA
 	.byte Bn3
 	.byte W24
 	.byte W01
-	.byte N01
+	.byte N02
 	.byte W08
 	.byte Cs4
 	.byte W08
@@ -120,7 +120,7 @@ song_unk_729_3_003: @ 0x08353AF8
 	.byte VOICE, 0x21
 	.byte PAN, 0x00
 	.byte W24
-	.byte N02, Dn4, v096
+	.byte N03, Dn4, v096
 	.byte W12
 	.byte Cs4
 	.byte W12
@@ -138,7 +138,7 @@ song_unk_729_3_003: @ 0x08353AF8
 	.byte W12
 	.byte Gn3
 	.byte W24
-	.byte N02
+	.byte N03
 	.byte W08
 	.byte An3
 	.byte W08
@@ -156,7 +156,7 @@ song_unk_729_4: @ 0x08353B20
 song_unk_729_4_004: @ 0x08353B24
 	.byte W32
 	.byte W02
-	.byte N01, Dn4, v016
+	.byte N02, Dn4, v016
 	.byte W12
 	.byte Cs4
 	.byte W12
@@ -178,7 +178,7 @@ song_unk_729_4_004: @ 0x08353B24
 	.byte Gn3
 	.byte W24
 	.byte W01
-	.byte N01
+	.byte N02
 	.byte W08
 	.byte An3
 	.byte W08
@@ -195,10 +195,10 @@ song_unk_729_4_004: @ 0x08353B24
 	.global song_unk_729
 song_unk_729: @ 0x08353B50 (song header)
 	.byte 5, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_729_0
 	.4byte song_unk_729_1
 	.4byte song_unk_729_2
 	.4byte song_unk_729_3
 	.4byte song_unk_729_4
-
+	.size song_unk_729,.-song_unk_729

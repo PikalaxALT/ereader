@@ -9,7 +9,7 @@ song_unk_749_0_000: @ 0x083AA90C
 	.byte VOICE, 0x7C
 	.byte PAN, 0x7F
 	.byte W24
-	.byte N03, An4, v127
+	.byte N04, An4, v127
 	.byte W16
 	.byte Bn4
 	.byte W08
@@ -32,15 +32,15 @@ song_unk_749_1: @ 0x083AA929
 song_unk_749_1_001: @ 0x083AA92D
 	.byte VOICE, 0x44
 	.byte PAN, 0x40
-	.byte N23, An2, v064
+	.byte N24, An2, v064
 	.byte W48
 	.byte En3
 	.byte W48
 	.byte Dn3
 	.byte W40
-	.byte N07, Dn2
+	.byte N08, Dn2
 	.byte W08
-	.byte N23, En2
+	.byte N24, En2
 	.byte W24
 	.byte Fs2
 	.byte W24
@@ -50,9 +50,9 @@ song_unk_749_1_001: @ 0x083AA92D
 	.byte W48
 	.byte Gn2
 	.byte W40
-	.byte N07, Dn2
+	.byte N08, Dn2
 	.byte W08
-	.byte N23, Gn2
+	.byte N24, Gn2
 	.byte W24
 	.byte Gs2
 	.byte W24
@@ -65,17 +65,17 @@ song_unk_749_2: @ 0x083AA955
 song_unk_749_2_002: @ 0x083AA959
 	.byte VOICE, 0x64
 	.byte PAN, 0x00
-	.byte N15, Cn4, v064
+	.byte N16, Cn4, v064
 	.byte W24
-	.byte N00, Cn4, v127
+	.byte N01, Cn4, v127
 	.byte W16
-	.byte N00
+	.byte N01
 	.byte W08
-	.byte N15, Cn4, v064
+	.byte N16, Cn4, v064
 	.byte W24
-	.byte N00, Cn4, v127
+	.byte N01, Cn4, v127
 	.byte W16
-	.byte N00
+	.byte N01
 	.byte W08
 	.byte PEND
 	.byte PATT
@@ -96,14 +96,14 @@ song_unk_749_3_003: @ 0x083AA98B
 	.byte W96
 	.byte W96
 	.byte W88
-	.byte N03, Dn4, v064
+	.byte N04, Dn4, v064
 	.byte W08
 	.byte W16
-	.byte N07
+	.byte N08
 	.byte W08
-	.byte N15, Cs4
+	.byte N16, Cs4
 	.byte W16
-	.byte N07, Dn4
+	.byte N08, Dn4
 	.byte W56
 	.byte GOTO
 	 .4byte song_unk_749_3_003
@@ -115,7 +115,7 @@ song_unk_749_4_004: @ 0x083AA9A9
 	.byte VOICE, 0x20
 	.byte PAN, 0x00
 	.byte W24
-	.byte N03, An2, v096
+	.byte N04, An2, v096
 	.byte W16
 	.byte Bn2
 	.byte W08
@@ -131,11 +131,11 @@ song_unk_749_4_004: @ 0x083AA9A9
 	.byte Bn3, v064
 	.byte W08
 	.byte W16
-	.byte N07
+	.byte N08
 	.byte W08
-	.byte N15, As3
+	.byte N16, As3
 	.byte W16
-	.byte N07, Bn3
+	.byte N08, Bn3
 	.byte W56
 	.byte GOTO
 	 .4byte song_unk_749_4_004
@@ -144,10 +144,10 @@ song_unk_749_4_004: @ 0x083AA9A9
 	.global song_unk_749
 song_unk_749: @ 0x083AA9D0 (song header)
 	.byte 5, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_749_0
 	.4byte song_unk_749_1
 	.4byte song_unk_749_2
 	.4byte song_unk_749_3
 	.4byte song_unk_749_4
-
+	.size song_unk_749,.-song_unk_749

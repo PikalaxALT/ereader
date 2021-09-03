@@ -6,7 +6,7 @@ song_unk_247_0: @ 0x0834DF4C
 	.byte TEMPO, 0x4B
 	.byte VOICE, 0x66
 	.byte VOL, 0x7F
-	.byte N01, Gn3, v060
+	.byte N02, Gn3, v060
 	.byte W02
 	.byte En3
 	.byte W02
@@ -18,7 +18,7 @@ song_unk_247_1: @ 0x0834DF5D
 	.byte VOICE, 0x65
 	.byte VOL, 0x7F
 	.byte W06
-	.byte N01, Cn4, v060
+	.byte N02, Cn4, v060
 	.byte W02
 	.byte Bn3
 	.byte W02
@@ -49,7 +49,7 @@ song_unk_247_1: @ 0x0834DF5D
 	.global song_unk_247
 song_unk_247: @ 0x0834DF84 (song header)
 	.byte 2, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_247_0
 	.4byte song_unk_247_1
-
+	.size song_unk_247,.-song_unk_247

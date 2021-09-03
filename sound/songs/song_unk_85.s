@@ -7,7 +7,7 @@ song_unk_85_0: @ 0x083490EC
 	.byte VOICE, 0x45
 	.byte VOL, 0x7F
 	.byte PAN, 0x40
-	.byte N00, En3, v068
+	.byte N01, En3, v068
 	.byte W01
 	.byte Gs3
 	.byte W02
@@ -88,7 +88,7 @@ song_unk_85_0: @ 0x083490EC
 	.byte Gs5
 	.byte W02
 song_unk_85_0_000: @ 0x08349148
-	.byte N00, Cn5, v068
+	.byte N01, Cn5, v068
 	.byte W01
 	.byte En5
 	.byte W02
@@ -104,7 +104,7 @@ song_unk_85_1: @ 0x08349158
 	.byte VOICE, 0x1F
 	.byte VOL, 0x7F
 	.byte PAN, 0x40
-	.byte N00, Cn3, v048
+	.byte N01, Cn3, v048
 	.byte W01
 	.byte En3
 	.byte W02
@@ -185,7 +185,7 @@ song_unk_85_1: @ 0x08349158
 	.byte En5
 	.byte W02
 song_unk_85_1_001: @ 0x083491B2
-	.byte N00, Gs4, v048
+	.byte N01, Gs4, v048
 	.byte W01
 	.byte Cn5
 	.byte W02
@@ -200,7 +200,7 @@ song_unk_85_1_001: @ 0x083491B2
 	.global song_unk_85
 song_unk_85: @ 0x083491C4 (song header)
 	.byte 2, 0, 15, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_85_0
 	.4byte song_unk_85_1
-
+	.size song_unk_85,.-song_unk_85

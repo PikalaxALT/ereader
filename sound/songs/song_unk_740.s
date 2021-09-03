@@ -8,7 +8,7 @@ song_unk_740_0_000: @ 0x083A9D28
 	.byte TEMPO, 0x38
 	.byte VOICE, 0x45
 	.byte PAN, 0x40
-	.byte N04, An2, v127
+	.byte N05, An2, v127
 	.byte W18
 	.byte En3
 	.byte W18
@@ -42,7 +42,7 @@ song_unk_740_1_001: @ 0x083A9D52
 	.byte VOICE, 0x03
 	.byte PAN, 0x7F
 	.byte W24
-	.byte N02, Fs4, v096
+	.byte N03, Fs4, v096
 	.byte W12
 	.byte En4
 	.byte W12
@@ -60,7 +60,7 @@ song_unk_740_1_001: @ 0x083A9D52
 	.byte W12
 	.byte Bn3
 	.byte W24
-	.byte N02
+	.byte N03
 	.byte W08
 	.byte Cs4
 	.byte W08
@@ -78,7 +78,7 @@ song_unk_740_2: @ 0x083A9D7A
 song_unk_740_2_002: @ 0x083A9D7E
 	.byte W32
 	.byte W02
-	.byte N01, Fs4, v016
+	.byte N02, Fs4, v016
 	.byte W12
 	.byte En4
 	.byte W12
@@ -100,7 +100,7 @@ song_unk_740_2_002: @ 0x083A9D7E
 	.byte Bn3
 	.byte W24
 	.byte W01
-	.byte N01
+	.byte N02
 	.byte W08
 	.byte Cs4
 	.byte W08
@@ -120,7 +120,7 @@ song_unk_740_3_003: @ 0x083A9DAC
 	.byte VOICE, 0x21
 	.byte PAN, 0x00
 	.byte W24
-	.byte N02, Dn4, v096
+	.byte N03, Dn4, v096
 	.byte W12
 	.byte Cs4
 	.byte W12
@@ -138,7 +138,7 @@ song_unk_740_3_003: @ 0x083A9DAC
 	.byte W12
 	.byte Gn3
 	.byte W24
-	.byte N02
+	.byte N03
 	.byte W08
 	.byte An3
 	.byte W08
@@ -156,7 +156,7 @@ song_unk_740_4: @ 0x083A9DD4
 song_unk_740_4_004: @ 0x083A9DD8
 	.byte W32
 	.byte W02
-	.byte N01, Dn4, v016
+	.byte N02, Dn4, v016
 	.byte W12
 	.byte Cs4
 	.byte W12
@@ -178,7 +178,7 @@ song_unk_740_4_004: @ 0x083A9DD8
 	.byte Gn3
 	.byte W24
 	.byte W01
-	.byte N01
+	.byte N02
 	.byte W08
 	.byte An3
 	.byte W08
@@ -195,10 +195,10 @@ song_unk_740_4_004: @ 0x083A9DD8
 	.global song_unk_740
 song_unk_740: @ 0x083A9E04 (song header)
 	.byte 5, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_740_0
 	.4byte song_unk_740_1
 	.4byte song_unk_740_2
 	.4byte song_unk_740_3
 	.4byte song_unk_740_4
-
+	.size song_unk_740,.-song_unk_740

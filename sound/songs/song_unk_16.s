@@ -6,7 +6,7 @@ song_unk_16_0: @ 0x083475AC
 	.byte TEMPO, 0x4B
 	.byte VOICE, 0x1F
 	.byte VOL, 0x7F
-	.byte N02, Cs3, v052
+	.byte N03, Cs3, v052
 	.byte W03
 	.byte Ds3
 	.byte W03
@@ -21,7 +21,7 @@ song_unk_16_1: @ 0x083475C1
 	.byte KEYSH, 0x00
 	.byte VOICE, 0x45
 	.byte VOL, 0x7F
-	.byte N02, Fn4, v100
+	.byte N03, Fn4, v100
 	.byte W03
 	.byte Gn4
 	.byte W03
@@ -36,7 +36,7 @@ song_unk_16_2: @ 0x083475D4
 	.byte KEYSH, 0x00
 	.byte VOICE, 0x66
 	.byte VOL, 0x7F
-	.byte N02, Fn2, v072
+	.byte N03, Fn2, v072
 	.byte W03
 	.byte An2, v060
 	.byte W03
@@ -49,8 +49,8 @@ song_unk_16_2: @ 0x083475D4
 	.global song_unk_16
 song_unk_16: @ 0x083475E8 (song header)
 	.byte 3, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_16_0
 	.4byte song_unk_16_1
 	.4byte song_unk_16_2
-
+	.size song_unk_16,.-song_unk_16

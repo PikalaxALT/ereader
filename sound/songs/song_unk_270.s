@@ -66,6 +66,6 @@ song_unk_270_0: @ 0x0834E92C
 	.global song_unk_270
 song_unk_270: @ 0x0834E974 (song header)
 	.byte 1, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_270_0
-
+	.size song_unk_270,.-song_unk_270

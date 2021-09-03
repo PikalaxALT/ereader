@@ -20,6 +20,6 @@ song_unk_393_0_000: @ 0x0834FD0C
 	.global song_unk_393
 song_unk_393: @ 0x0834FD18 (song header)
 	.byte 1, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804D478 @ voice group
+	.4byte voicegroup002 @ voice group
 	.4byte song_unk_393_0
-
+	.size song_unk_393,.-song_unk_393

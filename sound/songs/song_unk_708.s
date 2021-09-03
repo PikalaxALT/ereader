@@ -6,7 +6,7 @@ song_unk_708_0: @ 0x083521A8
 	.byte KEYSH, 0x00
 	.byte TEMPO, 0x64
 	.byte VOICE, 0x02
-	.byte N06, An2, v096
+	.byte N07, An2, v096
 	.byte W08
 	.byte En3, v064
 	.byte W16
@@ -24,7 +24,7 @@ song_unk_708_1: @ 0x083521C1
 	.byte KEYSH, 0x00
 	.byte VOICE, 0x02
 	.byte W02
-	.byte N06, Bn2, v096
+	.byte N07, Bn2, v096
 	.byte W08
 	.byte Fn3, v064
 	.byte W16
@@ -42,7 +42,7 @@ song_unk_708_2: @ 0x083521D9
 	.byte KEYSH, 0x00
 	.byte VOICE, 0x02
 	.byte W04
-	.byte N06, Cn3, v096
+	.byte N07, Cn3, v096
 	.byte W08
 	.byte Gn3, v064
 	.byte W16
@@ -60,7 +60,7 @@ song_unk_708_3: @ 0x083521F2
 	.byte KEYSH, 0x00
 	.byte VOICE, 0x02
 	.byte W06
-	.byte N06, Dn3, v096
+	.byte N07, Dn3, v096
 	.byte W24
 	.byte An3
 	.byte W24
@@ -71,9 +71,9 @@ song_unk_708_3: @ 0x083521F2
 	.global song_unk_708
 song_unk_708: @ 0x08352204 (song header)
 	.byte 4, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804DE80 @ voice group
+	.4byte voicegroup005 @ voice group
 	.4byte song_unk_708_0
 	.4byte song_unk_708_1
 	.4byte song_unk_708_2
 	.4byte song_unk_708_3
-
+	.size song_unk_708,.-song_unk_708

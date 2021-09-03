@@ -73,7 +73,7 @@ class PmRawData(PmObject):
         self.truncate(obj.offset - self.offset)
 
     def to_text(self, fp):
-        print('{0.name}: @ 0x{0.offset:08X}'.format(self), file=fp)
+        print('{0}: @ 0x{0.offset:08X}'.format(self), file=fp)
         offset = self.offset
         size = len(self)
         if offset & 15:
@@ -262,7 +262,7 @@ class SongTrack(PmRawData):
             if value == 0xCF:
                 cmd = 'TIE'
             else:
-                cmd = 'N{:02d}'.format(get_length(value - 0xD0))
+                cmd = 'N{:02d}'.format(get_length(value - 0xCF))
             line = '\t.byte '
             if not is_continue:
                 line += '{}, '.format(cmd)
@@ -301,14 +301,14 @@ class SongTrack(PmRawData):
             else:
                 lines[line_i] = get_wait(byt).rstrip(', ')
             if i == line_i:
-                raise RuntimeError('Infinite loop detected in {0.name}:{1:d}, aborting'.format(self, i))
+                raise RuntimeError('Infinite loop detected in {0}:{1:d}, aborting'.format(self, i))
 
         self._lines = lines
         self._labels = labels
         self.parent._labels |= labels
 
     def to_text(self, fp):
-        print('{0.name}: @ 0x{0.offset:08X}'.format(self), file=fp)
+        print('{0}: @ 0x{0.offset:08X}'.format(self), file=fp)
         for i, line in sorted(self._lines.items()):
             if i + self.offset in self.parent._labels:
                 print('{}: @ 0x{:08X}'.format(self.parent._labels[i + self.offset], self.offset + i), file=fp)
@@ -374,7 +374,11 @@ class VoiceGroup(PmStructData, format='<BBBBLBBBB', names=('type', 'key', 'lengt
             128: 'voice_keysplit_all',
         }
         print('\t{0} '.format(methods[self.type]), file=fp, end='')
-        if not self.type & 0xE0:
+        if self.type in [1, 9]:
+            print('{0.key}, {1}, {2}, '.format(self, self.length & 0x7F, self.pan_sweep), file=fp, end='')
+        elif self.type in [2, 3, 4, 10, 11, 12]:
+            print('{0.key}, {1}, '.format(self, self.length & 0x7F), file=fp, end='')
+        elif self.type in [0, 8, 16]:
             print('{0.key}, {1}, '.format(self, self.pan_sweep & 0x7F), file=fp, end='')
         print('{0.wav}'.format(self), file=fp, end='')
         if not self.type & 0xE0:
@@ -412,10 +416,12 @@ class VoiceGroupArray(PmRawData):
     def to_text(self, fp):
         assert self._structs is not None
         print('\t.align 2, 0', file=fp)
-        print('\t.global {0.name}'.format(self), file=fp)
-        print('{0.name}: @ 0x{0.offset:08X} (voicegroup)'.format(self), file=fp)
+        print('\t.global {0}'.format(self), file=fp)
+        print('{0}: @ 0x{0.offset:08X} (voicegroup)'.format(self), file=fp)
         for vg in self._structs:
-            vg.to_text(fp)
+            if vg.offset < self.offset + len(self):
+                vg.to_text(fp)
+        print('\t.size {0},.-{0}'.format(self), file=fp)
 
 
 class SongHeader(PmStructData, format='<BBBBL', names=('trackCount', 'blockCount', 'priority', 'reverb', 'tone')):
@@ -440,13 +446,13 @@ class SongHeader(PmStructData, format='<BBBBL', names=('trackCount', 'blockCount
 
     def to_text(self, fp):
         print('\t.align 2, 0', file=fp)
-        print('\t.global {0.name}'.format(self), file=fp)
-        print('{0.name}: @ 0x{0.offset:08X} (song header)'.format(self), file=fp)
+        print('\t.global {0}'.format(self), file=fp)
+        print('{0}: @ 0x{0.offset:08X} (song header)'.format(self), file=fp)
         print('\t.byte {0.trackCount}, {0.blockCount}, {0.priority}, {0.reverb} @ trackCount, blockCount, priority, reverb'.format(self), file=fp)
         print('\t.4byte {0.tone} @ voice group'.format(self), file=fp)
         for track in self.tracks:
             print('\t.4byte {}'.format(track), file=fp)
-        print('', file=fp)
+        print('\t.size {0},.-{0}'.format(self), file=fp)
 
 
 class DummySongHeader(SongHeader, format='<BBBB', names=('trackCount', 'blockCount', 'priority', 'reverb')):
@@ -462,8 +468,9 @@ class DummySongHeader(SongHeader, format='<BBBB', names=('trackCount', 'blockCou
 
     def to_text(self, fp):
         print('\t.align 2, 0', file=fp)
-        print('{0.name}: @ 0x{0.offset:08X} (song header)'.format(self), file=fp)
+        print('{0}: @ 0x{0.offset:08X} (song header)'.format(self), file=fp)
         print('\t.byte {0.trackCount}, {0.blockCount}, {0.priority}, {0.reverb} @ trackCount, blockCount, priority, reverb'.format(self), file=fp)
+        print('\t.size {0},.-{0}'.format(self), file=fp)
 
 
 class SongTableEntry(PmStructData, format='<LHH', names=('song', 'ms', 'me')):
@@ -502,20 +509,28 @@ class SongTableArray(PmRawData):
     def to_text(self, fp):
         assert self._structs is not None
         print('\t.align 2, 0', file=fp)
-        print('\t.global {0.name}'.format(self), file=fp)
-        print('{0.name}: @ 0x{0.offset:08X}'.format(self), file=fp)
+        print('\t.global {0}'.format(self), file=fp)
+        print('{0}: @ 0x{0.offset:08X}'.format(self), file=fp)
         for song in self._structs:
             song.to_text(fp)
+        print('\t.size {0},.-{0}'.format(self), file=fp)
 
 
 def insort_left(array, obj):
     j = bisect.bisect_left(array, obj)
-    if isinstance(obj, PmRawData) and array[j] > obj:
-        obj.set_end(array[j])
     if array[j] > obj:
+        if isinstance(obj, PmRawData):
+            obj.set_end(array[j])
         array.insert(j, obj)
         if j > 0 and isinstance(array[j - 1], PmRawData):
             array[j - 1].set_end(obj)
+    else:
+        obj = array[j]
+    return obj
+
+
+def update_from_array(array, obj):
+    return array[array.index(obj)]
 
 
 def main():
@@ -533,17 +548,17 @@ def main():
     song_entries = [MusicPlayer.from_bytes(raw, i) for i in range(mus_player_start, mus_player_end, MusicPlayer.sizeof())]
     song_entries.append(PmRawData.from_bytes(raw, end))
     song_table = SongTableArray.from_bytes(raw, song_table_start)
-    insort_left(song_entries, song_table)
+    song_table = insort_left(song_entries, song_table)
     for header in song_table.iter_structs(raw):
         if not isinstance(header.song, DummySongHeader):
             header.song.name = 'song_unk_{}'.format((offset - song_table_start) // size)
             for i, track in enumerate(header.song.tracks):
                 track.name = '{0.song.name}_{1}'.format(header, i)
                 track.song = header.song
-        insort_left(song_entries, header.song)
+        header.song = insort_left(song_entries, header.song)
         if not isinstance(header.song, DummySongHeader):
-            insort_left(song_entries, header.song.tone)
-            insort_left(song_entries, header.song.tracks)
+            header.song.tone = insort_left(song_entries, header.song.tone)
+            header.song.tracks = insort_left(song_entries, header.song.tracks)
         offset += size
     i = 0
     while i < len(song_entries) - 1:
@@ -553,21 +568,23 @@ def main():
             if isinstance(x, VoiceGroupArray):
                 for vg in x.iter_structs(raw):
                     if isinstance(vg.wav, PmObject):
-                        insort_left(song_entries, vg.wav)
+                        vg.wav = insort_left(song_entries, vg.wav)
                     if isinstance(vg.keysplits, PmObject):
-                        insort_left(song_entries, vg.keysplits)
+                        vg.keysplits = insort_left(song_entries, vg.keysplits)
         i += 1
-    song_entries.pop(-1)
 
+    song_entries.sort()
     vgi = 0
     ksi = 0
-    for obj in song_entries:
+    for i, obj in enumerate(song_entries[:-1], 1):
         if isinstance(obj, VoiceGroupArray):
             obj.name = 'voicegroup{:03d}'.format(vgi)
             vgi += 1
         elif isinstance(obj, Keysplit):
             obj.name = 'KeySplitTable{:d}'.format(ksi)
             ksi += 1
+        assert song_entries[i].offset == obj.offset + len(obj)
+    song_entries.pop(-1)
 
     created_voicegroups_inc = False
     created_keysplit_tables_inc = False
@@ -575,6 +592,7 @@ def main():
     created_programmable_wave_inc = False
     created_music_player_table_inc = False
     created_song_table_inc = False
+    outside_sound_data_inc = False
     created_song_inc = collections.defaultdict(bool)
     os.makedirs('sound/voicegroups', exist_ok=True)
     os.makedirs('sound/programmable_wave_samples', exist_ok=True)
@@ -583,7 +601,9 @@ def main():
     print('\t.section .rodata')
     print('\t.include "asm/macros/m4a.inc"')
     print('\t.include "asm/macros/music_voice.inc"')
-    for obj in song_entries:
+    for i, obj in enumerate(song_entries):
+        if created_sound_data_inc and not isinstance(obj, DirectSound):
+            outside_sound_data_inc = True
         if isinstance(obj, VoiceGroupArray):
             filename = 'sound/voicegroups/{.name}.inc'.format(obj)
             with open('sound/voice_groups.inc', 'a' if created_voicegroups_inc else 'w') as vginc:
@@ -618,7 +638,7 @@ def main():
                     print('\t.include "MPlayDef.s"', file=fp)
                     print('\t.section .rodata', file=fp)
                     print('\t.align 2, 0', file=fp)
-                    print('\t{}(.rodata);'.format(songfname.replace('.s', '.o')), file=sys.stderr)
+                    print('\t\t{}(.rodata);'.format(songfname.replace('.s', '.o')), file=sys.stderr)
                 obj.to_text(fp)
             created_song_inc[songfname] = True
         elif isinstance(obj, DummySongHeader):
@@ -634,24 +654,38 @@ def main():
                     print('\t.include "MPlayDef.s"', file=fp)
                     print('\t.section .rodata', file=fp)
                     print('\t.align 2, 0', file=fp)
-                    print('\t{}(.rodata);'.format(songfname.replace('.s', '.o')), file=sys.stderr)
+                    print('\t\t{}(.rodata);'.format(songfname.replace('.s', '.o')), file=sys.stderr)
                 obj.to_text(fp)
             created_song_inc[songfname] = True
         elif isinstance(obj, DirectSound):
+            if not outside_sound_data_inc:
+                incfname = 'sound/direct_sound_data.inc'
+            else:
+                incfname = 'data/direct_sound_{:08X}.s'.format(obj.offset)
+            if obj.name == 'gUnknown_0835D69C':
+                assert incfname != 'sound/direct_sound_data.inc'
             filename = 'sound/direct_sound_samples/{.offset:08X}.bin'.format(obj)
-            with open('sound/direct_sound_data.inc', 'a' if created_sound_data_inc else 'w') as fp:
-                print('{0.name}: @ 0x{0.offset:08X}'.format(obj), file=fp)
+            with open(incfname, 'a' if created_sound_data_inc and not outside_sound_data_inc else 'w') as fp:
+                if incfname.endswith('.s'):
+                    print('\t.section .rodata', file=fp)
+                print('\t.align 2, 0', file=fp)
+                print('\t.global {}'.format(obj), file=fp)
+                print('{0}: @ 0x{0.offset:08X}'.format(obj), file=fp)
                 print('\t.incbin "{}"'.format(filename), file=fp)
             with open(filename, 'wb') as fp:
                 obj.to_binary(fp)
-            if not created_sound_data_inc:
-                print('\t.include "sound/direct_sound_data.inc"')
+            if outside_sound_data_inc:
+                print('\t\t{}(.rodata);'.format(incfname.replace('.s', '.o')), file=sys.stderr)
+            elif not created_sound_data_inc:
+                print('\t.include "{}"'.format(incfname))
             created_sound_data_inc = True
-            subprocess.run(['tools/aif2pcm/aif2pcm', filename, filename.replace('.bin', '.aif')])
+            # subprocess.run(['tools/aif2pcm/aif2pcm', filename, filename.replace('.bin', '.aif')])
         elif isinstance(obj, ProgrammableWaveData):
             filename = 'sound/programmable_wave_samples/{.offset:08X}.pcm'.format(obj)
             with open('sound/programmable_wave_data.inc', 'a' if created_programmable_wave_inc else 'w') as fp:
-                print('{0.name}: @ 0x{0.offset:08X}'.format(obj), file=fp)
+                print('\t.align 2, 0', file=fp)
+                print('\t.global {}'.format(obj), file=fp)
+                print('{0}: @ 0x{0.offset:08X}'.format(obj), file=fp)
                 print('\t.incbin "{}"'.format(filename), file=fp)
             with open(filename, 'wb') as fp:
                 obj.to_binary(fp)

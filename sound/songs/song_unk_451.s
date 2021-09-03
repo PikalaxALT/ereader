@@ -6,13 +6,13 @@ song_unk_451_0: @ 0x0834FF98
 	.byte TEMPO, 0x4B
 	.byte VOICE, 0x67
 	.byte VOL, 0x7F
-	.byte N04, An3, v048
+	.byte N05, An3, v048
 	.byte W05
 	.byte FINE
 	.align 2, 0
 	.global song_unk_451
 song_unk_451: @ 0x0834FFA8 (song header)
 	.byte 1, 0, 100, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_451_0
-
+	.size song_unk_451,.-song_unk_451

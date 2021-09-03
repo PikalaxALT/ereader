@@ -6,7 +6,7 @@ song_unk_244_0: @ 0x0834DBDC
 	.byte TEMPO, 0x4B
 	.byte VOICE, 0x20
 	.byte VOL, 0x7F
-	.byte N02, Gn4, v060
+	.byte N03, Gn4, v060
 	.byte W03
 	.byte Dn5
 	.byte W03
@@ -27,6 +27,6 @@ song_unk_244_0: @ 0x0834DBDC
 	.global song_unk_244
 song_unk_244: @ 0x0834DBF8 (song header)
 	.byte 1, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_244_0
-
+	.size song_unk_244,.-song_unk_244

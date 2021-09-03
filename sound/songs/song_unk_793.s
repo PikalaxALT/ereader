@@ -24,7 +24,7 @@ song_unk_793_1: @ 0x083AADBB
 	.global song_unk_793
 song_unk_793: @ 0x083AADC8 (song header)
 	.byte 2, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804E5B8 @ voice group
+	.4byte voicegroup008 @ voice group
 	.4byte song_unk_793_0
 	.4byte song_unk_793_1
-
+	.size song_unk_793,.-song_unk_793

@@ -6,7 +6,7 @@ song_unk_77_0: @ 0x08348718
 	.byte TEMPO, 0x4B
 	.byte VOICE, 0x56
 	.byte VOL, 0x7F
-	.byte N23, En3, v080
+	.byte N24, En3, v080
 	.byte W24
 	.byte FINE
 song_unk_77_1: @ 0x08348725
@@ -14,7 +14,7 @@ song_unk_77_1: @ 0x08348725
 	.byte VOICE, 0x42
 	.byte VOL, 0x7F
 	.byte BEND, 0x00
-	.byte N28, Cn2, v092
+	.byte N30, Cn2, v092
 	.byte W02
 	.byte VOL, 0x6E
 	.byte W01
@@ -49,7 +49,7 @@ song_unk_77_2: @ 0x0834875C
 	.byte VOICE, 0x1E
 	.byte VOL, 0x7F
 	.byte BEND, 0x00
-	.byte N28, An1, v092
+	.byte N30, An1, v092
 	.byte W02
 	.byte VOL, 0x6E
 	.byte W01
@@ -83,7 +83,7 @@ song_unk_77_3: @ 0x08348793
 	.byte KEYSH, 0x00
 	.byte VOICE, 0x66
 	.byte VOL, 0x7F
-	.byte N28, En2, v072
+	.byte N30, En2, v072
 	.byte W02
 	.byte VOL, 0x6E
 	.byte W04
@@ -106,9 +106,9 @@ song_unk_77_3: @ 0x08348793
 	.global song_unk_77
 song_unk_77: @ 0x083487B0 (song header)
 	.byte 4, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_77_0
 	.4byte song_unk_77_1
 	.4byte song_unk_77_2
 	.4byte song_unk_77_3
-
+	.size song_unk_77,.-song_unk_77

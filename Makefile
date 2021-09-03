@@ -254,3 +254,6 @@ $(ROM): $(ELF)
 
 libagbsyscall:
 	@$(MAKE) -C libagbsyscall TOOLCHAIN=$(TOOLCHAIN)
+
+sound/direct_sound_samples/%.bin: sound/direct_sound_samples/%.aif
+	$(AIF) $< $@

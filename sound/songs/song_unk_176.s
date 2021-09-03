@@ -6,13 +6,13 @@ song_unk_176_0: @ 0x0834C37C
 	.byte TEMPO, 0x4B
 	.byte VOICE, 0x31
 	.byte VOL, 0x7F
-	.byte N32, Bn2, v080
+	.byte N36, Bn2, v080
 	.byte W36
 	.byte FINE
 	.align 2, 0
 	.global song_unk_176
 song_unk_176: @ 0x0834C38C (song header)
 	.byte 1, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804D478 @ voice group
+	.4byte voicegroup002 @ voice group
 	.4byte song_unk_176_0
-
+	.size song_unk_176,.-song_unk_176

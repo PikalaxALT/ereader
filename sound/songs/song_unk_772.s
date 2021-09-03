@@ -26,7 +26,7 @@ song_unk_772_1: @ 0x08354DC0
 	.global song_unk_772
 song_unk_772: @ 0x08354DD0 (song header)
 	.byte 2, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804E5B8 @ voice group
+	.4byte voicegroup008 @ voice group
 	.4byte song_unk_772_0
 	.4byte song_unk_772_1
-
+	.size song_unk_772,.-song_unk_772

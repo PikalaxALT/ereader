@@ -2,21 +2,21 @@
 	.global voicegroup002
 voicegroup002: @ 0x0804D478 (voicegroup)
 	voice_directsound_no_resample 60, 0, gUnknown_080A5824, 255, 0, 255, 0
-	voice_square_1 60, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_directsound_no_resample 60, 0, gUnknown_080633F0, 255, 0, 255, 0
 	voice_directsound_no_resample 60, 0, gUnknown_080A5B68, 255, 0, 255, 0
-	voice_square_1 60, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_directsound_no_resample 60, 0, gUnknown_080A5EC4, 255, 0, 255, 0
 	voice_directsound_no_resample 60, 0, gUnknown_080A71F8, 255, 0, 255, 165
-	voice_square_1 60, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_directsound_no_resample 60, 0, gUnknown_080A8A54, 255, 0, 255, 165
-	voice_square_1 60, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_directsound_no_resample 60, 0, gUnknown_080A9FF8, 255, 0, 255, 165
 	voice_directsound_no_resample 60, 0, gUnknown_080AB55C, 255, 0, 255, 165
 	voice_directsound_no_resample 60, 0, gUnknown_080AC830, 255, 0, 255, 165
-	voice_square_1 60, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_directsound_no_resample 60, 0, gUnknown_080B0C84, 255, 0, 255, 127
 	voice_directsound_no_resample 60, 0, gUnknown_080B1EA0, 255, 0, 255, 127
 	voice_directsound 60, 0, gUnknown_080B3008, 255, 0, 255, 127
@@ -88,8 +88,8 @@ voicegroup002: @ 0x0804D478 (voicegroup)
 	voice_directsound 60, 0, gUnknown_08145C50, 255, 0, 255, 127
 	voice_directsound 60, 0, gUnknown_08146624, 255, 0, 255, 127
 	voice_directsound 60, 0, gUnknown_08147670, 255, 0, 255, 127
-	voice_square_1 60, 0, 2, 0, 0, 15, 0
-	voice_square_1 60, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
+	voice_square_1 60, 0, 0, 2, 0, 0, 15, 0
 	voice_directsound 60, 0, gUnknown_08149AD0, 255, 0, 255, 127
 	voice_directsound 60, 0, gUnknown_08149EB4, 255, 0, 255, 127
 	voice_directsound 60, 0, gUnknown_0814F688, 255, 0, 255, 127
@@ -114,3 +114,4 @@ voicegroup002: @ 0x0804D478 (voicegroup)
 	voice_directsound 60, 0, gUnknown_0817CAF4, 255, 0, 255, 127
 	voice_directsound 60, 0, gUnknown_0817F4E0, 255, 0, 255, 127
 	voice_directsound 60, 0, gUnknown_08181174, 255, 0, 255, 127
+	.size voicegroup002,.-voicegroup002

@@ -15,6 +15,6 @@ song_unk_309_0: @ 0x0834F36C
 	.global song_unk_309
 song_unk_309: @ 0x0834F37C (song header)
 	.byte 1, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804D9F4 @ voice group
+	.4byte voicegroup004 @ voice group
 	.4byte song_unk_309_0
-
+	.size song_unk_309,.-song_unk_309

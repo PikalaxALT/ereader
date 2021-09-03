@@ -7,7 +7,7 @@ song_unk_78_0: @ 0x083487C8
 	.byte VOICE, 0x41
 	.byte VOL, 0x7F
 	.byte PAN, 0x40
-	.byte N02, An2, v100
+	.byte N03, An2, v100
 	.byte W02
 	.byte Gs2
 	.byte W02
@@ -29,7 +29,7 @@ song_unk_78_1: @ 0x083487E5
 	.byte VOICE, 0x1F
 	.byte VOL, 0x7F
 	.byte PAN, 0x40
-	.byte N02, Bn2, v092
+	.byte N03, Bn2, v092
 	.byte W02
 	.byte As2
 	.byte W02
@@ -50,7 +50,7 @@ song_unk_78_1: @ 0x083487E5
 	.global song_unk_78
 song_unk_78: @ 0x08348800 (song header)
 	.byte 2, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_78_0
 	.4byte song_unk_78_1
-
+	.size song_unk_78,.-song_unk_78

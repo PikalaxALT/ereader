@@ -6,13 +6,13 @@ song_unk_329_0: @ 0x0834F52C
 	.byte TEMPO, 0x4B
 	.byte VOICE, 0x33
 	.byte VOL, 0x7F
-	.byte N80, Cn3, v072
+	.byte N84, Cn3, v072
 	.byte W84
 	.byte FINE
 	.align 2, 0
 	.global song_unk_329
 song_unk_329: @ 0x0834F53C (song header)
 	.byte 1, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804D9F4 @ voice group
+	.4byte voicegroup004 @ voice group
 	.4byte song_unk_329_0
-
+	.size song_unk_329,.-song_unk_329

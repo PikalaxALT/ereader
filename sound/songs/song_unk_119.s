@@ -35,7 +35,7 @@ song_unk_119_1_001: @ 0x08349EEE
 	.global song_unk_119
 song_unk_119: @ 0x08349EFC (song header)
 	.byte 2, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804D478 @ voice group
+	.4byte voicegroup002 @ voice group
 	.4byte song_unk_119_0
 	.4byte song_unk_119_1
-
+	.size song_unk_119,.-song_unk_119

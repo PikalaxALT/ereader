@@ -6,9 +6,9 @@ song_unk_86_0: @ 0x083491D4
 	.byte TEMPO, 0x4B
 	.byte VOICE, 0x03
 	.byte VOL, 0x7F
-	.byte N01, As5, v064
+	.byte N02, As5, v064
 	.byte W02
-	.byte N32, Dn6
+	.byte N36, Dn6
 	.byte W36
 	.byte FINE
 song_unk_86_1: @ 0x083491E4
@@ -16,7 +16,7 @@ song_unk_86_1: @ 0x083491E4
 	.byte VOICE, 0x1E
 	.byte VOL, 0x7F
 	.byte PAN, 0x7F
-	.byte N01, As3, v112
+	.byte N02, As3, v112
 	.byte W03
 	.byte Dn4
 	.byte W04
@@ -30,7 +30,7 @@ song_unk_86_1: @ 0x083491E4
 	.byte W05
 	.byte Cn5, v064
 	.byte W04
-	.byte N01
+	.byte N02
 	.byte W04
 	.byte Cn5, v048
 	.byte W04
@@ -42,7 +42,7 @@ song_unk_86_2: @ 0x08349207
 	.byte VOICE, 0x42
 	.byte VOL, 0x7F
 	.byte PAN, 0x00
-	.byte N01, Fn4, v112
+	.byte N02, Fn4, v112
 	.byte W04
 	.byte As4
 	.byte W03
@@ -56,7 +56,7 @@ song_unk_86_2: @ 0x08349207
 	.byte W04
 	.byte Gs5, v064
 	.byte W05
-	.byte N01
+	.byte N02
 	.byte W04
 	.byte Gs5, v048
 	.byte W03
@@ -67,8 +67,8 @@ song_unk_86_2: @ 0x08349207
 	.global song_unk_86
 song_unk_86: @ 0x0834922C (song header)
 	.byte 3, 0, 15, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_86_0
 	.4byte song_unk_86_1
 	.4byte song_unk_86_2
-
+	.size song_unk_86,.-song_unk_86

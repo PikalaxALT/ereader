@@ -6,7 +6,7 @@ song_unk_220_0: @ 0x0834CF4C
 	.byte TEMPO, 0x4B
 	.byte VOICE, 0x60
 	.byte VOL, 0x7F
-	.byte N02, Gn5, v040
+	.byte N03, Gn5, v040
 	.byte W02
 	.byte VOL, 0x3C
 	.byte W01
@@ -15,6 +15,6 @@ song_unk_220_0: @ 0x0834CF4C
 	.global song_unk_220
 song_unk_220: @ 0x0834CF5C (song header)
 	.byte 1, 0, 10, 0 @ trackCount, blockCount, priority, reverb
-	.4byte gUnknown_0804CE78 @ voice group
+	.4byte voicegroup000 @ voice group
 	.4byte song_unk_220_0
-
+	.size song_unk_220,.-song_unk_220
