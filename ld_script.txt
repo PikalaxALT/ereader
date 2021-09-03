@@ -811,6 +811,14 @@ SECTIONS {
         data/lib_unk0804A5B8.o(.data);
     } >rom_region =0
 
+    OVERLAY 0x03000000 : AT (LOADADDR(.data) + SIZEOF(.data))
+    SUBALIGN(4)
+    {
+    	unk_8704228 { asm/ov_8704228.o(.text) }
+    	unk_87099DC { asm/ov_87099DC.o(.text) }
+    	unk_8710064 { asm/ov_8710064.o(.text) }
+    } =0
+
     unk_section :
     {
     	gUnknown_87F8000 = .;

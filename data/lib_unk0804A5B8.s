@@ -159,21 +159,3 @@ gUnknown_87041F0:
 	.global gUnknown_8704200
 gUnknown_8704200:
 	.incbin "baserom.gba", 0x704200, 0x28
-
-	.global gUnkBssCode_8704228
-gUnkBssCode_8704228:
-	.incbin "baserom.gba", 0x704228, 0x57b4
-	.global gUnkBssCode_8704228_End
-gUnkBssCode_8704228_End:
-
-	.global gUnkBssCode_87099DC
-gUnkBssCode_87099DC:
-	.incbin "baserom.gba", 0x7099dc, 0x6688
-	.global gUnkBssCode_87099DC_End
-gUnkBssCode_87099DC_End:
-
-	.global gUnkBssCode_8710064
-gUnkBssCode_8710064:
-	.incbin "baserom.gba", 0x710064, 0x41c0
-	.global gUnkBssCode_8710064_End
-gUnkBssCode_8710064_End:
