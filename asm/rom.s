@@ -19105,9 +19105,9 @@ _0800998E:
 	thumb_func_start sub_080099A0
 sub_080099A0: @ 0x080099A0
 	push {lr}
-	ldr r0, _080099BC @ =gUnknown_8710064
+	ldr r0, _080099BC @ =gUnkBssCode_8710064
 	ldr r1, _080099C0 @ =gUnknown_3000000
-	ldr r2, _080099C4 @ =gUnknown_8714224
+	ldr r2, _080099C4 @ =gUnkBssCode_8710064_End
 	subs r2, r2, r0
 	lsrs r3, r2, #0x1f
 	adds r2, r2, r3
@@ -19117,17 +19117,17 @@ sub_080099A0: @ 0x080099A0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080099BC: .4byte gUnknown_8710064
+_080099BC: .4byte gUnkBssCode_8710064
 _080099C0: .4byte gUnknown_3000000
-_080099C4: .4byte gUnknown_8714224
+_080099C4: .4byte gUnkBssCode_8710064_End
 	thumb_func_end sub_080099A0
 
 	thumb_func_start sub_080099C8
 sub_080099C8: @ 0x080099C8
 	push {lr}
-	ldr r0, _080099E4 @ =gUnknown_87099DC
+	ldr r0, _080099E4 @ =gUnkBssCode_87099DC
 	ldr r1, _080099E8 @ =gUnknown_3000000
-	ldr r2, _080099EC @ =gUnknown_8710064
+	ldr r2, _080099EC @ =gUnkBssCode_87099DC_End
 	subs r2, r2, r0
 	lsrs r3, r2, #0x1f
 	adds r2, r2, r3
@@ -19137,17 +19137,17 @@ sub_080099C8: @ 0x080099C8
 	pop {r0}
 	bx r0
 	.align 2, 0
-_080099E4: .4byte gUnknown_87099DC
+_080099E4: .4byte gUnkBssCode_87099DC
 _080099E8: .4byte gUnknown_3000000
-_080099EC: .4byte gUnknown_8710064
+_080099EC: .4byte gUnkBssCode_87099DC_End
 	thumb_func_end sub_080099C8
 
 	thumb_func_start sub_080099F0
 sub_080099F0: @ 0x080099F0
 	push {lr}
-	ldr r0, _08009A14 @ =gUnknown_8704228
+	ldr r0, _08009A14 @ =gUnkBssCode_8704228
 	ldr r1, _08009A18 @ =gUnknown_3000000
-	ldr r2, _08009A1C @ =gUnknown_87099DC
+	ldr r2, _08009A1C @ =gUnkBssCode_8704228_End
 	subs r2, r2, r0
 	lsrs r3, r2, #0x1f
 	adds r2, r2, r3
@@ -19160,9 +19160,9 @@ sub_080099F0: @ 0x080099F0
 	pop {r0}
 	bx r0
 	.align 2, 0
-_08009A14: .4byte gUnknown_8704228
+_08009A14: .4byte gUnkBssCode_8704228
 _08009A18: .4byte gUnknown_3000000
-_08009A1C: .4byte gUnknown_87099DC
+_08009A1C: .4byte gUnkBssCode_8704228_End
 	thumb_func_end sub_080099F0
 
 	thumb_func_start sub_08009A20
