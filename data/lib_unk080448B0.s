@@ -3,104 +3,179 @@
 	.section .rodata
 	.align 2, 0
 
-	.incbin "baserom.gba", 0x3b64c8, 0xc
+	.global gUnknown_83B64C8
+	.align 2, 0
+gUnknown_83B64C8:
+	.asciz "bad_alloc"
 
 	.global gUnknown_83B64D4
+	.align 2, 0
 gUnknown_83B64D4:
-	.incbin "baserom.gba", 0x3B64D4, 0x14
+	.asciz "17__class_type_info"
 
 	.global gUnknown_83B64E8
+	.align 2, 0
 gUnknown_83B64E8:
-	.incbin "baserom.gba", 0x3B64E8, 0x14
+	.asciz "14__si_type_info"
 
 	.global gUnknown_83B64FC
+	.align 2, 0
 gUnknown_83B64FC:
-	.incbin "baserom.gba", 0x3B64FC, 0x14
+	.asciz "16__user_type_info"
 
 	.global gUnknown_83B6510
+	.align 2, 0
 gUnknown_83B6510:
-	.incbin "baserom.gba", 0x3b6510, 0x10
+	.asciz "10bad_typeid"
 
 	.global gUnknown_83B6520
+	.align 2, 0
 gUnknown_83B6520:
-	.incbin "baserom.gba", 0x3b6520, 0xc
+	.asciz "8bad_cast"
 
 	.global gUnknown_83B652C
+	.align 2, 0
 gUnknown_83B652C:
-	.incbin "baserom.gba", 0x3b652c, 0xc
+	.asciz "9type_info"
 
 	.global gUnknown_83B6538
+	.align 2, 0
 gUnknown_83B6538:
-	.incbin "baserom.gba", 0x3b6538, 0x10
+	.asciz "13bad_exception"
 
 	.global gUnknown_83B6548
+	.align 2, 0
 gUnknown_83B6548:
-	.incbin "baserom.gba", 0x3b6548, 0x24
+	.asciz "9exception"
+
+	.global gUnknown_83B6554
+	.align 2, 0
+gUnknown_83B6554:
+	.asciz "bad_alloc"
+
+	.global gUnknown_83B6560
+	.align 2, 0
+gUnknown_83B6560:
+	.asciz "bad_alloc"
 
 	.global gUnknown_83B656C
+	.align 2, 0
 gUnknown_83B656C:
-	.incbin "baserom.gba", 0x3b656c, 0x4
+	.asciz "v"
 
 	.global gUnknown_83B6570
+	.align 2, 0
 gUnknown_83B6570:
-	.incbin "baserom.gba", 0x3b6570, 0x4
+	.asciz "x"
 
 	.global gUnknown_83B6574
+	.align 2, 0
 gUnknown_83B6574:
-	.incbin "baserom.gba", 0x3b6574, 0x4
+	.asciz "l"
 
 	.global gUnknown_83B6578
+	.align 2, 0
 gUnknown_83B6578:
-	.incbin "baserom.gba", 0x3b6578, 0x4
+	.asciz "i"
 
 	.global gUnknown_83B657C
+	.align 2, 0
 gUnknown_83B657C:
-	.incbin "baserom.gba", 0x3b657c, 0x4
+	.asciz "s"
 
 	.global gUnknown_83B6580
+	.align 2, 0
 gUnknown_83B6580:
-	.incbin "baserom.gba", 0x3b6580, 0x4
+	.asciz "b"
 
 	.global gUnknown_83B6584
+	.align 2, 0
 gUnknown_83B6584:
-	.incbin "baserom.gba", 0x3b6584, 0x4
+	.asciz "c"
 
 	.global gUnknown_83B6588
+	.align 2, 0
 gUnknown_83B6588:
-	.incbin "baserom.gba", 0x3b6588, 0x4
+	.asciz "w"
 
 	.global gUnknown_83B658C
+	.align 2, 0
 gUnknown_83B658C:
-	.incbin "baserom.gba", 0x3b658c, 0x4
+	.asciz "r"
 
 	.global gUnknown_83B6590
+	.align 2, 0
 gUnknown_83B6590:
-	.incbin "baserom.gba", 0x3b6590, 0x4
+	.asciz "d"
 
 	.global gUnknown_83B6594
+	.align 2, 0
 gUnknown_83B6594:
-	.incbin "baserom.gba", 0x3b6594, 0x4
+	.asciz "f"
 
 	.global gUnknown_83B6598
+	.align 2, 0
 gUnknown_83B6598:
-	.incbin "baserom.gba", 0x3b6598, 0x4
+	.asciz "Ui"
 
 	.global gUnknown_83B659C
+	.align 2, 0
 gUnknown_83B659C:
-	.incbin "baserom.gba", 0x3b659c, 0x4
+	.asciz "Ul"
 
 	.global gUnknown_83B65A0
+	.align 2, 0
 gUnknown_83B65A0:
-	.incbin "baserom.gba", 0x3b65a0, 0x4
+	.asciz "Ux"
 
 	.global gUnknown_83B65A4
+	.align 2, 0
 gUnknown_83B65A4:
-	.incbin "baserom.gba", 0x3b65a4, 0x4
+	.asciz "Us"
 
 	.global gUnknown_83B65A8
+	.align 2, 0
 gUnknown_83B65A8:
-	.incbin "baserom.gba", 0x3b65a8, 0x4
+	.asciz "Uc"
 
 	.global gUnknown_83B65AC
+	.align 2, 0
 gUnknown_83B65AC:
-	.incbin "baserom.gba", 0x3b65ac, 0x98
+	.asciz "Sc"
+
+	.global gUnknown_83B65B0
+	.align 2, 0
+gUnknown_83B65B0:
+	.asciz "17__array_type_info"
+
+	.global gUnknown_83B65C4
+	.align 2, 0
+gUnknown_83B65C4:
+	.asciz "16__ptmd_type_info"
+
+	.global gUnknown_83B65D8
+	.align 2, 0
+gUnknown_83B65D8:
+	.asciz "16__ptmf_type_info"
+
+	.global gUnknown_83B65EC
+	.align 2, 0
+gUnknown_83B65EC:
+	.asciz "16__func_type_info"
+
+	.global gUnknown_83B6600
+	.align 2, 0
+gUnknown_83B6600:
+	.asciz "19__builtin_type_info"
+
+	.global gUnknown_83B6618
+	.align 2, 0
+gUnknown_83B6618:
+	.asciz "16__attr_type_info"
+
+	.global gUnknown_83B662C
+	.align 2, 0
+gUnknown_83B662C:
+	.asciz "19__pointer_type_info"
+
+	.align 2, 0
