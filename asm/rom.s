@@ -8887,12 +8887,12 @@ _080050E0:
 	.align 2, 0
 _080050EC: .4byte sub_0802BF18
 _080050F0:
-	ldr r2, _08005118 @ =gUnknown_30051E0
+	ldr r2, _08005118 @ =ovx28_30051E0
 	adds r0, r6, #0
 	adds r1, r7, #0
 	bl _call_via_r2
 	adds r4, r0, #0
-	ldr r5, _0800511C @ =gUnknown_3004D0C
+	ldr r5, _0800511C @ =ovx28_3004D0C
 	adds r0, r6, #0
 	adds r1, r7, #0
 	mov r2, r8
@@ -9213,24 +9213,24 @@ _08005326:
 	thumb_func_start sub_0800532C
 sub_0800532C: @ 0x0800532C
 	push {r4, lr}
-	ldr r4, _0800533C @ =gUnknown_3004D0C
+	ldr r4, _0800533C @ =ovx28_3004D0C
 	bl _call_via_r4
 	pop {r4}
 	pop {r0}
 	bx r0
 	.align 2, 0
-_0800533C: .4byte gUnknown_3004D0C
+_0800533C: .4byte ovx28_3004D0C
 	thumb_func_end sub_0800532C
 
 	thumb_func_start sub_08005340
 sub_08005340: @ 0x08005340
 	push {lr}
-	ldr r2, _0800534C @ =gUnknown_30051E0
+	ldr r2, _0800534C @ =ovx28_30051E0
 	bl _call_via_r2
 	pop {r1}
 	bx r1
 	.align 2, 0
-_0800534C: .4byte gUnknown_30051E0
+_0800534C: .4byte ovx28_30051E0
 	thumb_func_end sub_08005340
 
 	thumb_func_start sub_08005350
@@ -18026,7 +18026,7 @@ sub_08009104: @ 0x08009104
 	sub sp, #0xc
 	movs r0, #1
 	bl DisableInterrupt
-	bl LoadOverlay_xDC
+	bl LoadOverlay_xDC @ Overwrites the interrupt handlers
 	ldr r0, _08009144 @ =gUnknown_2032D20
 	ldr r1, _08009148 @ =gUnknown_2032D18
 	ldr r1, [r1]
@@ -19154,6 +19154,7 @@ LoadOverlay_x28: @ 0x080099F0
 	lsls r2, r2, #0xa
 	lsrs r2, r2, #0xb
 	bl CpuSet
+	@ This overwrites the interrupt handlers, so fix that.
 	bl ResetIntrHandlers
 	movs r0, #1
 	bl EnableInterrupt
@@ -48558,7 +48559,7 @@ _0801828C:
 	thumb_func_start sub_08018294
 sub_08018294: @ 0x08018294
 	push {r4, r5, r6, r7, lr}
-	ldr r6, _080182CC @ =gUnknown_30001A0
+	ldr r6, _080182CC @ =ovx28_30001A0
 	ldr r5, _080182D0 @ =gUnknown_2024C54
 	ldr r0, [r5]
 	adds r0, #0xc0
@@ -48583,7 +48584,7 @@ sub_08018294: @ 0x08018294
 	ldr r0, [r5]
 	b _0801835A
 	.align 2, 0
-_080182CC: .4byte gUnknown_30001A0
+_080182CC: .4byte ovx28_30001A0
 _080182D0: .4byte gUnknown_2024C54
 _080182D4: .4byte gUnknown_2024C58
 _080182D8: .4byte gUnknown_2024CAC
