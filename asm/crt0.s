@@ -166,9 +166,9 @@ sub_0800023C: @ 0x0800023C
 	ands r0, r1, #0x1000
 _080002F0:
 	strh r0, [r3, #2]
-	ldr r1, _08000304 @ =gUnknown_3000684
+	ldr r1, _08000304 @ =ovxDC_3000684
 	add r1, r1, r2
 	ldr r0, [r1]
 	bx r0
 	.align 2, 0
-_08000304: .4byte gUnknown_3000684
+_08000304: .4byte ovxDC_3000684

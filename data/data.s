@@ -1129,6 +1129,8 @@ gUnknown_85F69C0:
 	.global gUnknown_85F79E4
 gUnknown_85F79E4:
 	.incbin "baserom.gba", 0x5f79e4, 0x9c
+	.global gUnknown_85F79E4_End
+gUnknown_85F79E4_End:
 
 	.global gUnknown_85F7A80
 gUnknown_85F7A80:

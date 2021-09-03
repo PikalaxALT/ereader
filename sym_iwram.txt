@@ -4,7 +4,7 @@
 
 	SYMBOL(gUnknown_3000000, 0x1A0) /* 0x3000000 */
 	SYMBOL(gUnknown_30001A0, 0x124) /* 0x30001A0 */
-	SYMBOL(gUnknown_30002C4, 0x3C0) /* 0x30002C4 */
+	SYMBOL(gUnknown_30002C4, 0x3C0) /* 0x30002C4 */ /* ovxDC */
 	SYMBOL(gUnknown_3000684, 0x2ABC) /* 0x3000684 */
 	SYMBOL(gUnknown_3003140, 0xCC4) /* 0x3003140 */
 	SYMBOL(gUnknown_3003E04, 0x1C) /* 0x3003E04 */

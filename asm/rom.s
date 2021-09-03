@@ -8906,8 +8906,8 @@ _0800510C:
 	pop {r1}
 	bx r1
 	.align 2, 0
-_08005118: .4byte gUnknown_30051E0
-_0800511C: .4byte gUnknown_3004D0C
+_08005118: .4byte ovx28_30051E0
+_0800511C: .4byte ovx28_3004D0C
 	thumb_func_end sub_0800509C
 
 	thumb_func_start sub_08005120
@@ -11696,8 +11696,8 @@ _0800651C: .4byte gVBlankCallback
 _08006520: .4byte IntrDummy
 	thumb_func_end SetVBlankCallback
 
-	thumb_func_start sub_08006524
-sub_08006524: @ 0x08006524
+	thumb_func_start GetIntrFunc
+GetIntrFunc: @ 0x08006524
 	ldr r1, _08006530 @ =gIntrTable
 	subs r0, #1
 	lsls r0, r0, #2
@@ -11706,10 +11706,10 @@ sub_08006524: @ 0x08006524
 	bx lr
 	.align 2, 0
 _08006530: .4byte gIntrTable
-	thumb_func_end sub_08006524
+	thumb_func_end GetIntrFunc
 
-	thumb_func_start sub_08006534
-sub_08006534: @ 0x08006534
+	thumb_func_start SetIntrFunc
+SetIntrFunc: @ 0x08006534
 	push {r4, r5, lr}
 	adds r5, r0, #0
 	adds r4, r1, #0
@@ -11730,7 +11730,7 @@ _08006544:
 	.align 2, 0
 _08006558: .4byte IntrDummy
 _0800655C: .4byte gIntrTable
-	thumb_func_end sub_08006534
+	thumb_func_end SetIntrFunc
 
 	thumb_func_start IntrDummy
 IntrDummy: @ 0x08006560
@@ -18034,14 +18034,14 @@ sub_08009104: @ 0x08009104
 	movs r1, #0x80
 	lsls r1, r1, #3
 	str r1, [r0]
-	ldr r1, _0800914C @ =gUnknown_3003140
+	ldr r1, _0800914C @ =ovxDC_3003140
 	bl _call_via_r1
 	adds r6, r0, #0
 	cmp r6, #0
 	beq _08009132
 	b _08009286
 _08009132:
-	ldr r0, _08009150 @ =gUnknown_30002C4
+	ldr r0, _08009150 @ =ovxDC_30002C4
 	bl _call_via_r0
 	adds r6, r0, #0
 	cmp r6, #0
@@ -18051,8 +18051,8 @@ _08009132:
 	.align 2, 0
 _08009144: .4byte gUnknown_2032D20
 _08009148: .4byte gUnknown_2032D18
-_0800914C: .4byte gUnknown_3003140
-_08009150: .4byte gUnknown_30002C4
+_0800914C: .4byte ovxDC_3003140
+_08009150: .4byte ovxDC_30002C4
 _08009154:
 	movs r2, #1
 	ldr r1, _0800918C @ =gUnknown_2028B64
@@ -80277,7 +80277,7 @@ _08026FE8:
 	bl DisableInterrupt
 	movs r0, #2
 	movs r1, #0
-	bl sub_08006534
+	bl SetIntrFunc
 	pop {r4, r5, r6, r7}
 	pop {r0}
 	bx r0
@@ -80455,8 +80455,8 @@ _0802714C:
 	str r0, [r2, #0xc]
 _08027164:
 	movs r0, #2
-	ldr r1, _0802718C @ =gUnknown_30048A8
-	bl sub_08006534
+	ldr r1, _0802718C @ =ovx28_30048A8
+	bl SetIntrFunc
 	movs r0, #2
 	bl EnableInterrupt
 	adds r0, r6, #0
@@ -80472,7 +80472,7 @@ _08027174:
 	.align 2, 0
 _08027184: .4byte gUnknown_2025F6C
 _08027188: .4byte gUnknown_2025F7C
-_0802718C: .4byte gUnknown_30048A8
+_0802718C: .4byte ovx28_30048A8
 	thumb_func_end sub_08027018
 
 	thumb_func_start sub_08027190
@@ -81190,13 +81190,13 @@ _080276B4:
 	str r0, [r1, #4]
 	str r2, [r1]
 	movs r0, #2
-	ldr r1, _080276CC @ =gUnknown_30048A8
-	bl sub_08006534
+	ldr r1, _080276CC @ =ovx28_30048A8
+	bl SetIntrFunc
 	movs r0, #2
 	bl EnableInterrupt
 	b _0802771C
 	.align 2, 0
-_080276CC: .4byte gUnknown_30048A8
+_080276CC: .4byte ovx28_30048A8
 _080276D0:
 	ldr r2, [r1, #4]
 	ldr r0, [r1]
@@ -104763,7 +104763,7 @@ _08032BA4: .4byte gUnknown_3005800
 _08032BA8:
 	ldr r0, _08032BE8 @ =gUnknown_85F79E4
 	ldr r1, _08032BEC @ =gUnknown_3005800
-	ldr r2, _08032BF0 @ =gUnknown_85F7A80
+	ldr r2, _08032BF0 @ =gUnknown_85F79E4_End
 	subs r2, r2, r0
 	lsrs r3, r2, #0x1f
 	adds r2, r2, r3
@@ -104794,7 +104794,7 @@ _08032BBC:
 	.align 2, 0
 _08032BE8: .4byte gUnknown_85F79E4
 _08032BEC: .4byte gUnknown_3005800
-_08032BF0: .4byte gUnknown_85F7A80
+_08032BF0: .4byte gUnknown_85F79E4_End
 _08032BF4: .4byte gUnknown_2023060
 _08032BF8: .4byte 0x000011E4
 _08032BFC: .4byte 0x000011E6
