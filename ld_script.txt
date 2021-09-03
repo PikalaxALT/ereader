@@ -25,7 +25,8 @@ SECTIONS {
     ALIGN(4)
     {
         /* iwram_data starts at 0x3000000 */
-        INCLUDE "sym_iwram.ld"
+        __overlay_load_addr = .;
+        . += 0x42D8;
 
         /* .bss.code starts at 0x30042D8 */
         src/m4a.o(.bss.code);
@@ -811,7 +812,7 @@ SECTIONS {
         data/lib_unk0804A5B8.o(.data);
     } >rom_region =0
 
-    OVERLAY 0x03000000 : AT (LOADADDR(.data) + SIZEOF(.data))
+    OVERLAY __overlay_load_addr : AT (LOADADDR(.data) + SIZEOF(.data))
     SUBALIGN(4)
     {
     	unk_8704228 { asm/ov_8704228.o(.text) }

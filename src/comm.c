@@ -18,13 +18,13 @@ typedef struct Link
     u8 filler_14[0x384];
 } LINK;
 
-u16 gUnknown_3003E22;
-u16 gUnknown_3003E24;
-u8 gUnknown_3003E30;
-u8 gUnknown_3003E34;
-u16 gUnknown_3003E38;
-s8 gUnknown_3003E40[4];
-LINK gUnknown_3003E50;
+extern u16 ovx28_3003E22;
+extern u16 ovx28_3003E24;
+extern u8 ovx28_3003E30;
+extern u8 ovx28_3003E34;
+extern u16 ovx28_3003E38;
+extern s8 ovx28_3003E40[4];
+extern LINK ovx28_3003E50;
 
 void sub_0803B7AC(u16 *a0);
 void sub_0803B8A0(u16 *a0);
@@ -33,25 +33,25 @@ void sub_0803BED8(void);
 
 void sub_0803B58C(void)
 {
-    gUnknown_3003E38 = REG_IME;
+    ovx28_3003E38 = REG_IME;
     REG_IME = 0;
     REG_IE &= ~(INTR_FLAG_TIMER3 | INTR_FLAG_SERIAL);
-    REG_IME = gUnknown_3003E38;
+    REG_IME = ovx28_3003E38;
 
     REG_RCNT = 0;
     REG_SIOCNT = SIO_MULTI_MODE;
     REG_SIOCNT |= SIO_115200_BPS | SIO_INTR_ENABLE;
 
-    gUnknown_3003E38 = REG_IME;
+    ovx28_3003E38 = REG_IME;
     REG_IME = 0;
     REG_IE |= INTR_FLAG_SERIAL;
-    REG_IME = gUnknown_3003E38;
+    REG_IME = ovx28_3003E38;
 
-    DmaFill32(3, 0, &gUnknown_3003E50, sizeof(gUnknown_3003E50));
-    gUnknown_3003E22 = 0;
-    gUnknown_3003E24 = 0;
-    gUnknown_3003E30 = 0;
-    gUnknown_3003E34 = 0;
+    DmaFill32(3, 0, &ovx28_3003E50, sizeof(ovx28_3003E50));
+    ovx28_3003E22 = 0;
+    ovx28_3003E24 = 0;
+    ovx28_3003E30 = 0;
+    ovx28_3003E34 = 0;
 }
 /*
 
@@ -65,25 +65,25 @@ int sub_0803B634(u8 *a0, u16 *a1, u16 *a2)
     int _012;
     int _013;
 
-    switch (gUnknown_3003E50.field_01)
+    switch (ovx28_3003E50.field_01)
     {
     case 0:
-        gUnknown_3003E38 = REG_IME;
+        ovx28_3003E38 = REG_IME;
         REG_IME = 0;
         REG_IE &= ~(INTR_FLAG_TIMER3 | INTR_FLAG_SERIAL);
-        REG_IME = gUnknown_3003E38;
+        REG_IME = ovx28_3003E38;
 
         REG_SIOCNT = 0;
         REG_TM3CNT_H = 0;
         REG_IF = INTR_FLAG_TIMER3 | INTR_FLAG_SERIAL;
-        DmaFill32(3, 0, &gUnknown_3003E50, sizeof(gUnknown_3003E50));
-        gUnknown_3003E50.field_01 = 1;
+        DmaFill32(3, 0, &ovx28_3003E50, sizeof(ovx28_3003E50));
+        ovx28_3003E50.field_01 = 1;
         break;
     case 1:
         if (*a0 == 1)
         {
             sub_0803B58C();
-            gUnknown_3003E50.field_01 = 2;
+            ovx28_3003E50.field_01 = 2;
         }
         break;
     case 2:
@@ -93,16 +93,16 @@ int sub_0803B634(u8 *a0, u16 *a1, u16 *a2)
             sub_0803BEB0();
             break;
         case 1:
-            if (gUnknown_3003E50.field_00 == 8 && gUnknown_3003E50.field_03 > 1)
-                gUnknown_3003E50.field_0e = 1;
+            if (ovx28_3003E50.field_00 == 8 && ovx28_3003E50.field_03 > 1)
+                ovx28_3003E50.field_0e = 1;
             break;
         case 2:
-            gUnknown_3003E50.field_01 = 0;
+            ovx28_3003E50.field_01 = 0;
             break;
         }
     case 3:
         sub_0803BED8();
-        gUnknown_3003E50.field_01 = 4;
+        ovx28_3003E50.field_01 = 4;
         // fallthrough
     case 4:
         sub_0803B7AC(a1);
@@ -110,17 +110,17 @@ int sub_0803B634(u8 *a0, u16 *a1, u16 *a2)
         break;
     }
     *a0 = 0;
-    resp = gUnknown_3003E50.field_03 << 2;
-    resp |= gUnknown_3003E50.field_02;
-    if (gUnknown_3003E50.field_00 == 8)
+    resp = ovx28_3003E50.field_03 << 2;
+    resp |= ovx28_3003E50.field_02;
+    if (ovx28_3003E50.field_00 == 8)
         resp |= 0x20;
-    _00c = gUnknown_3003E50.field_0c << 8;
-    _00f = gUnknown_3003E50.field_0f << 9;
-    _010 = gUnknown_3003E50.field_10 << 12;
-    _011 = gUnknown_3003E50.field_11 << 13;
-    _012 = gUnknown_3003E50.field_12 << 14;
-    _013 = gUnknown_3003E50.field_13 << 16;
-    if (gUnknown_3003E50.field_01 == 4)
+    _00c = ovx28_3003E50.field_0c << 8;
+    _00f = ovx28_3003E50.field_0f << 9;
+    _010 = ovx28_3003E50.field_10 << 12;
+    _011 = ovx28_3003E50.field_11 << 13;
+    _012 = ovx28_3003E50.field_12 << 14;
+    _013 = ovx28_3003E50.field_13 << 16;
+    if (ovx28_3003E50.field_01 == 4)
         resp |= 0x40;
     resp |= _00c;
     resp |= _00f;
@@ -128,7 +128,7 @@ int sub_0803B634(u8 *a0, u16 *a1, u16 *a2)
     resp |= _011;
     resp |= _012;
     resp |= _013;
-    if (gUnknown_3003E40[1] >= gUnknown_3003E50.field_02)
+    if (ovx28_3003E40[1] >= ovx28_3003E50.field_02)
         resp |= 0x20000;
     return resp;
 }
