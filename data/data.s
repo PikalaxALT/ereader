@@ -1954,6 +1954,8 @@ gUnknown_86FED30:
 gUnknown_86FED50:
 	.incbin "baserom.gba", 0x6fed50, 0x20
 
+	@ lib_unk803E854.s
+
 	.global gUnknown_86FED70
 gUnknown_86FED70:
 	.incbin "baserom.gba", 0x6fed70, 0x620
@@ -2013,6 +2015,9 @@ gUnknown_8703238:
 	.global gUnknown_87032B4
 gUnknown_87032B4:
 	.incbin "baserom.gba", 0x7032b4, 0x464
+
+	@ lib_unk080443C4.s
+	@ lib_unk080448B0.s
 
 	.global gUnknown_8703718
 gUnknown_8703718:
