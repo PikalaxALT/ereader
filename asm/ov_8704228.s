@@ -242,7 +242,7 @@ ovx28_300030C: @ 0x0300030C
 	sub fp, ip, #4
 	rsb r3, r3, lr
 	mov ip, r3
-	ldr r1, _03000378 @ =0x03003904
+	ldr r1, _03000378 @ =ovx28_3003904
 	and r3, ip, #0xff
 	ldrb r3, [r1, r3]
 	orr r2, r3, #2
@@ -258,7 +258,7 @@ ovx28_300030C: @ 0x0300030C
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03000378: .4byte 0x03003904
+_03000378: .4byte ovx28_3003904
 
 	arm_func_start ovx28_300037C
 ovx28_300037C: @ 0x0300037C
@@ -332,13 +332,13 @@ ovx28_3000434: @ 0x03000434
 	ldrb r3, [ip, r2, lsr #16]
 	orr r1, r1, r3
 	strb r1, [r0, #1]
-	ldr r3, _03000478 @ =0x03003904
+	ldr r3, _03000478 @ =ovx28_3003904
 	ldrb r2, [r3, r1]
 	strb r2, [r0]
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03000478: .4byte 0x03003904
+_03000478: .4byte ovx28_3003904
 
 	arm_func_start ovx28_300047C
 ovx28_300047C: @ 0x0300047C
@@ -432,13 +432,13 @@ ovx28_3000578: @ 0x03000578
 	ldrb r3, [ip, r2, lsr #16]
 	eor r1, r1, r3
 	strb r1, [r0, #1]
-	ldr r3, _030005BC @ =0x03003904
+	ldr r3, _030005BC @ =ovx28_3003904
 	ldrb r2, [r3, r1]
 	strb r2, [r0]
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_030005BC: .4byte 0x03003904
+_030005BC: .4byte ovx28_3003904
 
 	arm_func_start ovx28_30005C0
 ovx28_30005C0: @ 0x030005C0
@@ -482,7 +482,7 @@ ovx28_3000614: @ 0x03000614
 	ldr r3, [r0, #0x14]
 	sub fp, ip, #4
 	ldrb ip, [r3, r2, lsr #16]
-	ldr lr, _0300065C @ =0x03003904
+	ldr lr, _0300065C @ =ovx28_3003904
 	and r1, r1, ip
 	ldrb r3, [lr, r1]
 	strb r1, [r0, #1]
@@ -491,7 +491,7 @@ ovx28_3000614: @ 0x03000614
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_0300065C: .4byte 0x03003904
+_0300065C: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3000660
 ovx28_3000660: @ 0x03000660
@@ -569,7 +569,7 @@ ovx28_300071C: @ 0x0300071C
 	add r3, r3, r2
 	ldrb r0, [ip, #1]
 	and r3, r3, #0xff
-	ldr r2, _030007A0 @ =0x03003904
+	ldr r2, _030007A0 @ =ovx28_3003904
 	rsb r1, r3, r0
 	and lr, r1, #0xff
 	ldrb r3, [r2, lr]
@@ -588,7 +588,7 @@ ovx28_300071C: @ 0x0300071C
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_030007A0: .4byte 0x03003904
+_030007A0: .4byte ovx28_3003904
 
 	arm_func_start ovx28_30007A4
 ovx28_30007A4: @ 0x030007A4
@@ -682,7 +682,7 @@ ovx28_30008B0: @ 0x030008B0
 	lsl r2, r2, #0x10
 	ldrb r3, [r1, r2, lsr #16]
 	rsb r1, r3, ip
-	ldr r2, _03000920 @ =0x03003904
+	ldr r2, _03000920 @ =ovx28_3003904
 	and lr, r1, #0xff
 	ldrb r3, [r2, lr]
 	orr r3, r3, #2
@@ -700,7 +700,7 @@ ovx28_30008B0: @ 0x030008B0
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03000920: .4byte 0x03003904
+_03000920: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3000924
 ovx28_3000924: @ 0x03000924
@@ -828,7 +828,7 @@ ovx28_3000A90: @ 0x03000A90
 	add r3, r3, r2
 	ldrb r0, [ip, #1]
 	and r3, r3, #0xff
-	ldr r2, _03000B10 @ =0x03003904
+	ldr r2, _03000B10 @ =ovx28_3003904
 	add r1, r0, r3
 	and lr, r1, #0xff
 	ldrb r3, [r2, lr]
@@ -846,7 +846,7 @@ ovx28_3000A90: @ 0x03000A90
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03000B10: .4byte 0x03003904
+_03000B10: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3000B14
 ovx28_3000B14: @ 0x03000B14
@@ -969,7 +969,7 @@ ovx28_3000C88: @ 0x03000C88
 	lsl r2, r2, #0x10
 	ldrb r3, [r1, r2, lsr #16]
 	add r1, ip, r3
-	ldr r2, _03000CF4 @ =0x03003904
+	ldr r2, _03000CF4 @ =ovx28_3003904
 	and lr, r1, #0xff
 	ldrb r3, [r2, lr]
 	and r3, r3, #0xfb
@@ -986,7 +986,7 @@ ovx28_3000C88: @ 0x03000C88
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03000CF4: .4byte 0x03003904
+_03000CF4: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3000CF8
 ovx28_3000CF8: @ 0x03000CF8
@@ -1108,7 +1108,7 @@ ovx28_3000E44: @ 0x03000E44
 ovx28_3000E80: @ 0x03000E80
 	mov ip, sp
 	push {fp, ip, lr, pc}
-	ldr r3, _03000EB4 @ =0x03003904
+	ldr r3, _03000EB4 @ =ovx28_3003904
 	ldrb r2, [r0, #1]
 	ldrb r1, [r3]
 	tst r2, #0x80
@@ -1120,7 +1120,7 @@ ovx28_3000E80: @ 0x03000E80
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03000EB4: .4byte 0x03003904
+_03000EB4: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3000EB8
 ovx28_3000EB8: @ 0x03000EB8
@@ -1133,7 +1133,7 @@ ovx28_3000EB8: @ 0x03000EB8
 	sub fp, ip, #4
 	rsb r3, r3, lr
 	mov ip, r3
-	ldr r1, _03000F18 @ =0x03003904
+	ldr r1, _03000F18 @ =ovx28_3003904
 	and r3, ip, #0xff
 	ldrb r3, [r1, r3]
 	orr r2, r3, #2
@@ -1149,14 +1149,14 @@ ovx28_3000EB8: @ 0x03000EB8
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03000F18: .4byte 0x03003904
+_03000F18: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3000F1C
 ovx28_3000F1C: @ 0x03000F1C
 	mov ip, sp
 	push {fp, ip, lr, pc}
 	ldrb r3, [r0, #6]
-	ldr r1, _03000F74 @ =0x03003904
+	ldr r1, _03000F74 @ =ovx28_3003904
 	ldrb lr, [r0, #1]
 	sub fp, ip, #4
 	rsb r3, r3, lr
@@ -1176,14 +1176,14 @@ ovx28_3000F1C: @ 0x03000F1C
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03000F74: .4byte 0x03003904
+_03000F74: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3000F78
 ovx28_3000F78: @ 0x03000F78
 	mov ip, sp
 	push {fp, ip, lr, pc}
 	ldrb r3, [r0, #7]
-	ldr r1, _03000FD0 @ =0x03003904
+	ldr r1, _03000FD0 @ =ovx28_3003904
 	ldrb lr, [r0, #1]
 	sub fp, ip, #4
 	rsb r3, r3, lr
@@ -1203,14 +1203,14 @@ ovx28_3000F78: @ 0x03000F78
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03000FD0: .4byte 0x03003904
+_03000FD0: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3000FD4
 ovx28_3000FD4: @ 0x03000FD4
 	mov ip, sp
 	push {fp, ip, lr, pc}
 	ldrb r3, [r0, #4]
-	ldr r1, _0300102C @ =0x03003904
+	ldr r1, _0300102C @ =ovx28_3003904
 	ldrb lr, [r0, #1]
 	sub fp, ip, #4
 	rsb r3, r3, lr
@@ -1230,14 +1230,14 @@ ovx28_3000FD4: @ 0x03000FD4
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_0300102C: .4byte 0x03003904
+_0300102C: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001030
 ovx28_3001030: @ 0x03001030
 	mov ip, sp
 	push {fp, ip, lr, pc}
 	ldrb r3, [r0, #5]
-	ldr r1, _03001088 @ =0x03003904
+	ldr r1, _03001088 @ =ovx28_3003904
 	ldrb lr, [r0, #1]
 	sub fp, ip, #4
 	rsb r3, r3, lr
@@ -1257,14 +1257,14 @@ ovx28_3001030: @ 0x03001030
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001088: .4byte 0x03003904
+_03001088: .4byte ovx28_3003904
 
 	arm_func_start ovx28_300108C
 ovx28_300108C: @ 0x0300108C
 	mov ip, sp
 	push {fp, ip, lr, pc}
 	ldrb r3, [r0, #2]
-	ldr r1, _030010E4 @ =0x03003904
+	ldr r1, _030010E4 @ =ovx28_3003904
 	ldrb lr, [r0, #1]
 	sub fp, ip, #4
 	rsb r3, r3, lr
@@ -1284,14 +1284,14 @@ ovx28_300108C: @ 0x0300108C
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_030010E4: .4byte 0x03003904
+_030010E4: .4byte ovx28_3003904
 
 	arm_func_start ovx28_30010E8
 ovx28_30010E8: @ 0x030010E8
 	mov ip, sp
 	push {fp, ip, lr, pc}
 	ldrb r3, [r0, #3]
-	ldr r1, _03001140 @ =0x03003904
+	ldr r1, _03001140 @ =ovx28_3003904
 	ldrb lr, [r0, #1]
 	sub fp, ip, #4
 	rsb r3, r3, lr
@@ -1311,14 +1311,14 @@ ovx28_30010E8: @ 0x030010E8
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001140: .4byte 0x03003904
+_03001140: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001144
 ovx28_3001144: @ 0x03001144
 	mov ip, sp
 	push {fp, ip, lr, pc}
 	ldrb r1, [r0, #1]
-	ldr r3, _0300116C @ =0x03003904
+	ldr r3, _0300116C @ =ovx28_3003904
 	strb r1, [r0, #1]
 	ldrb r2, [r3, r1]
 	sub fp, ip, #4
@@ -1326,7 +1326,7 @@ ovx28_3001144: @ 0x03001144
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_0300116C: .4byte 0x03003904
+_0300116C: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001170
 ovx28_3001170: @ 0x03001170
@@ -1339,13 +1339,13 @@ ovx28_3001170: @ 0x03001170
 	ldrb r2, [r1, ip]
 	orr r3, r3, r2
 	strb r3, [r0, #1]
-	ldr r2, _030011A8 @ =0x03003904
+	ldr r2, _030011A8 @ =ovx28_3003904
 	ldrb r1, [r2, r3]
 	strb r1, [r0]
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_030011A8: .4byte 0x03003904
+_030011A8: .4byte ovx28_3003904
 
 	arm_func_start ovx28_30011AC
 ovx28_30011AC: @ 0x030011AC
@@ -1355,14 +1355,14 @@ ovx28_30011AC: @ 0x030011AC
 	ldrb r2, [r0, #6]
 	orr r3, r3, r2
 	strb r3, [r0, #1]
-	ldr r2, _030011DC @ =0x03003904
+	ldr r2, _030011DC @ =ovx28_3003904
 	ldrb r1, [r2, r3]
 	sub fp, ip, #4
 	strb r1, [r0]
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_030011DC: .4byte 0x03003904
+_030011DC: .4byte ovx28_3003904
 
 	arm_func_start ovx28_30011E0
 ovx28_30011E0: @ 0x030011E0
@@ -1372,14 +1372,14 @@ ovx28_30011E0: @ 0x030011E0
 	ldrb r2, [r0, #7]
 	orr r3, r3, r2
 	strb r3, [r0, #1]
-	ldr r2, _03001210 @ =0x03003904
+	ldr r2, _03001210 @ =ovx28_3003904
 	ldrb r1, [r2, r3]
 	sub fp, ip, #4
 	strb r1, [r0]
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001210: .4byte 0x03003904
+_03001210: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001214
 ovx28_3001214: @ 0x03001214
@@ -1389,14 +1389,14 @@ ovx28_3001214: @ 0x03001214
 	ldrb r2, [r0, #4]
 	orr r3, r3, r2
 	strb r3, [r0, #1]
-	ldr r2, _03001244 @ =0x03003904
+	ldr r2, _03001244 @ =ovx28_3003904
 	ldrb r1, [r2, r3]
 	sub fp, ip, #4
 	strb r1, [r0]
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001244: .4byte 0x03003904
+_03001244: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001248
 ovx28_3001248: @ 0x03001248
@@ -1406,14 +1406,14 @@ ovx28_3001248: @ 0x03001248
 	ldrb r2, [r0, #5]
 	orr r3, r3, r2
 	strb r3, [r0, #1]
-	ldr r2, _03001278 @ =0x03003904
+	ldr r2, _03001278 @ =ovx28_3003904
 	ldrb r1, [r2, r3]
 	sub fp, ip, #4
 	strb r1, [r0]
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001278: .4byte 0x03003904
+_03001278: .4byte ovx28_3003904
 
 	arm_func_start ovx28_300127C
 ovx28_300127C: @ 0x0300127C
@@ -1423,14 +1423,14 @@ ovx28_300127C: @ 0x0300127C
 	ldrb r2, [r0, #2]
 	orr r3, r3, r2
 	strb r3, [r0, #1]
-	ldr r2, _030012AC @ =0x03003904
+	ldr r2, _030012AC @ =ovx28_3003904
 	ldrb r1, [r2, r3]
 	sub fp, ip, #4
 	strb r1, [r0]
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_030012AC: .4byte 0x03003904
+_030012AC: .4byte ovx28_3003904
 
 	arm_func_start ovx28_30012B0
 ovx28_30012B0: @ 0x030012B0
@@ -1440,14 +1440,14 @@ ovx28_30012B0: @ 0x030012B0
 	ldrb r2, [r0, #3]
 	orr r3, r3, r2
 	strb r3, [r0, #1]
-	ldr r2, _030012E0 @ =0x03003904
+	ldr r2, _030012E0 @ =ovx28_3003904
 	ldrb r1, [r2, r3]
 	sub fp, ip, #4
 	strb r1, [r0]
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_030012E0: .4byte 0x03003904
+_030012E0: .4byte ovx28_3003904
 
 	arm_func_start ovx28_30012E4
 ovx28_30012E4: @ 0x030012E4
@@ -1455,14 +1455,14 @@ ovx28_30012E4: @ 0x030012E4
 	push {fp, ip, lr, pc}
 	mov r1, #0
 	strb r1, [r0, #1]
-	ldr r3, _0300130C @ =0x03003904
+	ldr r3, _0300130C @ =ovx28_3003904
 	ldrb r2, [r3, r1]
 	sub fp, ip, #4
 	strb r2, [r0]
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_0300130C: .4byte 0x03003904
+_0300130C: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001310
 ovx28_3001310: @ 0x03001310
@@ -1475,13 +1475,13 @@ ovx28_3001310: @ 0x03001310
 	ldrb r2, [r1, ip]
 	eor r3, r3, r2
 	strb r3, [r0, #1]
-	ldr r2, _03001348 @ =0x03003904
+	ldr r2, _03001348 @ =ovx28_3003904
 	ldrb r1, [r2, r3]
 	strb r1, [r0]
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001348: .4byte 0x03003904
+_03001348: .4byte ovx28_3003904
 
 	arm_func_start ovx28_300134C
 ovx28_300134C: @ 0x0300134C
@@ -1491,14 +1491,14 @@ ovx28_300134C: @ 0x0300134C
 	ldrb r2, [r0, #6]
 	eor r3, r3, r2
 	strb r3, [r0, #1]
-	ldr r2, _0300137C @ =0x03003904
+	ldr r2, _0300137C @ =ovx28_3003904
 	ldrb r1, [r2, r3]
 	sub fp, ip, #4
 	strb r1, [r0]
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_0300137C: .4byte 0x03003904
+_0300137C: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001380
 ovx28_3001380: @ 0x03001380
@@ -1508,14 +1508,14 @@ ovx28_3001380: @ 0x03001380
 	ldrb r2, [r0, #7]
 	eor r3, r3, r2
 	strb r3, [r0, #1]
-	ldr r2, _030013B0 @ =0x03003904
+	ldr r2, _030013B0 @ =ovx28_3003904
 	ldrb r1, [r2, r3]
 	sub fp, ip, #4
 	strb r1, [r0]
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_030013B0: .4byte 0x03003904
+_030013B0: .4byte ovx28_3003904
 
 	arm_func_start ovx28_30013B4
 ovx28_30013B4: @ 0x030013B4
@@ -1525,14 +1525,14 @@ ovx28_30013B4: @ 0x030013B4
 	ldrb r2, [r0, #4]
 	eor r3, r3, r2
 	strb r3, [r0, #1]
-	ldr r2, _030013E4 @ =0x03003904
+	ldr r2, _030013E4 @ =ovx28_3003904
 	ldrb r1, [r2, r3]
 	sub fp, ip, #4
 	strb r1, [r0]
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_030013E4: .4byte 0x03003904
+_030013E4: .4byte ovx28_3003904
 
 	arm_func_start ovx28_30013E8
 ovx28_30013E8: @ 0x030013E8
@@ -1542,14 +1542,14 @@ ovx28_30013E8: @ 0x030013E8
 	ldrb r2, [r0, #5]
 	eor r3, r3, r2
 	strb r3, [r0, #1]
-	ldr r2, _03001418 @ =0x03003904
+	ldr r2, _03001418 @ =ovx28_3003904
 	ldrb r1, [r2, r3]
 	sub fp, ip, #4
 	strb r1, [r0]
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001418: .4byte 0x03003904
+_03001418: .4byte ovx28_3003904
 
 	arm_func_start ovx28_300141C
 ovx28_300141C: @ 0x0300141C
@@ -1559,14 +1559,14 @@ ovx28_300141C: @ 0x0300141C
 	ldrb r2, [r0, #2]
 	eor r3, r3, r2
 	strb r3, [r0, #1]
-	ldr r2, _0300144C @ =0x03003904
+	ldr r2, _0300144C @ =ovx28_3003904
 	ldrb r1, [r2, r3]
 	sub fp, ip, #4
 	strb r1, [r0]
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_0300144C: .4byte 0x03003904
+_0300144C: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001450
 ovx28_3001450: @ 0x03001450
@@ -1576,21 +1576,21 @@ ovx28_3001450: @ 0x03001450
 	ldrb r2, [r0, #3]
 	eor r3, r3, r2
 	strb r3, [r0, #1]
-	ldr r2, _03001480 @ =0x03003904
+	ldr r2, _03001480 @ =ovx28_3003904
 	ldrb r1, [r2, r3]
 	sub fp, ip, #4
 	strb r1, [r0]
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001480: .4byte 0x03003904
+_03001480: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001484
 ovx28_3001484: @ 0x03001484
 	mov ip, sp
 	push {fp, ip, lr, pc}
 	ldrb r1, [r0, #1]
-	ldr r2, _030014B0 @ =0x03003904
+	ldr r2, _030014B0 @ =ovx28_3003904
 	ldrb r3, [r2, r1]
 	sub fp, ip, #4
 	strb r1, [r0, #1]
@@ -1599,7 +1599,7 @@ ovx28_3001484: @ 0x03001484
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_030014B0: .4byte 0x03003904
+_030014B0: .4byte ovx28_3003904
 
 	arm_func_start ovx28_30014B4
 ovx28_30014B4: @ 0x030014B4
@@ -1610,7 +1610,7 @@ ovx28_30014B4: @ 0x030014B4
 	ldrh lr, [r0, #6]
 	ldrb r1, [r3, lr]
 	sub fp, ip, #4
-	ldr ip, _030014F0 @ =0x03003904
+	ldr ip, _030014F0 @ =ovx28_3003904
 	and r2, r2, r1
 	ldrb r3, [ip, r2]
 	strb r2, [r0, #1]
@@ -1619,7 +1619,7 @@ ovx28_30014B4: @ 0x030014B4
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_030014F0: .4byte 0x03003904
+_030014F0: .4byte ovx28_3003904
 
 	arm_func_start ovx28_30014F4
 ovx28_30014F4: @ 0x030014F4
@@ -1628,7 +1628,7 @@ ovx28_30014F4: @ 0x030014F4
 	ldrb r2, [r0, #1]
 	ldrb r1, [r0, #6]
 	sub fp, ip, #4
-	ldr ip, _03001528 @ =0x03003904
+	ldr ip, _03001528 @ =ovx28_3003904
 	and r2, r2, r1
 	ldrb r3, [ip, r2]
 	strb r2, [r0, #1]
@@ -1637,7 +1637,7 @@ ovx28_30014F4: @ 0x030014F4
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001528: .4byte 0x03003904
+_03001528: .4byte ovx28_3003904
 
 	arm_func_start ovx28_300152C
 ovx28_300152C: @ 0x0300152C
@@ -1646,7 +1646,7 @@ ovx28_300152C: @ 0x0300152C
 	ldrb r2, [r0, #1]
 	ldrb r1, [r0, #7]
 	sub fp, ip, #4
-	ldr ip, _03001560 @ =0x03003904
+	ldr ip, _03001560 @ =ovx28_3003904
 	and r2, r2, r1
 	ldrb r3, [ip, r2]
 	strb r2, [r0, #1]
@@ -1655,7 +1655,7 @@ ovx28_300152C: @ 0x0300152C
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001560: .4byte 0x03003904
+_03001560: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001564
 ovx28_3001564: @ 0x03001564
@@ -1664,7 +1664,7 @@ ovx28_3001564: @ 0x03001564
 	ldrb r2, [r0, #1]
 	ldrb r1, [r0, #4]
 	sub fp, ip, #4
-	ldr ip, _03001598 @ =0x03003904
+	ldr ip, _03001598 @ =ovx28_3003904
 	and r2, r2, r1
 	ldrb r3, [ip, r2]
 	strb r2, [r0, #1]
@@ -1673,7 +1673,7 @@ ovx28_3001564: @ 0x03001564
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001598: .4byte 0x03003904
+_03001598: .4byte ovx28_3003904
 
 	arm_func_start ovx28_300159C
 ovx28_300159C: @ 0x0300159C
@@ -1682,7 +1682,7 @@ ovx28_300159C: @ 0x0300159C
 	ldrb r2, [r0, #1]
 	ldrb r1, [r0, #5]
 	sub fp, ip, #4
-	ldr ip, _030015D0 @ =0x03003904
+	ldr ip, _030015D0 @ =ovx28_3003904
 	and r2, r2, r1
 	ldrb r3, [ip, r2]
 	strb r2, [r0, #1]
@@ -1691,7 +1691,7 @@ ovx28_300159C: @ 0x0300159C
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_030015D0: .4byte 0x03003904
+_030015D0: .4byte ovx28_3003904
 
 	arm_func_start ovx28_30015D4
 ovx28_30015D4: @ 0x030015D4
@@ -1700,7 +1700,7 @@ ovx28_30015D4: @ 0x030015D4
 	ldrb r2, [r0, #1]
 	ldrb r1, [r0, #2]
 	sub fp, ip, #4
-	ldr ip, _03001608 @ =0x03003904
+	ldr ip, _03001608 @ =ovx28_3003904
 	and r2, r2, r1
 	ldrb r3, [ip, r2]
 	strb r2, [r0, #1]
@@ -1709,7 +1709,7 @@ ovx28_30015D4: @ 0x030015D4
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001608: .4byte 0x03003904
+_03001608: .4byte ovx28_3003904
 
 	arm_func_start ovx28_300160C
 ovx28_300160C: @ 0x0300160C
@@ -1718,7 +1718,7 @@ ovx28_300160C: @ 0x0300160C
 	ldrb r2, [r0, #1]
 	ldrb r1, [r0, #3]
 	sub fp, ip, #4
-	ldr ip, _03001640 @ =0x03003904
+	ldr ip, _03001640 @ =ovx28_3003904
 	and r2, r2, r1
 	ldrb r3, [ip, r2]
 	strb r2, [r0, #1]
@@ -1727,14 +1727,14 @@ ovx28_300160C: @ 0x0300160C
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001640: .4byte 0x03003904
+_03001640: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001644
 ovx28_3001644: @ 0x03001644
 	mov ip, sp
 	push {fp, ip, lr, pc}
 	ldrb r3, [r0]
-	ldr r2, _030016AC @ =0x03003904
+	ldr r2, _030016AC @ =ovx28_3003904
 	sub fp, ip, #4
 	ldrb ip, [r0, #1]
 	and r3, r3, #1
@@ -1758,7 +1758,7 @@ ovx28_3001644: @ 0x03001644
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_030016AC: .4byte 0x03003904
+_030016AC: .4byte ovx28_3003904
 
 	arm_func_start ovx28_30016B0
 ovx28_30016B0: @ 0x030016B0
@@ -1774,7 +1774,7 @@ ovx28_30016B0: @ 0x030016B0
 	add r2, r2, r3
 	ldrb r0, [ip, #1]
 	and r2, r2, #0xff
-	ldr r1, _03001728 @ =0x03003904
+	ldr r1, _03001728 @ =ovx28_3003904
 	rsb r2, r2, r0
 	and lr, r2, #0xff
 	ldrb r3, [r1, lr]
@@ -1793,7 +1793,7 @@ ovx28_30016B0: @ 0x030016B0
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001728: .4byte 0x03003904
+_03001728: .4byte ovx28_3003904
 
 	arm_func_start ovx28_300172C
 ovx28_300172C: @ 0x0300172C
@@ -1801,7 +1801,7 @@ ovx28_300172C: @ 0x0300172C
 	push {fp, ip, lr, pc}
 	ldrb r3, [r0]
 	ldrb r2, [r0, #6]
-	ldr r1, _03001798 @ =0x03003904
+	ldr r1, _03001798 @ =ovx28_3003904
 	and r3, r3, #1
 	add r2, r2, r3
 	sub fp, ip, #4
@@ -1825,7 +1825,7 @@ ovx28_300172C: @ 0x0300172C
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001798: .4byte 0x03003904
+_03001798: .4byte ovx28_3003904
 
 	arm_func_start ovx28_300179C
 ovx28_300179C: @ 0x0300179C
@@ -1833,7 +1833,7 @@ ovx28_300179C: @ 0x0300179C
 	push {fp, ip, lr, pc}
 	ldrb r3, [r0]
 	ldrb r2, [r0, #7]
-	ldr r1, _03001808 @ =0x03003904
+	ldr r1, _03001808 @ =ovx28_3003904
 	and r3, r3, #1
 	add r2, r2, r3
 	sub fp, ip, #4
@@ -1857,7 +1857,7 @@ ovx28_300179C: @ 0x0300179C
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001808: .4byte 0x03003904
+_03001808: .4byte ovx28_3003904
 
 	arm_func_start ovx28_300180C
 ovx28_300180C: @ 0x0300180C
@@ -1865,7 +1865,7 @@ ovx28_300180C: @ 0x0300180C
 	push {fp, ip, lr, pc}
 	ldrb r3, [r0]
 	ldrb r2, [r0, #4]
-	ldr r1, _03001878 @ =0x03003904
+	ldr r1, _03001878 @ =ovx28_3003904
 	and r3, r3, #1
 	add r2, r2, r3
 	sub fp, ip, #4
@@ -1889,7 +1889,7 @@ ovx28_300180C: @ 0x0300180C
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001878: .4byte 0x03003904
+_03001878: .4byte ovx28_3003904
 
 	arm_func_start ovx28_300187C
 ovx28_300187C: @ 0x0300187C
@@ -1897,7 +1897,7 @@ ovx28_300187C: @ 0x0300187C
 	push {fp, ip, lr, pc}
 	ldrb r3, [r0]
 	ldrb r2, [r0, #5]
-	ldr r1, _030018E8 @ =0x03003904
+	ldr r1, _030018E8 @ =ovx28_3003904
 	and r3, r3, #1
 	add r2, r2, r3
 	sub fp, ip, #4
@@ -1921,7 +1921,7 @@ ovx28_300187C: @ 0x0300187C
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_030018E8: .4byte 0x03003904
+_030018E8: .4byte ovx28_3003904
 
 	arm_func_start ovx28_30018EC
 ovx28_30018EC: @ 0x030018EC
@@ -1929,7 +1929,7 @@ ovx28_30018EC: @ 0x030018EC
 	push {fp, ip, lr, pc}
 	ldrb r3, [r0]
 	ldrb r2, [r0, #2]
-	ldr r1, _03001958 @ =0x03003904
+	ldr r1, _03001958 @ =ovx28_3003904
 	and r3, r3, #1
 	add r2, r2, r3
 	sub fp, ip, #4
@@ -1953,7 +1953,7 @@ ovx28_30018EC: @ 0x030018EC
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001958: .4byte 0x03003904
+_03001958: .4byte ovx28_3003904
 
 	arm_func_start ovx28_300195C
 ovx28_300195C: @ 0x0300195C
@@ -1961,7 +1961,7 @@ ovx28_300195C: @ 0x0300195C
 	push {fp, ip, lr, pc}
 	ldrb r3, [r0]
 	ldrb r2, [r0, #3]
-	ldr r1, _030019C8 @ =0x03003904
+	ldr r1, _030019C8 @ =ovx28_3003904
 	and r3, r3, #1
 	add r2, r2, r3
 	sub fp, ip, #4
@@ -1985,14 +1985,14 @@ ovx28_300195C: @ 0x0300195C
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_030019C8: .4byte 0x03003904
+_030019C8: .4byte ovx28_3003904
 
 	arm_func_start ovx28_30019CC
 ovx28_30019CC: @ 0x030019CC
 	mov ip, sp
 	push {fp, ip, lr, pc}
 	ldrb r3, [r0, #1]
-	ldr r1, _03001A0C @ =0x03003904
+	ldr r1, _03001A0C @ =ovx28_3003904
 	sub fp, ip, #4
 	rsb ip, r3, r3
 	ldrb r2, [r1, ip]
@@ -2006,7 +2006,7 @@ ovx28_30019CC: @ 0x030019CC
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001A0C: .4byte 0x03003904
+_03001A0C: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001A10
 ovx28_3001A10: @ 0x03001A10
@@ -2018,7 +2018,7 @@ ovx28_3001A10: @ 0x03001A10
 	ldrb ip, [r0, #1]
 	ldrb r3, [r2, r1]
 	rsb r1, r3, ip
-	ldr r2, _03001A74 @ =0x03003904
+	ldr r2, _03001A74 @ =ovx28_3003904
 	and lr, r1, #0xff
 	ldrb r3, [r2, lr]
 	orr r3, r3, #2
@@ -2036,7 +2036,7 @@ ovx28_3001A10: @ 0x03001A10
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001A74: .4byte 0x03003904
+_03001A74: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001A78
 ovx28_3001A78: @ 0x03001A78
@@ -2045,7 +2045,7 @@ ovx28_3001A78: @ 0x03001A78
 	ldrb r3, [r0, #6]
 	sub fp, ip, #4
 	ldrb ip, [r0, #1]
-	ldr r2, _03001AD4 @ =0x03003904
+	ldr r2, _03001AD4 @ =ovx28_3003904
 	rsb r1, r3, ip
 	and lr, r1, #0xff
 	ldrb r3, [r2, lr]
@@ -2064,7 +2064,7 @@ ovx28_3001A78: @ 0x03001A78
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001AD4: .4byte 0x03003904
+_03001AD4: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001AD8
 ovx28_3001AD8: @ 0x03001AD8
@@ -2073,7 +2073,7 @@ ovx28_3001AD8: @ 0x03001AD8
 	ldrb r3, [r0, #7]
 	sub fp, ip, #4
 	ldrb ip, [r0, #1]
-	ldr r2, _03001B34 @ =0x03003904
+	ldr r2, _03001B34 @ =ovx28_3003904
 	rsb r1, r3, ip
 	and lr, r1, #0xff
 	ldrb r3, [r2, lr]
@@ -2092,7 +2092,7 @@ ovx28_3001AD8: @ 0x03001AD8
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001B34: .4byte 0x03003904
+_03001B34: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001B38
 ovx28_3001B38: @ 0x03001B38
@@ -2101,7 +2101,7 @@ ovx28_3001B38: @ 0x03001B38
 	ldrb r3, [r0, #4]
 	sub fp, ip, #4
 	ldrb ip, [r0, #1]
-	ldr r2, _03001B94 @ =0x03003904
+	ldr r2, _03001B94 @ =ovx28_3003904
 	rsb r1, r3, ip
 	and lr, r1, #0xff
 	ldrb r3, [r2, lr]
@@ -2120,7 +2120,7 @@ ovx28_3001B38: @ 0x03001B38
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001B94: .4byte 0x03003904
+_03001B94: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001B98
 ovx28_3001B98: @ 0x03001B98
@@ -2129,7 +2129,7 @@ ovx28_3001B98: @ 0x03001B98
 	ldrb r3, [r0, #5]
 	sub fp, ip, #4
 	ldrb ip, [r0, #1]
-	ldr r2, _03001BF4 @ =0x03003904
+	ldr r2, _03001BF4 @ =ovx28_3003904
 	rsb r1, r3, ip
 	and lr, r1, #0xff
 	ldrb r3, [r2, lr]
@@ -2148,7 +2148,7 @@ ovx28_3001B98: @ 0x03001B98
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001BF4: .4byte 0x03003904
+_03001BF4: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001BF8
 ovx28_3001BF8: @ 0x03001BF8
@@ -2157,7 +2157,7 @@ ovx28_3001BF8: @ 0x03001BF8
 	ldrb r3, [r0, #2]
 	sub fp, ip, #4
 	ldrb ip, [r0, #1]
-	ldr r2, _03001C54 @ =0x03003904
+	ldr r2, _03001C54 @ =ovx28_3003904
 	rsb r1, r3, ip
 	and lr, r1, #0xff
 	ldrb r3, [r2, lr]
@@ -2176,7 +2176,7 @@ ovx28_3001BF8: @ 0x03001BF8
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001C54: .4byte 0x03003904
+_03001C54: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001C58
 ovx28_3001C58: @ 0x03001C58
@@ -2185,7 +2185,7 @@ ovx28_3001C58: @ 0x03001C58
 	ldrb r3, [r0, #3]
 	sub fp, ip, #4
 	ldrb ip, [r0, #1]
-	ldr r2, _03001CB4 @ =0x03003904
+	ldr r2, _03001CB4 @ =ovx28_3003904
 	rsb r1, r3, ip
 	and lr, r1, #0xff
 	ldrb r3, [r2, lr]
@@ -2204,14 +2204,14 @@ ovx28_3001C58: @ 0x03001C58
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001CB4: .4byte 0x03003904
+_03001CB4: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001CB8
 ovx28_3001CB8: @ 0x03001CB8
 	mov ip, sp
 	push {fp, ip, lr, pc}
 	ldrb r3, [r0]
-	ldr r2, _03001D1C @ =0x03003904
+	ldr r2, _03001D1C @ =ovx28_3003904
 	sub fp, ip, #4
 	ldrb ip, [r0, #1]
 	and r3, r3, #1
@@ -2234,7 +2234,7 @@ ovx28_3001CB8: @ 0x03001CB8
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001D1C: .4byte 0x03003904
+_03001D1C: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001D20
 ovx28_3001D20: @ 0x03001D20
@@ -2250,7 +2250,7 @@ ovx28_3001D20: @ 0x03001D20
 	add r2, r2, r3
 	ldrb r0, [ip, #1]
 	and r2, r2, #0xff
-	ldr r1, _03001D94 @ =0x03003904
+	ldr r1, _03001D94 @ =ovx28_3003904
 	add r2, r0, r2
 	and lr, r2, #0xff
 	ldrb r3, [r1, lr]
@@ -2268,7 +2268,7 @@ ovx28_3001D20: @ 0x03001D20
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001D94: .4byte 0x03003904
+_03001D94: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001D98
 ovx28_3001D98: @ 0x03001D98
@@ -2276,7 +2276,7 @@ ovx28_3001D98: @ 0x03001D98
 	push {fp, ip, lr, pc}
 	ldrb r3, [r0]
 	ldrb r2, [r0, #6]
-	ldr r1, _03001E00 @ =0x03003904
+	ldr r1, _03001E00 @ =ovx28_3003904
 	and r3, r3, #1
 	add r2, r2, r3
 	sub fp, ip, #4
@@ -2299,7 +2299,7 @@ ovx28_3001D98: @ 0x03001D98
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001E00: .4byte 0x03003904
+_03001E00: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001E04
 ovx28_3001E04: @ 0x03001E04
@@ -2307,7 +2307,7 @@ ovx28_3001E04: @ 0x03001E04
 	push {fp, ip, lr, pc}
 	ldrb r3, [r0]
 	ldrb r2, [r0, #7]
-	ldr r1, _03001E6C @ =0x03003904
+	ldr r1, _03001E6C @ =ovx28_3003904
 	and r3, r3, #1
 	add r2, r2, r3
 	sub fp, ip, #4
@@ -2330,7 +2330,7 @@ ovx28_3001E04: @ 0x03001E04
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001E6C: .4byte 0x03003904
+_03001E6C: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001E70
 ovx28_3001E70: @ 0x03001E70
@@ -2338,7 +2338,7 @@ ovx28_3001E70: @ 0x03001E70
 	push {fp, ip, lr, pc}
 	ldrb r3, [r0]
 	ldrb r2, [r0, #4]
-	ldr r1, _03001ED8 @ =0x03003904
+	ldr r1, _03001ED8 @ =ovx28_3003904
 	and r3, r3, #1
 	add r2, r2, r3
 	sub fp, ip, #4
@@ -2361,7 +2361,7 @@ ovx28_3001E70: @ 0x03001E70
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001ED8: .4byte 0x03003904
+_03001ED8: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001EDC
 ovx28_3001EDC: @ 0x03001EDC
@@ -2369,7 +2369,7 @@ ovx28_3001EDC: @ 0x03001EDC
 	push {fp, ip, lr, pc}
 	ldrb r3, [r0]
 	ldrb r2, [r0, #5]
-	ldr r1, _03001F44 @ =0x03003904
+	ldr r1, _03001F44 @ =ovx28_3003904
 	and r3, r3, #1
 	add r2, r2, r3
 	sub fp, ip, #4
@@ -2392,7 +2392,7 @@ ovx28_3001EDC: @ 0x03001EDC
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001F44: .4byte 0x03003904
+_03001F44: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001F48
 ovx28_3001F48: @ 0x03001F48
@@ -2400,7 +2400,7 @@ ovx28_3001F48: @ 0x03001F48
 	push {fp, ip, lr, pc}
 	ldrb r3, [r0]
 	ldrb r2, [r0, #2]
-	ldr r1, _03001FB0 @ =0x03003904
+	ldr r1, _03001FB0 @ =ovx28_3003904
 	and r3, r3, #1
 	add r2, r2, r3
 	sub fp, ip, #4
@@ -2423,7 +2423,7 @@ ovx28_3001F48: @ 0x03001F48
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03001FB0: .4byte 0x03003904
+_03001FB0: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3001FB4
 ovx28_3001FB4: @ 0x03001FB4
@@ -2431,7 +2431,7 @@ ovx28_3001FB4: @ 0x03001FB4
 	push {fp, ip, lr, pc}
 	ldrb r3, [r0]
 	ldrb r2, [r0, #3]
-	ldr r1, _0300201C @ =0x03003904
+	ldr r1, _0300201C @ =ovx28_3003904
 	and r3, r3, #1
 	add r2, r2, r3
 	sub fp, ip, #4
@@ -2454,7 +2454,7 @@ ovx28_3001FB4: @ 0x03001FB4
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_0300201C: .4byte 0x03003904
+_0300201C: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3002020
 ovx28_3002020: @ 0x03002020
@@ -2462,7 +2462,7 @@ ovx28_3002020: @ 0x03002020
 	push {fp, ip, lr, pc}
 	sub fp, ip, #4
 	ldrb ip, [r0, #1]
-	ldr r2, _03002074 @ =0x03003904
+	ldr r2, _03002074 @ =ovx28_3003904
 	lsl r1, ip, #1
 	and lr, r1, #0xff
 	ldrb r3, [r2, lr]
@@ -2480,7 +2480,7 @@ ovx28_3002020: @ 0x03002020
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03002074: .4byte 0x03003904
+_03002074: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3002078
 ovx28_3002078: @ 0x03002078
@@ -2492,7 +2492,7 @@ ovx28_3002078: @ 0x03002078
 	ldrb ip, [r0, #1]
 	ldrb r3, [r2, r1]
 	add r1, ip, r3
-	ldr r2, _030020D8 @ =0x03003904
+	ldr r2, _030020D8 @ =ovx28_3003904
 	and lr, r1, #0xff
 	ldrb r3, [r2, lr]
 	and r3, r3, #0xfb
@@ -2509,7 +2509,7 @@ ovx28_3002078: @ 0x03002078
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_030020D8: .4byte 0x03003904
+_030020D8: .4byte ovx28_3003904
 
 	arm_func_start ovx28_30020DC
 ovx28_30020DC: @ 0x030020DC
@@ -2518,7 +2518,7 @@ ovx28_30020DC: @ 0x030020DC
 	ldrb r3, [r0, #6]
 	sub fp, ip, #4
 	ldrb ip, [r0, #1]
-	ldr r2, _03002134 @ =0x03003904
+	ldr r2, _03002134 @ =ovx28_3003904
 	add r1, ip, r3
 	and lr, r1, #0xff
 	ldrb r3, [r2, lr]
@@ -2536,7 +2536,7 @@ ovx28_30020DC: @ 0x030020DC
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03002134: .4byte 0x03003904
+_03002134: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3002138
 ovx28_3002138: @ 0x03002138
@@ -2545,7 +2545,7 @@ ovx28_3002138: @ 0x03002138
 	ldrb r3, [r0, #7]
 	sub fp, ip, #4
 	ldrb ip, [r0, #1]
-	ldr r2, _03002190 @ =0x03003904
+	ldr r2, _03002190 @ =ovx28_3003904
 	add r1, ip, r3
 	and lr, r1, #0xff
 	ldrb r3, [r2, lr]
@@ -2563,7 +2563,7 @@ ovx28_3002138: @ 0x03002138
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03002190: .4byte 0x03003904
+_03002190: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3002194
 ovx28_3002194: @ 0x03002194
@@ -2572,7 +2572,7 @@ ovx28_3002194: @ 0x03002194
 	ldrb r3, [r0, #4]
 	sub fp, ip, #4
 	ldrb ip, [r0, #1]
-	ldr r2, _030021EC @ =0x03003904
+	ldr r2, _030021EC @ =ovx28_3003904
 	add r1, ip, r3
 	and lr, r1, #0xff
 	ldrb r3, [r2, lr]
@@ -2590,7 +2590,7 @@ ovx28_3002194: @ 0x03002194
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_030021EC: .4byte 0x03003904
+_030021EC: .4byte ovx28_3003904
 
 	arm_func_start ovx28_30021F0
 ovx28_30021F0: @ 0x030021F0
@@ -2599,7 +2599,7 @@ ovx28_30021F0: @ 0x030021F0
 	ldrb r3, [r0, #5]
 	sub fp, ip, #4
 	ldrb ip, [r0, #1]
-	ldr r2, _03002248 @ =0x03003904
+	ldr r2, _03002248 @ =ovx28_3003904
 	add r1, ip, r3
 	and lr, r1, #0xff
 	ldrb r3, [r2, lr]
@@ -2617,7 +2617,7 @@ ovx28_30021F0: @ 0x030021F0
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03002248: .4byte 0x03003904
+_03002248: .4byte ovx28_3003904
 
 	arm_func_start ovx28_300224C
 ovx28_300224C: @ 0x0300224C
@@ -2626,7 +2626,7 @@ ovx28_300224C: @ 0x0300224C
 	ldrb r3, [r0, #2]
 	sub fp, ip, #4
 	ldrb ip, [r0, #1]
-	ldr r2, _030022A4 @ =0x03003904
+	ldr r2, _030022A4 @ =ovx28_3003904
 	add r1, ip, r3
 	and lr, r1, #0xff
 	ldrb r3, [r2, lr]
@@ -2644,7 +2644,7 @@ ovx28_300224C: @ 0x0300224C
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_030022A4: .4byte 0x03003904
+_030022A4: .4byte ovx28_3003904
 
 	arm_func_start ovx28_30022A8
 ovx28_30022A8: @ 0x030022A8
@@ -2653,7 +2653,7 @@ ovx28_30022A8: @ 0x030022A8
 	ldrb r3, [r0, #3]
 	sub fp, ip, #4
 	ldrb ip, [r0, #1]
-	ldr r2, _03002300 @ =0x03003904
+	ldr r2, _03002300 @ =ovx28_3003904
 	add r1, ip, r3
 	and lr, r1, #0xff
 	ldrb r3, [r2, lr]
@@ -2671,7 +2671,7 @@ ovx28_30022A8: @ 0x030022A8
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_03002300: .4byte 0x03003904
+_03002300: .4byte ovx28_3003904
 
 	arm_func_start ovx28_3002304
 ovx28_3002304: @ 0x03002304
@@ -3351,7 +3351,7 @@ ovx28_3002A70: @ 0x03002A70
 	ldrb lr, [r4, #1]
 	ldrb r2, [r4]
 	sub fp, ip, #4
-	ldr r0, _03002ACC @ =0x03003904
+	ldr r0, _03002ACC @ =ovx28_3003904
 	sub r3, lr, #1
 	mov r5, r3
 	lsl r1, r5, #0x10
@@ -3369,7 +3369,7 @@ ovx28_3002A70: @ 0x03002A70
 	strb r5, [r4, #1]
 	b _03002AD0
 	.align 2, 0
-_03002ACC: .4byte 0x03003904
+_03002ACC: .4byte ovx28_3003904
 _03002AD0:
 	ldmdb fp, {r4, r5, fp, sp, lr}
 	bx lr
@@ -3382,7 +3382,7 @@ ovx28_3002AD8: @ 0x03002AD8
 	ldrb lr, [r4, #1]
 	ldrb r2, [r4]
 	sub fp, ip, #4
-	ldr r0, _03002B30 @ =0x03003904
+	ldr r0, _03002B30 @ =ovx28_3003904
 	add r3, lr, #1
 	mov r5, r3
 	mov r1, r5
@@ -3399,7 +3399,7 @@ ovx28_3002AD8: @ 0x03002AD8
 	strb r5, [r4, #1]
 	b _03002B34
 	.align 2, 0
-_03002B30: .4byte 0x03003904
+_03002B30: .4byte ovx28_3003904
 _03002B34:
 	ldmdb fp, {r4, r5, fp, sp, lr}
 	bx lr
@@ -3486,7 +3486,7 @@ ovx28_3002C1C: @ 0x03002C1C
 	ldr r3, [r4, #0x14]
 	ldrb lr, [r3, r1]
 	sub fp, ip, #4
-	ldr r0, _03002C88 @ =0x03003904
+	ldr r0, _03002C88 @ =ovx28_3003904
 	sub r2, lr, #1
 	mov r5, r2
 	lsl r2, r5, #0x10
@@ -3507,7 +3507,7 @@ ovx28_3002C1C: @ 0x03002C1C
 	strb r5, [r3, r2]
 	b _03002C8C
 	.align 2, 0
-_03002C88: .4byte 0x03003904
+_03002C88: .4byte ovx28_3003904
 _03002C8C:
 	ldmdb fp, {r4, r5, fp, sp, lr}
 	bx lr
@@ -3521,7 +3521,7 @@ ovx28_3002C94: @ 0x03002C94
 	ldr r3, [r4, #0x14]
 	ldrb lr, [r3, r1]
 	sub fp, ip, #4
-	ldr r0, _03002CF8 @ =0x03003904
+	ldr r0, _03002CF8 @ =ovx28_3003904
 	add r2, lr, #1
 	mov r5, r2
 	and r3, r2, #0xff
@@ -3540,7 +3540,7 @@ ovx28_3002C94: @ 0x03002C94
 	strb r5, [r3, r2]
 	b _03002CFC
 	.align 2, 0
-_03002CF8: .4byte 0x03003904
+_03002CF8: .4byte ovx28_3003904
 _03002CFC:
 	ldmdb fp, {r4, r5, fp, sp, lr}
 	bx lr
@@ -3646,7 +3646,7 @@ ovx28_3002E28: @ 0x03002E28
 	ldrb lr, [r4, #6]
 	ldrb r2, [r4]
 	sub fp, ip, #4
-	ldr r0, _03002E84 @ =0x03003904
+	ldr r0, _03002E84 @ =ovx28_3003904
 	sub r3, lr, #1
 	mov r5, r3
 	lsl r1, r5, #0x10
@@ -3664,7 +3664,7 @@ ovx28_3002E28: @ 0x03002E28
 	strb r5, [r4, #6]
 	b _03002E88
 	.align 2, 0
-_03002E84: .4byte 0x03003904
+_03002E84: .4byte ovx28_3003904
 _03002E88:
 	ldmdb fp, {r4, r5, fp, sp, lr}
 	bx lr
@@ -3677,7 +3677,7 @@ ovx28_3002E90: @ 0x03002E90
 	ldrb lr, [r4, #6]
 	ldrb r2, [r4]
 	sub fp, ip, #4
-	ldr r0, _03002EE8 @ =0x03003904
+	ldr r0, _03002EE8 @ =ovx28_3003904
 	add r3, lr, #1
 	mov r5, r3
 	mov r1, r5
@@ -3694,7 +3694,7 @@ ovx28_3002E90: @ 0x03002E90
 	strb r5, [r4, #6]
 	b _03002EEC
 	.align 2, 0
-_03002EE8: .4byte 0x03003904
+_03002EE8: .4byte ovx28_3003904
 _03002EEC:
 	ldmdb fp, {r4, r5, fp, sp, lr}
 	bx lr
@@ -3775,7 +3775,7 @@ ovx28_3002FC0: @ 0x03002FC0
 	ldrb lr, [r4, #7]
 	ldrb r2, [r4]
 	sub fp, ip, #4
-	ldr r0, _0300301C @ =0x03003904
+	ldr r0, _0300301C @ =ovx28_3003904
 	sub r3, lr, #1
 	mov r5, r3
 	lsl r1, r5, #0x10
@@ -3793,7 +3793,7 @@ ovx28_3002FC0: @ 0x03002FC0
 	strb r5, [r4, #7]
 	b _03003020
 	.align 2, 0
-_0300301C: .4byte 0x03003904
+_0300301C: .4byte ovx28_3003904
 _03003020:
 	ldmdb fp, {r4, r5, fp, sp, lr}
 	bx lr
@@ -3806,7 +3806,7 @@ ovx28_3003028: @ 0x03003028
 	ldrb lr, [r4, #7]
 	ldrb r2, [r4]
 	sub fp, ip, #4
-	ldr r0, _03003080 @ =0x03003904
+	ldr r0, _03003080 @ =ovx28_3003904
 	add r3, lr, #1
 	mov r5, r3
 	mov r1, r5
@@ -3823,7 +3823,7 @@ ovx28_3003028: @ 0x03003028
 	strb r5, [r4, #7]
 	b _03003084
 	.align 2, 0
-_03003080: .4byte 0x03003904
+_03003080: .4byte ovx28_3003904
 _03003084:
 	ldmdb fp, {r4, r5, fp, sp, lr}
 	bx lr
@@ -3941,7 +3941,7 @@ ovx28_30031E0: @ 0x030031E0
 	ldrb lr, [r4, #4]
 	ldrb r2, [r4]
 	sub fp, ip, #4
-	ldr r0, _0300323C @ =0x03003904
+	ldr r0, _0300323C @ =ovx28_3003904
 	sub r3, lr, #1
 	mov r5, r3
 	lsl r1, r5, #0x10
@@ -3959,7 +3959,7 @@ ovx28_30031E0: @ 0x030031E0
 	strb r5, [r4, #4]
 	b _03003240
 	.align 2, 0
-_0300323C: .4byte 0x03003904
+_0300323C: .4byte ovx28_3003904
 _03003240:
 	ldmdb fp, {r4, r5, fp, sp, lr}
 	bx lr
@@ -3972,7 +3972,7 @@ ovx28_3003248: @ 0x03003248
 	ldrb lr, [r4, #4]
 	ldrb r2, [r4]
 	sub fp, ip, #4
-	ldr r0, _030032A0 @ =0x03003904
+	ldr r0, _030032A0 @ =ovx28_3003904
 	add r3, lr, #1
 	mov r5, r3
 	mov r1, r5
@@ -3989,7 +3989,7 @@ ovx28_3003248: @ 0x03003248
 	strb r5, [r4, #4]
 	b _030032A4
 	.align 2, 0
-_030032A0: .4byte 0x03003904
+_030032A0: .4byte ovx28_3003904
 _030032A4:
 	ldmdb fp, {r4, r5, fp, sp, lr}
 	bx lr
@@ -4089,7 +4089,7 @@ ovx28_30033C0: @ 0x030033C0
 	ldrb lr, [r4, #5]
 	ldrb r2, [r4]
 	sub fp, ip, #4
-	ldr r0, _0300341C @ =0x03003904
+	ldr r0, _0300341C @ =ovx28_3003904
 	sub r3, lr, #1
 	mov r5, r3
 	lsl r1, r5, #0x10
@@ -4107,7 +4107,7 @@ ovx28_30033C0: @ 0x030033C0
 	strb r5, [r4, #5]
 	b _03003420
 	.align 2, 0
-_0300341C: .4byte 0x03003904
+_0300341C: .4byte ovx28_3003904
 _03003420:
 	ldmdb fp, {r4, r5, fp, sp, lr}
 	bx lr
@@ -4120,7 +4120,7 @@ ovx28_3003428: @ 0x03003428
 	ldrb lr, [r4, #5]
 	ldrb r2, [r4]
 	sub fp, ip, #4
-	ldr r0, _03003480 @ =0x03003904
+	ldr r0, _03003480 @ =ovx28_3003904
 	add r3, lr, #1
 	mov r5, r3
 	mov r1, r5
@@ -4137,7 +4137,7 @@ ovx28_3003428: @ 0x03003428
 	strb r5, [r4, #5]
 	b _03003484
 	.align 2, 0
-_03003480: .4byte 0x03003904
+_03003480: .4byte ovx28_3003904
 _03003484:
 	ldmdb fp, {r4, r5, fp, sp, lr}
 	bx lr
@@ -4248,7 +4248,7 @@ ovx28_30035C4: @ 0x030035C4
 	ldrb lr, [r4, #2]
 	ldrb r2, [r4]
 	sub fp, ip, #4
-	ldr r0, _03003620 @ =0x03003904
+	ldr r0, _03003620 @ =ovx28_3003904
 	sub r3, lr, #1
 	mov r5, r3
 	lsl r1, r5, #0x10
@@ -4266,7 +4266,7 @@ ovx28_30035C4: @ 0x030035C4
 	strb r5, [r4, #2]
 	b _03003624
 	.align 2, 0
-_03003620: .4byte 0x03003904
+_03003620: .4byte ovx28_3003904
 _03003624:
 	ldmdb fp, {r4, r5, fp, sp, lr}
 	bx lr
@@ -4279,7 +4279,7 @@ ovx28_300362C: @ 0x0300362C
 	ldrb lr, [r4, #2]
 	ldrb r2, [r4]
 	sub fp, ip, #4
-	ldr r0, _03003684 @ =0x03003904
+	ldr r0, _03003684 @ =ovx28_3003904
 	add r3, lr, #1
 	mov r5, r3
 	mov r1, r5
@@ -4296,7 +4296,7 @@ ovx28_300362C: @ 0x0300362C
 	strb r5, [r4, #2]
 	b _03003688
 	.align 2, 0
-_03003684: .4byte 0x03003904
+_03003684: .4byte ovx28_3003904
 _03003688:
 	ldmdb fp, {r4, r5, fp, sp, lr}
 	bx lr
@@ -4381,7 +4381,7 @@ ovx28_3003774: @ 0x03003774
 	ldrb lr, [r4, #3]
 	ldrb r2, [r4]
 	sub fp, ip, #4
-	ldr r0, _030037D0 @ =0x03003904
+	ldr r0, _030037D0 @ =ovx28_3003904
 	sub r3, lr, #1
 	mov r5, r3
 	lsl r1, r5, #0x10
@@ -4399,7 +4399,7 @@ ovx28_3003774: @ 0x03003774
 	strb r5, [r4, #3]
 	b _030037D4
 	.align 2, 0
-_030037D0: .4byte 0x03003904
+_030037D0: .4byte ovx28_3003904
 _030037D4:
 	ldmdb fp, {r4, r5, fp, sp, lr}
 	bx lr
@@ -4412,7 +4412,7 @@ ovx28_30037DC: @ 0x030037DC
 	ldrb lr, [r4, #3]
 	ldrb r2, [r4]
 	sub fp, ip, #4
-	ldr r0, _03003834 @ =0x03003904
+	ldr r0, _03003834 @ =ovx28_3003904
 	add r3, lr, #1
 	mov r5, r3
 	mov r1, r5
@@ -4429,7 +4429,7 @@ ovx28_30037DC: @ 0x030037DC
 	strb r5, [r4, #3]
 	b _03003838
 	.align 2, 0
-_03003834: .4byte 0x03003904
+_03003834: .4byte ovx28_3003904
 _03003838:
 	ldmdb fp, {r4, r5, fp, sp, lr}
 	bx lr
@@ -4497,7 +4497,8 @@ ovx28_30038D0: @ 0x030038D0
 	orr r0, ip, lr, lsl #8
 	ldmdb fp, {fp, sp, lr}
 	bx lr
-_03003904:
+
+ovx28_3003904:
 	.byte 0x44, 0x00, 0x00, 0x04, 0x00, 0x04, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00
 	.byte 0x04, 0x00, 0x00, 0x04, 0x00, 0x04, 0x04, 0x00, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x04
 	.byte 0x00, 0x04, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x04, 0x00, 0x00, 0x04, 0x04, 0x00, 0x00, 0x04
@@ -4790,106 +4791,49 @@ ovx28_3003E22:
 
 	.global ovx28_3003E24
 ovx28_3003E24:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.space 0xC
 
 	.global ovx28_3003E30
 ovx28_3003E30:
-	.byte 0x00, 0x00, 0x00, 0x00
+	.space 0x4
 
 	.global ovx28_3003E34
 ovx28_3003E34:
-	.byte 0x00, 0x00, 0x00, 0x00
+	.space 0x4
 
 	.global ovx28_3003E38
 ovx28_3003E38:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.space 0x8
 
 	.global ovx28_3003E40
 ovx28_3003E40:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.space 0x10
 
 	.global ovx28_3003E50
 ovx28_3003E50:
-	.byte 0x00, 0x00, 0x00, 0x00
+	.space 0x4
 
 	.global ovx28_3003E54
 ovx28_3003E54:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.space 0x14
 
 	.global ovx28_3003E68
 ovx28_3003E68:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00
+	.space 0x7C
 
 	.global ovx28_3003EE4
 ovx28_3003EE4:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00
+	.space 0x300
 
 	.global ovx28_30041E4
 ovx28_30041E4:
-	.byte 0x00, 0x00, 0x00, 0x00
+	.space 0x4
 
 	arm_func_start ovx28_30041E8
 ovx28_30041E8: @ 0x030041E8
 	mov ip, sp
 	push {r4, r5, r6, r7, r8, fp, ip, lr, pc}
-	ldr r3, _030042BC @ =0x02033600
+	ldr r3, _030042BC @ =gUnknown_2033600
 	sub fp, ip, #4
 	mov ip, r1
 	mov lr, #0xff00
@@ -4942,7 +4886,7 @@ _0300422C:
 	strh r3, [r0, #0xe]
 	b _030042D0
 	.align 2, 0
-_030042BC: .4byte 0x02033600
+_030042BC: .4byte gUnknown_2033600
 _030042C0:
 	ldr r3, [ip, #0xc]!
 	cmp r3, lr
@@ -4955,100 +4899,7 @@ _030042D0:
 
 	@ SoundMainRAM
 _030042D8:
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.space 0x5D0
 
 	@ hblank interrupt
 	arm_func_start ovx28_30048A8
@@ -5059,14 +4910,14 @@ ovx28_30048A8: @ 0x030048A8
 	add r4, r4, #0x4000000
 	ldrh r3, [r4]
 	sub fp, ip, #4
-	ldr r5, _030049F8 @ =0x02025F6C
+	ldr r5, _030049F8 @ =gUnknown_2025F6C
 	lsl r3, r3, #0x10
 	asr lr, r3, #0x10
 	ldr r2, [r5]
 	mov r6, lr
 	cmp r2, #0
 	beq _03004904
-	ldr r0, _030049FC @ =0x020328C8
+	ldr r0, _030049FC @ =gUnknown_20328C8
 	mov r1, #0x10
 	ldr ip, [r2, #8]
 	lsl r3, lr, r1
@@ -5082,7 +4933,7 @@ _03004904:
 	beq _03004938
 	ldr ip, [r3, #8]
 	mov r1, #0x14
-	ldr r0, _030049FC @ =0x020328C8
+	ldr r0, _030049FC @ =gUnknown_20328C8
 	lsl r3, lr, #0x10
 	ldrh r2, [r0, #0x52]
 	lsr r3, r3, #0xf
@@ -5096,7 +4947,7 @@ _03004938:
 	beq _0300496C
 	ldr ip, [r3, #8]
 	mov r1, #0x18
-	ldr r0, _030049FC @ =0x020328C8
+	ldr r0, _030049FC @ =gUnknown_20328C8
 	lsl r3, lr, #0x10
 	ldrh r2, [r0, #0xa2]
 	lsr r3, r3, #0xf
@@ -5110,7 +4961,7 @@ _0300496C:
 	beq _030049A0
 	ldr ip, [r3, #8]
 	mov r1, #0x1c
-	ldr r0, _030049FC @ =0x020328C8
+	ldr r0, _030049FC @ =gUnknown_20328C8
 	lsl r3, r6, #0x10
 	ldrh r2, [r0, #0xf2]
 	lsr r3, r3, #0xf
@@ -5119,7 +4970,7 @@ _0300496C:
 	add r2, r2, r0
 	strh r2, [r1]
 _030049A0:
-	ldr ip, _03004A00 @ =0x020264C4
+	ldr ip, _03004A00 @ =gUnknown_20264C4
 	ldr r1, [ip]
 	cmp r1, #0
 	beq _030049CC
@@ -5143,9 +4994,9 @@ _030049CC:
 	strh r0, [r2]
 	b _03004A04
 	.align 2, 0
-_030049F8: .4byte 0x02025F6C
-_030049FC: .4byte 0x020328C8
-_03004A00: .4byte 0x020264C4
+_030049F8: .4byte gUnknown_2025F6C
+_030049FC: .4byte gUnknown_20328C8
+_03004A00: .4byte gUnknown_20264C4
 _03004A04:
 	ldmdb fp, {r4, r5, r6, fp, sp, lr}
 	bx lr
@@ -5158,7 +5009,7 @@ ovx28_3004A0C: @ 0x03004A0C
 ovx28_3004A10: @ 0x03004A10
 	mov ip, sp
 	push {r4, r5, r6, r7, fp, ip, lr, pc}
-	ldr r3, _03004A70 @ =0x02027370
+	ldr r3, _03004A70 @ =gUnknown_2027370
 	mov r2, #0
 	str r2, [r3]
 	sub fp, ip, #4
@@ -5182,7 +5033,7 @@ _03004A38:
 	str r0, [r6, r2]
 	b _03004AA8
 	.align 2, 0
-_03004A70: .4byte 0x02027370
+_03004A70: .4byte gUnknown_2027370
 _03004A74:
 	mov r0, #0xc
 	bl ovx28_3005298
@@ -5395,7 +5246,7 @@ ovx28_3004D0C: @ 0x03004D0C
 	sub fp, ip, #4
 	sub sp, sp, #4
 	str r2, [fp, #-0x2c]
-	ldr r2, _03004EC0 @ =0x03005294
+	ldr r2, _03004EC0 @ =ovx28_3005294
 	mov sb, #0
 	bl ovx28_30054DC
 	mov sl, r0
@@ -5443,12 +5294,12 @@ _03004D8C:
 	bl ovx28_3005298
 	mov sb, r0
 	ldr r0, [fp, #-0x2c]
-	ldr r2, _03004EC4 @ =0x03005290
+	ldr r2, _03004EC4 @ =ovx28_3005290
 	mov r1, r5
 	bl ovx28_30052E8
 	mov r4, r0
 	ldr r0, [fp, #-0x2c]
-	ldr r2, _03004EC0 @ =0x03005294
+	ldr r2, _03004EC0 @ =ovx28_3005294
 	mov r1, r5
 	bl ovx28_30052E8
 	str sl, [sb]
@@ -5507,8 +5358,8 @@ _03004EB4:
 	bl ovx28_30052C0
 	b _03004EC8
 	.align 2, 0
-_03004EC0: .4byte 0x03005294
-_03004EC4: .4byte 0x03005290
+_03004EC0: .4byte ovx28_3005294
+_03004EC4: .4byte ovx28_3005290
 _03004EC8:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
@@ -5521,7 +5372,7 @@ ovx28_3004ED0: @ 0x03004ED0
 	sub sp, sp, #8
 	str r2, [fp, #-0x2c]
 	ldr r2, [fp, #4]
-	ldr ip, _03005090 @ =0x03005294
+	ldr ip, _03005090 @ =ovx28_3005294
 	ldr r3, [fp, #8]
 	str ip, [sp]
 	mov sb, #0
@@ -5571,12 +5422,12 @@ _03004F5C:
 	bl ovx28_3005298
 	mov sb, r0
 	ldr r0, [fp, #-0x2c]
-	ldr r2, _03005094 @ =0x03005290
+	ldr r2, _03005094 @ =ovx28_3005290
 	mov r1, r5
 	bl ovx28_30052E8
 	mov r4, r0
 	ldr r0, [fp, #-0x2c]
-	ldr r2, _03005090 @ =0x03005294
+	ldr r2, _03005090 @ =ovx28_3005294
 	mov r1, r5
 	bl ovx28_30052E8
 	str sl, [sb]
@@ -5635,8 +5486,8 @@ _03005084:
 	bl ovx28_30052C0
 	b _03005098
 	.align 2, 0
-_03005090: .4byte 0x03005294
-_03005094: .4byte 0x03005290
+_03005090: .4byte ovx28_3005294
+_03005094: .4byte ovx28_3005290
 _03005098:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
@@ -5647,7 +5498,7 @@ ovx28_30050A0: @ 0x030050A0
 	push {r4, r5, r6, r7, r8, fp, ip, lr, pc}
 	sub fp, ip, #4
 	sub sp, sp, #4
-	ldr ip, _0300514C @ =0x03005294
+	ldr ip, _0300514C @ =ovx28_3005294
 	str ip, [sp]
 	bl ovx28_3005580
 	mov r6, r0
@@ -5690,7 +5541,7 @@ _03005144:
 	mov r0, r8
 	b _03005150
 	.align 2, 0
-_0300514C: .4byte 0x03005294
+_0300514C: .4byte ovx28_3005294
 _03005150:
 	ldmdb fp, {r4, r5, r6, r7, r8, fp, sp, lr}
 	bx lr
@@ -5742,7 +5593,7 @@ _030051D8:
 ovx28_30051E0: @ 0x030051E0
 	mov ip, sp
 	push {r4, r5, r6, r7, r8, fp, ip, lr, pc}
-	ldr r2, _03005284 @ =0x03005294
+	ldr r2, _03005284 @ =ovx28_3005294
 	sub fp, ip, #4
 	bl ovx28_30054DC
 	mov r6, r0
@@ -5785,18 +5636,22 @@ _0300527C:
 	mov r0, r8
 	b _03005288
 	.align 2, 0
-_03005284: .4byte 0x03005294
+_03005284: .4byte ovx28_3005294
 _03005288:
 	ldmdb fp, {r4, r5, r6, r7, r8, fp, sp, lr}
 	bx lr
-_03005290:
-	.byte 0x77, 0x00, 0x00, 0x00, 0x72, 0x00, 0x00, 0x00
+
+ovx28_3005290:
+	.4byte 0x77
+
+ovx28_3005294:
+	.4byte 0x72
 
 	arm_func_start ovx28_3005298
 ovx28_3005298: @ 0x03005298
 	mov ip, sp
 	push {fp, ip, lr, pc}
-	ldr r3, _030052BC @ =0x085F3BD4
+	ldr r3, _030052BC @ =gUnknown_85F3BD4
 	sub fp, ip, #4
 	ldr ip, [r3]
 	mov lr, pc
@@ -5807,13 +5662,13 @@ ovx28_3005298.ret: @ 0x030052B4
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_030052BC: .4byte 0x085F3BD4
+_030052BC: .4byte gUnknown_85F3BD4
 
 	arm_func_start ovx28_30052C0
 ovx28_30052C0: @ 0x030052C0
 	mov ip, sp
 	push {fp, ip, lr, pc}
-	ldr r3, _030052E4 @ =0x085F3BD8
+	ldr r3, _030052E4 @ =gUnknown_85F3BD8
 	sub fp, ip, #4
 	ldr ip, [r3]
 	mov lr, pc
@@ -5824,13 +5679,13 @@ ovx28_30052C0.ret: @ 0x030052DC
 	ldmdb fp, {fp, sp, lr}
 	bx lr
 	.align 2, 0
-_030052E4: .4byte 0x085F3BD8
+_030052E4: .4byte gUnknown_85F3BD8
 
 	arm_func_start ovx28_30052E8
 ovx28_30052E8: @ 0x030052E8
 	mov ip, sp
 	push {r4, r5, r6, r7, r8, sb, sl, fp, ip, lr, pc}
-	ldr r3, _0300537C @ =0x085F3BD4
+	ldr r3, _0300537C @ =gUnknown_85F3BD4
 	sub fp, ip, #4
 	mov r5, r0
 	mov r0, #0x24
@@ -5842,7 +5697,7 @@ ovx28_30052E8: @ 0x030052E8
 
 	arm_func_start ovx28_30082E8.ret
 ovx28_30082E8.ret: @ 0x03005314
-	ldr r1, _03005380 @ =0x0804CB98
+	ldr r1, _03005380 @ =gUnknown_804CB98
 	ldr r8, _03005384 @ =ovx28_3005680
 	ldr sl, _03005388 @ =ovx28_30056A4
 	ldr r7, _0300538C @ =ovx28_30056CC
@@ -5869,16 +5724,16 @@ _03005358:
 	beq _030053CC
 	mov r2, r4
 	ldrb r1, [r2]
-	ldr r0, _03005394 @ =0x0804CB9C
+	ldr r0, _03005394 @ =gUnknown_804CB9C
 	b _030053A4
 	.align 2, 0
-_0300537C: .4byte 0x085F3BD4
-_03005380: .4byte 0x0804CB98
+_0300537C: .4byte gUnknown_85F3BD4
+_03005380: .4byte gUnknown_804CB98
 _03005384: .4byte ovx28_3005680
 _03005388: .4byte ovx28_30056A4
 _0300538C: .4byte ovx28_30056CC
 _03005390: .4byte ovx28_30056EC
-_03005394: .4byte 0x0804CB9C
+_03005394: .4byte gUnknown_804CB9C
 _03005398:
 	ldrb r3, [r2, #1]!
 	add r0, r0, #1
@@ -5981,7 +5836,7 @@ _030054D0:
 ovx28_30054DC: @ 0x030054DC
 	mov ip, sp
 	push {r4, r5, r6, fp, ip, lr, pc}
-	ldr r3, _03005514 @ =0x085F3BD4
+	ldr r3, _03005514 @ =gUnknown_85F3BD4
 	sub fp, ip, #4
 	mov r5, r0
 	mov r0, #0x28
@@ -5994,11 +5849,11 @@ ovx28_30054DC: @ 0x030054DC
 	arm_func_start ovx28_30054DC.ret
 ovx28_30054DC.ret: @ 0x03005508
 	ldrb r2, [r4]
-	ldr r1, _03005518 @ =0x0804CB98
+	ldr r1, _03005518 @ =gUnknown_804CB98
 	b _03005528
 	.align 2, 0
-_03005514: .4byte 0x085F3BD4
-_03005518: .4byte 0x0804CB98
+_03005514: .4byte gUnknown_85F3BD4
+_03005518: .4byte gUnknown_804CB98
 _0300551C:
 	ldrb r3, [r4, #1]!
 	add r1, r1, #1
@@ -6041,7 +5896,7 @@ ovx28_3005580: @ 0x03005580
 	mov r5, r1
 	ldr r4, [fp, #4]
 	mov r8, r2
-	ldr r2, _030055C0 @ =0x085F3BD4
+	ldr r2, _030055C0 @ =gUnknown_85F3BD4
 	mov r7, r3
 	ldr ip, [r2]
 	mov lr, pc
@@ -6050,11 +5905,11 @@ ovx28_3005580: @ 0x03005580
 	arm_func_start ovx28_3005580.ret
 ovx28_3005580.ret: @ 0x030055B4
 	ldrb r2, [r4]
-	ldr r1, _030055C4 @ =0x0804CB98
+	ldr r1, _030055C4 @ =gUnknown_804CB98
 	b _030055D4
 	.align 2, 0
-_030055C0: .4byte 0x085F3BD4
-_030055C4: .4byte 0x0804CB98
+_030055C0: .4byte gUnknown_85F3BD4
+_030055C4: .4byte gUnknown_804CB98
 _030055C8:
 	ldrb r3, [r4, #1]!
 	add r1, r1, #1

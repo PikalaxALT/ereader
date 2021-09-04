@@ -1100,7 +1100,15 @@ gUnknown_85F3924:
 
 	.global gUnknown_85F3AC4
 gUnknown_85F3AC4:
-	.incbin "baserom.gba", 0x5f3ac4, 0x118
+	.incbin "baserom.gba", 0x5f3ac4, 0x110
+
+	.global gUnknown_85F3BD4
+gUnknown_85F3BD4:
+	.incbin "baserom.gba", 0x5f3bd4, 0x4
+
+	.global gUnknown_85F3BD8
+gUnknown_85F3BD8:
+	.incbin "baserom.gba", 0x5f3bd8, 0x4
 
 	.global gUnknown_85F3BDC
 gUnknown_85F3BDC:

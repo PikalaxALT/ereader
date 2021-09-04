@@ -277,4 +277,10 @@ gUnknown_804BB78:
 gUnknown_804BB98:
 	.incbin "graphics/unk_804bb98.4bpp"
 
-	.4byte 0x72, 0x77
+	.global gUnknown_804CB98
+gUnknown_804CB98:
+	.4byte 0x72
+
+	.global gUnknown_804CB9C
+gUnknown_804CB9C:
+	.4byte 0x77
