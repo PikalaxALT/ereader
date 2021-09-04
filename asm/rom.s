@@ -104802,7 +104802,7 @@ _08032BF8: .4byte 0x000011E4
 _08032BFC: .4byte 0x000011E6
 _08032C00: .4byte 0x000011F0
 _08032C04:
-	ldr r4, _08032CE4 @ =gUnknown_85F79E4
+	ldr r4, _08032CE4 @ =gUnknown_85F69C0_End
 	ldr r5, _08032CE8 @ =gUnknown_85F69C0
 	subs r4, r4, r5
 	adds r0, r4, #0
@@ -104906,7 +104906,7 @@ _08032CC8:
 	mov sb, r2
 	b _08032D2A
 	.align 2, 0
-_08032CE4: .4byte gUnknown_85F79E4
+_08032CE4: .4byte gUnknown_85F69C0_End
 _08032CE8: .4byte gUnknown_85F69C0
 _08032CEC: .4byte gUnknown_2027784
 _08032CF0: .4byte gUnknown_2027785

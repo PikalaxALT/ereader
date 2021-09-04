@@ -1133,6 +1133,8 @@ gUnknown_85F699C:
 	.global gUnknown_85F69C0
 gUnknown_85F69C0:
 	.incbin "baserom.gba", 0x5f69c0, 0x1024
+	.global gUnknown_85F69C0_End
+gUnknown_85F69C0_End:
 
 	.global gUnknown_85F79E4
 gUnknown_85F79E4:
@@ -1142,7 +1144,32 @@ gUnknown_85F79E4_End:
 
 	.global gUnknown_85F7A80
 gUnknown_85F7A80:
-	.incbin "baserom.gba", 0x5f7a80, 0xdd9c
+	@ Uncompresses code to a buffer, then jumps to it
+	@ r0: EWRAM
+	@ r1: IWRAM
+	push {r0-r11, lr}
+	adr fp, gUnknown_85F7A80
+	ldr r0, _085F7AB4 @ =0x000031A0
+	add r0, r0, fp
+	svc 0x0011 << 16
+	adr sl, _085F7A9C
+	ldm sp, {r0, pc}
+_085F7A9C:
+	.4byte 0x000039BC
+	.4byte 0x00000038
+	.4byte 0x0000003C
+	.4byte 0x00001254
+	.4byte 0x00001A30
+	.4byte 0x00001DC8
+_085F7AB4: .4byte gUnknown_85FAC20-gUnknown_85F7A80
+
+	.incbin "baserom.gba", 0x5f7ab8, 0x3168
+
+gUnknown_85FAC20:
+	.incbin "baserom.gba", 0x5FAC20, 0x820
+
+gUnknown_85FB440:
+	.incbin "baserom.gba", 0x5fb440, 0xa3dc
 
 	.global gUnknown_860581C
 gUnknown_860581C:
