@@ -257,3 +257,6 @@ libagbsyscall:
 
 sound/direct_sound_samples/%.bin: sound/direct_sound_samples/%.aif
 	$(AIF) $< $@
+
+data/unk_85FAC20.bin.lz: %.lz: %
+	$(GFX) $< $@ -search 1

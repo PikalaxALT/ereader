@@ -1166,10 +1166,10 @@ _085F7AB4: .4byte gUnknown_85FAC20-gUnknown_85F7A80
 	.incbin "baserom.gba", 0x5f7ab8, 0x3168
 
 gUnknown_85FAC20:
-	.incbin "baserom.gba", 0x5FAC20, 0x820
+	.incbin "data/unk_85FAC20.bin.lz"
 
-gUnknown_85FB440:
-	.incbin "baserom.gba", 0x5fb440, 0xa3dc
+gUnknown_85FB43C:
+	.incbin "baserom.gba", 0x5fb43c, 0xa3e0
 
 	.global gUnknown_860581C
 gUnknown_860581C:
