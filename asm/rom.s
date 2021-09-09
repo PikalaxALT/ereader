@@ -121466,6 +121466,7 @@ _0803AB60:
 	bx r1
 	thumb_func_end sub_0803A9AC
 
+@ size_t sub_0803AB70(char * dest, const char * fmt, va_list va_args)
 	thumb_func_start sub_0803AB70
 sub_0803AB70: @ 0x0803AB70
 	push {r4, r5, r6, r7, lr}
@@ -122007,6 +122008,7 @@ _0803AFEA:
 	.align 2, 0
 	thumb_func_end sub_0803AB70
 
+@ size_t sub_0803B000(char * dest, const char * fmt, ...)
 	thumb_func_start sub_0803B000
 sub_0803B000: @ 0x0803B000
 	push {r1, r2, r3}

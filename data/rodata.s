@@ -218,52 +218,105 @@ gUnknown_804BA44:
 	.incbin "baserom.gba", 0x4ba44, 0x8
 
 	.global gUnknown_804BA4C
+	.align 2, 0
 gUnknown_804BA4C:
-	.incbin "baserom.gba", 0x4ba4c, 0x30
+	.asciz "PSAE"
+	.align 2, 0
+	.asciz "6ComWin"
+	.align 2, 0
+	.4byte gUnknown_2033D50
+	.4byte 0x60000000
+	.align 2, 0
+	.asciz "12MakeFontBase"
+	.align 2, 0
+	.asciz "5ERoot"
 
 	.global gUnknown_804BA7C
+	.align 2, 0
 gUnknown_804BA7C:
-	.incbin "baserom.gba", 0x4ba7c, 0xc
+	.asciz "9AGBComWin"
 
 	.global gUnknown_804BA88
+	.align 2, 0
 gUnknown_804BA88:
-	.incbin "baserom.gba", 0x4ba88, 0x8
+	.4byte gUnknown_2027360
+	.4byte 0x60000000
 
 	.global gUnknown_804BA90
+	.align 2, 0
 gUnknown_804BA90:
-	.incbin "baserom.gba", 0x4ba90, 0xc
+	.asciz "8GCComWin"
 
 	.global gUnknown_804BA9C
+	.align 2, 0
 gUnknown_804BA9C:
-	.incbin "baserom.gba", 0x4ba9c, 0x8
+	.asciz "6ComWin"
 
 	.global gUnknown_804BAA4
+	.align 2, 0
 gUnknown_804BAA4:
-	.incbin "baserom.gba", 0x4baa4, 0x48
+	.4byte gUnknown_2033D50
+	.4byte 0x60000000
+	.align 2, 0
+	@ 804BAAC
+	.asciz "12MakeFontBase"
+	.align 2, 0
+	@ 804BABC
+	.asciz "5ERoot"
+	.align 2, 0
+	@ 804BAC4
+	.asciz "6ComWin"
+	.align 2, 0
+	@ 804BACC
+	.4byte gUnknown_2033D50
+	.4byte 0x60000000
+	.align 2, 0
+	@ 804BAAC
+	.asciz "12MakeFontBase"
+	.align 2, 0
+	@ 804BABC
+	.asciz "5ERoot"
+	.align 2, 0
 
 	.global gUnknown_804BAEC
+	.align 2, 0
 gUnknown_804BAEC:
-	.incbin "baserom.gba", 0x4baec, 0x28
+	.asciz "0123456789abcdefghijklmnopqrstuvwxyz"
 
 	.global gUnknown_804BB14
+	.align 2, 0
 gUnknown_804BB14:
-	.incbin "baserom.gba", 0x4bb14, 0x28
+	.asciz "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 	.global gUnknown_804BB3C
+	.align 2, 0
 gUnknown_804BB3C:
-	.incbin "baserom.gba", 0x4bb3c, 0x8
+	.asciz "<NULL>"
 
 	.global gUnknown_804BB44
+	.align 2, 0
 gUnknown_804BB44:
-	.incbin "baserom.gba", 0x4bb44, 0x8
+	.asciz "%s%s."
 
 	.global gUnknown_804BB4C
+	.align 2, 0
 gUnknown_804BB4C:
-	.incbin "baserom.gba", 0x4bb4c, 0x4
+	.asciz "%s"
 
 	.global gUnknown_804BB50
+	.align 2, 0
 gUnknown_804BB50:
-	.incbin "baserom.gba", 0x4bb50, 0x28
+	.asciz "\n%s%d%s"
+	.align 2, 0
+	@ 804BB58
+	.asciz "12MakeFontBase"
+	.align 2, 0
+	@ 804BB68
+	.4byte gUnknown_2033D50
+	.4byte 0x60000000
+	@ 804BB70
+	.asciz "5ERoot"
+	.align 2, 0
 
 	.global gUnknown_804BB78
 gUnknown_804BB78:
