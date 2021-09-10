@@ -117,8 +117,8 @@ _08000238: .4byte gIntrTable
 
 	.arm
 	.align 2, 0
-	.global sub_0800023C
-sub_0800023C: @ 0x0800023C
+	.global IntrMain_xDC
+IntrMain_xDC: @ 0x0800023C
 	mov r3, #0x4000000
 	add r3, r3, #0x200
 	ldr r2, [r3]

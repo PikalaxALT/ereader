@@ -290,7 +290,7 @@ _030003C0:
 	str r3, [r7]
 	sub r2, r2, #0x10000
 	strh r2, [r6]
-	ldr r3, _0300049C @ =sub_0800023C
+	ldr r3, _0300049C @ =IntrMain_xDC
 	strh r2, [r5]
 	str r3, [r4]
 	bl ovxDC_3000000
@@ -323,7 +323,7 @@ _030003C0:
 _03000490: .4byte ovxDC_3000680
 _03000494: .4byte ovxDC_3000682
 _03000498: .4byte ovxDC_300067C
-_0300049C: .4byte sub_0800023C
+_0300049C: .4byte IntrMain_xDC
 _030004A0:
 	ldmdb fp, {r4, r5, r6, r7, r8, sl, fp, sp, lr}
 	bx lr
@@ -6057,6 +6057,7 @@ _030054BC:
 	ldmdb fp, {r4, r5, r6, r7, r8, sb, sl, fp, sp, lr}
 	bx lr
 
+	@ void ovxDC_30054C4(u8 *dest, const u16 *src)
 	arm_func_start ovxDC_30054C4
 ovxDC_30054C4: @ 0x030054C4
 	mov ip, sp
@@ -6978,42 +6979,136 @@ _0300612C:
 	bx lr
 
 ovxDC_3006134:
-	.incbin "baserom.gba", 0x70FB10, 0x4
+	.2byte 0
 
+	.align 2, 0 @ file boundary?
 ovxDC_3006138:
-	.incbin "baserom.gba", 0x70FB14, 0x1C
+	.byte 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0
+	.byte 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0
 
+	.align 2, 0 @ file boundary?
 ovxDC_3006154:
-	.incbin "baserom.gba", 0x70FB30, 0x14
+	.2byte 1, 20, 60, 340, 1300, 3800, 7600, 12700, 19500, 27400
 
 ovxDC_3006168:
-	.incbin "baserom.gba", 0x70FB44, 0x14
+	.2byte 1, 24, 73, 415, 1585, 4634, 9268, 15488, 23780, 33415
 
 ovxDC_300617C:
-	.incbin "baserom.gba", 0x70FB58, 0x28
+	.byte 1, 5
+	.byte 2, 14
+	.byte 18, 0
+	.byte 19, 48
+	.byte 20, 0
+	.byte 21, 246
+	.byte 22, 1
+	.byte 23, 64
+	.byte 32, 0
+	.byte 33, 196
+	.byte 34, 4
+	.byte 35, 0
+	.byte 37, 4
+	.byte 38, 88
+	.byte 39, 108
+	.byte 40, 0
+	.byte 49, 20
+	.byte 50, 20
+	.byte 51, 20
+	.byte 52, 2
 
 ovxDC_30061A4:
-	.incbin "baserom.gba", 0x70FB80, 0xA
+	.byte 20, 0
+	.byte 21, 246
+	.byte 37, 6
+	.byte 38, 232
+	.byte 39, 108
 
 ovxDC_30061AE:
-	.incbin "baserom.gba", 0x70FB8A, 0x2C
+	.byte 1, 5
+	.byte 2, 14
+	.byte 16, 0
+	.byte 17, 7
+	.byte 18, 0
+	.byte 19, 48
+	.byte 20, 1
+	.byte 21, 44
+	.byte 22, 1
+	.byte 23, 64
+	.byte 32, 0
+	.byte 33, 196
+	.byte 34, 4
+	.byte 35, 0
+	.byte 37, 4
+	.byte 38, 47
+	.byte 39, 20
+	.byte 40, 0
+	.byte 49, 20
+	.byte 50, 20
+	.byte 51, 20
+	.byte 52, 2
 
 ovxDC_30061DA:
-	.incbin "baserom.gba", 0x70FBB6, 0x3A
+	.byte 0, 34
+	.byte 1, 80
+	.byte 4, 30
+	.byte 5, 0
+	.byte 6, 246
+	.byte 7, 0
+	.byte 8, 64
+	.byte 9, 1
+	.byte 13, 1
+	.byte 14, 234
+	.byte 15, 1
+	.byte 16, 245
+	.byte 17, 0
+	.byte 18, 32
+	.byte 19, 240
+	.byte 20, 49
+	.byte 21, 192
+	.byte 22, 0
+	.byte 23, 119
+	.byte 24, 119
+	.byte 25, 48
+	.byte 26, 48
+	.byte 27, 48
+	.byte 28, 48
+	.byte 29, 128
+	.byte 30, 128
+	.byte 31, 128
+	.byte 32, 128
 
+	.align 2, 0 @ file boundary?
 ovxDC_3006214:
-	.incbin "baserom.gba", 0x70FBF0, 0x400
+	.incbin "data/unk_xDC_3006214.bin"
 
 ovxDC_3006614:
-	.incbin "baserom.gba", 0x70FFF0, 0x20
+	.byte 1, 2, 4, 8, 16
+	.byte 5, 10, 20
+	.byte 13, 26
+	.byte 17
+	.byte 7, 14, 28
+	.byte 29
+	.byte 31
+	.byte 27
+	.byte 19
+	.byte 3, 6, 12, 24
+	.byte 21
+	.byte 15, 30
+	.byte 25
+	.byte 23
+	.byte 11, 22
+	.byte 9, 18
 
+	.align 2, 0
 ovxDC_3006634:
-	.incbin "baserom.gba", 0x710010, 0x20
+	.byte 31, 0, 1, 18, 2, 5, 19, 11, 3, 29, 6, 27, 20, 8, 12, 23
+	.byte 4, 10, 30, 17, 7, 22, 28, 26, 21, 25, 9, 16, 13, 14, 24, 15
 
 ovxDC_3006654:
-	.incbin "baserom.gba", 0x710030, 0x30
+	.byte 0x0f, 0x15, 0x18, 0x0c, 0x06, 0x03, 0x13, 0x1b, 0x1f, 0x1d, 0x1c, 0x0e, 0x07, 0x11, 0x1a, 0x0d
+    .byte 0x14, 0x0a, 0x05, 0x10, 0x08, 0x04, 0x02, 0x01, 0x14, 0x10, 0x02, 0x09, 0x17, 0x0f, 0x0c, 0x13
+    .byte 0x1d, 0x07, 0x0d, 0x05, 0x04, 0x12, 0x0b, 0x1e, 0x18, 0x03, 0x1f, 0x0e, 0x1a, 0x0a, 0x08, 0x01
 
 ovxDC_3006684:
-	.incbin "baserom.gba", 0x710060, 0x4
+	.4byte 0
 
 	.align 2, 0
